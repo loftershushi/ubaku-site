@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ubaku｜大雪山のふもと（美瑛・東川）のクリエイティブチーム</title>
+<meta name="description" content="大雪山のふもとで、知る・泊まる・過ごす・住む。美瑛と東川を拠点に、大雪山をとりまくまちで活動するクリエイティブチーム、Ubaku。">
+<link rel="canonical" href="https://ubaku.jp/">
+
+<!-- SNSでシェアされたときの表示（ogp.jpg は 1200×630 で用意する） -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ubaku">
+<meta property="og:title" content="Ubaku｜大雪山のふもと（美瑛・東川）のクリエイティブチーム">
+<meta property="og:description" content="大雪山のふもとで、知る・泊まる・過ごす・住む。美瑛と東川を拠点に、大雪山をとりまくまちで活動するクリエイティブチーム、Ubaku。">
+<meta property="og:url" content="https://ubaku.jp/">
+<meta property="og:image" content="https://ubaku.jp/ogp.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- ブラウザのタブ・スマホのホーム画面のアイコン（画像は未作成） -->
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- フォント（Google Fonts） -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@300&family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400&display=swap">
+
+<!-- デザイン（色・フォント・余白はすべてこのファイルで管理） -->
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- Googleに会社情報を伝えるデータ（構造化データ）
+     ロゴ画像と note のURLが決まったら "logo" と sameAs に追加する -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Ubaku",
+  "url": "https://ubaku.jp/",
+  "email": "info@ubaku.jp",
+  "description": "大雪山のふもとのクリエイティブチーム。美瑛と東川を拠点に、大雪山をとりまくまちで活動。",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "北海道",
+    "addressLocality": "上川郡美瑛町",
+    "streetAddress": "旭町4丁目10-8-103"
+  },
+  "sameAs": [
+    "https://www.instagram.com/ubaku_jp/",
+    "https://note.com/loftershushi",
+    "https://note.com/ubaku_jp",
+    "https://note.com/ubakuvilla",
+    "https://ubakuvilla.com"
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ======================= ① ヒーロー ======================= -->
+<header class="hero wrap">
+  <nav class="nav intro" style="--d:0s" aria-label="メインメニュー">
+    <span class="en">Biei / Higashikawa, Hokkaido</span>
+    <ul>
+      <li><a href="#values">Values</a></li>
+      <li><a href="#work">What We Do</a></li>
+      <li><a href="#business">Business</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#journal">Journal</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-main">
+    <div class="display hero-mark intro" style="--d:.15s" aria-hidden="true">UBAKU</div>
+    <div class="hero-copy intro" style="--d:.45s">
+      <!-- h1はこの1つだけ（文言は固定） -->
+      <h1>大雪山のふもとで、知る・泊まる・過ごす・住む。</h1>
+      <p>大雪山のふもとのクリエイティブチーム、Ubaku。</p>
+    </div>
+  </div>
+
+  <!-- スライドの切り替えボタン（スライド2・3の文言は見出しにしない） -->
+  <div class="slide-tabs intro" style="--d:.7s" role="tablist" aria-label="ヒーロー写真の切り替え">
+    <button type="button" role="tab" id="tab-0" aria-controls="slide-0" aria-selected="true">01　大雪山のふもとで、知る・泊まる・過ごす・住む。</button>
+    <button type="button" role="tab" id="tab-1" aria-controls="slide-1" aria-selected="false" tabindex="-1">02　眺める旅から、暮らす旅へ。</button>
+    <button type="button" role="tab" id="tab-2" aria-controls="slide-2" aria-selected="false" tabindex="-1">03　暮らしに、余白を。</button>
+  </div>
+
+  <!-- パノラマ写真（上端を丘の稜線の形で切り抜く）
+       いまの写真は仮。差し替えるときは assets/img の同じ名前のファイルを置き換える
+       1枚目だけ loading="lazy" を付けない -->
+  <div class="panorama intro" style="--d:.9s">
+    <svg class="ridge" viewBox="0 0 1296 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 60 C 180 20, 340 20, 500 50 S 820 90, 1000 40 S 1210 20, 1296 44 L1296 0 Z"/></svg>
+    <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="assets/img/hero-01.webp" alt="雪をかぶった大雪山と、美瑛の緑の丘" width="2000" height="1333"></div>
+    <div class="slide photo ph2" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="assets/img/hero-02.webp" alt="Ubaku Villa 宇莫別荘のダイニング" width="2000" height="1333" loading="lazy"></div>
+    <div class="slide photo ph3" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true"><img src="assets/img/hero-03.webp" alt="Ubaku Villa 宇莫別荘の窓から見える森" width="2000" height="1333" loading="lazy"></div>
+  </div>
+</header>
+
+<main>
+
+<!-- ======================= ② Values ======================= -->
+<section id="values" class="values wrap">
+  <div class="sec-head">
+    <h2 class="display">Values</h2>
+    <span class="aside">大切にしていること</span>
+  </div>
+  <div class="values-grid">
+    <div class="value">
+      <span class="en label">01</span>
+      <h3>眺める旅から、暮らす旅へ。</h3>
+      <p class="en">From Sightseeing to Living.</p>
+      <p class="body">美しい景色を眺めて去る旅から、泊まり、関わり、住まう旅へ。</p>
+    </div>
+    <div class="value">
+      <span class="en label">02</span>
+      <h3>暮らしに、余白を。</h3>
+      <p class="en">Life, with Margin.</p>
+      <p class="body">詰め込まず、急がず。土地の時間が流れこむ余白をつくる。</p>
+    </div>
+    <div class="value">
+      <span class="en label">03</span>
+      <h3>となりで、一緒に。</h3>
+      <p class="en">Right Beside You.</p>
+      <p class="body">移住も、開業も、はじめの一歩は心細いもの。自分たちが通ってきた道をもとに、となりで一緒に考え、支える。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ②' Concept（Valuesの下・3つの円） =======================
+     3つの円が、上（ひと）→ 右下（場所）→ 左下（土地）→ 上 … とぐるりと順に重なる
+     白線は「上に重なっている円のふちのすぐ外側」にだけ引く（半径219＝215＋線の太さの半分） -->
+<section id="concept" class="concept-sec wrap">
+  <div class="concept">
+    <span class="kicker">（Ubakuの考え方）</span>
+    <h2 class="concept-title">Concept</h2>
+    <p class="concept-catch">ひとと、土地と、場所を、<br>つないでいく。</p>
+
+    <div class="tomoe">
+      <svg viewBox="110 20 680 700" role="img" aria-labelledby="tomoe-title">
+        <title id="tomoe-title">ひと・土地・場所の3つの円が重なり、真ん中にUbakuがある図</title>
+        <defs>
+          <clipPath id="clip-top"><circle cx="450" cy="255" r="215"/></clipPath>
+          <clipPath id="clip-br"><circle cx="565" cy="455" r="215"/></clipPath>
+          <clipPath id="clip-bl"><circle cx="335" cy="455" r="215"/></clipPath>
+        </defs>
+        <g class="shapes">
+          <!-- ① 色の面 -->
+          <circle class="fill-top" cx="450" cy="255" r="215"/>
+          <circle class="fill-br" cx="565" cy="455" r="215"/>
+          <circle class="fill-bl" cx="335" cy="455" r="215"/>
+          <g clip-path="url(#clip-bl)"><circle class="fill-br" cx="565" cy="455" r="215"/></g>
+          <g clip-path="url(#clip-br)"><circle class="fill-top" cx="450" cy="255" r="215"/></g>
+          <!-- ② 白線（上に重なっている円のふちだけ） -->
+          <g clip-path="url(#clip-br)"><circle class="gap" cx="450" cy="255" r="219"/></g>
+          <g clip-path="url(#clip-bl)"><circle class="gap" cx="565" cy="455" r="219"/></g>
+          <g clip-path="url(#clip-top)"><circle class="gap" cx="335" cy="455" r="219"/></g>
+          <!-- ③ 3つが重なる真ん中は地色で抜く -->
+          <g clip-path="url(#clip-top)"><g clip-path="url(#clip-br)"><g clip-path="url(#clip-bl)">
+            <rect class="fill-center" x="100" y="0" width="700" height="760"/>
+          </g></g></g>
+        </g>
+        <g class="lbl lbl-top"><text class="lbl-en" x="450" y="172">(People)</text><text class="lbl-jp" x="450" y="212">ひと</text></g>
+        <g class="lbl lbl-bl"><text class="lbl-en" x="268" y="482">(Land)</text><text class="lbl-jp" x="268" y="522">土地</text></g>
+        <g class="lbl lbl-br"><text class="lbl-en" x="632" y="482">(Place)</text><text class="lbl-jp" x="632" y="522">場所</text></g>
+        <g class="lbl lbl-center"><text class="lbl-en" x="450" y="374">(Connect)</text><text class="lbl-brand" x="450" y="414">Ubaku</text></g>
+      </svg>
+    </div>
+    <!-- 活動エリア -->
+    <p class="area-line">美瑛と東川を拠点に、大雪山をとりまくまちへ。</p>
+  </div>
+</section>
+
+<!-- ======================= ③ What We Do（深緑・上端に稜線） ======================= -->
+<section id="work" class="dark">
+  <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 50 C 220 100, 420 100, 640 60 S 1000 10, 1200 50 S 1380 80, 1440 60 L1440 0 Z"/></svg>
+  <div class="work wrap">
+    <div class="sec-head">
+      <h2 class="display">What We Do</h2>
+      <span class="aside">6つの仕事</span>
+    </div>
+    <div class="work-grid">
+      <div class="work-item">
+        <span class="en kind">Connect</span>
+        <h3>知る・つながる</h3>
+        <p>大雪山のふもとの食と人を、全国へ届ける。旅をした人、記事を読んだ人が、いつかこの土地を訪れるきっかけをつくる。</p>
+        <span class="en lines">Ubaku Media</span>
+        <span class="lines-soon"><span class="en lines">Ubaku Yasai</span><span class="en badge">Coming soon</span></span>
+      </div>
+      <div class="work-item">
+        <span class="en kind">Stay</span>
+        <h3>泊まる</h3>
+        <p>景色を見るだけでなく、土地の時間ごと過ごせる宿をつくる。</p>
+        <a class="en lines" href="https://ubakuvilla.com">Ubaku Villa 宇莫別荘 →</a>
+      </div>
+      <div class="work-item">
+        <span class="en kind">Place</span>
+        <h3>遊ぶ・働く</h3>
+        <p>滞在を支え、人が集まる場を開く。</p>
+        <span class="en badge">Coming soon</span>
+      </div>
+      <div class="work-item">
+        <span class="en kind">Live</span>
+        <h3>住む</h3>
+        <p>二拠点生活や移住で、大雪山のふもとに根を下ろす人を支える。</p>
+        <a class="en lines" href="#contact">移住・二拠点のご相談、受付中 →</a>
+      </div>
+      <div class="work-item">
+        <span class="en kind">Consult</span>
+        <h3>支える</h3>
+        <p>宿の開業から、不動産開発、新規事業まで。自分たちで試したことを、全国の地域へ手渡す。</p>
+        <span class="en lines">Ubaku Consulting</span>
+      </div>
+      <div class="work-item">
+        <span class="en kind">Design</span>
+        <h3>考える</h3>
+        <p>建物の改修を、デザイン監修とプロデュースで。</p>
+        <span class="en lines">Ubaku Design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ④ Business ======================= -->
+<section id="business" class="business wrap">
+  <div class="sec-head">
+    <h2 class="display">Business</h2>
+    <span class="aside">事業紹介</span>
+  </div>
+
+  <!-- Villa（大きく1段） -->
+  <article id="villa" class="villa">
+    <div class="photo zoom"><img src="assets/img/villa.webp" alt="Ubaku Villa 宇莫別荘の入口の木製サイン" width="2000" height="1333" loading="lazy"></div>
+    <div class="villa-text">
+      <span class="label">Stay｜泊まる</span>
+      <h3 class="biz-name">Ubaku Villa <span class="biz-name-jp">宇莫別荘</span></h3>
+      <p class="catch">暮らしに余白をもたらす貸切宿。</p>
+      <p class="body">美瑛の集落・中宇莫別に建つ、1日1組限定の一棟貸しの宿「Ubaku Villa 宇莫別荘」。築約60年の建物をフルリノベーションし、2026年1月に開業しました。</p>
+      <p class="body">約1,800㎡の敷地に、寝室4室。最大10名まで、家族や仲間と一棟まるごと過ごせます。旭川空港から車で約18分、美瑛駅から車で約10分。夏の丘の景色も、冬の雪の静けさも、この場所の日常です。</p>
+      <ul class="facts">
+        <li>ゲストの8割以上が海外から（2026年7月時点）</li>
+        <li>Airbnb・Booking.comで満点評価（2026年7月時点）</li>
+      </ul>
+      <a class="more" href="https://ubakuvilla.com">宇莫別荘の公式サイトへ</a>
+      <div class="minami">
+        <strong>Ubaku Villa 南邸｜Coming soon</strong>
+        <span class="body">美瑛駅から歩いて10分。宇莫別荘とはまた違う世界観の宿を、いま準備しています。どうぞお楽しみに。</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Media（1段・カードにしない。ドメインが決まるまでリンクは置かない） -->
+  <article id="media" class="media">
+    <div class="photo media-photo"><img src="assets/img/media.webp" alt="雪原から顔を出す枯れ草" width="2000" height="1333" loading="lazy"></div>
+    <div class="media-name">
+      <span class="label">Connect｜知る・つながる</span>
+      <h3 class="biz-name">Ubaku Media</h3>
+    </div>
+    <div class="media-text">
+      <p class="catch">大雪山のふもとの、ひと・くらし・イベント。</p>
+      <p class="body">観光ガイドには載らない、この地域で暮らす人の営みと、季節の出来事を伝えるメディアを準備しています。</p>
+      <span class="en badge badge--light">Coming soon</span>
+    </div>
+  </article>
+
+  <!-- Design・Consulting（2列） -->
+  <div class="two">
+    <article id="design">
+      <div class="photo ph3"><img src="assets/img/design.webp" alt="花と木のカードスタンド" width="2000" height="1333" loading="lazy"></div>
+      <span class="label">Design｜考える</span>
+      <h3 class="biz-name">Ubaku Design</h3>
+      <p class="catch">改修を、デザイン監修とプロデュースで。</p>
+      <!-- マウスを乗せると、ここから下だけが少し浮く -->
+      <div class="design-body lift-card">
+      <p class="body">古い建物には、新しく建てるものにはない時間の厚みがあります。Ubaku Designは、その建物の良さを生かした改修を、コンセプトづくりから仕上がりまで伴走します。</p>
+      <p class="body">対象は、構造に手を加えない改修・内装・設備の更新です。工事はご紹介する工事会社と直接ご契約いただき、Ubakuは監修とプロデュースに専念します。大規模な改修が必要な場合は、提携する建築士と連携します。</p>
+      <div class="steps">
+        <span class="label">進め方</span>
+        <ol>
+          <li>ヒアリング</li>
+          <li>コンセプト</li>
+          <li>事業企画</li>
+          <li>プラン・素材監修</li>
+          <li>工事会社紹介</li>
+        </ol>
+      </div>
+      </div>
+    </article>
+
+    <article id="consulting">
+      <span class="label">Consult｜支える</span>
+      <h3 class="biz-name">Ubaku Consulting</h3>
+      <p class="catch">宿と不動産の実務から、事業をかたちに。</p>
+      <div class="sub lift-card">
+        <h4>宿泊施設の開業・運営支援</h4>
+        <p class="body">運営代行ではなく、オーナーが少ない手間で、自分の力で宿を回せる仕組みづくりを支援します。予約サイトへの登録、料金設計、HP作成、撮影、清掃やゲスト対応の仕組みなど。美瑛に限らず、全国対応。</p>
+      </div>
+      <div class="sub lift-card">
+        <h4>不動産企画・新規事業支援</h4>
+        <p class="body">不動産開発、賃貸住宅の運営、投資用不動産、新規事業の立ち上げまで。東京の大手不動産会社での実務経験をもとに、事業の組み立てから支援します。都市の収益不動産で培った数字の見方と、地方で宿を立ち上げた現場感覚。その両方を持つことが、Ubakuの強みです。美瑛に限らず、全国対応。</p>
+      </div>
+      <p class="note">支援で使う仕組みは、チーム内の研究開発部門「Ubaku Lab」で開発・検証しています。</p>
+    </article>
+  </div>
+</section>
+
+<!-- ======================= ⑤ Ubaku in Numbers（クラフト色） ======================= -->
+<section class="numbers">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="display">Ubaku in Numbers</h2>
+      <span class="aside">数字で見るUbaku</span>
+    </div>
+    <ul class="numbers-grid">
+      <li><span class="num en-num">2026.1</span><p>Ubaku Villa 宇莫別荘、開業</p></li>
+      <li><span class="num jp-num">1日1組</span><p>一棟まるごと、最大10名まで</p></li>
+      <li><span class="num en-num">80%+</span><p>海外から訪れるゲストの割合（2026年7月時点）</p></li>
+      <li><span class="num jp-num">満点</span><p>Airbnb・Booking.comでの評価（2026年7月時点）</p></li>
+      <li><span class="num jp-num">2棟目</span><p>Ubaku Villa 南邸、準備中</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======================= ⑥ Team ======================= -->
+<section id="team" class="team wrap">
+  <div class="sec-head">
+    <h2 class="display">Team</h2>
+    <span class="aside">海の向こうから、南の島から、この町から。</span>
+  </div>
+  <div class="team-grid">
+    <div class="member">
+      <div class="photo ph3"><img src="assets/img/mashu.webp" alt="Mashu" width="2000" height="2000" loading="lazy"></div>
+      <span class="label">Producer｜描く人</span>
+      <h3>Mashu</h3>
+      <p class="body">北海道東川町での短期留学をきっかけに、日本へ移住。日系大手不動産開発会社で働きながら、美瑛・東川町を舞台に個人での活動を重ねる。宿をつくり、野菜を届け、地域の仕組みを描いていく。</p>
+    </div>
+    <div class="member">
+      <div class="photo"><img src="assets/img/yamato.webp" alt="Yamato" width="1038" height="890" loading="lazy"></div>
+      <span class="label">Field Director｜耕す人</span>
+      <h3>Yamato</h3>
+      <p class="body">沖縄から北海道へ飛び込んだ元小学校教員。いまは美瑛の農家さんとともに畑に立ち、土と人をつなぎながら、この町に関わる人を増やしている。</p>
+    </div>
+    <div class="member">
+      <div class="photo ph2"><img src="assets/img/yushin.webp" alt="Yushin" width="1038" height="890" loading="lazy"></div>
+      <span class="label">Connector｜結ぶ人</span>
+      <h3>Yushin</h3>
+      <p class="body">美瑛生まれ。曹洞宗大本山永平寺での修行を経て、ふだんは旭川で僧侶を務める。美瑛の野菜と人の縁を、町の外へ結んでいく。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ⑦ Journal =======================
+     3つのnoteの記事（2026年分）が、2段で互い違いに流れる
+     記事一覧は assets/js/notes.js（tools/make_notes.py で自動作成）から読み込む -->
+<section id="journal" class="journal">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="display">Journal</h2>
+      <span class="aside">大雪山のふもとから、日々のつぶやき。</span>
+    </div>
+  </div>
+  <div class="journal-flow" id="journal-flow">
+    <div class="flow-row"><div class="flow-track"></div></div>
+    <div class="flow-row reverse"><div class="flow-track"></div></div>
+  </div>
+  <div class="wrap">
+    <div class="note-links">
+      <a class="more" href="https://note.com/loftershushi" target="_blank" rel="noopener">mashu の note</a>
+      <a class="more" href="https://note.com/ubaku_jp" target="_blank" rel="noopener">Ubaku の note</a>
+      <a class="more" href="https://note.com/ubakuvilla" target="_blank" rel="noopener">Ubaku Villa 宇莫別荘 の note</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ⑧ Coming soon（クラフト色） ======================= -->
+<section class="soon">
+  <div class="wrap">
+    <div class="soon-head">
+      <p class="en">More to come.</p>
+      <h2>ほかにも、いろいろ準備しています。</h2>
+    </div>
+    <div class="soon-body">
+      <p>大雪山のふもとで過ごす場所、働く場所、そして美瑛の野菜の直販。かたちになったら、ここでお知らせします。</p>
+      <!-- Yasaiは「Coming soon」くらいの温度感で。説明文・商品・価格・購入リンクは載せない -->
+      <ul class="soon-list">
+        <li><span class="en soon-name">Ubaku Yasai</span><span class="en badge badge--light">Coming soon</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ======================= ⑨ Contact（深緑・上端に稜線） ======================= -->
+<section id="contact" class="dark dark--after-kraft">
+  <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 70 C 200 20, 420 20, 620 60 S 980 110, 1180 50 S 1380 30, 1440 45 L1440 0 Z"/></svg>
+  <div class="contact wrap">
+    <div class="sec-head">
+      <h2 class="display">Contact</h2>
+      <span class="aside">お問い合わせ</span>
+    </div>
+    <div class="contact-lead">
+      <p class="contact-lead-title">どんなことでも、お気軽に。</p>
+      <p>宿のこと、移住や二拠点のこと、不動産のこと、野菜のこと。まだ形になっていない思いつきでも大丈夫です。お話しできるのを、楽しみに待っています。</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <h3>宿のご予約</h3>
+        <p>Ubaku Villa 宇莫別荘の公式サイトからお願いします。</p>
+        <a class="en" href="https://ubakuvilla.com">ubakuvilla.com</a>
+      </div>
+      <div>
+        <h3>お仕事のご相談</h3>
+        <p>移住・二拠点のご相談、宿の開業・運営支援や不動産・新規事業のご相談（Consulting）、改修のデザイン監修（Design）。</p>
+      </div>
+      <div>
+        <h3>取材・協業のお問い合わせ</h3>
+        <p>メディア掲載、地域での協業のご相談。</p>
+      </div>
+    </div>
+
+    <!-- お問い合わせフォーム（Formspree → info@ubaku.jp）
+         フォームIDを受け取ったら YOUR_FORM_ID を差し替える -->
+    <form class="form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="field">
+        <label for="f-name">お名前<span class="req">必須</span></label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="f-email">メールアドレス<span class="req">必須</span></label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="f-type">お問い合わせ種別<span class="req">必須</span></label>
+        <select id="f-type" name="type" required>
+          <option value="">選択してください</option>
+          <option>宿泊について</option>
+          <option>移住・二拠点</option>
+          <option>不動産・事業企画</option>
+          <option>宿の開業・運営</option>
+          <option>デザイン監修・改修プロデュース</option>
+          <option>野菜・食</option>
+          <option>取材・メディア・協業</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="field field--wide">
+        <label for="f-message">内容<span class="req">必須</span></label>
+        <textarea id="f-message" name="message" rows="6" required></textarea>
+      </div>
+      <!-- スパム対策（人には見えない欄。ここに入力があると送信されない） -->
+      <input type="text" name="_gotcha" class="gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-foot">
+        <button type="submit" class="submit">送信する</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <!-- ======================= ⑩ フッター ======================= -->
+    <footer>
+      <div>
+        <span class="display">UBAKU</span>
+        <span>Ubaku｜大雪山のふもとのクリエイティブチーム</span><br>
+        <!-- 郵便番号は確認後に「〒」付きで先頭に追記する -->
+        <span>北海道上川郡美瑛町旭町4丁目10-8-103</span>
+      </div>
+      <div class="footer-right">
+        <ul class="links-row">
+          <li><span class="en label">Mail</span><a class="en" href="mailto:info@ubaku.jp">info@ubaku.jp</a></li>
+          <li><span class="en label">Instagram</span><a class="en" href="https://www.instagram.com/ubaku_jp/" target="_blank" rel="noopener">@ubaku_jp</a></li>
+        </ul>
+        <span class="en">© 2026 Ubaku</span>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<script src="assets/js/notes.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

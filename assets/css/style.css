@@ -1,0 +1,440 @@
+/* =========================================================
+   ubaku.jp デザイン設定
+   色・フォント・余白はここの変数を変えると全体に反映される
+   （下のほうで色を直接書かないこと）
+   ========================================================= */
+:root{
+  /* --- 色 --- */
+  --cream:#F6F3EC;      /* 生成り（基本の地色） */
+  --kraft:#EFE6D8;      /* クラフト色（数字・Coming soonの地色） */
+  --green:#34403A;      /* 深緑（ブランド色） */
+  --ink:#2B241C;        /* 見出しの文字色 */
+  --muted:#4B4236;      /* 本文の文字色 */
+  --sub:#6B6457;        /* ラベルの文字色 */
+  --line:#B8B0A0;       /* 細い罫線 */
+  --on-green:#F1EBDF;   /* 深緑の上の文字 */
+  --on-green-sub:#D9D3C6;
+  --accent-sand:#D6C3A0;
+  --ph1:#C9B79C; --ph2:#B7A184; --ph3:#D8C9B2; /* 写真プレースホルダーの色 */
+  --ph-text:#3A3026;         /* プレースホルダーの文字 */
+
+  /* --- 罫線（長い線＝見出しの下は濃く、短い線＝各項目の上は薄く） --- */
+  --rule-long:var(--ink);             /* 生成り・クラフト色の上の長い線 */
+  --rule-short:#D5CCBC;               /* 生成り・クラフト色の上の短い線 */
+  --rule-long-on-green:#A9B0A9;       /* 深緑の上の長い線 */
+  --rule-short-on-green:#55615A;      /* 深緑の上の短い線 */
+  --rule-hover-on-green:var(--accent-sand); /* マウスを乗せたときの線 */
+
+  /* --- Concept（3つの円）の色 --- */
+  --c-top:#D2BE9A;      /* 上：ひと（砂色・いちばん濃い） */
+  --c-br:#C4CCC2;       /* 右下：場所（くすんだ緑） */
+  --c-bl:#E6DBC8;       /* 左下：土地（明るいクラフト色） */
+  --c-label:#4A4238;    /* 円の中の文字 */
+
+  /* --- Journal（noteが流れるギャラリー） --- */
+  --card-w:360px;       /* 記事カードの幅 */
+  --card-gap:32px;      /* カードのあいだ */
+  --flow-speed:9s;      /* カード1枚分が流れる時間（小さいほど速い） */
+
+  /* --- フォント --- */
+  --f-display:'Cormorant Garamond', serif;              /* 英語の大見出し */
+  --f-heading:'Noto Serif JP', serif;                   /* 日本語の見出し */
+  --f-body:'Noto Sans JP', sans-serif;                  /* 本文・メニュー */
+  --f-en:Futura, 'Futura PT', 'Jost', sans-serif;       /* 英語の小さな文字 */
+
+  /* --- 余白 --- */
+  --pad-x:clamp(20px, 5vw, 72px);   /* 画面の左右の余白 */
+  --sec-y:160px;                    /* すべてのセクションの上下の余白（全セクション共通） */
+  --block-gap:128px;                /* Business内の各事業のあいだの余白 */
+  --head-gap:72px;                  /* 見出しの線から中身までの余白 */
+  --ridge-h:120px;                  /* 稜線の高さ */
+
+  /* --- 動き --- */
+  --reveal-dist:28px;     /* スクロールで下から浮き上がる距離 */
+  --reveal-time:1.1s;     /* 現れるまでの時間 */
+  --lift:-8px;            /* マウスを乗せたときに浮く距離 */
+}
+
+/* ---------- 基本 ---------- */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--f-body);font-weight:300;line-height:2;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a[href]:hover{color:var(--green)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{margin:0;font-weight:600;line-height:1.5}
+p{margin:0}
+.wrap{max-width:1440px;margin:0 auto;padding-left:var(--pad-x);padding-right:var(--pad-x)}
+
+/* 動きを減らす設定の人には、スクロールやスライドのアニメーションを止める */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important;animation:none !important}
+}
+
+/* ---------- 文字の種類 ---------- */
+.display{font-family:var(--f-display);font-weight:600;line-height:1;color:var(--green)}
+.en{font-family:var(--f-en);font-weight:400;line-height:1.6}
+.label{font-size:12px;letter-spacing:.16em;color:var(--sub)}
+.body{font-size:14px;color:var(--muted)}
+
+/* ---------- Coming soon の小さな札（文字と同じくらいの幅） ---------- */
+.badge{align-self:flex-start;display:inline-block;padding:4px 12px;font-size:11px;letter-spacing:.16em;line-height:1.6;color:var(--green);background:var(--accent-sand)}
+.badge--light{color:var(--on-green);background:var(--green)}   /* 生成りの上で使うとき */
+
+/* ---------- 写真（写真がないときは色の付いた箱になる） ---------- */
+.photo{position:relative;display:flex;align-items:flex-end;padding:16px;background:var(--ph1);overflow:hidden}
+.photo.ph2{background:var(--ph2)}
+.photo.ph3{background:var(--ph3)}
+.photo span{position:relative;font-size:12px;letter-spacing:.1em;color:var(--ph-text)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ---------- セクション見出し（左に英語の大見出し、右に日本語） ---------- */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:1px solid var(--rule-long);padding-bottom:20px;margin-bottom:var(--head-gap)}
+.sec-head h2{font-size:clamp(44px,6vw,72px)}
+.sec-head .aside{font-family:var(--f-body);font-weight:300;font-size:14px;letter-spacing:.2em;color:var(--muted);text-align:right}   /* 見出し右の日本語は細いゴシック（大きな英字の明朝系と対比させる） */
+
+/* ---------- 稜線（ヒーロー写真の上端・深緑セクションの上端） ---------- */
+/* 端に細い線が出ないよう、上・左右に1〜2pxはみ出させて重ねる */
+.ridge{position:absolute;left:-2px;top:-2px;width:calc(100% + 4px);height:var(--ridge-h);display:block;z-index:2}
+.ridge path{fill:var(--cream)}
+
+/* ---------- スクロールで、文字や写真がふわっと現れる動き ----------
+   main.js が対象に .reveal を付け、画面に入ったら .is-visible を付ける
+   現れ終わったら .revealed を付け、マウスを乗せたときの動きに切り替える
+   （JSが動かない環境や「動きを減らす」設定では、最初から全部見える） */
+.reveal{opacity:0;transform:translateY(var(--reveal-dist));transition:opacity var(--reveal-time) ease,transform var(--reveal-time) cubic-bezier(.2,.7,.2,1)}
+.reveal.is-visible{opacity:1;transform:none}
+.reveal.revealed{transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .45s ease}
+/* 写真は、少し拡大した状態からゆっくり元の大きさへ */
+.reveal .photo img,.reveal.photo img{transform:scale(1.06);transition:transform 1.8s cubic-bezier(.2,.7,.2,1)}
+.reveal.is-visible .photo img,.reveal.is-visible.photo img{transform:none}
+
+/* ---------- マウスを乗せると少し浮く（What We Do・Ubaku in Numbers） ---------- */
+.work-item:not(.reveal),.numbers-grid li:not(.reveal),.member:not(.reveal){transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .45s ease}
+@media (hover:hover){
+  .work-item:hover,.numbers-grid li:hover,.member:hover{transform:translateY(var(--lift))}
+  .work-item:hover{border-top-color:var(--rule-hover-on-green)}
+  .numbers-grid li:hover{border-top-color:var(--green)}
+  .lift-card:hover{transform:translateY(var(--lift))}
+  .sub.lift-card:hover{border-top-color:var(--green)}
+}
+
+/* ---------- 「詳しく見る」系のリンク ---------- */
+.more{align-self:flex-start;display:inline-block;font-size:13px;letter-spacing:.1em;border-bottom:1px solid var(--rule-short);padding:12px 0 6px}
+
+/* ---------- アニメーション③：リンクの下線が、マウスを乗せると左から伸びる ----------
+   いつもは薄い線、マウスを乗せると濃い線が左から右へ伸びる */
+.more,.work-item a.lines,.links-row a{
+  background-image:linear-gradient(currentColor,currentColor);
+  background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;
+  background-origin:border-box;   /* 伸びる線を、いつもの下線と同じ位置に重ねる（二重線にしない） */
+  transition:background-size .5s cubic-bezier(.2,.7,.2,1),color .3s ease;
+}
+.more:hover,.work-item a.lines:hover,.links-row a:hover{background-size:100% 1px}
+
+/* ---------- アニメーション①：マウスを乗せると、写真がゆっくり少し拡大する ---------- */
+.zoom img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){
+  .zoom:hover img,a:hover > .zoom img,
+  .reveal.is-visible .zoom:hover img,.reveal.is-visible.zoom:hover img,
+  .reveal.is-visible:hover > .zoom img,.reveal.is-visible a:hover > .zoom img{transform:scale(1.05)}
+}
+
+/* ---------- アニメーション②：ページを開いたとき、上から順にふわっと現れる ----------
+   style="--d:0.3s" のように、現れ始めるまでの時間を各要素に書いている */
+@keyframes intro-in{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+.intro{animation:intro-in 1.2s cubic-bezier(.2,.7,.2,1) var(--d,0s) both}
+
+/* =========================================================
+   ① ヒーロー
+   ========================================================= */
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;padding-top:36px;padding-bottom:36px}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:12px;letter-spacing:.18em}
+.nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0}
+.hero-main{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;padding-top:40px}
+.hero-mark{font-size:clamp(80px,12vw,170px);line-height:.9;letter-spacing:.04em}
+.hero-copy{max-width:660px;display:flex;flex-direction:column;gap:16px;padding-bottom:12px}
+.hero-copy h1{font-family:var(--f-heading);font-size:clamp(19px,1.9vw,25px);line-height:1.6}
+@media (min-width: 1001px){.hero-copy h1{white-space:nowrap}}   /* PCでは1行に収める */
+.hero-copy p{font-size:14px;letter-spacing:.1em;color:var(--muted)}
+
+.slide-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;padding:32px 0 24px}
+.slide-tabs button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:10px;font-size:13px;letter-spacing:.06em;color:var(--sub);line-height:1.7}
+.slide-tabs button::before{content:"";height:1px;background:var(--line)}
+.slide-tabs button[aria-selected="true"]{color:var(--ink)}
+.slide-tabs button[aria-selected="true"]::before{height:2px;background:var(--green)}
+.slide-tabs button:focus-visible{outline:2px solid var(--green);outline-offset:4px}
+
+.panorama{position:relative;flex-grow:1;min-height:clamp(360px,46vw,720px);overflow:hidden}
+/* 写真ごとに「切り抜くときに残したい場所」を指定（左右％ 上下％） */
+#slide-0 img{object-position:50% 45%}   /* 大雪山の稜線と丘を残す */
+#slide-1 img{object-position:55% 0%}    /* 照明を残す（上端に合わせる） */
+#slide-2 img{object-position:60% 5%}    /* 窓全体を残す */
+.panorama .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
+.panorama .slide.is-active{opacity:1}
+
+/* =========================================================
+   セクションの上下の余白（全セクション共通）
+   深緑のセクションは、稜線の高さの分だけ上を足す
+   ========================================================= */
+.values,.concept-sec,.business,.team,.journal,.numbers .wrap,.soon .wrap{padding-top:var(--sec-y);padding-bottom:var(--sec-y)}
+.work,.contact{padding-top:calc(var(--sec-y) + var(--ridge-h));padding-bottom:var(--sec-y)}
+.team + .journal,.values + .concept-sec{padding-top:0}   /* 同じ地色が続くときは、上の余白を足さない */
+
+/* =========================================================
+   ② Values
+   ========================================================= */
+.values-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:64px;row-gap:56px}   /* 3つを横一列に */
+.value{display:flex;flex-direction:column;gap:12px}
+.value h3{font-family:var(--f-heading);font-size:clamp(20px,1.9vw,26px)}
+.value .en{font-size:20px;color:var(--green)}
+.value p.body{font-size:15px}
+
+/* =========================================================
+   深緑のセクション共通（What We Do・Contact）
+   ========================================================= */
+.dark{position:relative;background:var(--green);color:var(--on-green);overflow:hidden}
+.dark--after-kraft .ridge path{fill:var(--kraft)}   /* 直前がクラフト色のとき */
+.dark .sec-head{border-color:var(--rule-long-on-green)}
+.dark .sec-head h2{color:var(--on-green)}
+.dark .sec-head .aside{color:var(--on-green-sub)}
+.dark a[href]:hover{color:var(--accent-sand)}
+
+/* =========================================================
+   ③ What We Do
+   ========================================================= */
+.work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:72px 64px}
+.work-item{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--rule-short-on-green);padding-top:24px}
+.work-item .kind{font-size:22px;color:var(--accent-sand)}
+.work-item h3{font-family:var(--f-heading);font-size:24px}
+.work-item p{font-size:14px;color:var(--on-green-sub)}
+.work-item .lines{align-self:flex-start;font-size:12px;letter-spacing:.12em;color:var(--on-green)}
+.work-item a.lines{border-bottom:1px solid var(--rule-short-on-green);padding-bottom:2px}
+.lines-soon{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+
+/* =========================================================
+   ④ Business
+   ========================================================= */
+.biz-name{font-family:var(--f-display);font-weight:600;color:var(--green);line-height:1.1}
+.biz-name-jp{font-family:var(--f-heading);font-size:.6em;letter-spacing:.08em}
+.catch{font-family:var(--f-heading);font-weight:600;line-height:1.6}
+
+/* Villa（大きく1段） */
+.villa{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:48px;margin-bottom:var(--block-gap)}
+.villa .photo{grid-column:span 7;min-height:560px}
+.villa-text{grid-column:span 5;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.villa-text .biz-name{font-size:44px}
+.villa-text .catch{font-size:22px}
+.facts{list-style:none;margin:0;padding:0;font-size:13px}
+.facts li::before{content:"・"}
+.minami{border-top:1px solid var(--rule-short);padding-top:20px;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.minami strong{font-weight:300}
+
+/* Media（1段・カードにしない。上下の余白はVillaと同じ） */
+.media.reveal .media-photo{clip-path:inset(100% 0 0 0);transition:clip-path 1.6s cubic-bezier(.2,.7,.2,1)}
+.media.reveal.is-visible .media-photo{clip-path:inset(0 0 0 0)}
+.media .media-photo img,.reveal .media-photo img,.reveal.is-visible .media-photo img{transform:none}   /* 横長の写真は拡大させない */
+.media{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:48px;margin-bottom:var(--block-gap)}
+.media-photo{grid-column:1 / -1;min-height:360px}
+.media-photo img{object-position:40% 52%}   /* 雪から顔を出す草と、雪面の稜線が入るように */
+.media-name{grid-column:span 5;display:flex;flex-direction:column;gap:12px}
+.media-name .biz-name{font-size:40px}
+.media-text{grid-column:span 7;display:flex;flex-direction:column;gap:20px}
+.media-text .catch{font-size:20px}
+
+/* Design・Consulting（2列） */
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:96px}
+.two article{display:flex;flex-direction:column;gap:20px}
+.two .photo{min-height:340px}
+.two .biz-name{font-size:40px}
+.two .catch{font-size:20px}
+.two .body{line-height:2.1}
+.design-body{display:flex;flex-direction:column;gap:20px}
+.steps{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--rule-short);padding-top:24px;margin-top:8px}
+.steps ol{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 0;list-style:none;margin:0;padding:0;font-size:13px;line-height:1.6;color:var(--muted)}
+.steps li{white-space:nowrap}   /* 項目の途中では改行しない（PCでは1行に収まる長さ） */
+.steps li:not(:last-child)::after{content:"→";margin:0 8px;color:var(--sub)}
+.sub{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--rule-short);padding-top:28px;margin-top:12px}
+.lift-card{border-top:1px solid transparent}
+.sub.lift-card{border-top-color:var(--rule-short)}
+.lift-card:not(.reveal){transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .45s ease}
+.sub h4{font-family:var(--f-heading);font-size:17px;color:var(--ink)}
+.note{font-size:13px;color:var(--sub);margin-top:12px}
+
+/* =========================================================
+   ⑤ Ubaku in Numbers（クラフト色）
+   ========================================================= */
+.numbers{background:var(--kraft)}
+.numbers-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px;list-style:none;margin:0;padding:0}
+.numbers-grid li{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--rule-short);padding-top:20px}
+.num{font-weight:600;color:var(--green);line-height:1.2}
+.num.en-num{font-family:var(--f-display);font-size:48px}
+.num.jp-num{font-family:var(--f-heading);font-size:38px}
+.numbers-grid p{font-size:13px;line-height:1.8;color:var(--muted)}
+
+/* =========================================================
+   ⑥ Team
+   ========================================================= */
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px}
+.member{display:flex;flex-direction:column;gap:14px}
+.member .photo{min-height:380px}
+.member .photo img{object-position:center 30%}   /* 顔が切れないよう、少し上寄りで切り抜く */
+.member h3{font-family:var(--f-display);font-size:32px;color:var(--green);line-height:1.1}
+
+/* =========================================================
+   ⑦ Journal
+   ========================================================= */
+.journal-flow{display:flex;flex-direction:column;gap:40px;overflow:hidden;padding:8px 0}
+.flow-row{overflow:hidden}
+.flow-track{display:flex;gap:var(--card-gap);width:max-content;animation:flow calc(var(--count) * var(--flow-speed)) linear infinite}
+.flow-row.reverse .flow-track{animation-direction:reverse}
+.flow-row:hover .flow-track{animation-play-state:paused}   /* マウスを乗せている間は止まる */
+/* 同じ並びを2回つないでいるので、半分ぶん動いたら最初に戻る（つなぎ目は見えない） */
+@keyframes flow{from{transform:translateX(0)}to{transform:translateX(calc(-50% - var(--card-gap) / 2))}}
+.note-card{width:var(--card-w);flex:none;display:flex;flex-direction:column;gap:12px}
+.note-card .photo{aspect-ratio:1280 / 670;padding:0}
+.note-card .meta{display:flex;gap:12px;align-items:baseline}
+.note-card .date{font-family:var(--f-en);font-size:12px;letter-spacing:.1em;color:var(--sub)}
+.note-card .source{font-family:var(--f-en);font-size:11px;letter-spacing:.1em;color:var(--green)}
+.note-card .title{font-size:14px;line-height:1.8;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.note-card:hover .title{color:var(--green)}
+.note-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px 32px;margin-top:56px}
+/* 動きを減らす設定の人には流さず、指で横にスクロールする形にする */
+@media (prefers-reduced-motion: reduce){
+  .flow-row{overflow-x:auto}
+  .flow-track{animation:none}
+}
+
+/* =========================================================
+   ②' Concept（Valuesの下・3つの円）
+   ========================================================= */
+.concept{text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px}
+.concept .kicker{font-family:var(--f-heading);font-size:13px;letter-spacing:.12em;color:var(--muted)}
+.concept-title{font-family:var(--f-display);font-weight:500;font-size:clamp(56px,8vw,104px);line-height:1;color:var(--ink)}
+.concept-catch{font-family:var(--f-heading);font-weight:400;font-size:clamp(22px,3.2vw,40px);line-height:1.7;letter-spacing:.08em;color:var(--ink);margin-top:24px}
+.tomoe{width:100%;max-width:720px;margin-top:48px}
+.area-line{margin-top:32px;font-size:14px;letter-spacing:.2em;color:var(--muted)}   /* 活動エリア */
+.tomoe svg{display:block;width:100%;height:auto}
+.tomoe .fill-top{fill:var(--c-top)}
+.tomoe .fill-br{fill:var(--c-br)}
+.tomoe .fill-bl{fill:var(--c-bl)}
+.tomoe .fill-center{fill:var(--cream)}
+.tomoe .gap{fill:none;stroke:var(--cream);stroke-width:8}
+.tomoe .lbl-en{font-family:var(--f-en);font-size:12px;letter-spacing:.04em;fill:var(--muted);text-anchor:middle}
+.tomoe .lbl-jp{font-family:var(--f-heading);font-weight:400;font-size:30px;letter-spacing:.08em;fill:var(--c-label);text-anchor:middle}
+.tomoe .lbl-brand{font-family:var(--f-display);font-weight:500;font-size:36px;letter-spacing:.04em;fill:var(--c-label);text-anchor:middle}
+/* 画面に入ったら：円が少し回りながら広がり、文字が 上 → 右下 → 左下 → 真ん中 の順に現れる
+   （main.js が .reveal → .is-visible を付ける。枠そのものは動かさない） */
+.tomoe.reveal{opacity:1;transform:none}
+.tomoe.reveal .shapes{opacity:0;transform:scale(.92) rotate(-6deg);transform-box:view-box;transform-origin:450px 400px;transition:opacity 1.2s ease,transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.tomoe.reveal .lbl{opacity:0;transform:translateY(10px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.tomoe.reveal.is-visible .shapes,.tomoe.reveal.is-visible .lbl{opacity:1;transform:none}
+.tomoe.is-visible .lbl-top{transition-delay:.6s}
+.tomoe.is-visible .lbl-br{transition-delay:.8s}
+.tomoe.is-visible .lbl-bl{transition-delay:1s}
+.tomoe.is-visible .lbl-center{transition-delay:1.4s}
+
+/* =========================================================
+   ⑧ Coming soon（クラフト色）
+   ========================================================= */
+.soon{background:var(--kraft)}
+.soon .wrap{display:flex;justify-content:space-between;align-items:center;gap:64px}
+.soon-head .en{font-size:24px;color:var(--green)}
+.soon h2{font-family:var(--f-heading);font-size:clamp(23px,2.6vw,34px)}
+.soon-body{max-width:480px;display:flex;flex-direction:column;gap:20px}
+.soon-body p{font-size:15px;color:var(--muted)}
+.soon-list{list-style:none;margin:0;padding:16px 0 0;border-top:1px solid var(--rule-short);font-size:14px;color:var(--muted)}
+.soon-list li{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.soon-list .soon-name{font-size:18px;color:var(--green)}
+
+/* =========================================================
+   ⑨ Contact / ⑩ フッター（深緑）
+   ========================================================= */
+.contact-lead{max-width:640px;display:flex;flex-direction:column;gap:12px;margin-bottom:64px}
+.contact-lead-title{font-family:var(--f-heading);font-weight:600;font-size:clamp(20px,2vw,26px);color:var(--on-green)}
+.contact-lead p:not(.contact-lead-title){font-size:15px;line-height:2;color:var(--on-green-sub)}
+.contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin-bottom:96px}
+.contact-grid div{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--rule-short-on-green);padding-top:24px}
+.contact-grid h3{font-family:var(--f-heading);font-size:18px}
+.contact-grid p{font-size:14px;color:var(--on-green-sub)}
+
+/* フォーム */
+.form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 48px;margin-bottom:120px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field--wide{grid-column:1 / -1}
+.field label{font-size:13px;letter-spacing:.08em;color:var(--on-green)}
+.req{margin-left:8px;font-size:11px;color:var(--accent-sand)}
+.field input,.field select,.field textarea{
+  width:100%;font:inherit;font-size:15px;color:var(--on-green);
+  background:transparent;border:0;border-bottom:1px solid var(--rule-long-on-green);
+  border-radius:0;padding:8px 0;
+}
+.field textarea{border:1px solid var(--rule-long-on-green);padding:12px;resize:vertical}
+.field select option{color:var(--ink);background:var(--cream)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent-sand)}
+.gotcha{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-foot{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px}
+.submit{font:inherit;font-size:14px;letter-spacing:.16em;color:var(--green);background:var(--on-green);border:0;padding:14px 48px;cursor:pointer}
+.submit:hover{background:var(--accent-sand)}
+.submit:disabled{opacity:.6;cursor:wait}
+.form-status{font-size:14px;color:var(--on-green)}
+
+/* メール・Instagram（同じ大きさで横に並べる） */
+.footer-right{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:flex-end;gap:12px 48px}
+.links-row{display:flex;flex-wrap:wrap;gap:12px 40px;list-style:none;margin:0;padding:0}
+.links-row li{display:flex;align-items:baseline;gap:12px}
+.links-row .label{font-size:11px;color:var(--on-green-sub)}
+.links-row a{font-size:13px;letter-spacing:.1em;color:var(--on-green);border-bottom:1px solid var(--rule-short-on-green);padding-bottom:2px}
+
+footer{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-top:1px solid var(--rule-long-on-green);padding-top:24px;font-size:12px;letter-spacing:.12em;line-height:1.9;color:var(--on-green-sub)}
+footer .display{font-size:40px;color:var(--on-green);letter-spacing:.06em;display:block;margin-bottom:8px}
+
+/* =========================================================
+   タブレット（幅1000px以下）
+   ========================================================= */
+@media (max-width: 1000px){
+  :root{--sec-y:120px;--block-gap:96px;--head-gap:56px;--ridge-h:90px}
+  .nav ul{gap:18px;flex-wrap:wrap;justify-content:flex-end}
+  .hero-main{flex-direction:column;align-items:flex-start}
+  .values-grid,.two,.contact-grid{grid-template-columns:minmax(0,1fr);column-gap:0}
+  .two{row-gap:var(--block-gap)}
+  .work-grid,.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .numbers-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .villa .photo,.villa-text,.media-name,.media-text{grid-column:span 12}
+  .villa .photo{min-height:380px}
+  .media-photo{min-height:300px}
+  .villa,.media{gap:32px}
+  .form{grid-template-columns:minmax(0,1fr)}
+  .soon .wrap{flex-direction:column;align-items:flex-start}
+}
+
+/* =========================================================
+   スマホ（幅640px以下）
+   ========================================================= */
+@media (max-width: 640px){
+  :root{--sec-y:96px;--block-gap:80px;--head-gap:40px;--ridge-h:60px}
+  .hero{padding-top:20px}
+  .nav{flex-direction:column;align-items:flex-start;gap:8px}
+  .nav ul{justify-content:flex-start;gap:4px 16px}
+  .slide-tabs{grid-template-columns:minmax(0,1fr);gap:12px}
+  .panorama{min-height:260px}
+  .work-grid,.team-grid,.numbers-grid{grid-template-columns:minmax(0,1fr)}
+  :root{--card-w:260px;--card-gap:20px}
+  .note-links{justify-content:flex-start;flex-direction:column}
+  .concept-catch br{display:none}
+  .work-grid{gap:48px}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .sec-head .aside{text-align:left}
+  .villa-text .biz-name{font-size:38px}
+  .media-photo,.two .photo{min-height:240px}
+  .member .photo{min-height:320px}
+  .form{margin-bottom:80px}
+  footer{flex-direction:column;align-items:flex-start}
+  .footer-right{justify-content:flex-start;flex-direction:column;gap:16px}
+  .links-row{flex-direction:column;gap:8px}
+}
