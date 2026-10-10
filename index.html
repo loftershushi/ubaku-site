@@ -262,11 +262,15 @@
       <h3 class="biz-name">Ubaku Villa <span class="biz-name-jp">宇莫別荘</span></h3>
       <p class="catch">暮らしに余白をもたらす貸切宿。</p>
       <p class="body">美瑛の集落・中宇莫別に建つ、1日1組限定の一棟貸しの宿「Ubaku Villa 宇莫別荘」。築約60年の建物をフルリノベーションし、2026年1月に開業しました。</p>
+      <!-- スマホでは「続きを読む」でたたむ（パソコンでは常に表示） -->
+      <div class="fold fold-wrap" id="fold-villa">
       <p class="body">約1,800㎡の敷地に、寝室4室。最大10名まで、家族や仲間と一棟まるごと過ごせます。旭川空港から車で約18分、美瑛駅から車で約10分。夏の丘の景色も、冬の雪の静けさも、この場所の日常です。</p>
       <ul class="facts">
         <li>ゲストの8割以上が海外から（2026年7月時点）</li>
         <li>Airbnb・Booking.comで満点評価（2026年7月時点）</li>
       </ul>
+      </div>
+      <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-villa">続きを読む</button>
       <a class="more" href="https://ubakuvilla.com">宇莫別荘の公式サイトへ</a>
       <div class="minami">
         <strong>Ubaku Villa 南邸｜Coming soon</strong>
@@ -297,7 +301,7 @@
       <h3 class="biz-name">Ubaku Design</h3>
       <p class="catch">改修を、デザイン監修とプロデュースで。</p>
       <!-- マウスを乗せると、ここから下だけが少し浮く -->
-      <div class="design-body lift-card">
+      <div class="design-body lift-card fold" id="fold-design">
       <p class="body">古い建物には、新しく建てるものにはない時間の厚みがあります。Ubaku Designは、その建物の良さを生かした改修を、コンセプトづくりから仕上がりまで伴走します。</p>
       <p class="body">対象は、構造に手を加えない改修・内装・設備の更新です。工事はご紹介する工事会社と直接ご契約いただき、Ubakuは監修とプロデュースに専念します。大規模な改修が必要な場合は、提携する建築士と連携します。</p>
       <div class="steps">
@@ -311,12 +315,14 @@
         </ol>
       </div>
       </div>
+      <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-design">続きを読む</button>
     </article>
 
     <article id="consulting">
       <span class="label">Consult｜支える</span>
       <h3 class="biz-name">Ubaku Consulting</h3>
       <p class="catch">宿と不動産の実務から、事業をかたちに。</p>
+      <div class="fold fold-wrap" id="fold-consulting">
       <div class="sub lift-card">
         <h4>宿泊施設の開業・運営支援</h4>
         <p class="body">運営代行ではなく、オーナーが少ない手間で、自分の力で宿を回せる仕組みづくりを支援します。予約サイトへの登録、料金設計、HP作成、撮影、清掃やゲスト対応の仕組みなど。美瑛に限らず、全国対応。</p>
@@ -326,6 +332,8 @@
         <p class="body">不動産開発、賃貸住宅の運営、投資用不動産、新規事業の立ち上げまで。東京の大手不動産会社での実務経験をもとに、事業の組み立てから支援します。都市の収益不動産で培った数字の見方と、地方で宿を立ち上げた現場感覚。その両方を持つことが、Ubakuの強みです。美瑛に限らず、全国対応。</p>
       </div>
       <p class="note">支援で使う仕組みは、チーム内の研究開発部門「Ubaku Lab」で開発・検証しています。</p>
+      </div>
+      <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-consulting">続きを読む</button>
     </article>
   </div>
 </section>
@@ -360,19 +368,22 @@
       <div class="photo ph3"><img src="assets/img/mashu.webp" alt="Mashu" width="2000" height="2000" loading="lazy"></div>
       <span class="label">Producer｜描く人</span>
       <h3>Mashu</h3>
-      <p class="body">北海道東川町での短期留学をきっかけに、日本へ移住。日系大手不動産開発会社で働きながら、美瑛・東川町を舞台に個人での活動を重ねる。宿をつくり、野菜を届け、地域の仕組みを描いていく。</p>
+      <p class="body fold-clamp" id="fold-member-1">北海道東川町での短期留学をきっかけに、日本へ移住。日系大手不動産開発会社で働きながら、美瑛・東川町を舞台に個人での活動を重ねる。宿をつくり、野菜を届け、地域の仕組みを描いていく。</p>
+      <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-member-1">続きを読む</button>
     </div>
     <div class="member">
       <div class="photo"><img src="assets/img/yamato.webp" alt="Yamato" width="1038" height="890" loading="lazy"></div>
       <span class="label">Field Director｜耕す人</span>
       <h3>Yamato</h3>
-      <p class="body">沖縄から北海道へ飛び込んだ元小学校教員。いまは美瑛の農家さんとともに畑に立ち、土と人をつなぎながら、この町に関わる人を増やしている。</p>
+      <p class="body fold-clamp" id="fold-member-2">沖縄から北海道へ飛び込んだ元小学校教員。いまは美瑛の農家さんとともに畑に立ち、土と人をつなぎながら、この町に関わる人を増やしている。</p>
+      <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-member-2">続きを読む</button>
     </div>
     <div class="member">
       <div class="photo ph2"><img src="assets/img/yushin.webp" alt="Yushin" width="1108" height="1121" loading="lazy"></div>
       <span class="label">Connector｜結ぶ人</span>
       <h3>Yushin</h3>
-      <p class="body">美瑛生まれ。曹洞宗大本山永平寺での修行を経て、ふだんは旭川で僧侶を務める。美瑛の野菜と人の縁を、町の外へ結んでいく。</p>
+      <p class="body fold-clamp" id="fold-member-3">美瑛生まれ。曹洞宗大本山永平寺での修行を経て、ふだんは旭川で僧侶を務める。美瑛の野菜と人の縁を、町の外へ結んでいく。</p>
+      <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-member-3">続きを読む</button>
     </div>
   </div>
 </section>

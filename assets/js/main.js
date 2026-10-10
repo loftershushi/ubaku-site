@@ -303,6 +303,27 @@
   targets.forEach(function (el) { io.observe(el); });
 })();
 
+/* ---------- 「続きを読む」（スマホだけ。たたんである文章を開く・閉じる） ---------- */
+document.querySelectorAll('.fold-btn').forEach(function (btn) {
+  var target = document.getElementById(btn.getAttribute('aria-controls'));
+  if (!target) return;
+  btn.addEventListener('click', function () {
+    var open = target.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.textContent = open ? '閉じる' : '続きを読む';
+  });
+  // Team の紹介文：3行に収まっているときは、ボタンを出さない
+  if (target.classList.contains('fold-clamp')) {
+    var check = function () {
+      if (target.classList.contains('is-open')) return;
+      btn.hidden = target.scrollHeight <= target.clientHeight + 1;
+    };
+    check();
+    window.addEventListener('resize', check);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(check);
+  }
+});
+
 /* ---------- 2. お問い合わせフォーム ---------- */
 // メールアドレス：ページの文字には「info［at］ubaku.jp」とだけ書き、開いたあとに本当のアドレスとリンクに組み立てる
 // （アドレスを集めて回るロボットは、ページの文字をそのまま読むため）

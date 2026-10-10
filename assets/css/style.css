@@ -146,6 +146,9 @@ p{margin:0}
 }
 
 /* ---------- 「詳しく見る」系のリンク ---------- */
+/* 「続きを読む」でたたむ部分（たたむのはスマホだけ。パソコンでは常に全部表示し、ボタンも出さない） */
+.fold-wrap{display:contents}   /* 中身を包むだけの箱。並び方や余白は今までどおり */
+.fold-btn{display:none}
 .sp-br{display:none}   /* スマホだけで使う改行（パソコンでは改行しない） */
 .more{align-self:flex-start;display:inline-block;font-size:13px;letter-spacing:.1em;border-bottom:1px solid var(--rule-long);padding:12px 0 6px}
 
@@ -222,6 +225,7 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
    ========================================================= */
 .values,.concept-sec,.business,.team,.journal,.numbers .wrap,.soon .wrap{padding-top:var(--sec-y);padding-bottom:var(--sec-y)}
 .work,.contact{padding-top:calc(var(--sec-y) + var(--ridge-h));padding-bottom:var(--sec-y)}
+.contact{padding-bottom:calc(var(--sec-y) * 2 / 3)}   /* フッターの住所の下の余白（ふつうの余白の 2/3） */
 .team + .journal{padding-top:0}   /* 同じ地色が続くときは、上の余白を足さない */
 
 /* =========================================================
@@ -479,15 +483,41 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .slide-tabs{display:none}   /* スマホは写真を大きく見せるため、01・02・03 の文字は出さない（写真は自動で切り替わる） */
   .panorama{--hero-ratio:1 / 1;--hero-bleed:0px;--hero-max-h:none;margin-top:28px}   /* 【ヒーロー写真】スマホは正方形で大きく、画面の端まで */
   #slide-2 img{object-position:72% 50%}   /* スマホでは左右が大きく切れるので、丘の一本の木を残す */
-  .work-grid,.team-grid,.numbers-grid{grid-template-columns:minmax(0,1fr)}
+  .work-grid,.team-grid{grid-template-columns:minmax(0,1fr)}
   :root{--card-w:260px;--card-gap:20px}
   .note-links{justify-content:flex-start;flex-direction:column}
-  .work-grid{gap:48px}
+  .work-grid{gap:40px}
+  /* What We Do：英語と見出しを同じ行に（例：Connect　知る・つながる） */
+  .work-item{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:baseline;column-gap:14px;row-gap:10px;padding-top:20px}
+  .work-item > :not(.kind):not(h3){grid-column:1 / -1;justify-self:start}
+  .work-item h3{font-size:22px}
+  /* 「続きを読む」：閉じているあいだは隠す（Team の紹介文は3行まで見せる） */
+  .fold:not(.is-open){display:none}
+  .fold-clamp:not(.is-open){display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .fold-btn[hidden]{display:none}
+  .fold-btn{display:inline-block;align-self:flex-start;justify-self:start;padding:4px 0;border:0;border-bottom:1px solid var(--rule-long);background:none;font:inherit;font-size:13px;letter-spacing:.1em;color:var(--green);cursor:pointer}
+  .fold-btn::after{content:"　＋"}
+  .fold-btn[aria-expanded="true"]::after{content:"　－"}
+  .fold-btn:focus-visible{outline:2px solid var(--green);outline-offset:4px}
+  /* Team：写真を小さくして、名前の横に並べる */
+  .team-grid{gap:36px}
+  .member{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:18px;row-gap:6px}
+  .member .photo{grid-row:1 / span 2;width:96px;min-height:0;aspect-ratio:1;padding:0}
+  .member .label{grid-column:2;align-self:end}
+  .member h3{grid-column:2;align-self:start;font-size:28px}
+  .member .body,.member .fold-btn{grid-column:1 / -1}
+  .member .body{margin-top:12px}
+  /* Numbers：2列に並べて、縦の長さを半分に */
+  .numbers-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
+  .numbers-grid li{padding-top:12px;gap:4px}
+  .num{font-size:26px}
+  .numbers-grid p{font-size:12px;line-height:1.6}
+  .numbers .sec-head{margin-bottom:24px}
+  .numbers .wrap{padding-top:40px;padding-bottom:48px}
   .sec-head{flex-direction:column;align-items:flex-start}
   .sec-head .aside{text-align:left}
   .villa-text .biz-name{font-size:38px}
   .media-photo,.two .photo{min-height:240px}
-  .member .photo{min-height:320px}
   .form{margin-bottom:80px}
   footer{flex-direction:column;align-items:flex-start}
   .footer-right{justify-content:flex-start;flex-direction:column;gap:16px}
