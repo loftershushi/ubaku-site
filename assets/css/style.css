@@ -47,7 +47,7 @@
   --accent-hl:#23A0DA;               /* 【強調の文字の色】知る・泊まる・過ごす・住む。／つないでいく。など（東川町の青。Contact は深い面なので対象外） */
   --f-biz:'Jost', sans-serif;        /* 【事業名の英字】Ubaku Villa・Media・Design・Consulting と Team の名前 */
   --f-biz-weight:200;
-  --hero-ratio:2.4 / 1;              /* 【ヒーロー写真】横と縦の比率（東川町のサイトを参考にした横長） */
+  --hero-ratio:2.8 / 1;              /* 【ヒーロー写真】横と縦の比率（素材の写真は横2.7〜2.8：縦1。2026-10-10 に 2.4 から変更） */
   --hero-bleed:40px;
   --logo-color:#2B241C;              /* 【ロゴ】UBAKŪ の文字の色（黒） */
   --logo-bar:var(--accent-hl);       /* 【ロゴ】Ū の上の横線の色（東川町の青） */                 /* 【ヒーロー写真】文字の列より左右にはみ出す幅 */
@@ -414,10 +414,6 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .contact-lead{max-width:640px;display:flex;flex-direction:column;gap:12px;margin-bottom:64px}
 .contact-lead-title{font-family:var(--f-heading);font-weight:400;letter-spacing:.08em;font-size:clamp(20px,2vw,26px);color:var(--on-green)}
 .contact-lead p:not(.contact-lead-title){font-size:15px;line-height:2;color:var(--on-green-sub)}
-.contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin-bottom:96px}
-.contact-grid div{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--rule-short-on-green);padding-top:24px}
-.contact-grid h3{font-family:var(--f-heading);font-size:18px}
-.contact-grid p{font-size:14px;color:var(--on-green-sub)}
 
 /* フォーム */
 .form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 48px;margin-bottom:120px}
@@ -458,7 +454,7 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   :root{--sec-y:120px;--block-gap:96px;--head-gap:56px;--ridge-h:90px}
   .nav ul{gap:18px;flex-wrap:wrap;justify-content:flex-end}
   .hero-main{flex-direction:column;align-items:flex-start}
-  .values-grid,.two,.contact-grid{grid-template-columns:minmax(0,1fr);column-gap:0}
+  .values-grid,.two{grid-template-columns:minmax(0,1fr);column-gap:0}
   .cv-grid{grid-template-columns:minmax(0,1fr);gap:var(--block-gap)}
   .two{row-gap:var(--block-gap)}
   .work-grid,.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
