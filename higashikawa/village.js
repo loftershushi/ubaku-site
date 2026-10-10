@@ -36,6 +36,60 @@
     els.forEach(function(e){ io.observe(e); });
   }
 
+  /* ---------- 数字：画面に入ったら、数字が速く回って最後に今の値で止まる ---------- */
+  // data-from（始まりの数。なければ0）→ data-to（最後の数）。前後の文字は data-pre・data-suf
+  var counts = document.querySelectorAll('.cnt');
+  function runCount(el){
+    var from = +(el.dataset.from || 0), to = +el.dataset.to, pre = el.dataset.pre || '', suf = el.dataset.suf || '';
+    var dur = 1600, t0 = null;
+    function frame(t){
+      if(!t0) t0 = t;
+      var k = Math.min((t - t0) / dur, 1);
+      var e = 1 - Math.pow(1 - k, 4);            // 最初は速く、最後にゆっくり止まる
+      var n = Math.round(from + (to - from) * e);
+      el.textContent = pre + n.toLocaleString('ja-JP') + suf;
+      if(k < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  if(!reduce && 'IntersectionObserver' in window){
+    var co = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ runCount(e.target); co.unobserve(e.target); } });
+    }, {threshold:.6});
+    counts.forEach(function(el){ co.observe(el); });
+  }
+
+  /* ---------- 試作：見出しの英字の色を選ぶ箱（ubaku.jp の本番では出さない） ---------- */
+  if(!/(^|\.)ubaku\.jp$/.test(location.hostname)){
+    var colors = [
+      ['今の深い青', '#1C6E94'],
+      ['東川町の青', '#23A0DA'],
+      ['墨（本文と同じ）', '#2B241C'],
+      ['錆鉄御納戸（Ubaku）', '#405B55'],
+      ['青みの灰色', '#6F8794']
+    ];
+    var box = document.createElement('div');
+    box.className = 'picker';
+    box.innerHTML = '<p>試作：見出しの英字の色</p><div></div><button class="x" type="button" aria-label="閉じる">×</button>';
+    var row = box.querySelector('div'), saved = null;
+    try { saved = localStorage.getItem('hlv-head'); } catch(e){}
+    function pick(c){
+      document.documentElement.style.setProperty('--head', c);
+      row.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.c === c ? 'true' : 'false'); });
+      try { localStorage.setItem('hlv-head', c); } catch(e){}
+    }
+    colors.forEach(function(c){
+      var b = document.createElement('button');
+      b.type = 'button'; b.dataset.c = c[1];
+      b.innerHTML = '<i style="background:' + c[1] + '"></i>' + c[0];
+      b.onclick = function(){ pick(c[1]); };
+      row.appendChild(b);
+    });
+    box.querySelector('.x').onclick = function(){ box.remove(); };
+    document.body.appendChild(box);
+    pick(saved || colors[0][1]);
+  }
+
   /* ---------- 図面の切り替え（鳥瞰図／配置計画図） ---------- */
   var tabs = {bird:document.getElementById('tab-bird'), plan:document.getElementById('tab-plan')};
   function show(k){

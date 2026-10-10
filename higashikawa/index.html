@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>東川ライフスタイルヴィレッジ計画｜Ubaku</title>
 <meta name="description" content="北海道東川町のまんなかで、住む・働く・泊まる・遊ぶ・集まるがひとつになった場所をつくる計画です。企画・運営：Ubaku。">
@@ -11,7 +10,7 @@
 <!-- フォントは ubaku.jp と同じもの -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Jost:wght@200;300;400&family=Murecho:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Jost:wght@200;300;400&family=Murecho:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="village.css">
 </head>
 <body class="locked">
@@ -19,7 +18,7 @@
 <!-- ========== オープニング（水面に落ちるしずく） ========== -->
 <div class="intro" id="intro" aria-hidden="true">
   <div class="pond">
-    <span class="drop"></span>
+    <svg class="drop" viewBox="0 0 20 28" aria-hidden="true"><path d="M10 0 C10 0 0 12.5 0 18 A10 10 0 0 0 20 18 C20 12.5 10 0 10 0 Z"/></svg>
     <span class="ring a"></span><span class="ring b"></span><span class="ring c"></span>
   </div>
   <p class="intro-copy">
@@ -48,7 +47,7 @@
     <p class="place-name">Higashikawa, Hokkaido</p>
     <h1>
       <span class="verbs"><em class="hl">住む・働く・泊まる・遊ぶ・集まる。</em></span>
-      <span class="h1-2">東川のまんなかで。</span>
+      <span class="h1-2">東川町のまんなかで。</span>
     </h1>
     <p class="tag">町の中心部で、新しい試み<span class="sep">　｜　</span><span class="loc">東川ライフスタイルヴィレッジ計画</span></p>
   </div>
@@ -62,7 +61,7 @@
 <!-- ========== はじめに ========== -->
 <section class="sec lead-sec">
   <div class="wrap narrow">
-    <p class="lead r">写真の町、東川。旭岳の麓で、地下水とともに暮らすこの町には、過密でも過疎でもない「<em class="hl">適疎</em>」という暮らし方に惹かれて、全国からいろんな人が集まってきます。</p>
+    <p class="lead r"><em class="hl">写真の町、東川。</em>旭岳の麓で、地下水とともに暮らすこの町には、過密でも過疎でもない「<em class="hl">適疎</em>」という暮らし方に惹かれて、全国からいろんな人が集まってきます。</p>
     <p class="lead r">そのまんなか、公園と木立に囲まれた約1,000坪の土地で、新しい暮らしの場をつくろうとしています。</p>
     <p class="lead r">住む人、働く人、泊まりに来る人、ふらりと立ち寄る人。いろんな背景を持つ人がここで出会い、混ざり合う。そんな場所を、共感してくれる人たちと一緒に育てていきたいと思っています。</p>
   </div>
@@ -82,10 +81,10 @@
     <p class="body-l r">北海道でただひとつ上水道がなく、町の人はみな、大雪山からの地下水で暮らしています。</p>
 
     <ul class="stats">
-      <li class="r"><b>約8,000<small>人</small></b><span>町の人口</span></li>
-      <li class="r"><b>全国1位</b><span>街の住みここちランキング（3年連続）</span><em>大東建託 2026</em></li>
-      <li class="r"><b>約6割</b><span>町に住む人のうち、移住してきた人</span><em>読売新聞 2026年7月</em></li>
-      <li class="r"><b>60<small>軒以上</small></b><span>町にあると言われるカフェの数</span></li>
+      <li class="r"><b><span class="cnt" data-pre="約" data-to="8000">約8,000</span><small>人</small></b><span>町の人口</span></li>
+      <li class="r"><b><span class="cnt" data-pre="全国" data-from="999" data-to="1" data-suf="位">全国1位</span></b><span>街の住みここちランキング（3年連続）</span><em>大東建託 2026</em></li>
+      <li class="r"><b><span class="cnt" data-pre="約" data-to="6" data-suf="割">約6割</span></b><span>町に住む人のうち、移住してきた人</span><em>読売新聞 2026年7月</em></li>
+      <li class="r"><b><span class="cnt" data-to="60">60</span><small>軒以上</small></b><span>町にあると言われるカフェの数</span></li>
     </ul>
 
     <!-- 東川町の写真（揃うまでは箱。写真を入れるときは <div class="ph"> を <img> に差し替える） -->
@@ -123,13 +122,13 @@
     <div class="ten">
       <div class="ten-mark" id="ten" aria-hidden="true">
         <svg viewBox="0 0 220 220"><circle class="ten-base" cx="110" cy="110" r="100"/><circle class="ten-ring" cx="110" cy="110" r="100"/></svg>
-        <div class="num"><span>徒歩</span><b>10</b><span>分圏内</span></div>
+        <div class="num"><span>徒歩</span><b>10</b><span>分圏</span></div>
       </div>
       <div class="cats">
         <div class="r"><p class="kind">Life｜生活</p><ul>
-          <li>スーパー</li><li>郵便局</li><li>レストラン</li><li>カフェ</li><li>モンベル</li><li>道の駅</li></ul></div>
+          <li>スーパー</li><li>東川郵便局</li><li>レストラン</li><li>カフェ</li><li>モンベル 大雪ひがしかわ店</li><li>道の駅ひがしかわ「道草館」</li></ul></div>
         <div class="r"><p class="kind">Public｜公共施設</p><ul>
-          <li>せんとぴゅあⅠ（日本語学校）</li><li>せんとぴゅあⅡ（図書館）</li><li>役場</li><li>中学校</li><li>高校</li></ul></div>
+          <li>東川町複合交流施設 せんとぴゅあⅠ（東川町立東川日本語学校）</li><li>せんとぴゅあⅡ（写真文化首都創成館）</li><li>東川町役場</li><li>東川町立東川中学校</li><li>北海道東川高等学校</li></ul></div>
         <div class="r"><p class="kind">Scenery｜景観</p><ul>
           <li>親水公園</li><li>忠別川</li><li>東川神社</li></ul></div>
       </div>
@@ -251,6 +250,7 @@
       <li class="r">店舗兼用住宅の区画に、どんなお店に入ってほしいか</li>
       <li class="r">ミュージックバーで、どんなイベントを開くか</li>
       <li class="r">宿のかたち（新しく建てるか、トレーラーハウスにするか）</li>
+      <li class="r more"><span class="dots" aria-hidden="true"></span>ほかにも、まだまだ。</li>
     </ul>
   </div>
 </section>
@@ -272,10 +272,14 @@
 <!-- ========== 問い合わせ（深い水の色の面） ========== -->
 <section class="sec deep" id="hello">
   <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 H1440 V38 C1260,70 1080,18 900,40 C720,62 560,22 380,44 C230,62 110,40 0,52 Z"/></svg>
-  <div class="wrap narrow">
+  <div class="wrap">
     <div class="sec-head r"><h2>Say Hello</h2><p class="aside">ご連絡</p></div>
-    <p class="catch r">はじめまして、から。</p>
-    <p class="body-l r">住んでみたい、お店をやってみたい、ちょっと気になる。どんなきっかけでも大丈夫です。進み具合をお知らせしたり、見学会のご案内をお送りします。</p>
+    <div class="hello-grid">
+    <div class="hello-txt">
+      <p class="catch r">はじめまして、から。</p>
+      <p class="body-l r">住んでみたい、お店をやってみたい、ちょっと気になる。どんなきっかけでも大丈夫です。進み具合をお知らせしたり、見学会のご案内をお送りします。</p>
+    </div>
+    <div class="hello-form">
     <form id="form" novalidate>
       <div><label for="f-name">お名前</label><input type="text" id="f-name" name="name" autocomplete="name" required></div>
       <div class="row2">
@@ -302,6 +306,8 @@
       <p class="proto">※ 試作版のため、現在は送信されません。</p>
     </form>
     <p class="thanks" id="thanks" tabindex="-1">ありがとうございます。<br>近いうちに、こちらからご連絡します。</p>
+    </div>
+    </div>
   </div>
 </section>
 

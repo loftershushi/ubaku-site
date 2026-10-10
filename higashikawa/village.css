@@ -13,6 +13,7 @@
   --muted:#4B4236;      /* 本文の文字色（ubaku.jp と同じ） */
   --sub:#6B6457;        /* ラベル・注記の文字色（ubaku.jp と同じ） */
   --accent:#1C6E94;     /* 深い青（英字見出し・ラベル・リンク。白地でも読める濃さ） */
+  --head:#1C6E94;      /* 【見出しの英字の色】The Town などの大見出し（試作の色選びで切り替え中） */
   --accent-hl:#23A0DA;  /* 東川町の青（数字・強調の言葉・ボタン。ubaku.jp の --accent-hl と同じ） */
   --rule-long:#B7C6CE;  /* 見出しの下の長い線 */
   --rule-short:#DFE7EB; /* 項目の上の短い線（さらに薄く） */
@@ -66,14 +67,14 @@ em.hl{font-style:normal;color:var(--accent-hl)}
 .intro{position:fixed;inset:0;z-index:100;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;transition:opacity 1.2s ease,visibility 1.2s}
 .intro.gone{opacity:0;visibility:hidden}
 .pond{position:relative;width:200px;height:200px}
-.drop{position:absolute;left:50%;top:0;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:var(--accent-hl);animation:fall 1.1s cubic-bezier(.55,0,1,.45) .3s both}
+.drop{position:absolute;left:50%;top:0;width:12px;height:17px;margin-left:-6px;fill:var(--accent-hl);animation:fall 1.1s cubic-bezier(.55,0,1,.45) .3s both}
 .ring{position:absolute;left:50%;top:50%;width:200px;height:200px;margin:-100px 0 0 -100px;border:1px solid var(--accent-hl);border-radius:50%;opacity:0;transform:scale(.05)}
 .ring.a{animation:ripple 3s var(--ease) 1.4s both}
 .ring.b{animation:ripple 3s var(--ease) 1.8s both}
 .ring.c{animation:ripple 3s var(--ease) 2.2s both}
-@keyframes fall{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(97px);opacity:0}}
+@keyframes fall{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(88px);opacity:0}}
 @keyframes ripple{0%{opacity:.9;transform:scale(.05) scaleY(.35)}100%{opacity:0;transform:scale(1) scaleY(.35)}}
-.intro-copy{font-family:var(--f-heading);color:var(--ink);font-size:clamp(14px,1.6vw,17px);letter-spacing:.14em;text-align:center;line-height:2.2;padding:0 24px}
+.intro-copy{font-family:var(--f-body);font-weight:200;color:var(--ink);font-size:clamp(14px,1.6vw,17px);letter-spacing:.14em;text-align:center;line-height:2.2;padding:0 24px}
 .intro-copy span{display:block;opacity:0;animation:fadeup 1.4s var(--ease) both}
 .intro-copy span:nth-child(1){animation-delay:2s}
 .intro-copy span:nth-child(2){animation-delay:3s}
@@ -116,7 +117,7 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 .snow{background:var(--snow)}
 /* 見出し：左に英字の大見出し、右に小さく日本語。下に長い線 */
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:1px solid var(--rule-long);padding-bottom:20px;margin-bottom:var(--head-gap)}
-.sec-head h2{font-family:var(--f-title);font-weight:200;letter-spacing:.05em;font-size:clamp(40px,6vw,72px);line-height:1.1;color:var(--accent)}
+.sec-head h2{font-family:var(--f-title);font-weight:200;letter-spacing:.05em;font-size:clamp(40px,6vw,72px);line-height:1.1;color:var(--head)}
 .sec-head .aside{font-size:14px;letter-spacing:.2em;color:var(--muted);text-align:right}
 /* キャッチ（日本語の小見出し） */
 .catch{font-family:var(--f-heading);color:var(--ink);font-size:clamp(20px,2.4vw,28px);line-height:1.8;letter-spacing:.1em;max-width:30em}
@@ -128,7 +129,7 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 .lead-sec{padding-bottom:calc(var(--sec-y) * .8)}
 .lead{font-size:clamp(15px,1.5vw,17px);line-height:2.3;color:var(--ink)}
 .lead + .lead{margin-top:1.6em}
-.lead em.hl{color:var(--accent)}   /* 本文の大きさの文字は、薄い青だと読みにくいので深い青に */
+.lead em.hl{color:var(--accent-hl)}
 
 /* ---------- 大雪山のパノラマ（画面いっぱいの横長写真） ---------- */
 .pano{margin:0}
@@ -146,7 +147,9 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 .stats li{border-top:1px solid var(--rule-short);padding-top:24px}
 .stats b{display:block;font-family:var(--f-title);font-weight:300;font-size:40px;line-height:1.3;letter-spacing:.02em;color:var(--accent-hl)}
 .stats b small{font-family:var(--f-body);font-size:14px;margin-left:4px;color:var(--muted)}
-.stats span{display:block;margin-top:8px;font-size:13px;line-height:1.8}
+.stats span:not(.cnt){display:block;margin-top:8px;font-size:13px;line-height:1.8}
+.stats b{white-space:nowrap}   /* 回っている間に2行に折れないように */
+.stats .cnt{font-variant-numeric:tabular-nums}   /* 回っている間に幅がガタつかないように */
 .stats em{display:block;margin-top:4px;font-style:normal;font-size:11px;color:var(--sub)}
 .know{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 40px;margin-top:80px}
 .know h3,.two h3,.people h3,.values h3{font-family:var(--f-heading);font-size:18px}
@@ -180,7 +183,7 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 
 /* ---------- 私たち ---------- */
 .people{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:64px}
-.face{aspect-ratio:4 / 5;margin-bottom:24px}
+.face{aspect-ratio:1;margin-bottom:24px}
 .people .kind{margin-bottom:4px}
 .people h3{font-size:22px}
 .people h3 small{margin-left:14px;font-family:var(--f-body);font-weight:300;font-size:12px;letter-spacing:.14em;color:var(--sub)}
@@ -212,6 +215,8 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 /* ---------- まだ決まっていないこと ---------- */
 .open{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:56px;counter-reset:q}
 .open li{position:relative;padding:18px 0 18px 44px;border-bottom:1px solid var(--rule-long);font-size:15px;color:var(--ink)}
+.open li.more{color:var(--sub);border-bottom-style:dashed}
+.open li.more::before{content:"…";border-style:dashed}
 .open li::before{counter-increment:q;content:"?";position:absolute;left:0;top:50%;transform:translateY(-50%);width:28px;height:28px;border:1px solid var(--accent-hl);border-radius:50%;display:grid;place-items:center;font-family:var(--f-title);font-size:13px;line-height:1;color:var(--accent-hl)}
 
 /* ---------- これから（横に並ぶ5つの段階） ---------- */
@@ -233,7 +238,8 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 .deep .sec-head h2,.deep .catch{color:var(--on-deep)}
 .deep .sec-head .aside{color:var(--on-deep-sub)}
 .deep .body-l{color:var(--on-deep-sub)}
-form{margin-top:48px;display:grid;gap:24px}
+.hello-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start}
+form{display:grid;gap:24px}
 form label,legend{display:block;margin-bottom:8px;font-size:13px;letter-spacing:.12em;color:var(--on-deep)}
 form label i{font-style:normal;font-size:11px;margin-left:8px;color:var(--on-deep-sub)}
 input[type=text],input[type=email],select,textarea{width:100%;padding:12px 14px;font:inherit;font-size:15px;color:var(--on-deep);background:rgba(255,255,255,.06);border:1px solid rgba(238,245,248,.3);border-radius:0;appearance:none}
@@ -253,7 +259,7 @@ fieldset{border:0;margin:0;padding:0}
 .err{min-height:1em;font-size:13px;color:#FFD3C4}
 .send{justify-self:start;padding:14px 56px;font:inherit;font-size:14px;letter-spacing:.3em;color:#fff;background:var(--accent-hl);border:0;cursor:pointer;transition:background .3s}
 .send:hover{background:#1B8CC0}
-.thanks{display:none;margin-top:48px;font-family:var(--f-heading);font-size:20px;line-height:2;color:var(--on-deep)}
+.thanks{display:none;font-family:var(--f-heading);font-size:20px;line-height:2;color:var(--on-deep)}
 .thanks.on{display:block}
 
 /* ---------- By Ubaku（ubaku.jp へ戻る入口） ---------- */
@@ -332,6 +338,7 @@ fieldset{border:0;margin:0;padding:0}
   .values{grid-template-columns:1fr;gap:28px}
   .open{grid-template-columns:1fr}
   .row2{grid-template-columns:1fr}
+  .hello-grid{grid-template-columns:1fr;gap:40px}
   .works{grid-template-columns:1fr;gap:24px}
   .foot-r{align-items:flex-start}
   .foot-logo .wordmark::before,.foot-logo .wordmark::after{-webkit-mask-position:left center;mask-position:left center}
@@ -344,3 +351,12 @@ fieldset{border:0;margin:0;padding:0}
   .js .r{opacity:1;transform:none}
   body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .hero .tag,body:not(.ready) .hero-photo img{opacity:1}
 }
+
+/* ---------- 試作：見出しの英字の色を選ぶ箱（仮公開・手元だけ。ubaku.jp では出ない） ---------- */
+.picker{position:fixed;left:16px;bottom:16px;z-index:60;background:#fff;border:1px solid var(--rule-long);box-shadow:0 6px 24px rgba(0,0,0,.08);padding:12px 14px;font-size:12px;line-height:1.6;color:var(--ink);max-width:calc(100vw - 32px)}
+.picker p{margin-bottom:8px;letter-spacing:.08em}
+.picker div{display:flex;flex-wrap:wrap;gap:6px}
+.picker button{display:flex;align-items:center;gap:6px;padding:5px 10px;font:inherit;font-size:11px;background:#fff;border:1px solid var(--rule-short);cursor:pointer;color:var(--ink)}
+.picker button i{width:14px;height:14px;border-radius:50%;display:block}
+.picker button[aria-pressed="true"]{border-color:var(--ink)}
+.picker .x{position:absolute;right:6px;top:2px;border:0;padding:2px 6px;font-size:14px}
