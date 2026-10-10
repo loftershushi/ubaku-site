@@ -119,7 +119,7 @@
 
   <div class="hero-main">
     <div class="hero-mark wordmark intro" style="--d:.15s" role="img" aria-label="Ubaku"></div>
-    <div class="hero-copy intro" style="--d:.45s">
+    <div class="hero-copy intro" style="--d:.5s">
       <!-- h1はこの1つだけ（文言は固定） -->
       <h1>大雪山のふもとで、<br class="sp-br"><em class="hl">知る・泊まる・過ごす・住む。</em></h1>
       <p>まちを想い、まちを動かす、美瑛・東川町の地域編集チーム。</p>
@@ -127,7 +127,7 @@
   </div>
 
   <!-- スライドの切り替えボタン（スライド2・3の文言は見出しにしない） -->
-  <div class="slide-tabs intro" style="--d:.7s" role="tablist" aria-label="ヒーロー写真の切り替え">
+  <div class="slide-tabs intro" style="--d:1.6s" role="tablist" aria-label="ヒーロー写真の切り替え">
     <button type="button" role="tab" id="tab-0" aria-controls="slide-0" aria-selected="true">01　夕暮れの大雪山</button>
     <button type="button" role="tab" id="tab-1" aria-controls="slide-1" aria-selected="false" tabindex="-1">02　宇莫別荘の窓から見る森</button>
     <button type="button" role="tab" id="tab-2" aria-controls="slide-2" aria-selected="false" tabindex="-1">03　美瑛の丘の春景色</button>
@@ -136,7 +136,7 @@
   <!-- パノラマ写真（上端を丘の稜線の形で切り抜く）
        写真は 素材 フォルダの元写真から tools/make_images.py で作る（画面の幅に合わせて3種類。ブラウザがちょうどよい1枚を選ぶ）
        1枚目だけ loading="lazy" を付けない -->
-  <div class="panorama intro" style="--d:.9s">
+  <div class="panorama intro" style="--d:1s">
     <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 54 C 320 92, 620 90, 880 62 C 1080 40, 1280 42, 1440 64 L1440 0 Z"/></svg>
     <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="assets/img/hero-01-2400.webp" srcset="assets/img/hero-01-1600.webp 1600w, assets/img/hero-01-2400.webp 2400w, assets/img/hero-01-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="夕日で染まる大雪山" width="3200" height="1198" fetchpriority="high"></div>
     <div class="slide photo ph2" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="assets/img/hero-02-2400.webp" srcset="assets/img/hero-02-1600.webp 1600w, assets/img/hero-02-2400.webp 2400w, assets/img/hero-02-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="Ubaku Villa 宇莫別荘の窓から見る森" width="3200" height="1128" loading="lazy"></div>

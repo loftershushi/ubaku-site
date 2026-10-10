@@ -178,7 +178,12 @@ p{margin:0}
   from{opacity:0;transform:translateY(20px)}
   to{opacity:1;transform:none}
 }
-.intro{animation:intro-in 1.2s cubic-bezier(.2,.7,.2,1) var(--d,0s) both}
+.intro{animation:intro-in 1.6s cubic-bezier(.25,.1,.25,1) var(--d,0s) both}   /* 文字：1.6秒かけて、ゆっくり */
+/* ヒーローの写真：文字よりさらにゆっくり。2.6秒かけて静かに浮かび上がり、同時にほんの少し引いていく（上品に見せるため） */
+@keyframes hero-photo-in{from{opacity:0}to{opacity:1}}
+@keyframes hero-photo-zoom{from{transform:scale(1.06)}to{transform:none}}
+.panorama.intro{animation:hero-photo-in 2.6s cubic-bezier(.33,0,.2,1) var(--d,0s) both}
+.panorama.intro .slide img{animation:hero-photo-zoom 4.5s cubic-bezier(.2,.6,.2,1) var(--d,0s) both}
 
 /* =========================================================
    ① ヒーロー
@@ -541,7 +546,7 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
    最後に幕のように上がって、サイトが現れる（動きは main.js の 0 番）
    ========================================================= */
 html.is-opening,html.is-opening body{overflow:hidden}          /* オープニング中はスクロールさせない */
-html.is-opening .intro{animation-play-state:paused}             /* ヒーローの登場は、幕が上がるまで待つ */
+html.is-opening .intro,html.is-opening .panorama.intro .slide img{animation-play-state:paused}             /* ヒーローの登場は、幕が上がるまで待つ */
 .opening{position:fixed;inset:0;z-index:100;background:var(--cream);color:var(--ink);cursor:pointer;transition:opacity .5s ease;--ridge-bottom:30%;--peak-x:57;--peak-y:12}   /* 旭岳の山頂の位置（main.js が稜線から計算して入れる） */
 .opening[hidden]{display:none}
 .opening:not(.ready) .op-logo,.opening:not(.ready) .op-coord,.opening:not(.ready) .op-count{opacity:0}   /* フォントが届くまで文字を出さない */
