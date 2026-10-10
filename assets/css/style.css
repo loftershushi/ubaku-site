@@ -66,6 +66,7 @@
   --block-gap:128px;                /* Business内の各事業のあいだの余白 */
   --head-gap:72px;                  /* 見出しの線から中身までの余白 */
   --ridge-h:120px;                  /* 稜線の高さ */
+  --hero-max-h:max(380px, calc(100svh - 330px));   /* 【ヒーロー写真】写真の高さの上限（開いた画面の中に、写真の下の 01・02・03 まで収まるように） */
   --hill-h:110px;                    /* Numbers の丘の線の高さ */
 
   /* --- 動き --- */
@@ -104,8 +105,8 @@ p{margin:0}
 .body{font-size:14px;color:var(--muted)}
 
 /* ---------- Coming soon の小さな札（文字と同じくらいの幅） ---------- */
-.badge{align-self:flex-start;display:inline-block;padding:4px 12px;font-size:11px;letter-spacing:.16em;line-height:1.6;color:var(--green);background:var(--accent-sand)}
-.badge--light{color:var(--on-green);background:var(--green)}   /* 生成りの上で使うとき */
+.badge,.badge--light{align-self:flex-start;display:inline-block;padding:4px 12px;font-size:11px;letter-spacing:.16em;line-height:1.6;color:#fff;background:var(--accent-hl)}   /* Coming soon はすべて東川町の青 */
+.soon-text{color:var(--accent-hl)}   /* 文の中の Coming soon（南邸） */
 
 /* ---------- 写真（写真がないときは色の付いた箱になる） ---------- */
 .photo{position:relative;display:flex;align-items:flex-end;padding:16px;background:var(--ph1);overflow:hidden}
@@ -202,7 +203,7 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .slide-tabs button[aria-selected="true"]::before{height:2px;background:var(--green)}
 .slide-tabs button:focus-visible{outline:2px solid var(--green);outline-offset:4px}
 
-.panorama{position:relative;aspect-ratio:var(--hero-ratio);margin-top:40px;margin-left:calc(50% - 50vw + var(--hero-bleed));margin-right:calc(50% - 50vw + var(--hero-bleed));overflow:hidden}
+.panorama{position:relative;aspect-ratio:var(--hero-ratio);max-height:var(--hero-max-h);margin-top:40px;margin-left:calc(50% - 50vw + var(--hero-bleed));margin-right:calc(50% - 50vw + var(--hero-bleed));overflow:hidden}
 /* 写真ごとに「切り抜くときに残したい場所」を指定（左右％ 上下％） */
 #slide-0 img{object-position:50% 50%}   /* 素材の写真は横長（2.4:1）に切り抜き済み。スマホでは左右が少し切れる */
 #slide-1 img{object-position:50% 50%}
@@ -242,7 +243,6 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .dark--after-kraft .ridge path{fill:var(--kraft)}   /* 直前がクラフト色のとき */
 #work{background:var(--kraft);--on-green:var(--ink);--on-green-sub:var(--muted);--rule-long-on-green:var(--rule-long);--rule-short-on-green:#E0E3E1;--accent-sand:var(--green);--rule-hover-on-green:var(--green)}
 #work .sec-head h2{color:var(--green)}   /* 見出しはほかのセクションと同じ色 */
-#work .badge{background:var(--green);color:#fff}
 .dark .sec-head{border-color:var(--rule-long-on-green)}
 .dark .sec-head h2{color:var(--on-green)}
 .dark .sec-head .aside{color:var(--on-green-sub)}
@@ -479,7 +479,7 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .nav{flex-direction:column;align-items:flex-start;gap:8px}
   .nav ul{justify-content:flex-start;gap:4px 16px}
   .slide-tabs{grid-template-columns:minmax(0,1fr);gap:12px}
-  .panorama{--hero-ratio:2 / 1;--hero-bleed:0px;margin-top:28px}   /* スマホは少し縦を高く、画面の端まで */
+  .panorama{--hero-ratio:2 / 1;--hero-bleed:0px;--hero-max-h:none;margin-top:28px}   /* スマホは少し縦を高く、画面の端まで */
   .work-grid,.team-grid,.numbers-grid{grid-template-columns:minmax(0,1fr)}
   :root{--card-w:260px;--card-gap:20px}
   .note-links{justify-content:flex-start;flex-direction:column}
