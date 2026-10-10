@@ -146,17 +146,19 @@ p{margin:0}
 }
 
 /* ---------- 「詳しく見る」系のリンク ---------- */
+.sp-br{display:none}   /* スマホだけで使う改行（パソコンでは改行しない） */
 .more{align-self:flex-start;display:inline-block;font-size:13px;letter-spacing:.1em;border-bottom:1px solid var(--rule-long);padding:12px 0 6px}
 
 /* ---------- アニメーション③：リンクの下線が、マウスを乗せると左から伸びる ----------
-   いつもは薄い線、マウスを乗せると濃い線が左から右へ伸びる */
-.more,.work-item a.lines,.links-row a{
-  background-image:linear-gradient(currentColor,currentColor);
-  background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;
-  background-origin:border-box;   /* 伸びる線を、いつもの下線と同じ位置に重ねる（二重線にしない） */
-  transition:background-size .5s cubic-bezier(.2,.7,.2,1),color .3s ease;
+   いつもは薄い線（border-bottom）、マウスを乗せると濃い線（::after）が左から右へ伸びて、薄い線の上に重なる
+   ※ 背景で線を描くと、薄い線（枠線）の下に隠れて見えないため、上に重ねる部品で描く */
+.more,.work-item a.lines,.links-row a{position:relative;transition:color .3s ease}
+.more::after,.work-item a.lines::after,.links-row a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:currentColor;
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
 }
-.more:hover,.work-item a.lines:hover,.links-row a:hover{background-size:100% 1px}
+.more:hover::after,.work-item a.lines:hover::after,.links-row a:hover::after{transform:scaleX(1)}
 
 /* ---------- アニメーション①：マウスを乗せると、写真がゆっくり少し拡大する ---------- */
 .zoom img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
@@ -477,6 +479,7 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .hero{padding-top:20px}
   .nav{flex-direction:column;align-items:flex-start;gap:8px}
   .nav ul{justify-content:flex-start;gap:4px 16px}
+  .hero-copy h1 .sp-br{display:inline}   /* スマホだけ「知る・泊まる・過ごす・住む。」の前で改行 */
   .slide-tabs{display:none}   /* スマホは写真を大きく見せるため、01・02・03 の文字は出さない（写真は自動で切り替わる） */
   .panorama{--hero-ratio:1 / 1;--hero-bleed:0px;--hero-max-h:none;margin-top:28px}   /* 【ヒーロー写真】スマホは正方形で大きく、画面の端まで */
   #slide-2 img{object-position:72% 50%}   /* スマホでは左右が大きく切れるので、丘の一本の木を残す */
