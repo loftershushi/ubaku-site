@@ -13,7 +13,7 @@
   --muted:#4B4236;      /* 本文の文字色（ubaku.jp と同じ） */
   --sub:#6B6457;        /* ラベル・注記の文字色（ubaku.jp と同じ） */
   --accent:#1C6E94;     /* 深い青（英字見出し・ラベル・リンク。白地でも読める濃さ） */
-  --head:#1C6E94;      /* 【見出しの英字の色】The Town などの大見出し（試作の色選びで切り替え中） */
+  --head:#23A0DA;      /* 【見出しの英字の色】The Town などの大見出し（2026-10-11 東川町の青に仮決定） */
   --accent-hl:#23A0DA;  /* 東川町の青（数字・強調の言葉・ボタン。ubaku.jp の --accent-hl と同じ） */
   --rule-long:#B7C6CE;  /* 見出しの下の長い線 */
   --rule-short:#DFE7EB; /* 項目の上の短い線（さらに薄く） */
@@ -39,6 +39,7 @@
   --reveal-dist:28px;
   --reveal-time:1.1s;
   --ease:cubic-bezier(.2,.7,.2,1);
+  --lift:-8px;            /* マウスを乗せたときに浮く距離（ubaku.jp と同じ） */
 }
 
 /* ---------- 基本 ---------- */
@@ -64,16 +65,16 @@ em.hl{font-style:normal;color:var(--accent-hl)}
 .wordmark::after{background:var(--logo-bar);-webkit-mask:url(img/logo-wordmark-bar.svg) left center / contain no-repeat;mask:url(img/logo-wordmark-bar.svg) left center / contain no-repeat}
 
 /* ---------- オープニング（水面に落ちるしずく） ---------- */
-.intro{position:fixed;inset:0;z-index:100;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;transition:opacity 1.2s ease,visibility 1.2s}
+.intro{position:fixed;inset:0;overflow:hidden;z-index:100;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;transition:opacity 2.2s ease,visibility 2.2s}
 .intro.gone{opacity:0;visibility:hidden}
-.pond{position:relative;width:200px;height:200px}
+.pond{position:relative;width:200px;height:200px;overflow:visible}
 .drop{position:absolute;left:50%;top:0;width:12px;height:17px;margin-left:-6px;fill:var(--accent-hl);animation:fall 1.1s cubic-bezier(.55,0,1,.45) .3s both}
-.ring{position:absolute;left:50%;top:50%;width:200px;height:200px;margin:-100px 0 0 -100px;border:1px solid var(--accent-hl);border-radius:50%;opacity:0;transform:scale(.05)}
-.ring.a{animation:ripple 3s var(--ease) 1.4s both}
-.ring.b{animation:ripple 3s var(--ease) 1.8s both}
-.ring.c{animation:ripple 3s var(--ease) 2.2s both}
+.ring{position:absolute;left:50%;top:50%;width:min(640px,150vw);aspect-ratio:1;height:auto;transform-origin:center;translate:-50% -50%;border:1px solid var(--accent-hl);border-radius:50%;opacity:0;transform:scale(.05)}
+.ring.a{animation:ripple 4s var(--ease) 1.4s both}
+.ring.b{animation:ripple 4s var(--ease) 1.9s both}
+.ring.c{animation:ripple 4s var(--ease) 2.4s both}
 @keyframes fall{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(88px);opacity:0}}
-@keyframes ripple{0%{opacity:.9;transform:scale(.05) scaleY(.35)}100%{opacity:0;transform:scale(1) scaleY(.35)}}
+@keyframes ripple{0%{opacity:.9;transform:scale(.02) scaleY(.35)}60%{opacity:.35}100%{opacity:0;transform:scale(1) scaleY(.35)}}
 .intro-copy{font-family:var(--f-body);font-weight:200;color:var(--ink);font-size:clamp(14px,1.6vw,17px);letter-spacing:.14em;text-align:center;line-height:2.2;padding:0 24px}
 .intro-copy span{display:block;opacity:0;animation:fadeup 1.4s var(--ease) both}
 .intro-copy span:nth-child(1){animation-delay:2s}
@@ -104,11 +105,12 @@ em.hl{font-style:normal;color:var(--accent-hl)}
           mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C240,10 420,58 720,30 C1010,4 1210,46 1440,22 V600 H0 Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat}
 .hero-photo img{width:100%;height:100%;object-fit:cover}
 /* 登場の動き：文字が上から順に、写真は遅れてゆっくり */
-.ready .hero .place-name,.ready .hero h1 span,.ready .hero .tag{animation:fadeup 1.6s var(--ease) both}
-.ready .hero h1 span:nth-child(1){animation-delay:.15s}
-.ready .hero h1 span:nth-child(2){animation-delay:.35s}
-.ready .hero .tag{animation-delay:.55s}
-.ready .hero-photo img{animation:photoin 2.6s var(--ease) .5s both}
+/* オープニングが消えていくのに重ねて、ゆっくり現れる（2026-10-11 ゆっくりに） */
+.ready .hero .place-name,.ready .hero h1 span,.ready .hero .tag{animation:fadeup 2.2s var(--ease) .8s both}
+.ready .hero h1 span:nth-child(1){animation-delay:1.05s}
+.ready .hero h1 span:nth-child(2){animation-delay:1.35s}
+.ready .hero .tag{animation-delay:1.65s}
+.ready .hero-photo img{animation:photoin 3.2s var(--ease) 1.6s both}
 @keyframes photoin{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:none}}
 body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .hero .tag,body:not(.ready) .hero-photo img{opacity:0}
 
@@ -183,7 +185,8 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 
 /* ---------- 私たち ---------- */
 .people{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:64px}
-.face{aspect-ratio:1;margin-bottom:24px}
+.face{position:relative;aspect-ratio:1;margin-bottom:24px;overflow:hidden}
+.face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .people .kind{margin-bottom:4px}
 .people h3{font-size:22px}
 .people h3 small{margin-left:14px;font-family:var(--f-body);font-weight:300;font-size:12px;letter-spacing:.14em;color:var(--sub)}
@@ -199,8 +202,7 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .6s ease}
 .frame img.on{opacity:1}
 .joins{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px;margin-top:80px}
-.joins li{border-top:1px solid var(--rule-short);padding:24px 0 40px;transition:transform .45s var(--ease)}
-.joins li:hover{transform:translateY(-6px)}
+.joins li{border-top:1px solid var(--rule-short);padding:24px 0 40px}
 .joins b{display:block;margin-top:4px;font-family:var(--f-heading);font-weight:400;font-size:24px;letter-spacing:.12em;color:var(--ink)}
 .joins .what{display:block;margin-top:10px;font-size:13px;color:var(--accent)}
 .joins p{margin-top:6px;font-size:14px}
@@ -352,11 +354,15 @@ fieldset{border:0;margin:0;padding:0}
   body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .hero .tag,body:not(.ready) .hero-photo img{opacity:1}
 }
 
-/* ---------- 試作：見出しの英字の色を選ぶ箱（仮公開・手元だけ。ubaku.jp では出ない） ---------- */
-.picker{position:fixed;left:16px;bottom:16px;z-index:60;background:#fff;border:1px solid var(--rule-long);box-shadow:0 6px 24px rgba(0,0,0,.08);padding:12px 14px;font-size:12px;line-height:1.6;color:var(--ink);max-width:calc(100vw - 32px)}
-.picker p{margin-bottom:8px;letter-spacing:.08em}
-.picker div{display:flex;flex-wrap:wrap;gap:6px}
-.picker button{display:flex;align-items:center;gap:6px;padding:5px 10px;font:inherit;font-size:11px;background:#fff;border:1px solid var(--rule-short);cursor:pointer;color:var(--ink)}
-.picker button i{width:14px;height:14px;border-radius:50%;display:block}
-.picker button[aria-pressed="true"]{border-color:var(--ink)}
-.picker .x{position:absolute;right:6px;top:2px;border:0;padding:2px 6px;font-size:14px}
+/* ---------- マウスを乗せたときの動き（ubaku.jp と同じ決まり） ----------
+   ・カード（.lift）は少し浮き、上の短い線が東川町の青になる
+   ・写真（.zoom）はゆっくり少し拡大
+   ・現れる動きが終わったら（.done）、浮く動きの速さに切り替える */
+.js .r.done{transition:transform .45s var(--ease),border-color .45s ease}
+.lift{transition:transform .45s var(--ease),border-color .45s ease}
+.zoom{overflow:hidden}
+.zoom img{transition:transform 1.8s var(--ease)}
+@media (hover:hover){
+  .lift:hover,.js .r.done.lift:hover{transform:translateY(var(--lift));border-top-color:var(--accent-hl)}
+  .zoom:hover img{transform:scale(1.05)}
+}

@@ -21,6 +21,10 @@
     document.addEventListener('keydown', function once(){ skip(); document.removeEventListener('keydown', once); });
   }
 
+  /* ---------- マウスを乗せると浮くカード（.lift）と、ゆっくり拡大する写真（.zoom）。ubaku.jp と同じ決まり ---------- */
+  document.querySelectorAll('.stats li,.town-photos figure,.know > div,.cats > div,.two article,.people article,.crew > div,.joins li,.values li,.steps li,.works li').forEach(function(e){ e.classList.add('lift'); });
+  document.querySelectorAll('.pano,.face,.town-photos .ph,.two .ph,.ph-wide').forEach(function(e){ e.classList.add('zoom'); });
+
   /* ---------- スクロールで、ふわっと現れる ---------- */
   var els = document.querySelectorAll('.r, #ten');
   if(reduce || !('IntersectionObserver' in window)){
@@ -31,7 +35,14 @@
       Array.prototype.forEach.call(g.children, function(c, i){ c.style.transitionDelay = (i % 6) * 0.08 + 's'; });
     });
     var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          var el = e.target;
+          el.classList.add('in'); io.unobserve(el);
+          // 現れ終わったら、マウスを乗せたときの速さに切り替える（遅らせて出した分も待つ）
+          setTimeout(function(){ el.classList.add('done'); el.style.transitionDelay = ''; }, 1300 + (parseFloat(el.style.transitionDelay) || 0) * 1000);
+        }
+      });
     }, {rootMargin:'0px 0px -10% 0px', threshold:.08});
     els.forEach(function(e){ io.observe(e); });
   }
@@ -57,37 +68,6 @@
       es.forEach(function(e){ if(e.isIntersecting){ runCount(e.target); co.unobserve(e.target); } });
     }, {threshold:.6});
     counts.forEach(function(el){ co.observe(el); });
-  }
-
-  /* ---------- 試作：見出しの英字の色を選ぶ箱（ubaku.jp の本番では出さない） ---------- */
-  if(!/(^|\.)ubaku\.jp$/.test(location.hostname)){
-    var colors = [
-      ['今の深い青', '#1C6E94'],
-      ['東川町の青', '#23A0DA'],
-      ['墨（本文と同じ）', '#2B241C'],
-      ['錆鉄御納戸（Ubaku）', '#405B55'],
-      ['青みの灰色', '#6F8794']
-    ];
-    var box = document.createElement('div');
-    box.className = 'picker';
-    box.innerHTML = '<p>試作：見出しの英字の色</p><div></div><button class="x" type="button" aria-label="閉じる">×</button>';
-    var row = box.querySelector('div'), saved = null;
-    try { saved = localStorage.getItem('hlv-head'); } catch(e){}
-    function pick(c){
-      document.documentElement.style.setProperty('--head', c);
-      row.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.c === c ? 'true' : 'false'); });
-      try { localStorage.setItem('hlv-head', c); } catch(e){}
-    }
-    colors.forEach(function(c){
-      var b = document.createElement('button');
-      b.type = 'button'; b.dataset.c = c[1];
-      b.innerHTML = '<i style="background:' + c[1] + '"></i>' + c[0];
-      b.onclick = function(){ pick(c[1]); };
-      row.appendChild(b);
-    });
-    box.querySelector('.x').onclick = function(){ box.remove(); };
-    document.body.appendChild(box);
-    pick(saved || colors[0][1]);
   }
 
   /* ---------- 図面の切り替え（鳥瞰図／配置計画図） ---------- */
