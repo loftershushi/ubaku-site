@@ -36,7 +36,8 @@
       <span class="wordmark" role="img" aria-label="UBAKU"></span>
       <span class="by-txt">Higashikawa Lifestyle Village</span>
     </a>
-    <nav class="menu" aria-label="ページ内メニュー">
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav class="menu" id="menu" aria-label="ページ内メニュー">
       <a href="#town">Town</a><a href="#place">Place</a><a href="#team">Team</a><a href="#plan">Plan</a><a href="#roadmap">Roadmap</a><a href="#hello" class="menu-cta">Say Hello</a>
     </nav>
   </div>
@@ -97,7 +98,7 @@
       <figure class="r"><div class="ph"><img src="img/sentpure2.jpg" loading="lazy" alt="せんとぴゅあⅡの館内。木の天井の下に本棚と名作椅子が並ぶ"></div><figcaption>せんとぴゅあⅡ（複合交流施設）</figcaption></figure>
     </div>
 
-    <div class="know">
+    <div class="know fold-know" id="fold-know">
       <div class="r"><h3>写真の町</h3><p>1985年に「写真の町」を宣言。高校生の写真甲子園や、国際写真フェスティバルが毎年開かれます。</p></div>
       <div class="r"><h3>大雪山と旭岳</h3><p>町の東部は大雪山国立公園。北海道最高峰の旭岳（2,291m）に、春夏は登山、冬はパウダースノーを求めて人が訪れます。</p></div>
       <div class="r"><h3>まいにちが、天然水</h3><p>蛇口をひねれば、大雪山の雪解け水がしみこんだ地下水。その水で育つお米や野菜も、この町の誇りです。</p></div>
@@ -105,11 +106,14 @@
       <div class="r"><h3>町立の日本語学校</h3><p>全国で初めての公立日本語学校があり、世界中から学生が集まります。町を歩けば、いろんな言葉が聞こえます。</p></div>
       <div class="r"><h3>隈研吾と東川</h3><p>隈研吾建築都市設計事務所が設計したサテライトオフィス「KAGUの家」や、隈研吾監修の温浴施設「キトウシの森きとろん」が町にあります。</p></div>
     </div>
+    <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-know">続きを読む</button>
 
     <div class="access r">
-      <p><span class="en">Access</span></p>
-      <p>旭川空港から車で<b>13</b>分</p>
-      <p>旭川駅から車で<b>22</b>分</p>
+      <p class="en">Access</p>
+      <div class="access-list">
+        <p>旭川空港から車で<b>13</b>分</p>
+        <p>旭川駅から車で<b>22</b>分</p>
+      </div>
     </div>
     <p class="note r">町には、移住や住まいに関する支援制度・助成金もあります。詳しくは東川町の窓口にお問い合わせください。</p>
   </div>
@@ -238,13 +242,14 @@
 <section class="sec">
   <div class="wrap">
     <div class="sec-head r"><h2>Our Values</h2><p class="aside">大切にしたいこと</p></div>
-    <ol class="values">
+    <ol class="values fold-list show2" id="fold-values">
       <li class="r"><span class="no">01</span><h3>木を残す</h3><p>いまある木立は、みんなの財産として、できるだけ残します。</p></li>
       <li class="r"><span class="no">02</span><h3>まちに開く</h3><p>敷地の中だけで閉じず、町の人も通り抜けられる場所にします。</p></li>
       <li class="r"><span class="no">03</span><h3>一緒に創る</h3><p>つくる人と住む人を分けず、一緒に考えて、一緒につくります。</p></li>
       <li class="r"><span class="no">04</span><h3>雪はみんなで</h3><p>除雪や雪の置き場は、住む人で分担します。</p></li>
       <li class="r"><span class="no">05</span><h3>人が主役</h3><p>敷地内の通りには車を入れず、歩く人を優先します。</p></li>
     </ol>
+    <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-values">続きを読む</button>
   </div>
 </section>
 
@@ -253,7 +258,7 @@
   <div class="wrap">
     <div class="sec-head r"><h2>Still Open</h2><p class="aside">まだ決まっていないこと</p></div>
     <p class="catch r">決まってから募集するのではなく、<br>決める前から<em class="hl">一緒に考えてくれる人</em>を探しています。</p>
-    <ul class="open">
+    <ul class="open fold-list show4" id="fold-open">
       <li class="r">このコミュニティの名前</li>
       <li class="r">各区画の最終的なレイアウト</li>
       <li class="r">敷地内の通りの形や名前</li>
@@ -265,6 +270,7 @@
       <li class="r">ひとつの地域おこしのモデルにできるか</li>
       <li class="r more"><span class="dots" aria-hidden="true"></span>ほかにも、まだまだ。</li>
     </ul>
+    <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-open">続きを読む</button>
   </div>
 </section>
 
@@ -272,13 +278,14 @@
 <section class="sec" id="roadmap">
   <div class="wrap">
     <div class="sec-head r"><h2>Roadmap</h2><p class="aside">これから</p></div>
-    <ol class="steps">
+    <ol class="steps fold-list show2" id="fold-steps">
       <li class="now r"><span class="no">01</span><b>企画・調査</b><span>企画、コンセプト設計、事業スキーム、役場への相談、測量、樹木調査など</span><em>いまここ</em></li>
       <li class="r"><span class="no">02</span><b>計画決定</b><span>ネーミングや全体像、クラウドファンディングを含めて、計画を固める</span></li>
       <li class="r"><span class="no">03</span><b>見学会とイベント</b><span>現地見学とイベントを開いて、全国から実際に来てもらう</span></li>
       <li class="r"><span class="no">04</span><b>分譲開始</b><span>第1期の区画の予約販売を始める</span></li>
       <li class="r"><span class="no">05</span><b>ミュージックバー改修</b><span>ミュージックバーを、シェアオフィスとイベントスペースに改修する</span></li>
     </ol>
+    <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-steps">続きを読む</button>
   </div>
 </section>
 

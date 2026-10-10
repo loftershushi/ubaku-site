@@ -94,6 +94,8 @@ em.hl{font-style:normal;color:var(--accent-hl)}
 .menu a{font-family:var(--f-title);font-weight:300;font-size:13px;letter-spacing:.16em;color:var(--ink)}
 .menu a:hover{color:var(--accent)}
 .menu .menu-cta{color:var(--accent)}   /* 小さな文字は読みやすい深い青に */
+.menu-btn{display:none}
+.fold-btn{display:none}
 
 /* ---------- ヒーロー（上は余白、下はパノラマ写真） ---------- */
 .hero{padding-top:clamp(56px,9vw,120px)}
@@ -163,7 +165,8 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 .know{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 40px;margin-top:80px}
 .know h3,.two h3,.people h3,.values h3{font-family:var(--f-heading);font-size:18px}
 .know p{margin-top:12px;font-size:14px;line-height:2}
-.access{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 40px;margin-top:80px;padding-top:24px;border-top:1px solid var(--rule-long)}
+.access{margin-top:80px;padding-top:24px;border-top:1px solid var(--rule-long)}
+.access-list{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 48px;margin-top:8px}   /* 「Access」の下に並べる（スマホは縦に） */
 .access p{font-size:15px;color:var(--ink)}
 .access .en{font-size:12px;color:var(--accent)}
 .access b{font-family:var(--f-title);font-weight:300;font-size:36px;color:var(--accent-hl);margin:0 4px}
@@ -314,7 +317,14 @@ fieldset{border:0;margin:0;padding:0}
 
 /* ---------- タブレット ---------- */
 @media (max-width:1000px){
-  .menu{display:none}
+  /* スマホ・タブレット：右側は「Menu ＋」。押すと帯の下に一覧が開く（ubaku.jp と同じ） */
+  .menu-btn{display:block;flex:none;padding:8px 0 8px 16px;border:0;background:none;font:inherit;font-family:var(--f-title);font-weight:300;font-size:13px;letter-spacing:.18em;color:var(--ink);cursor:pointer}
+  .menu-btn::after{content:"＋";margin-left:.6em;color:var(--accent-hl)}
+  .menu-btn[aria-expanded="true"]::after{content:"－"}
+  .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:4px var(--pad-x) 12px;background:#fff;border-bottom:1px solid var(--rule-short)}
+  .topbar.is-open .menu{display:flex}
+  .menu a{display:block;padding:14px 0;font-size:14px}
+  .menu a + a{border-top:1px solid var(--rule-short)}
   .stats{grid-template-columns:repeat(2,1fr);gap:32px}
   .know{grid-template-columns:repeat(2,1fr)}
   .values{grid-template-columns:repeat(2,1fr);gap:40px 32px}
@@ -362,6 +372,15 @@ fieldset{border:0;margin:0;padding:0}
   .open{grid-template-columns:1fr}
   .row2{grid-template-columns:1fr}
   .hello-grid{grid-template-columns:1fr;gap:40px}
+  /* 「続きを読む」でたたむ（パソコンはたたまない） */
+  .fold-btn{display:inline-block;margin-top:28px;padding:4px 0;border:0;border-bottom:1px solid var(--rule-long);background:none;font:inherit;font-size:13px;letter-spacing:.1em;color:var(--accent);cursor:pointer}
+  .fold-btn::after{content:"　＋"}
+  .fold-btn[aria-expanded="true"]::after{content:"　－"}
+  .fold-know:not(.is-open) p{display:none}          /* 町の紹介：見出しだけ見せる */
+  .fold-know:not(.is-open){gap:16px}
+  .fold-list.show2:not(.is-open) > :nth-child(n+3){display:none}   /* 最初の2つだけ見せる */
+  .fold-list.show4:not(.is-open) > :nth-child(n+5){display:none}   /* 最初の4つだけ見せる */
+  .access-list{flex-direction:column;gap:0}
   .works{grid-template-columns:1fr;gap:24px}
   .foot-r{align-items:flex-start}
   .foot-logo .wordmark::before,.foot-logo .wordmark::after{-webkit-mask-position:left center;mask-position:left center}

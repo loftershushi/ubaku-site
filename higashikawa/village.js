@@ -80,6 +80,22 @@
     so.observe(steps);
   }
 
+  /* ---------- スマホの「Menu」：押すと一覧が開く。項目を押すと閉じる ---------- */
+  var bar = document.querySelector('.topbar'), mbtn = bar.querySelector('.menu-btn');
+  function setMenu(open){ bar.classList.toggle('is-open', open); mbtn.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  mbtn.addEventListener('click', function(){ setMenu(!bar.classList.contains('is-open')); });
+  bar.querySelectorAll('.menu a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+
+  /* ---------- 「続きを読む」（スマホだけ。たたんである内容を開く・閉じる） ---------- */
+  document.querySelectorAll('.fold-btn').forEach(function(b){
+    var target = document.getElementById(b.getAttribute('aria-controls'));
+    b.addEventListener('click', function(){
+      var open = target.classList.toggle('is-open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      b.textContent = open ? '閉じる' : '続きを読む';
+    });
+  });
+
   /* ---------- 図面の切り替え（鳥瞰図／配置計画図） ---------- */
   var tabs = {bird:document.getElementById('tab-bird'), plan:document.getElementById('tab-plan')};
   function show(k){
