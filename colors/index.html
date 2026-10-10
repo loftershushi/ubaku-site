@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>差し色を選ぶ｜UBAKU Consulting・Design</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Jost:wght@200;300;400&family=Murecho:wght@400&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+/* =========================================================
+   差し色を選ぶページ（仮公開だけ。本番には出さない）
+   色は NIPPON COLORS の250色から。選ぶと、右の本物のページの色がその場で変わる
+   ========================================================= */
+body{background:var(--cream)}
+.pk{padding:32px var(--pad-x) 80px;max-width:1600px;margin:0 auto}
+.pk-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--rule-long);padding-bottom:20px}
+.pk-head .wordmark{width:110px;margin-bottom:20px}
+.pk-head h1{font-family:var(--f-heading);font-size:24px}
+.pk-head p{font-size:13px;color:var(--muted)}
+.pk-head a{border-bottom:1px solid var(--rule-short)}
+
+/* 決まっている色（かぶらないように見比べる） */
+.fixed{display:flex;flex-wrap:wrap;gap:8px 24px;margin:20px 0 0;padding:0;list-style:none;font-size:12px;color:var(--muted)}
+.fixed li{display:flex;align-items:center;gap:8px}
+.fixed i{width:16px;height:16px;border-radius:50%}
+
+/* どちらの事業の色を選ぶか */
+.tabs{display:flex;gap:0;margin-top:32px;border-bottom:1px solid var(--rule-short)}
+.tabs button{all:unset;cursor:pointer;padding:12px 24px;font-family:var(--f-title);font-weight:300;font-size:16px;letter-spacing:.1em;color:var(--sub);border-bottom:2px solid transparent}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--sel,var(--green))}
+.tabs button:focus-visible{outline:2px solid var(--green)}
+
+.pk-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;margin-top:32px;align-items:start}
+
+/* 選んでいる色 */
+.now{display:grid;grid-template-columns:96px minmax(0,1fr);gap:20px;align-items:center;border:1px solid var(--rule-short);padding:20px}
+.now .chip{width:96px;height:96px}
+.now .nm{font-family:var(--f-heading);font-size:26px;line-height:1.3}
+.now .rm{font-family:var(--f-en);font-size:12px;letter-spacing:.16em;color:var(--sub)}
+.now .hx{font-family:var(--f-en);font-size:14px;letter-spacing:.08em}
+.now .warn{font-size:12px;color:var(--sub);line-height:1.7;margin-top:6px}
+.now .warn b{font-weight:400;color:#B4553A}
+.copy{all:unset;cursor:pointer;margin-top:12px;display:inline-block;font-size:13px;letter-spacing:.08em;border-bottom:1px solid var(--rule-long);padding-bottom:2px}
+.copy:hover{color:var(--green)}
+
+.pk h2{font-family:var(--f-body);font-weight:400;font-size:13px;letter-spacing:.16em;color:var(--accent);margin:32px 0 12px}
+/* 色の丸ボタン */
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:12px 10px;list-style:none;margin:0;padding:0}
+.sw button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:6px;font-size:11px;line-height:1.4;color:var(--muted);text-align:left}
+.sw .c{height:44px;outline:1px solid rgba(0,0,0,.06);outline-offset:-1px;transition:transform .2s ease}
+.sw button:hover .c{transform:translateY(-3px)}
+.sw button[aria-pressed="true"] .c{box-shadow:0 0 0 2px var(--cream),0 0 0 4px var(--ink)}
+.sw button:focus-visible .c{box-shadow:0 0 0 2px var(--cream),0 0 0 4px var(--green)}
+.sw .r{font-family:var(--f-en);font-size:10px;letter-spacing:.06em;color:var(--sub)}
+.sw--all{grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:10px 8px}
+.sw--all .c{height:32px}
+.sw--all button{font-size:10px}
+.sw--all .r{display:none}
+
+/* 本物のページのプレビュー */
+.pv{position:sticky;top:16px}
+.pv-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;color:var(--sub);margin-bottom:8px}
+.pv-bar a{border-bottom:1px solid var(--rule-short)}
+.pv iframe{display:block;width:100%;height:calc(100vh - 80px);min-height:560px;border:1px solid var(--rule-short);background:#fff}
+
+@media (max-width: 900px){
+  .pk-grid{grid-template-columns:minmax(0,1fr)}
+  .pv{position:static}
+  .pv iframe{height:70vh}
+}
+</style>
+</head>
+<body>
+<div class="pk">
+  <header class="pk-head">
+    <div>
+      <a class="wordmark" href="../" aria-label="UBAKU トップページへ"></a>
+      <h1>差し色を選ぶ</h1>
+      <p>Consulting と Design の差し色を、<a href="https://nipponcolors.com/" target="_blank" rel="noopener">NIPPON COLORS</a> の250色から選べます。色を押すと、右の本物のページの色が変わります。</p>
+    </div>
+  </header>
+
+  <!-- すでに使っている色（これとかぶらないように） -->
+  <ul class="fixed" aria-label="すでに使っている色">
+    <li><i style="background:#405B55"></i>ブランド：錆鉄御納戸 #405B55</li>
+    <li><i style="background:#23A0DA"></i>東川町の青（トップ・ロゴの横線）#23A0DA</li>
+    <li><i style="background:#B4553A"></i>UBAKU Yasai：赤土 #B4553A</li>
+  </ul>
+
+  <div class="tabs" role="tablist" aria-label="事業">
+    <button type="button" role="tab" aria-selected="true" data-biz="consult">Consulting</button>
+    <button type="button" role="tab" aria-selected="false" data-biz="design">Design</button>
+  </div>
+
+  <div class="pk-grid">
+    <div>
+      <div class="now" aria-live="polite">
+        <div class="chip" id="now-chip"></div>
+        <div>
+          <p class="rm" id="now-biz"></p>
+          <p class="nm" id="now-name"></p>
+          <p class="rm" id="now-romaji"></p>
+          <p class="hx" id="now-hex"></p>
+          <p class="warn" id="now-warn"></p>
+          <button type="button" class="copy" id="copy">選んだ2色をコピー（チャットに貼ってください）</button>
+        </div>
+      </div>
+
+      <h2>おすすめ</h2>
+      <ul class="sw" id="sw-pick"></ul>
+
+      <h2>NIPPON COLORS 全250色</h2>
+      <ul class="sw sw--all" id="sw-all"></ul>
+    </div>
+
+    <div class="pv">
+      <div class="pv-bar"><span id="pv-label"></span><a id="pv-open" href="../consulting/" target="_blank" rel="noopener">別のタブで開く ↗</a></div>
+      <iframe id="pv" src="../consulting/" title="ページのプレビュー"></iframe>
+    </div>
+  </div>
+</div>
+
+<script src="nippon-colors.js"></script>
+<script>
+/* 色選びの動き
+   ・事業（Consulting / Design）を切り替える
+   ・色を押すと、プレビューの本物のページの差し色（--c-consult / --c-design）を書き換える
+   ・選んだ色は、このブラウザにだけ覚えておく（次に開いたときも同じ色から） */
+(function () {
+  var ALL = window.NIPPON_COLORS || [];
+  var byRomaji = {};
+  ALL.forEach(function (c) { byRomaji[c.romaji] = c; });
+
+  // 事業ごとの設定（おすすめの色は NIPPON COLORS の名前で指定）
+  var BIZ = {
+    consult: { label: 'Consulting', page: '../consulting/', varName: '--c-consult', start: 'RURIKON',
+               pick: ['KONJYO', 'RURIKON', 'KON', 'BENIKAKEHANA', 'NOSHIMEHANA', 'HANADA', 'KIKYO', 'FUTAAI'] },
+    design:  { label: 'Design', page: '../design/', varName: '--c-design', start: 'OHDO',
+               pick: ['OHDO', 'KIGARACHA', 'KITSURUBAMI', 'KINCHA', 'KOBICHA', 'RIKYUCHA', 'BIWACHA', 'EDOMURASAKI'] }
+  };
+  // すでに使っている色（近すぎたら注意を出す）
+  var RESERVED = [
+    { name: 'ブランドの錆鉄御納戸', hex: '#405B55' },
+    { name: '東川町の青', hex: '#23A0DA' },
+    { name: 'Yasai の赤土', hex: '#B4553A' }
+  ];
+
+  // 選んでいる色（このブラウザに覚えておく。使えないときは最初の色）
+  var chosen = { consult: byRomaji[BIZ.consult.start], design: byRomaji[BIZ.design.start] };
+  try {
+    var saved = JSON.parse(localStorage.getItem('ubaku-biz-colors') || '{}');
+    if (saved.consult && byRomaji[saved.consult]) chosen.consult = byRomaji[saved.consult];
+    if (saved.design && byRomaji[saved.design]) chosen.design = byRomaji[saved.design];
+  } catch (e) {}
+  var current = 'consult';
+
+  var iframe = document.getElementById('pv');
+
+  // 色の計算（白い地の上での読みやすさ・ほかの色との近さ）
+  function rgb(hex) { var n = parseInt(hex.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+  function lum(hex) {
+    return rgb(hex).map(function (v) { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); })
+      .reduce(function (s, v, i) { return s + v * [.2126, .7152, .0722][i]; }, 0);
+  }
+  function contrast(hex) { return 1.05 / (lum(hex) + .05); }   // 白（#FFFFFF）との差
+  function dist(a, b) { var x = rgb(a), y = rgb(b); return Math.sqrt(Math.pow(x[0] - y[0], 2) + Math.pow(x[1] - y[1], 2) + Math.pow(x[2] - y[2], 2)); }
+
+  // プレビューのページに色を入れる（2色とも。相手の事業へ案内する帯は相手の色のため）
+  function paint() {
+    try {
+      var root = iframe.contentDocument.documentElement;
+      root.style.setProperty('--c-consult', chosen.consult.hex);
+      root.style.setProperty('--c-design', chosen.design.hex);
+    } catch (e) {}
+  }
+  iframe.addEventListener('load', paint);
+
+  function save() {
+    try { localStorage.setItem('ubaku-biz-colors', JSON.stringify({ consult: chosen.consult.romaji, design: chosen.design.romaji })); } catch (e) {}
+  }
+
+  // 色のボタンを作る
+  function button(c) {
+    var li = document.createElement('li');
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.dataset.romaji = c.romaji;
+    b.title = c.name + ' ' + c.romaji + ' ' + c.hex;
+    b.innerHTML = '<span class="c"></span><span class="n"></span><span class="r"></span>';
+    b.querySelector('.c').style.background = c.hex;
+    b.querySelector('.n').textContent = c.name;
+    b.querySelector('.r').textContent = c.romaji + ' ' + c.hex;
+    b.addEventListener('click', function () { chosen[current] = c; save(); update(); paint(); });
+    li.appendChild(b);
+    return li;
+  }
+  var allList = document.getElementById('sw-all');
+  ALL.forEach(function (c) { allList.appendChild(button(c)); });
+
+  function update() {
+    var biz = BIZ[current], c = chosen[current];
+    // おすすめを作り直す
+    var pick = document.getElementById('sw-pick');
+    pick.textContent = '';
+    biz.pick.forEach(function (r) { if (byRomaji[r]) pick.appendChild(button(byRomaji[r])); });
+    // 選んでいる色に印
+    document.querySelectorAll('.sw button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.dataset.romaji === c.romaji ? 'true' : 'false');
+    });
+    document.getElementById('now-chip').style.background = c.hex;
+    document.getElementById('now-biz').textContent = biz.label + ' の差し色';
+    document.getElementById('now-name').textContent = c.name;
+    document.getElementById('now-romaji').textContent = c.romaji;
+    document.getElementById('now-hex').textContent = c.hex;
+    // 注意：白い地の上で薄い／すでに使っている色に近い
+    var notes = [], k = contrast(c.hex);
+    if (k < 3) notes.push('<b>白い地の上では薄め</b>（見出しの強調には使えるが、小さな文字は読みにくい）');
+    else if (k < 4.5) notes.push('白い地の上で読みやすさはふつう（大きな文字なら十分）');
+    else notes.push('白い地の上でも読みやすい色');
+    RESERVED.concat([{ name: (current === 'consult' ? 'Design' : 'Consulting') + ' の色', hex: chosen[current === 'consult' ? 'design' : 'consult'].hex }])
+      .forEach(function (r) { if (dist(c.hex, r.hex) < 70) notes.push('<b>' + r.name + 'に近い</b>'); });
+    document.getElementById('now-warn').innerHTML = notes.join('<br>');
+    document.querySelectorAll('.tabs button').forEach(function (t) {
+      var on = t.dataset.biz === current;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.style.setProperty('--sel', chosen[t.dataset.biz].hex);
+    });
+    document.getElementById('pv-label').textContent = biz.label + ' のページ（本物）';
+    document.getElementById('pv-open').href = biz.page;
+  }
+
+  document.querySelectorAll('.tabs button').forEach(function (t) {
+    t.addEventListener('click', function () {
+      if (current === t.dataset.biz) return;
+      current = t.dataset.biz;
+      iframe.src = BIZ[current].page;
+      update();
+    });
+  });
+
+  // 選んだ2色をコピー
+  document.getElementById('copy').addEventListener('click', function () {
+    var text = 'Consulting＝' + chosen.consult.name + '（' + chosen.consult.romaji + '）' + chosen.consult.hex +
+               '／Design＝' + chosen.design.name + '（' + chosen.design.romaji + '）' + chosen.design.hex;
+    var btn = this;
+    (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(function () {
+      btn.textContent = 'コピーしました：' + text;
+    }, function () { btn.textContent = text; });
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>

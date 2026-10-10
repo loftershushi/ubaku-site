@@ -9,8 +9,9 @@
    ほかの色とかぶらないように：ブランド＝錆鉄御納戸 #405B55／東川町の青 #23A0DA（ロゴの横線・トップ）／Yasai＝赤土 #B4553A
    ※ ロゴの Ū の横線は style.css の :root で決まるので、ここを変えても東川町の青のまま */
 :root{
-  --c-consult:#2D4A78;   /* Consulting：紺青（こんじょう）。信頼・実務 */
-  --c-design:#A3792C;    /* Design：黄土（おうど）。素材・手しごと */
+  /* 色は NIPPON COLORS（nipponcolors.com）から選ぶ。候補は仮公開の colors/（差し色を選ぶページ）で見比べられる */
+  --c-consult:#0B346E;   /* Consulting：瑠璃紺（RURIKON・仮）。信頼・実務 */
+  --c-design:#B68E55;    /* Design：黄土（OHDO・仮）。素材・手しごと */
 }
 .page-consulting{--accent-hl:var(--c-consult)}
 .page-design{--accent-hl:var(--c-design)}
