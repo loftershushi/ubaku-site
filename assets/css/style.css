@@ -6,7 +6,7 @@
 :root{
   /* --- 色 --- */
   --cream:#FFFFFF;      /* 白（基本の地色。2026-10-10 生成り→白） */
-  --kraft:#F4F4F2;      /* 淡いグレー（What We Do・Numbers・Coming soon の面） */
+  --kraft:#F4F4F2;      /* 淡いグレー（What We Do・Numbers の面） */
   --green:#405B55;      /* 錆鉄御納戸（さびてつおなんど：ブランド色。2026-10-10 深緑から変更） */
   --ink:#2B241C;        /* 見出しの文字色 */
   --muted:#4B4236;      /* 本文の文字色 */
@@ -55,7 +55,7 @@
   /* --- フォント --- */
   --f-display:'Cormorant Garamond', serif;              /* UBAKUのロゴ・数字・事業名の英字 */
   --f-title:'Jost', sans-serif;                         /* セクションの英字見出し（What We Do など）・Numbers の数字 */
-  --f-heading:'Murecho', 'Noto Sans JP', sans-serif;    /* 【小見出しのフォント】h1・Concept の言葉・Values・What We Do・キャッチ・Coming soon・Contact の日本語見出し */
+  --f-heading:'Murecho', 'Noto Sans JP', sans-serif;    /* 【小見出しのフォント】h1・Concept の言葉・Values・What We Do・キャッチ・Contact の日本語見出し */
   --f-body:'Noto Sans JP', sans-serif;                  /* 本文・メニュー */
   --f-serif-jp:'Noto Serif JP', serif;                  /* Concept の図の中の日本語だけ */
   --f-en:Futura, 'Futura PT', 'Jost', sans-serif;       /* 英語の小さな文字 */
@@ -100,7 +100,7 @@ p{margin:0}
 .display{font-family:var(--f-display);font-weight:600;line-height:1;color:var(--green)}
 .en{font-family:var(--f-en);font-weight:400;line-height:1.6}
 /* 表現としての英語（Values の英文・What We Do の Connect など・More to come.）は Cormorant の斜体にそろえる */
-.en-sub,.soon-head .en{font-family:var(--f-display);font-style:italic;font-weight:500;letter-spacing:.01em}
+.en-sub{font-family:var(--f-display);font-style:italic;font-weight:500;letter-spacing:.01em}
 .label{font-size:12px;letter-spacing:.16em;color:var(--accent)}
 .body{font-size:14px;color:var(--muted)}
 
@@ -223,7 +223,7 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
    セクションの上下の余白（全セクション共通）
    深緑のセクションは、稜線の高さの分だけ上を足す
    ========================================================= */
-.values,.concept-sec,.business,.team,.journal,.numbers .wrap,.soon .wrap{padding-top:var(--sec-y);padding-bottom:var(--sec-y)}
+.values,.concept-sec,.business,.team,.journal,.numbers .wrap{padding-top:var(--sec-y);padding-bottom:var(--sec-y)}
 .work,.contact{padding-top:calc(var(--sec-y) + var(--ridge-h));padding-bottom:var(--sec-y)}
 .contact{padding-bottom:calc(var(--sec-y) * 2 / 3)}   /* フッターの住所の下の余白（ふつうの余白の 2/3） */
 .team + .journal{padding-top:0}   /* 同じ地色が続くときは、上の余白を足さない */
@@ -244,9 +244,11 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 /* =========================================================
    深緑のセクション共通（What We Do・Contact）
    ========================================================= */
-.dark{position:relative;background:var(--green);color:var(--on-green);overflow:hidden}
+.dark{position:relative;--panel:var(--green);color:var(--on-green);overflow:hidden;
+  /* 面の色は上から2pxだけ下げて塗る（上端の稜線と面の境目に、細いグレーの線が出ないように） */
+  background:linear-gradient(var(--panel),var(--panel)) 0 2px / 100% calc(100% - 2px) no-repeat}
 .dark--after-kraft .ridge path{fill:var(--kraft)}   /* 直前がクラフト色のとき */
-#work{background:var(--kraft);--on-green:var(--ink);--on-green-sub:var(--muted);--rule-long-on-green:var(--rule-long);--rule-short-on-green:#E0E3E1;--accent-sand:var(--green);--rule-hover-on-green:var(--green)}
+#work{--panel:var(--kraft);--on-green:var(--ink);--on-green-sub:var(--muted);--rule-long-on-green:var(--rule-long);--rule-short-on-green:#E0E3E1;--accent-sand:var(--green);--rule-hover-on-green:var(--green)}
 #work .sec-head h2{color:var(--green)}   /* 見出しはほかのセクションと同じ色 */
 .dark .sec-head{border-color:var(--rule-long-on-green)}
 .dark .sec-head h2{color:var(--on-green)}
@@ -399,18 +401,6 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .tomoe.is-visible .lbl-bl{transition-delay:1s}
 .tomoe.is-visible .lbl-center{transition-delay:1.4s}
 
-/* =========================================================
-   ⑧ Coming soon（クラフト色）
-   ========================================================= */
-.soon{background:var(--kraft)}
-.soon .wrap{display:flex;justify-content:space-between;align-items:center;gap:64px}
-.soon-head .en{font-size:24px;color:var(--green)}
-.soon h2{font-family:var(--f-heading);font-size:clamp(23px,2.6vw,34px)}
-.soon-body{max-width:480px;display:flex;flex-direction:column;gap:20px}
-.soon-body p{font-size:15px;color:var(--muted)}
-.soon-list{list-style:none;margin:0;padding:16px 0 0;border-top:1px solid var(--rule-short);font-size:14px;color:var(--muted)}
-.soon-list li{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.soon-list .soon-name{font-size:18px;color:var(--green)}
 
 /* =========================================================
    ⑨ Contact / ⑩ フッター（深緑）
@@ -468,7 +458,6 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .media-photo{min-height:300px}
   .villa,.media{gap:32px}
   .form{grid-template-columns:minmax(0,1fr)}
-  .soon .wrap{flex-direction:column;align-items:flex-start}
 }
 
 /* =========================================================
@@ -480,7 +469,9 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .nav{flex-direction:column;align-items:flex-start;gap:8px}
   .nav ul{justify-content:flex-start;gap:4px 16px}
   .hero-copy h1 .sp-br{display:inline}   /* スマホだけ「知る・泊まる・過ごす・住む。」の前で改行 */
-  .slide-tabs{display:none}   /* スマホは写真を大きく見せるため、01・02・03 の文字は出さない（写真は自動で切り替わる） */
+  /* スマホは写真の下に3本のバーだけ（01・02・03 と写真の説明の文字は出さない。読み上げ用には残す） */
+  .slide-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding-top:14px}
+  .slide-tabs button{font-size:0;gap:0;padding:6px 0 10px}   /* 指で押しやすいよう、バーの上下に少し余白 */
   .panorama{--hero-ratio:1 / 1;--hero-bleed:0px;--hero-max-h:none;margin-top:28px}   /* 【ヒーロー写真】スマホは正方形で大きく、画面の端まで */
   #slide-2 img{object-position:72% 50%}   /* スマホでは左右が大きく切れるので、丘の一本の木を残す */
   .work-grid,.team-grid{grid-template-columns:minmax(0,1fr)}

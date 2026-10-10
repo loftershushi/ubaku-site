@@ -271,7 +271,7 @@
     '.villa .photo', '.villa-text', '.media', '.two article',
     '.concept .kicker', '.concept-title', '.concept-catch', '.tomoe',
     '.numbers-grid li', '.member', '.journal-flow', '.note-links',
-    '.soon-head', '.soon-body', '.contact-lead', '.contact-grid > div', '.form', '.links-row'
+    '.contact-lead', '.contact-grid > div', '.form', '.links-row'
   ].join(','));
 
   targets.forEach(function (el) { el.classList.add('reveal'); });
