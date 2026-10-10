@@ -18,7 +18,26 @@
   op.hidden = false;
 
   var DUR = 3800;               // 000→100 までの時間（ミリ秒。元は4700）
-  var STEPS = [0.06, 0.36, 0.64]; // Find → Make → Live に切り替わるタイミング（全体の何割の時点か）
+  var STEPS = [0.06, 0.42];       // 1行目「Find your place.」→ 2行目「Live your time.」が現れ始めるタイミング（全体の何割の時点か）
+
+  // 英文を1文字ずつの部品に分ける（1文字ずつ順に浮かび上がらせるため。空白はそのまま残す）
+  op.querySelectorAll('.op-l1, .op-l2').forEach(function (lineEl) {
+    var i = 0;
+    (function split(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (c) {
+        if (c.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          c.textContent.split('').forEach(function (ch) {
+            if (ch === ' ') { frag.appendChild(document.createTextNode(' ')); return; }
+            var s = document.createElement('span');
+            s.className = 'ch'; s.textContent = ch; s.style.setProperty('--i', i++);
+            frag.appendChild(s);
+          });
+          node.replaceChild(frag, c);
+        } else { split(c); }
+      });
+    })(lineEl);
+  });
   var HOLD = 1200;              // 100になってから消え始めるまでの待ち時間（元は1900）
 
   var count = op.querySelector('.op-count');
@@ -61,7 +80,6 @@
     shade.style.opacity = Math.max(0, Math.min(1, (p - 0.55) / 0.4)); // 稜線の下をうっすら塗る
     if (raw > STEPS[0]) op.classList.add('s1');
     if (raw > STEPS[1]) op.classList.add('s2');
-    if (raw > STEPS[2]) op.classList.add('s3');
     if (raw < 1) { raf = requestAnimationFrame(frame); return; }
     op.classList.add('done');
     timer = setTimeout(exit, HOLD);
@@ -91,7 +109,7 @@
   // 回線が遅いときは、1.5秒待っても届かなければそのまま始める
   var fontsReady = (document.fonts && document.fonts.load) ? Promise.all([
     document.fonts.load('italic 500 40px "Cormorant Garamond"', 'Find'),
-    document.fonts.load('500 40px "Cormorant Garamond"', 'your place.'),
+    document.fonts.load('500 40px "Cormorant Garamond"', 'your place. your time.'),
     document.fonts.load('300 14px "Jost"', 'Asahidake 2,291m')
   ]) : Promise.resolve();
   var started = false;
@@ -344,6 +362,31 @@
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+})();
+
+/* ---------- Numbers：画面に入ったら、数字が速く回って最後に今の値で止まる（東川ヴィレッジのページと同じ動き） ----------
+   data-from（始まりの数。なければ0）→ data-to（最後の数）。前後の文字は data-pre・data-suf */
+(function () {
+  var counts = document.querySelectorAll('.cnt');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!counts.length || reduce || !('IntersectionObserver' in window)) return;   // 動きを減らす設定では、最初から最後の値のまま
+  function run(el) {
+    var from = +(el.dataset.from || 0), to = +el.dataset.to, pre = el.dataset.pre || '', suf = el.dataset.suf || '';
+    var dur = 1600, t0 = null;
+    function frame(t) {
+      if (!t0) t0 = t;
+      var k = Math.min((t - t0) / dur, 1);
+      var e = 1 - Math.pow(1 - k, 4);            // 最初は速く、最後にゆっくり止まる
+      el.textContent = pre + Math.round(from + (to - from) * e) + suf;
+      if (k < 1) requestAnimationFrame(frame);
+    }
+    el.textContent = pre + from + suf;
+    requestAnimationFrame(frame);
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  counts.forEach(function (el) { io.observe(el); });
 })();
 
 /* ---------- 「続きを読む」（スマホだけ。たたんである文章を開く・閉じる） ---------- */

@@ -5,15 +5,15 @@
 <meta name="robots" content="noindex, nofollow">
 <script>/* オープニングを出すかどうかを、表示の前に決める（ページを開くたび毎回。?nointro のときと「動きを減らす」設定の人には出さない） */try{if(location.search.indexOf("nointro")<0&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("is-opening")}}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ubaku｜北海道美瑛・東川町の地域編集チーム</title>
-<meta name="description" content="まちを想い、まちを動かす。美瑛町・東川町を拠点にする地域編集チーム、Ubaku。一棟貸しの宿「Ubaku Villa 宇莫別荘」の運営、地域メディア、改修のデザイン監修、宿と不動産のコンサルティング、移住・二拠点のご相談まで。">
+<title>UBAKU｜北海道美瑛・東川町の地域編集チーム</title>
+<meta name="description" content="まちを想い、まちを動かす。美瑛町・東川町を拠点にする地域編集チーム、UBAKU。一棟貸しの宿「UBAKU Villa 宇莫別荘」の運営、地域メディア、改修のデザイン監修、宿と不動産のコンサルティング、移住・二拠点のご相談まで。">
 <link rel="canonical" href="https://ubaku.jp/">
 
 <!-- SNSでシェアされたときの表示（ogp.jpg は 1200×630 で用意する） -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Ubaku">
-<meta property="og:title" content="Ubaku｜北海道美瑛・東川町の地域編集チーム">
-<meta property="og:description" content="まちを想い、まちを動かす。美瑛町・東川町を拠点にする地域編集チーム、Ubaku。一棟貸しの宿「Ubaku Villa 宇莫別荘」の運営、地域メディア、改修のデザイン監修、宿と不動産のコンサルティング、移住・二拠点のご相談まで。">
+<meta property="og:site_name" content="UBAKU">
+<meta property="og:title" content="UBAKU｜北海道美瑛・東川町の地域編集チーム">
+<meta property="og:description" content="まちを想い、まちを動かす。美瑛町・東川町を拠点にする地域編集チーム、UBAKU。一棟貸しの宿「UBAKU Villa 宇莫別荘」の運営、地域メディア、改修のデザイン監修、宿と不動産のコンサルティング、移住・二拠点のご相談まで。">
 <meta property="og:url" content="https://ubaku.jp/">
 <meta property="og:image" content="https://ubaku.jp/ogp.jpg">
 <meta property="og:locale" content="ja_JP">
@@ -38,7 +38,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Ubaku",
+  "name": "UBAKU",
   "url": "https://ubaku.jp/",
   "logo": "https://ubaku.jp/assets/img/icon-512.png",
   "description": "まちを想い、まちを動かす、美瑛・東川町の地域編集チーム。美瑛と東川を拠点に、大雪山をとりまくまちで活動。",
@@ -64,12 +64,13 @@
 
 <!-- ======================= オープニング（大雪山の稜線） =======================
      ページを開いたときに一度だけ流れる（同じタブで2回目以降・動きを減らす設定では出ない）
-     数字が000→100と進み、稜線が描かれ、Find → Make → Live と言葉が変わり、最後に幕のように上がる
+     数字が000→100と進み、稜線が描かれ、「Find your place.」「Live your time.」の2行が1文字ずつ浮かび上がり、最後に幕のように上がる
      JSが動かないときは hidden のまま（表示されない） -->
 <div class="opening" id="opening" hidden aria-hidden="true">
   <span class="op-logo wordmark"></span>
   <span class="op-coord">43.60°N<br>142.56°E</span>
-  <p class="op-big"><span class="op-verb"><i>Find</i><i>Make</i><i>Live</i></span><span class="op-rest">your place.</span></p>
+  <!-- 英文は2行。main.js が1文字ずつに分け、ぼかしの中から順に浮かび上がらせる -->
+  <p class="op-big"><span class="op-l1"><i>Find</i> your place.</span><span class="op-l2"><i>Live</i> your time.</span></p>
   <svg class="op-ridge" viewBox="0 0 1000 120">
     <defs>
       <linearGradient id="op-mt" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="700">
@@ -88,7 +89,7 @@
      スマホは右側が「Menu」ボタンになり、押すと一覧が開く -->
 <div class="topbar" id="topbar">
   <div class="topbar-inner wrap">
-    <a class="topbar-logo wordmark" href="#" aria-label="Ubaku（ページの一番上へ）"></a>
+    <a class="topbar-logo wordmark" href="#" aria-label="UBAKU（ページの一番上へ）"></a>
     <button type="button" class="topbar-menu" aria-expanded="false" aria-controls="topbar-list">Menu</button>
     <nav class="topbar-nav" aria-label="メニュー">
       <ul id="topbar-list">
@@ -118,7 +119,7 @@
   </nav>
 
   <div class="hero-main">
-    <div class="hero-mark wordmark intro" style="--d:.15s" role="img" aria-label="Ubaku"></div>
+    <div class="hero-mark wordmark intro" style="--d:.15s" role="img" aria-label="UBAKU"></div>
     <div class="hero-copy intro" style="--d:.5s">
       <!-- h1はこの1つだけ（文言は固定） -->
       <h1>大雪山のふもとで、<br class="sp-br"><em class="hl">知る・泊まる・過ごす・住む。</em></h1>
@@ -139,7 +140,7 @@
   <div class="panorama intro" style="--d:1s">
     <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 54 C 320 92, 620 90, 880 62 C 1080 40, 1280 42, 1440 64 L1440 0 Z"/></svg>
     <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="assets/img/hero-01-2400.webp" srcset="assets/img/hero-01-1600.webp 1600w, assets/img/hero-01-2400.webp 2400w, assets/img/hero-01-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="夕日で染まる大雪山" width="3200" height="1198" fetchpriority="high"></div>
-    <div class="slide photo ph2" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="assets/img/hero-02-2400.webp" srcset="assets/img/hero-02-1600.webp 1600w, assets/img/hero-02-2400.webp 2400w, assets/img/hero-02-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="Ubaku Villa 宇莫別荘の窓から見る森" width="3200" height="1128" loading="lazy"></div>
+    <div class="slide photo ph2" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="assets/img/hero-02-2400.webp" srcset="assets/img/hero-02-1600.webp 1600w, assets/img/hero-02-2400.webp 2400w, assets/img/hero-02-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="UBAKU Villa 宇莫別荘の窓から見る森" width="3200" height="1128" loading="lazy"></div>
     <div class="slide photo ph3" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true"><img src="assets/img/hero-03-2400.webp" srcset="assets/img/hero-03-1600.webp 1600w, assets/img/hero-03-2400.webp 2400w, assets/img/hero-03-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="春の美瑛の丘と一本の木" width="3200" height="1143" loading="lazy"></div>
   </div>
 </header>
@@ -154,13 +155,13 @@
     <div class="cv-concept">
       <div class="sec-head">
         <h2 class="display">Concept</h2>
-        <span class="aside">Ubakuの考え方</span>
+        <span class="aside">UBAKUの考え方</span>
       </div>
       <div class="concept">
         <p class="concept-catch">ひとと、土地と、場所を、<br><em class="hl">つないでいく。</em></p>
         <div class="tomoe">
           <svg viewBox="110 20 680 700" role="img" aria-labelledby="tomoe-title">
-            <title id="tomoe-title">ひと・土地・場所の3つの円が重なり、真ん中にUbakuがある図</title>
+            <title id="tomoe-title">ひと・土地・場所の3つの円が重なり、真ん中にUBAKUがある図</title>
             <defs>
               <clipPath id="clip-top"><circle cx="450" cy="255" r="215"/></clipPath>
               <clipPath id="clip-br"><circle cx="565" cy="455" r="215"/></clipPath>
@@ -185,7 +186,7 @@
             <g class="lbl lbl-top"><text class="lbl-en" x="450" y="172">[People]</text><text class="lbl-jp" x="450" y="212">ひと</text></g>
             <g class="lbl lbl-bl"><text class="lbl-en" x="268" y="482">[Land]</text><text class="lbl-jp" x="268" y="522">土地</text></g>
             <g class="lbl lbl-br"><text class="lbl-en" x="632" y="482">[Place]</text><text class="lbl-jp" x="632" y="522">場所</text></g>
-            <g class="lbl lbl-center"><text class="lbl-en" x="450" y="374">[Connect]</text><text class="lbl-brand" x="450" y="414">Ubaku</text></g>
+            <g class="lbl lbl-center"><text class="lbl-en" x="450" y="374">[Connect]</text><text class="lbl-brand" x="450" y="414">UBAKU</text></g>
           </svg>
         </div>
       </div>
@@ -229,14 +230,14 @@
         <span class="en kind">Connect</span>
         <h3>知る・つながる</h3>
         <p>大雪山のふもとの食と人の物語を、全国へ届ける。</p>
-        <span class="en lines">Ubaku Media</span>
-        <span class="lines-soon"><span class="en lines">Ubaku Yasai</span><span class="en badge">Coming soon</span></span>
+        <span class="en lines">UBAKU Media</span>
+        <span class="lines-soon"><span class="en lines">UBAKU Yasai</span><span class="en badge">Coming soon</span></span>
       </div>
       <div class="work-item">
         <span class="en kind">Stay</span>
         <h3>泊まる</h3>
         <p>景色を見るだけでなく、土地の時間ごと過ごせる宿をつくる。</p>
-        <a class="en lines" href="https://ubakuvilla.com">Ubaku Villa 宇莫別荘 →</a>
+        <a class="en lines" href="https://ubakuvilla.com">UBAKU Villa 宇莫別荘 →</a>
       </div>
       <div class="work-item">
         <span class="en kind">Place</span>
@@ -254,13 +255,13 @@
         <span class="en kind">Consult</span>
         <h3>支える</h3>
         <p>宿の開業から、不動産開発、新規事業まで、実経験を手渡す。</p>
-        <a class="en lines" href="consulting/">Ubaku Consulting →</a>
+        <a class="en lines" href="consulting/">UBAKU Consulting →</a>
       </div>
       <div class="work-item">
         <span class="en kind">Design</span>
         <h3>考える</h3>
         <p>建物の改修を、デザイン監修とプロデュースで届ける。</p>
-        <a class="en lines" href="design/">Ubaku Design →</a>
+        <a class="en lines" href="design/">UBAKU Design →</a>
       </div>
     </div>
   </div>
@@ -275,12 +276,12 @@
 
   <!-- Villa（大きく1段） -->
   <article id="villa" class="villa">
-    <div class="photo zoom"><img src="assets/img/villa.webp" alt="Ubaku Villa 宇莫別荘の入口の木製サイン" width="2000" height="1333" loading="lazy"></div>
+    <div class="photo zoom"><img src="assets/img/villa.webp" alt="UBAKU Villa 宇莫別荘の入口の木製サイン" width="2000" height="1333" loading="lazy"></div>
     <div class="villa-text">
       <span class="label">Stay｜泊まる</span>
-      <h3 class="biz-name">Ubaku Villa <span class="biz-name-jp">宇莫別荘</span></h3>
+      <h3 class="biz-name">UBAKU Villa <span class="biz-name-jp">宇莫別荘</span></h3>
       <p class="catch">暮らしに余白をもたらす貸切宿。</p>
-      <p class="body">美瑛の集落・中宇莫別に建つ、1日1組限定の一棟貸しの宿「Ubaku Villa 宇莫別荘」。築約60年の建物をフルリノベーションし、2026年1月に開業しました。</p>
+      <p class="body">美瑛の集落・中宇莫別に建つ、1日1組限定の一棟貸しの宿「UBAKU Villa 宇莫別荘」。築約60年の建物をフルリノベーションし、2026年1月に開業しました。</p>
       <!-- スマホでは「続きを読む」でたたむ（パソコンでは常に表示） -->
       <div class="fold fold-wrap" id="fold-villa">
       <p class="body">約1,800㎡の敷地に、寝室4室。最大10名まで、家族や仲間と一棟まるごと過ごせます。旭川空港から車で約18分、美瑛駅から車で約10分。夏の丘の景色も、冬の雪の静けさも、この場所の日常です。</p>
@@ -292,7 +293,7 @@
       <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-villa">続きを読む</button>
       <a class="more" href="https://ubakuvilla.com">宇莫別荘の公式サイトへ</a>
       <div class="minami">
-        <strong>Ubaku Villa 南邸｜Coming soon</strong>
+        <strong>UBAKU Villa 南邸｜Coming soon</strong>
         <span class="body">美瑛駅から歩いて10分。宇莫別荘とはまた違う世界観の宿を、いま準備しています。どうぞお楽しみに。</span>
       </div>
     </div>
@@ -303,7 +304,7 @@
     <div class="photo media-photo"><img src="assets/img/media.webp" alt="雪をかぶった大雪山と、美瑛の緑の丘" width="2000" height="1334" loading="lazy"></div>
     <div class="media-name">
       <span class="label">Connect｜知る・つながる</span>
-      <h3 class="biz-name">Ubaku Media</h3>
+      <h3 class="biz-name">UBAKU Media</h3>
     </div>
     <div class="media-text">
       <p class="catch">大雪山のふもとの、ひと・くらし・イベント。</p>
@@ -317,12 +318,12 @@
     <article id="design">
       <div class="photo ph3"><img src="assets/img/design.webp" alt="花と木のカードスタンド" width="2000" height="1333" loading="lazy"></div>
       <span class="label">Design｜考える</span>
-      <h3 class="biz-name">Ubaku Design</h3>
-      <p class="catch">改修を、デザイン監修とプロデュースで。</p>
+      <h3 class="biz-name">UBAKU Design</h3>
+      <p class="catch">デザイン監修とプロデュースで再生。</p>
       <!-- マウスを乗せると、ここから下だけが少し浮く -->
       <div class="design-body lift-card fold" id="fold-design">
-      <p class="body">古い建物には、新しく建てるものにはない時間の厚みがあります。Ubaku Designは、その建物の良さを生かした改修を、コンセプトづくりから仕上がりまで伴走します。</p>
-      <p class="body">対象は、構造に手を加えない改修・内装・設備の更新です。工事はご紹介する工事会社と直接ご契約いただき、Ubakuは監修とプロデュースに専念します。大規模な改修が必要な場合は、提携する建築士と連携します。</p>
+      <p class="body">古い建物には、新しく建てるものにはない時間の厚みがあります。UBAKUは、その建物の良さを生かした改修を、コンセプトづくりから仕上がりまで伴走します。</p>
+      <p class="body">工事はご紹介する工事会社と直接ご契約いただき、UBAKUは監修とプロデュースに専念します。大規模な改修が必要な場合は、提携する建築士と連携します。</p>
       <div class="steps">
         <span class="label">進め方</span>
         <ol>
@@ -335,12 +336,12 @@
       </div>
       </div>
       <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-design">続きを読む</button>
-      <a class="more" href="design/">改修の実績を見る</a>
+      <a class="more" href="design/">UBAKU Design の改修実績を見る</a>
     </article>
 
     <article id="consulting">
       <span class="label">Consult｜支える</span>
-      <h3 class="biz-name">Ubaku Consulting</h3>
+      <h3 class="biz-name">UBAKU Consulting</h3>
       <p class="catch">宿と不動産の実務から、事業をかたちに。</p>
       <div class="fold fold-wrap" id="fold-consulting">
       <div class="sub lift-card">
@@ -349,12 +350,12 @@
       </div>
       <div class="sub lift-card">
         <h4>不動産企画・新規事業支援</h4>
-        <p class="body">不動産開発、賃貸住宅の運営、投資用不動産、新規事業の立ち上げまで。東京の大手不動産会社での実務経験をもとに、事業の組み立てから支援します。都市の収益不動産で培った数字の見方と、地方で宿を立ち上げた現場感覚。その両方を持つことが、Ubakuの強みです。美瑛に限らず、全国対応。</p>
+        <p class="body">不動産開発・運営、投資用不動産、新規事業の立ち上げまで。東京の大手不動産会社での実務経験をもとに、事業の組み立てから支援します。都会の収益不動産で培った数字の見方と、地方で宿を立ち上げた現場感覚、両方を持つことがUBAKUの強みです。北海道に限らず、全国対応。</p>
       </div>
-      <p class="note">支援で使う仕組みは、チーム内の研究開発部門「Ubaku Lab」で開発・検証しています。</p>
+      <p class="note">支援で使う仕組みは、チーム内の研究開発部門「UBAKU Lab」で開発・検証しています。</p>
       </div>
       <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-consulting">続きを読む</button>
-      <a class="more" href="consulting/">Ubaku Consulting について詳しく</a>
+      <a class="more" href="consulting/">UBAKU Consulting の詳細を知る</a>
     </article>
   </div>
 </section>
@@ -366,14 +367,15 @@
   <div class="wrap">
     <div class="sec-head">
       <h2 class="display">Numbers</h2>
-      <span class="aside">数字で見るUbaku</span>
+      <span class="aside">数字で見るUBAKU</span>
     </div>
     <ul class="numbers-grid">
-      <li><span class="num">2026.1</span><p>Ubaku Villa 宇莫別荘、開業</p></li>
-      <li><span class="num">1日1組</span><p>一棟まるごと、最大10名まで</p></li>
-      <li><span class="num">80%+</span><p>海外から訪れるゲストの割合（2026年7月時点）</p></li>
+      <!-- 数字は画面に入ると速く回って、最後に今の値で止まる（data-from → data-to。前後の文字は data-pre・data-suf。動きは main.js） -->
+      <li><span class="num cnt" data-from="2000" data-to="2026" data-suf=".01">2026.01</span><p>UBAKU Villa 宇莫別荘、開業</p></li>
+      <li><span class="num cnt" data-pre="1日" data-from="10" data-to="1" data-suf="組">1日1組</span><p>一棟まるごと、最大10名まで</p></li>
+      <li><span class="num cnt" data-to="80" data-suf="%+">80%+</span><p>海外から訪れるゲストの割合（2026年7月時点）</p></li>
       <li><span class="num">満点</span><p>Airbnb・Booking.comでの評価（2026年7月時点）</p></li>
-      <li><span class="num">2棟目</span><p>Ubaku Villa 南邸、準備中</p></li>
+      <li><span class="num cnt" data-from="0" data-to="2" data-suf="棟目">2棟目</span><p>UBAKU Villa 南邸、準備中</p></li>
     </ul>
   </div>
 </section>
@@ -389,7 +391,7 @@
       <div class="photo ph3"><img src="assets/img/mashu.webp" alt="Mashu" width="2000" height="2000" loading="lazy"></div>
       <span class="label">Producer｜描く人</span>
       <h3>Mashu</h3>
-      <p class="body fold-clamp" id="fold-member-1">北海道東川町での短期留学をきっかけに、日本へ移住。日系大手不動産開発会社で働きながら、美瑛・東川町を舞台に個人での活動を重ねる。宿をつくり、野菜を届け、地域の仕組みを描いていく。</p>
+      <p class="body fold-clamp" id="fold-member-1">東川町立日本語学校での短期留学をきっかけに、日本へ移住。いまは東京で不動産開発会社で働きながら、美瑛・東川町を舞台に個人での活動を重ねる。宿をつくり、野菜を届け、地域の仕組みを描いていく。</p>
       <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-member-1">続きを読む</button>
     </div>
     <div class="member">
@@ -426,8 +428,8 @@
   <div class="wrap">
     <div class="note-links">
       <a class="more" href="https://note.com/loftershushi" target="_blank" rel="noopener">mashu の note</a>
-      <a class="more" href="https://note.com/ubaku_jp" target="_blank" rel="noopener">Ubaku の note</a>
-      <a class="more" href="https://note.com/ubakuvilla" target="_blank" rel="noopener">Ubaku Villa 宇莫別荘 の note</a>
+      <a class="more" href="https://note.com/ubaku_jp" target="_blank" rel="noopener">UBAKU の note</a>
+      <a class="more" href="https://note.com/ubakuvilla" target="_blank" rel="noopener">UBAKU Villa 宇莫別荘 の note</a>
     </div>
   </div>
 </section>
@@ -446,7 +448,7 @@
       <p class="contact-lead-title">どんなことでも、<em class="hl">お気軽に。</em></p>
       <p>宿のこと、移住や二拠点のこと、不動産のこと、野菜のこと。まだ形になっていない思いつきでも大丈夫です。お話しできるのを、楽しみに待っています。</p>
     </div>
-    <!-- お問い合わせフォーム（Web3Forms → Ubaku のメール。自動返信はなし）
+    <!-- お問い合わせフォーム（Web3Forms → UBAKU のメール。自動返信はなし）
          アクセスキー（Web3Forms の管理画面で info@ubaku.jp のアカウントに登録済み）
          スパム対策：ロボット判定（hCaptcha）＋人には見えない罠の欄（botcheck） -->
     <form class="form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
@@ -492,8 +494,8 @@
     <!-- ======================= ⑩ フッター ======================= -->
     <footer>
       <div>
-        <span class="footer-logo wordmark" role="img" aria-label="Ubaku"></span>
-        <span>Ubaku｜まちを想い、まちを動かす、美瑛・東川町の地域編集チーム</span><br>
+        <span class="footer-logo wordmark" role="img" aria-label="UBAKU"></span>
+        <span>UBAKU｜まちを想い、まちを動かす、美瑛・東川町の地域編集チーム</span><br>
         <span>〒071-0212 北海道上川郡美瑛町旭町4丁目10-8-103</span>
       </div>
       <div class="footer-right">
@@ -501,7 +503,7 @@
           <li><span class="en label">Mail</span><a class="en js-mail" data-user="info" data-domain="ubaku.jp" href="#contact">info［at］ubaku.jp</a></li>
           <li><span class="en label">Instagram</span><a class="en" href="https://www.instagram.com/ubaku_jp/" target="_blank" rel="noopener">@ubaku_jp</a></li>
         </ul>
-        <span class="en">© 2026 Ubaku</span>
+        <span class="en">© 2026 UBAKU</span>
       </div>
     </footer>
   </div>
