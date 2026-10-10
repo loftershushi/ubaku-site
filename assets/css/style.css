@@ -67,6 +67,7 @@
   --head-gap:72px;                  /* 見出しの線から中身までの余白 */
   --ridge-h:120px;                  /* 稜線の高さ */
   --hero-max-h:max(380px, calc(100svh - 330px));   /* 【ヒーロー写真】写真の高さの上限（開いた画面の中に、写真の下の 01・02・03 まで収まるように） */
+  --topbar-h:56px;                  /* 【固定メニュー】細い帯の高さ */
   --hill-h:110px;                    /* Numbers の丘の線の高さ */
 
   /* --- 動き --- */
@@ -186,6 +187,14 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .hero{display:flex;flex-direction:column;padding-top:36px;padding-bottom:36px}
 .nav{display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:12px;letter-spacing:.18em}
 .nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0}
+/* ---------- 固定メニュー（細い帯）：ふだんは画面の上に隠しておき、.is-shown で下りてくる ---------- */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule-short);
+  transform:translateY(-100%);visibility:hidden;transition:transform .4s cubic-bezier(.2,.7,.2,1),visibility 0s linear .4s}
+.topbar.is-shown{transform:none;visibility:visible;transition:transform .4s cubic-bezier(.2,.7,.2,1),visibility 0s}
+.topbar-inner{height:var(--topbar-h);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.topbar-logo{width:96px;flex:none}   /* 小さな UBAKŪ（押すとページの一番上へ） */
+.topbar-nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0;font-size:12px;letter-spacing:.18em}
+.topbar-menu{display:none}
 .nav-place{font-family:'EB Garamond',serif;font-weight:500;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);line-height:1}
 .hero-main{display:flex;justify-content:space-between;align-items:center;gap:40px;padding-top:40px}
 /* ロゴ（UBAKŪ の文字。元データ：02_ブランド・発信/logo/261010_Ubaku logo single2.svg）
@@ -447,6 +456,7 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
 @media (max-width: 1000px){
   :root{--sec-y:120px;--block-gap:96px;--head-gap:56px;--ridge-h:90px}
   .nav ul{gap:18px;flex-wrap:wrap;justify-content:flex-end}
+  .topbar-nav ul{gap:18px}
   .hero-main{flex-direction:column;align-items:flex-start}
   .values-grid,.two{grid-template-columns:minmax(0,1fr);column-gap:0}
   .cv-grid{grid-template-columns:minmax(0,1fr);gap:var(--block-gap)}
@@ -468,6 +478,15 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .hero{padding-top:20px}
   .nav{flex-direction:column;align-items:flex-start;gap:8px}
   .nav ul{justify-content:flex-start;gap:4px 16px}
+  /* 固定メニュー：スマホは右側を「Menu」ボタンにして、押すと帯の下に一覧が開く */
+  .topbar-menu{display:block;padding:8px 0 8px 16px;border:0;background:none;font:inherit;font-family:var(--f-title);font-weight:300;font-size:13px;letter-spacing:.18em;color:var(--ink);cursor:pointer}
+  .topbar-menu::after{content:"＋";margin-left:.6em;color:var(--accent-hl)}
+  .topbar-menu[aria-expanded="true"]::after{content:"－"}
+  .topbar-nav{position:absolute;top:100%;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--rule-short);display:none}
+  .topbar.is-open .topbar-nav{display:block}
+  .topbar-nav ul{flex-direction:column;gap:0;padding:4px var(--pad-x) 12px;font-size:14px}
+  .topbar-nav li + li{border-top:1px solid var(--rule-short)}
+  .topbar-nav a{display:block;padding:14px 0}
   .hero-copy h1 .sp-br{display:inline}   /* スマホだけ「知る・泊まる・過ごす・住む。」の前で改行 */
   /* スマホは写真の下に3本のバーだけ（01・02・03 と写真の説明の文字は出さない。読み上げ用には残す） */
   .slide-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding-top:14px}

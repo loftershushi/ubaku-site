@@ -84,6 +84,26 @@
   <span class="op-count">000</span>
 </div>
 
+<!-- ======================= 固定メニュー（細い帯） =======================
+     写真のあたりまで下にスクロールすると上に出る。下に読み進めると隠れ、上に戻すとまた出る（動きは main.js）
+     スマホは右側が「Menu」ボタンになり、押すと一覧が開く -->
+<div class="topbar" id="topbar">
+  <div class="topbar-inner wrap">
+    <a class="topbar-logo wordmark" href="#" aria-label="Ubaku（ページの一番上へ）"></a>
+    <button type="button" class="topbar-menu" aria-expanded="false" aria-controls="topbar-list">Menu</button>
+    <nav class="topbar-nav" aria-label="メニュー">
+      <ul id="topbar-list">
+        <li><a href="#values">Values</a></li>
+        <li><a href="#work">What We Do</a></li>
+        <li><a href="#business">Business</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#journal">Journal</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
 <!-- ======================= ① ヒーロー ======================= -->
 <header class="hero wrap">
   <nav class="nav intro" style="--d:0s" aria-label="メインメニュー">

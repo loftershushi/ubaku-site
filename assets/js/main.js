@@ -303,6 +303,47 @@
   targets.forEach(function (el) { io.observe(el); });
 })();
 
+/* ---------- 固定メニュー（細い帯） ----------
+   ・写真の上端より下までスクロールしたら使えるようにする（それより上では出さない）
+   ・下に読み進めているあいだは隠し、少しでも上に戻すと出す */
+(function () {
+  var bar = document.getElementById('topbar');
+  if (!bar) return;
+  var btn = bar.querySelector('.topbar-menu');
+  var pano = document.querySelector('.panorama');
+  var lastY = window.scrollY;
+
+  function setOpen(open) {   // スマホの一覧を開く・閉じる
+    bar.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function onScroll() {
+    var y = window.scrollY;
+    var start = pano ? pano.getBoundingClientRect().top + y : 400;   // 写真の上端の位置
+    if (y < start) {
+      bar.classList.remove('is-shown'); setOpen(false);
+    } else if (y < lastY - 4) {
+      bar.classList.add('is-shown');           // 上に戻した
+    } else if (y > lastY + 4 && !bar.classList.contains('is-open')) {
+      bar.classList.remove('is-shown');        // 下に読み進めている（一覧を開いているときは隠さない）
+    }
+    if (Math.abs(y - lastY) > 4) lastY = y;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function () { setOpen(!bar.classList.contains('is-open')); });
+  // 一覧の項目やロゴを押したら、一覧を閉じる
+  bar.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { setOpen(false); });
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  // ロゴ：ページの一番上へ
+  bar.querySelector('.topbar-logo').addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
 /* ---------- 「続きを読む」（スマホだけ。たたんである文章を開く・閉じる） ---------- */
 document.querySelectorAll('.fold-btn').forEach(function (btn) {
   var target = document.getElementById(btn.getAttribute('aria-controls'));
