@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
-<script>/* オープニングを出すかどうかを、表示の前に決める */try{var q=location.search;if(q.indexOf("nointro")<0&&(q.indexOf("intro")>=0||!sessionStorage.getItem("ubaku-opening"))&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("is-opening")}}catch(e){}</script>
+<script>/* オープニングを出すかどうかを、表示の前に決める（ページを開くたび毎回。?nointro のときと「動きを減らす」設定の人には出さない） */try{if(location.search.indexOf("nointro")<0&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("is-opening")}}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ubaku｜美瑛・東川町の地域編集チーム</title>
 <meta name="description" content="まちを想い、まちを動かす。美瑛町・東川町を拠点にする地域編集チーム、Ubaku。一棟貸しの宿「Ubaku Villa 宇莫別荘」の運営、地域メディア、改修のデザイン監修、宿と不動産のコンサルティング、移住・二拠点のご相談まで。">
@@ -169,8 +169,6 @@
             <g class="lbl lbl-center"><text class="lbl-en" x="450" y="374">[Connect]</text><text class="lbl-brand" x="450" y="414">Ubaku</text></g>
           </svg>
         </div>
-        <!-- 活動エリア -->
-        <p class="area-line">美瑛と東川を拠点に、大雪山をとりまくまちへ。</p>
       </div>
     </div>
     <div class="cv-values">

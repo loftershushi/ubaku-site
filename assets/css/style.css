@@ -146,7 +146,7 @@ p{margin:0}
 }
 
 /* ---------- 「詳しく見る」系のリンク ---------- */
-.more{align-self:flex-start;display:inline-block;font-size:13px;letter-spacing:.1em;border-bottom:1px solid var(--rule-short);padding:12px 0 6px}
+.more{align-self:flex-start;display:inline-block;font-size:13px;letter-spacing:.1em;border-bottom:1px solid var(--rule-long);padding:12px 0 6px}
 
 /* ---------- アニメーション③：リンクの下線が、マウスを乗せると左から伸びる ----------
    いつもは薄い線、マウスを乗せると濃い線が左から右へ伸びる */
@@ -361,7 +361,7 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .cv-concept .concept-catch{margin-top:0;font-size:clamp(20px,2vw,28px)}
 .cv-concept .tomoe{max-width:440px;margin-top:24px}        /* 図は少し小さく */
 .cv-values .values-grid{grid-template-columns:minmax(0,1fr);row-gap:0}
-.cv-values .value{padding:28px 0;border-top:1px solid var(--rule-short)}
+.cv-values .value{padding:clamp(28px,3vw,48px) 0;border-top:1px solid var(--rule-short)}   /* 【Values の間隔】左の Concept の図と高さが近くなるように、少し広め */
 .cv-values .value:first-child{border-top:0;padding-top:0}
 .cv-values .value h3{font-size:clamp(19px,1.7vw,23px)}
 
@@ -373,7 +373,6 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .concept-title{font-family:var(--f-display);font-weight:500;font-size:clamp(56px,8vw,104px);line-height:1;color:var(--ink)}
 .concept-catch{font-family:var(--f-heading);font-weight:400;font-size:clamp(22px,3.2vw,40px);line-height:1.7;letter-spacing:.08em;color:var(--ink);margin-top:24px}
 .tomoe{width:100%;max-width:720px;margin-top:48px}
-.area-line{margin-top:32px;font-size:14px;letter-spacing:.2em;color:var(--muted)}   /* 活動エリア */
 .tomoe svg{display:block;width:100%;height:auto}
 .tomoe .fill-top{fill:var(--c-top)}
 .tomoe .fill-br{fill:var(--c-br)}

@@ -16,7 +16,6 @@
   if (!op) return;
   if (!root.classList.contains('is-opening')) { op.remove(); return; }
   op.hidden = false;
-  try { sessionStorage.setItem('ubaku-opening', '1'); } catch (e) {}
 
   var DUR = 3800;               // 000→100 までの時間（ミリ秒。元は4700）
   var STEPS = [0.06, 0.36, 0.64]; // Find → Make → Live に切り替わるタイミング（全体の何割の時点か）
