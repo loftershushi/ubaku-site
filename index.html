@@ -41,13 +41,13 @@
   "@type": "Organization",
   "name": "Ubaku",
   "url": "https://ubaku.jp/",
-  "email": "info@ubaku.jp",
   "logo": "https://ubaku.jp/assets/img/icon-512.png",
   "description": "まちを想い、まちを動かす、美瑛・東川町の地域編集チーム。美瑛と東川を拠点に、大雪山をとりまくまちで活動。",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "JP",
     "addressRegion": "北海道",
+    "postalCode": "071-0212",
     "addressLocality": "上川郡美瑛町",
     "streetAddress": "旭町4丁目10-8-103"
   },
@@ -109,8 +109,8 @@
 
   <!-- スライドの切り替えボタン（スライド2・3の文言は見出しにしない） -->
   <div class="slide-tabs intro" style="--d:.7s" role="tablist" aria-label="ヒーロー写真の切り替え">
-    <button type="button" role="tab" id="tab-0" aria-controls="slide-0" aria-selected="true">01　雪原と夕暮れの大雪山</button>
-    <button type="button" role="tab" id="tab-1" aria-controls="slide-1" aria-selected="false" tabindex="-1">02　宇莫別荘の窓から見える森</button>
+    <button type="button" role="tab" id="tab-0" aria-controls="slide-0" aria-selected="true">01　夕暮れの大雪山</button>
+    <button type="button" role="tab" id="tab-1" aria-controls="slide-1" aria-selected="false" tabindex="-1">02　宇莫別荘の窓から見る森</button>
     <button type="button" role="tab" id="tab-2" aria-controls="slide-2" aria-selected="false" tabindex="-1">03　美瑛の丘の春景色</button>
   </div>
 
@@ -119,9 +119,9 @@
        1枚目だけ loading="lazy" を付けない -->
   <div class="panorama intro" style="--d:.9s">
     <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 54 C 320 92, 620 90, 880 62 C 1080 40, 1280 42, 1440 64 L1440 0 Z"/></svg>
-    <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="assets/img/hero-01-2400.webp" srcset="assets/img/hero-01-1600.webp 1600w, assets/img/hero-01-2400.webp 2400w, assets/img/hero-01-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="雪原の向こうに、夕日で染まる大雪山" width="3200" height="2133" fetchpriority="high"></div>
-    <div class="slide photo ph2" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="assets/img/hero-02-2400.webp" srcset="assets/img/hero-02-1600.webp 1600w, assets/img/hero-02-2400.webp 2400w, assets/img/hero-02-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="Ubaku Villa 宇莫別荘の窓から見える森" width="3200" height="2135" loading="lazy"></div>
-    <div class="slide photo ph3" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true"><img src="assets/img/hero-03-2400.webp" srcset="assets/img/hero-03-1600.webp 1600w, assets/img/hero-03-2400.webp 2400w, assets/img/hero-03-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="春の美瑛の丘と一本の木" width="3200" height="2134" loading="lazy"></div>
+    <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="assets/img/hero-01-2400.webp" srcset="assets/img/hero-01-1600.webp 1600w, assets/img/hero-01-2400.webp 2400w, assets/img/hero-01-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="夕日で染まる大雪山" width="3200" height="1333" fetchpriority="high"></div>
+    <div class="slide photo ph2" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="assets/img/hero-02-2400.webp" srcset="assets/img/hero-02-1600.webp 1600w, assets/img/hero-02-2400.webp 2400w, assets/img/hero-02-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="Ubaku Villa 宇莫別荘の窓から見る森" width="3200" height="1333" loading="lazy"></div>
+    <div class="slide photo ph3" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true"><img src="assets/img/hero-03-2400.webp" srcset="assets/img/hero-03-1600.webp 1600w, assets/img/hero-03-2400.webp 2400w, assets/img/hero-03-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="春の美瑛の丘と一本の木" width="3200" height="1333" loading="lazy"></div>
   </div>
 </header>
 
@@ -449,9 +449,13 @@
       </div>
     </div>
 
-    <!-- お問い合わせフォーム（Formspree → info@ubaku.jp）
-         フォームIDを受け取ったら YOUR_FORM_ID を差し替える -->
-    <form class="form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <!-- お問い合わせフォーム（Web3Forms → Ubaku のメール。自動返信はなし）
+         アクセスキーを受け取ったら YOUR_ACCESS_KEY を差し替える
+         スパム対策：ロボット判定（hCaptcha）＋人には見えない罠の欄（botcheck） -->
+    <form class="form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+      <input type="hidden" name="subject" value="【ubaku.jp】お問い合わせ">
+      <input type="hidden" name="from_name" value="ubaku.jp お問い合わせフォーム">
       <div class="field">
         <label for="f-name">お名前<span class="req">必須</span></label>
         <input id="f-name" name="name" type="text" autocomplete="name" required>
@@ -478,8 +482,10 @@
         <label for="f-message">内容<span class="req">必須</span></label>
         <textarea id="f-message" name="message" rows="6" required></textarea>
       </div>
-      <!-- スパム対策（人には見えない欄。ここに入力があると送信されない） -->
-      <input type="text" name="_gotcha" class="gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <!-- スパム対策（人には見えない欄。ロボットがここに印を付けると送信されない） -->
+      <input type="checkbox" name="botcheck" class="gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <!-- ロボット判定（hCaptcha） -->
+      <div class="field--wide h-captcha" data-captcha="true"></div>
       <div class="form-foot">
         <button type="submit" class="submit">送信する</button>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
@@ -491,12 +497,11 @@
       <div>
         <span class="footer-logo wordmark" role="img" aria-label="Ubaku"></span>
         <span>Ubaku｜まちを想い、まちを動かす、美瑛・東川町の地域編集チーム</span><br>
-        <!-- 郵便番号は確認後に「〒」付きで先頭に追記する -->
-        <span>北海道上川郡美瑛町旭町4丁目10-8-103</span>
+        <span>〒071-0212 北海道上川郡美瑛町旭町4丁目10-8-103</span>
       </div>
       <div class="footer-right">
         <ul class="links-row">
-          <li><span class="en label">Mail</span><a class="en" href="mailto:info@ubaku.jp">info@ubaku.jp</a></li>
+          <li><span class="en label">Mail</span><a class="en js-mail" data-user="info" data-domain="ubaku.jp" href="#contact">info［at］ubaku.jp</a></li>
           <li><span class="en label">Instagram</span><a class="en" href="https://www.instagram.com/ubaku_jp/" target="_blank" rel="noopener">@ubaku_jp</a></li>
         </ul>
         <span class="en">© 2026 Ubaku</span>
@@ -505,6 +510,7 @@
   </div>
 </section>
 
+<script src="https://web3forms.com/client/script.js" async defer></script>
 <script src="assets/js/notes.js"></script>
 <script src="assets/js/main.js"></script>
 </body>

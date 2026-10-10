@@ -1,7 +1,7 @@
 /* =========================================================
    ubaku.jp の動き
    1. ヒーローの3枚スライド（6秒ごとに自動切替＋ボタンで手動切替）
-   2. お問い合わせフォーム（Formspreeへ送り、ページ内に「送信しました」を表示）
+   2. お問い合わせフォーム（Web3Formsへ送り、ページ内に「送信しました」を表示）／メールアドレスの表示
    3. スクロールで文字や写真がふわっと現れる動き
    4. Journal：noteの記事を2段で流す
    0. オープニング（大雪山の稜線のイントロ）
@@ -288,6 +288,14 @@
 })();
 
 /* ---------- 2. お問い合わせフォーム ---------- */
+// メールアドレス：ページの文字には「info［at］ubaku.jp」とだけ書き、開いたあとに本当のアドレスとリンクに組み立てる
+// （アドレスを集めて回るロボットは、ページの文字をそのまま読むため）
+document.querySelectorAll('.js-mail').forEach(function (a) {
+  var addr = a.dataset.user + '@' + a.dataset.domain;
+  a.href = 'mailto:' + addr;
+  a.textContent = addr;
+});
+
 (function () {
   var form = document.getElementById('contact-form');
   var status = document.getElementById('form-status');
@@ -299,17 +307,26 @@
     button.disabled = true;
     status.textContent = '送信しています…';
 
-    // Formspreeに送る（JSONで結果を受け取る）
+    // 件名に種別を入れる（メールソフトで振り分けやすくするため）
+    var data = new FormData(form);
+    data.set('subject', '【ubaku.jp】お問い合わせ（' + (data.get('type') || 'その他') + '）');
+
+    // Web3Formsに送る（JSONで結果を受け取る）
     fetch(form.action, {
       method: 'POST',
-      body: new FormData(form),
+      body: data,
       headers: { 'Accept': 'application/json' }
     }).then(function (res) {
-      if (!res.ok) throw new Error('send failed');
+      return res.json().then(function (json) {
+        if (!res.ok || !json.success) throw new Error(json.message || 'send failed');
+      });
+    }).then(function () {
       form.reset();
+      if (window.hcaptcha) { try { window.hcaptcha.reset(); } catch (err) {} }
       status.textContent = '送信しました。お問い合わせありがとうございます。';
     }).catch(function () {
-      status.textContent = '送信できませんでした。お手数ですが info@ubaku.jp へ直接メールでお送りください。';
+      // メールアドレスは、ロボットに拾われないよう分けて書いておき、ここで組み立てる
+      status.textContent = '送信できませんでした。お手数ですが ' + 'info' + '@' + 'ubaku.jp' + ' へ直接メールでお送りください。';
     }).then(function () {
       button.disabled = false;
     });

@@ -204,9 +204,9 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 
 .panorama{position:relative;aspect-ratio:var(--hero-ratio);margin-top:40px;margin-left:calc(50% - 50vw + var(--hero-bleed));margin-right:calc(50% - 50vw + var(--hero-bleed));overflow:hidden}
 /* 写真ごとに「切り抜くときに残したい場所」を指定（左右％ 上下％） */
-#slide-0 img{object-position:50% 50%}   /* 夕日の大雪山と雪原の斜面を残す */
-#slide-1 img{object-position:50% 40%}   /* 窓の森を真ん中に */
-#slide-2 img{object-position:50% 72%}   /* 丘と一本の木（地平線）を残す */
+#slide-0 img{object-position:50% 50%}   /* 素材の写真は横長（2.4:1）に切り抜き済み。スマホでは左右が少し切れる */
+#slide-1 img{object-position:50% 50%}
+#slide-2 img{object-position:50% 50%}
 /* 写真の上端を丘のカーブで切り抜く（白い形を重ねる方式だと、写真の縁に細い線が出るため、写真そのものを切り抜く）
    カーブの形を変えるときは、下の d="…" と index.html のヒーローの svg の d を同じにする */
 .hero .ridge{display:none}
@@ -480,7 +480,7 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .nav{flex-direction:column;align-items:flex-start;gap:8px}
   .nav ul{justify-content:flex-start;gap:4px 16px}
   .slide-tabs{grid-template-columns:minmax(0,1fr);gap:12px}
-  .panorama{--hero-ratio:3 / 2;--hero-bleed:0px;margin-top:28px}   /* スマホは少し縦を高く、画面の端まで */
+  .panorama{--hero-ratio:2 / 1;--hero-bleed:0px;margin-top:28px}   /* スマホは少し縦を高く、画面の端まで */
   .work-grid,.team-grid,.numbers-grid{grid-template-columns:minmax(0,1fr)}
   :root{--card-w:260px;--card-gap:20px}
   .note-links{justify-content:flex-start;flex-direction:column}
