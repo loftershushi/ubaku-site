@@ -15,14 +15,14 @@
   }
   if(reduce || seen){ intro.style.display = 'none'; finish(); }
   else {
-    var t = setTimeout(finish, 6400);
+    var t = setTimeout(finish, 7600);
     function skip(){ clearTimeout(t); finish(); }
     intro.addEventListener('click', skip);
     document.addEventListener('keydown', function once(){ skip(); document.removeEventListener('keydown', once); });
   }
 
   /* ---------- マウスを乗せると浮くカード（.lift）と、ゆっくり拡大する写真（.zoom）。ubaku.jp と同じ決まり ---------- */
-  document.querySelectorAll('.stats li,.town-photos figure,.know > div,.cats > div,.two article,.people article,.crew > div,.joins li,.values li,.steps li,.works li').forEach(function(e){ e.classList.add('lift'); });
+  document.querySelectorAll('.stats li,.town-photos figure,.know > div,.cats > div,.two article,.people article,.crew > div,.joins li,.values li,.works li').forEach(function(e){ e.classList.add('lift'); });
   document.querySelectorAll('.pano,.face,.town-photos .ph,.two .ph,.ph-wide').forEach(function(e){ e.classList.add('zoom'); });
 
   /* ---------- スクロールで、ふわっと現れる ---------- */

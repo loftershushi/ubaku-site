@@ -69,12 +69,14 @@ em.hl{font-style:normal;color:var(--accent-hl)}
 .intro.gone{opacity:0;visibility:hidden}
 .pond{position:relative;width:200px;height:200px;overflow:visible}
 .drop{position:absolute;left:50%;top:0;width:12px;height:17px;margin-left:-6px;fill:var(--accent-hl);animation:fall 1.1s cubic-bezier(.55,0,1,.45) .3s both}
-.ring{position:absolute;left:50%;top:50%;width:min(640px,150vw);aspect-ratio:1;height:auto;transform-origin:center;translate:-50% -50%;border:1px solid var(--accent-hl);border-radius:50%;opacity:0;transform:scale(.05)}
-.ring.a{animation:ripple 4s var(--ease) 1.4s both}
-.ring.b{animation:ripple 4s var(--ease) 1.9s both}
-.ring.c{animation:ripple 4s var(--ease) 2.4s both}
+.ring{position:absolute;left:50%;top:50%;width:150vmax;aspect-ratio:1;height:auto;transform-origin:center;translate:-50% -50%;border:1px solid var(--accent-hl);border-radius:50%;opacity:0;transform:scale(.05)}
+.ring.a{animation:ripple 7s cubic-bezier(.35,.35,.55,1) 1.4s both}
+.ring.b{animation:ripple 7s cubic-bezier(.35,.35,.55,1) 2.1s both}
+.ring.c{animation:ripple 7s cubic-bezier(.35,.35,.55,1) 2.8s both}
+.ring.d{animation:ripple 7s cubic-bezier(.35,.35,.55,1) 3.5s both}
+.ring.e{animation:ripple 7s cubic-bezier(.35,.35,.55,1) 4.2s both}
 @keyframes fall{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(88px);opacity:0}}
-@keyframes ripple{0%{opacity:.9;transform:scale(.02) scaleY(.35)}60%{opacity:.35}100%{opacity:0;transform:scale(1) scaleY(.35)}}
+@keyframes ripple{0%{opacity:.8;transform:scale(.004) scaleY(.4)}50%{opacity:.4}100%{opacity:0;transform:scale(1) scaleY(.4)}}
 .intro-copy{font-family:var(--f-body);font-weight:200;color:var(--ink);font-size:clamp(14px,1.6vw,17px);letter-spacing:.14em;text-align:center;line-height:2.2;padding:0 24px}
 .intro-copy span{display:block;opacity:0;animation:fadeup 1.4s var(--ease) both}
 .intro-copy span:nth-child(1){animation-delay:2s}
