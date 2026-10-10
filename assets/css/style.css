@@ -340,7 +340,9 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .numbers .hill-fill{fill:var(--cream)}   /* 丘より上は、前のセクションと同じ地色 */
 .numbers-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px;list-style:none;margin:0;padding:0}
 .numbers-grid li{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--rule-short);padding-top:20px}
-.num{font-variant-numeric:tabular-nums;font-family:var(--f-title);font-weight:300;font-size:40px;letter-spacing:.02em;line-height:1.2;color:var(--green)}
+.num{white-space:nowrap;font-family:var(--f-title);font-weight:300;font-size:40px;letter-spacing:.02em;line-height:1.2;color:var(--green)}
+.num small{font-family:var(--f-body);font-size:14px;margin:0 2px;color:var(--muted)}   /* 単位（.01・%+・棟目 など）は小さな文字（東川ヴィレッジと同じ） */
+.num .cnt{font-variant-numeric:tabular-nums}   /* 回っている間に幅がガタつかないように */
 .numbers-grid p{font-size:13px;line-height:1.8;color:var(--muted)}
 
 /* =========================================================
@@ -527,6 +529,7 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .numbers-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
   .numbers-grid li{padding-top:12px;gap:4px}
   .num{font-size:26px}
+  .num small{font-size:12px}
   .numbers-grid p{font-size:12px;line-height:1.6}
   .numbers .sec-head{margin-bottom:24px}
   .numbers .wrap{padding-top:40px;padding-bottom:48px}

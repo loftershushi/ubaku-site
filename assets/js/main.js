@@ -364,7 +364,7 @@
   });
 })();
 
-/* ---------- Numbers：画面に入ったら、数字が速く回って最後に今の値で止まる（東川ヴィレッジのページと同じ動き） ----------
+/* ---------- Numbers：画面に入ったら、数字が 0 から速く回って最後に今の値で止まる（東川ヴィレッジのページと同じ動き） ----------
    data-from（始まりの数。なければ0）→ data-to（最後の数）。前後の文字は data-pre・data-suf */
 (function () {
   var counts = document.querySelectorAll('.cnt');
@@ -380,7 +380,6 @@
       el.textContent = pre + Math.round(from + (to - from) * e) + suf;
       if (k < 1) requestAnimationFrame(frame);
     }
-    el.textContent = pre + from + suf;
     requestAnimationFrame(frame);
   }
   var io = new IntersectionObserver(function (entries) {
