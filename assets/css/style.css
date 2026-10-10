@@ -506,10 +506,12 @@ html.is-opening,html.is-opening body{overflow:hidden}          /* オープニ�
 html.is-opening .intro{animation-play-state:paused}             /* ヒーローの登場は、幕が上がるまで待つ */
 .opening{position:fixed;inset:0;z-index:100;background:var(--cream);color:var(--ink);cursor:pointer;transition:opacity .5s ease;--ridge-bottom:30%;--peak-x:57;--peak-y:12}   /* 旭岳の山頂の位置（main.js が稜線から計算して入れる） */
 .opening[hidden]{display:none}
+.opening:not(.ready) .op-logo,.opening:not(.ready) .op-coord,.opening:not(.ready) .op-count{opacity:0}   /* フォントが届くまで文字を出さない */
+.op-logo,.op-coord,.op-count{transition:opacity .6s ease}
 .op-logo{position:absolute;top:calc(26px + env(safe-area-inset-top,0px));left:var(--pad-x);width:110px}
 .op-coord{position:absolute;top:calc(26px + env(safe-area-inset-top,0px));right:var(--pad-x);text-align:right;font-family:var(--f-en);font-size:11px;letter-spacing:.16em;line-height:1.7;color:var(--op-mist);font-variant-numeric:tabular-nums}
 .op-big{position:absolute;left:50%;top:27%;transform:translateX(-50%);margin:0;display:flex;align-items:flex-end;gap:.24em;font-family:var(--f-display);font-weight:500;font-size:clamp(26px,3.4vw,46px);letter-spacing:.01em;line-height:1;white-space:nowrap}
-.op-verb{display:inline-block;height:1.12em;line-height:1.12em;overflow:hidden;opacity:0;transition:opacity .8s}
+.op-verb{display:inline-block;height:1.12em;line-height:1.12em;overflow:hidden;opacity:0;transition:opacity .8s;padding:0 .18em 0 .12em;margin:0 -.18em 0 -.12em}   /* 斜体の文字は左右にはみ出すので、切れないように見えない余白を足す（並びの位置は変えない） */
 .op-verb i{display:block;text-align:right;height:1.12em;font-style:italic;transition:transform .7s cubic-bezier(.65,0,.25,1)}   /* 言葉が切り替わる速さ（元は1.1秒） */
 .op-rest{display:inline-block;height:1.12em;line-height:1.12em;opacity:0;transition:opacity .8s}
 .opening.s1 .op-verb,.opening.s1 .op-rest{opacity:1}
