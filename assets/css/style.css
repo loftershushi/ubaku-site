@@ -106,7 +106,6 @@ p{margin:0}
 
 /* ---------- Coming soon の小さな札（文字と同じくらいの幅） ---------- */
 .badge,.badge--light{align-self:flex-start;display:inline-block;padding:4px 12px;font-size:11px;letter-spacing:.16em;line-height:1.6;color:#fff;background:var(--accent-hl)}   /* Coming soon はすべて東川町の青 */
-.soon-text{color:var(--accent-hl)}   /* 文の中の Coming soon（南邸） */
 
 /* ---------- 写真（写真がないときは色の付いた箱になる） ---------- */
 .photo{position:relative;display:flex;align-items:flex-end;padding:16px;background:var(--ph1);overflow:hidden}
@@ -478,12 +477,12 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .hero{padding-top:20px}
   .nav{flex-direction:column;align-items:flex-start;gap:8px}
   .nav ul{justify-content:flex-start;gap:4px 16px}
-  .slide-tabs{grid-template-columns:minmax(0,1fr);gap:12px}
-  .panorama{--hero-ratio:2 / 1;--hero-bleed:0px;--hero-max-h:none;margin-top:28px}   /* スマホは少し縦を高く、画面の端まで */
+  .slide-tabs{display:none}   /* スマホは写真を大きく見せるため、01・02・03 の文字は出さない（写真は自動で切り替わる） */
+  .panorama{--hero-ratio:1 / 1;--hero-bleed:0px;--hero-max-h:none;margin-top:28px}   /* 【ヒーロー写真】スマホは正方形で大きく、画面の端まで */
+  #slide-2 img{object-position:72% 50%}   /* スマホでは左右が大きく切れるので、丘の一本の木を残す */
   .work-grid,.team-grid,.numbers-grid{grid-template-columns:minmax(0,1fr)}
   :root{--card-w:260px;--card-gap:20px}
   .note-links{justify-content:flex-start;flex-direction:column}
-  .concept-catch br{display:none}
   .work-grid{gap:48px}
   .sec-head{flex-direction:column;align-items:flex-start}
   .sec-head .aside{text-align:left}
