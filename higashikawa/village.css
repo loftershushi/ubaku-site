@@ -69,14 +69,14 @@ em.hl{font-style:normal;color:var(--accent-hl)}
 .intro.gone{opacity:0;visibility:hidden}
 .pond{position:relative;width:200px;height:200px;overflow:visible}
 .drop{position:absolute;left:50%;top:-20px;width:17px;height:31px;margin-left:-8.5px;fill:var(--accent-hl);animation:fall 1.1s cubic-bezier(.55,0,1,.45) .3s both}
-.ring{position:absolute;left:50%;top:50%;width:150vmax;aspect-ratio:1;height:auto;transform-origin:center;translate:-50% -50%;border:1px solid var(--accent-hl);border-radius:50%;opacity:0;transform:scale(.05)}
+.ring{position:absolute;left:50%;top:50%;width:150vmax;aspect-ratio:1;height:auto;transform-origin:center;translate:-50% -50%;border:2px solid var(--accent-hl);border-radius:50%;opacity:0;transform:scale(.05)}
 .ring.a{animation:ripple 7s cubic-bezier(.35,.35,.55,1) 1.4s both}
 .ring.b{animation:ripple 7s cubic-bezier(.35,.35,.55,1) 2.1s both}
 .ring.c{animation:ripple 7s cubic-bezier(.35,.35,.55,1) 2.8s both}
 .ring.d{animation:ripple 7s cubic-bezier(.35,.35,.55,1) 3.5s both}
 .ring.e{animation:ripple 7s cubic-bezier(.35,.35,.55,1) 4.2s both}
 @keyframes fall{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(88px);opacity:0}}
-@keyframes ripple{0%{opacity:.8;transform:scale(.004) scaleY(.4)}50%{opacity:.4}100%{opacity:0;transform:scale(1) scaleY(.4)}}
+@keyframes ripple{0%{opacity:1;transform:scale(.004) scaleY(.4)}55%{opacity:.7}100%{opacity:0;transform:scale(1) scaleY(.4)}}
 .intro-copy{font-family:var(--f-body);font-weight:200;color:var(--ink);font-size:clamp(14px,1.6vw,17px);letter-spacing:.14em;text-align:center;line-height:2.2;padding:0 24px}
 .intro-copy span{display:block;opacity:0;animation:fadeup 1.4s var(--ease) both}
 .intro-copy span:nth-child(1){animation-delay:2s}
@@ -103,8 +103,8 @@ em.hl{font-style:normal;color:var(--accent-hl)}
 .hero .tag{margin-top:24px;font-size:14px;letter-spacing:.14em;color:var(--sub)}
 .hero-photo{margin-top:clamp(48px,7vw,88px);overflow:hidden;aspect-ratio:2.4 / 1;
   /* 上端を雪原のようなゆるい起伏で切り抜く */
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C240,10 420,58 720,30 C1010,4 1210,46 1440,22 V600 H0 Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
-          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C240,10 420,58 720,30 C1010,4 1210,46 1440,22 V600 H0 Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat}
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' preserveAspectRatio='none'%3E%3Cpath d='M0,70 C180,8 420,0 640,38 C820,70 980,86 1160,58 C1290,38 1380,30 1440,34 V600 H0 Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' preserveAspectRatio='none'%3E%3Cpath d='M0,70 C180,8 420,0 640,38 C820,70 980,86 1160,58 C1290,38 1380,30 1440,34 V600 H0 Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat}
 .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}   /* 敷地の写真：木立と芝生が入る位置 */
 /* 登場の動き：文字が上から順に、写真は遅れてゆっくり */
 /* オープニングが消えていくのに重ねて、ゆっくり現れる（2026-10-11 ゆっくりに） */
@@ -136,10 +136,13 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 .lead em.hl{color:var(--accent-hl)}
 
 /* ---------- 大雪山のパノラマ（画面いっぱいの横長写真） ---------- */
-.pano{margin:0}
-.pano img{width:100%;aspect-ratio:2.6 / 1;object-fit:cover}
-.pano figcaption{max-width:1280px;margin:0 auto;padding:14px var(--pad-x) 0;font-size:12px;letter-spacing:.08em;color:var(--sub)}
-.pano + .sec{margin-top:calc(var(--sec-y) * .5)}
+.pano{margin:0 0 calc(var(--sec-y) * .6)}
+.pano-img{overflow:hidden;clip-path:inset(0 50% 0 50%);transition:clip-path 2.6s cubic-bezier(.65,0,.25,1)}
+.pano-img img{width:100%;aspect-ratio:3 / 1;object-fit:cover;object-position:50% 45%;transform:scale(1.12);transition:transform 4s cubic-bezier(.2,.7,.2,1)}
+.pano figcaption{margin-top:14px;font-size:12px;letter-spacing:.08em;color:var(--sub);opacity:0;transition:opacity 1.6s ease 1.8s}
+.pano.in .pano-img{clip-path:inset(0 0 0 0)}
+.pano.in .pano-img img{transform:none}
+.pano.in figcaption{opacity:1}
 
 /* ---------- 東川という町 ---------- */
 .town-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:80px}
@@ -194,7 +197,7 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 .face{position:relative;aspect-ratio:1;margin-bottom:24px;overflow:hidden}
 .face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .people .kind{margin-bottom:4px}
-.people h3{font-size:22px}
+.people h3{font-family:var(--f-title);font-weight:300;font-size:28px;letter-spacing:.06em;line-height:1.3}
 .people h3 small{margin-left:14px;font-family:var(--f-body);font-weight:300;font-size:12px;letter-spacing:.14em;color:var(--sub)}
 .crew{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:88px}
 .crew li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--rule-short);font-size:14px;color:var(--ink)}
@@ -209,9 +212,11 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 .frame img.on{opacity:1}
 .joins{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px;margin-top:80px}
 .joins li{border-top:1px solid var(--rule-short);padding:24px 0 40px}
-.joins b{display:block;margin-top:4px;font-family:var(--f-heading);font-weight:400;font-size:24px;letter-spacing:.12em;color:var(--ink)}
+.joins b{display:block;margin-top:4px;font-family:var(--f-heading);font-weight:400;font-size:24px;letter-spacing:.12em;color:var(--ink);transition:color .45s ease}
+@media (hover:hover){.joins li:hover b{color:var(--accent-hl)}}
 .joins .what{display:block;margin-top:10px;font-size:13px;color:var(--accent)}
 .joins p{margin-top:6px;font-size:14px}
+.joins p em{display:block;font-style:normal;font-size:13px;color:var(--ink);margin-top:6px}   /* 分譲地の種類の名前 */
 
 /* ---------- 大切にしたいこと ---------- */
 .values{display:grid;grid-template-columns:repeat(5,1fr);gap:32px}
@@ -258,22 +263,23 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 form{display:grid;gap:24px}
 form label,legend{display:block;margin-bottom:8px;font-size:13px;letter-spacing:.12em;color:var(--on-deep)}
 form label i{font-style:normal;font-size:11px;margin-left:8px;color:var(--on-deep-sub)}
-input[type=text],input[type=email],select,textarea{width:100%;padding:12px 14px;font:inherit;font-size:15px;color:var(--on-deep);background:rgba(255,255,255,.06);border:1px solid rgba(238,245,248,.3);border-radius:0;appearance:none}
+input[type=text],input[type=email],select,textarea{width:100%;padding:12px 14px;font:inherit;font-size:15px;color:var(--on-deep);background:rgba(255,255,255,.06);border:1px solid rgba(238,245,248,.3);border-radius:6px;appearance:none}
 select{background-image:linear-gradient(45deg,transparent 50%,var(--on-deep-sub) 50%),linear-gradient(135deg,var(--on-deep-sub) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat}
 select option{color:var(--ink)}
 textarea{min-height:120px;resize:vertical}
+textarea::placeholder{color:var(--on-deep-sub);opacity:.75;font-size:13px;line-height:1.9}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-hl);background:rgba(255,255,255,.1)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 fieldset{border:0;margin:0;padding:0}
 .chips{display:flex;flex-wrap:wrap;gap:10px}
 .chips label{margin:0;cursor:pointer}
 .chips input{position:absolute;opacity:0;pointer-events:none}
-.chips span{display:inline-block;padding:8px 16px;border:1px solid rgba(238,245,248,.35);font-size:13px;letter-spacing:.08em;color:var(--on-deep);transition:background .3s,border-color .3s}
+.chips span{display:inline-block;padding:8px 16px;border-radius:6px;border:1px solid rgba(238,245,248,.35);font-size:13px;letter-spacing:.08em;color:var(--on-deep);transition:background .3s,border-color .3s}
 .chips input:checked + span{background:var(--accent-hl);border-color:var(--accent-hl);color:#fff}
 .chips input:focus-visible + span{outline:2px solid var(--accent-hl);outline-offset:2px}
 .privacy,.proto{font-size:12px;color:var(--on-deep-sub)}
 .err{min-height:1em;font-size:13px;color:#FFD3C4}
-.send{justify-self:start;padding:14px 56px;font:inherit;font-size:14px;letter-spacing:.3em;color:#fff;background:var(--accent-hl);border:0;cursor:pointer;transition:background .3s}
+.send{justify-self:start;padding:14px 56px;border-radius:6px;font:inherit;font-size:14px;letter-spacing:.3em;color:#fff;background:var(--accent-hl);border:0;cursor:pointer;transition:background .3s}
 .send:hover{background:#1B8CC0}
 .thanks{display:none;font-family:var(--f-heading);font-size:20px;line-height:2;color:var(--on-deep)}
 .thanks.on{display:block}
@@ -327,7 +333,7 @@ fieldset{border:0;margin:0;padding:0}
   .by{gap:12px}
   .by .wordmark{width:72px}
   .hero h1{font-size:clamp(22px,6.4vw,28px)}
-  .hero h1 .verbs{font-size:.8em;white-space:nowrap}   /* 5つの言葉は1行に収める */
+  .hero h1 .verbs{display:block;font-size:min(.8em, calc((100vw - 40px) / 19.5));white-space:nowrap}   /* 5つの言葉は画面の幅に合わせて1行に収める */
   .hero .tag .sep{display:none}
   .hero .tag .loc{display:block}
   .hero-photo{aspect-ratio:4 / 3}

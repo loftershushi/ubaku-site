@@ -23,10 +23,10 @@
 
   /* ---------- マウスを乗せると浮くカード（.lift）と、ゆっくり拡大する写真（.zoom）。ubaku.jp と同じ決まり ---------- */
   document.querySelectorAll('.stats li,.town-photos figure,.know > div,.cats > div,.two article,.people article,.crew > div,.joins li,.values li,.works li').forEach(function(e){ e.classList.add('lift'); });
-  document.querySelectorAll('.pano,.face,.town-photos .ph,.two .ph,.ph-wide').forEach(function(e){ e.classList.add('zoom'); });
+  document.querySelectorAll('.face,.town-photos .ph,.two .ph,.ph-wide').forEach(function(e){ e.classList.add('zoom'); });
 
   /* ---------- スクロールで、ふわっと現れる ---------- */
-  var els = document.querySelectorAll('.r, #ten');
+  var els = document.querySelectorAll('.r, #ten, #pano');
   if(reduce || !('IntersectionObserver' in window)){
     els.forEach(function(e){ e.classList.add('in'); });
   } else {
