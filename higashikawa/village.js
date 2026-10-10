@@ -70,6 +70,16 @@
     counts.forEach(function(el){ co.observe(el); });
   }
 
+  /* ---------- ロードマップ：画面に入ったら、線が左から右へ青くなる ---------- */
+  var steps = document.querySelector('.steps');
+  if(reduce || !('IntersectionObserver' in window)){ steps.classList.add('go'); }
+  else {
+    var so = new IntersectionObserver(function(es){
+      if(es[0].isIntersecting){ setTimeout(function(){ steps.classList.add('go'); }, 400); so.disconnect(); }
+    }, {threshold:.5});
+    so.observe(steps);
+  }
+
   /* ---------- 図面の切り替え（鳥瞰図／配置計画図） ---------- */
   var tabs = {bird:document.getElementById('tab-bird'), plan:document.getElementById('tab-plan')};
   function show(k){

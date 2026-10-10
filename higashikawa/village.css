@@ -68,7 +68,7 @@ em.hl{font-style:normal;color:var(--accent-hl)}
 .intro{position:fixed;inset:0;overflow:hidden;z-index:100;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;transition:opacity 2.2s ease,visibility 2.2s}
 .intro.gone{opacity:0;visibility:hidden}
 .pond{position:relative;width:200px;height:200px;overflow:visible}
-.drop{position:absolute;left:50%;top:0;width:12px;height:17px;margin-left:-6px;fill:var(--accent-hl);animation:fall 1.1s cubic-bezier(.55,0,1,.45) .3s both}
+.drop{position:absolute;left:50%;top:-20px;width:17px;height:31px;margin-left:-8.5px;fill:var(--accent-hl);animation:fall 1.1s cubic-bezier(.55,0,1,.45) .3s both}
 .ring{position:absolute;left:50%;top:50%;width:150vmax;aspect-ratio:1;height:auto;transform-origin:center;translate:-50% -50%;border:1px solid var(--accent-hl);border-radius:50%;opacity:0;transform:scale(.05)}
 .ring.a{animation:ripple 7s cubic-bezier(.35,.35,.55,1) 1.4s both}
 .ring.b{animation:ripple 7s cubic-bezier(.35,.35,.55,1) 2.1s both}
@@ -105,7 +105,7 @@ em.hl{font-style:normal;color:var(--accent-hl)}
   /* 上端を雪原のようなゆるい起伏で切り抜く */
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C240,10 420,58 720,30 C1010,4 1210,46 1440,22 V600 H0 Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
           mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C240,10 420,58 720,30 C1010,4 1210,46 1440,22 V600 H0 Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat}
-.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}   /* 敷地の写真：木立と芝生が入る位置 */
 /* 登場の動き：文字が上から順に、写真は遅れてゆっくり */
 /* オープニングが消えていくのに重ねて、ゆっくり現れる（2026-10-11 ゆっくりに） */
 .ready .hero .place-name,.ready .hero h1 span,.ready .hero .tag{animation:fadeup 2.2s var(--ease) .8s both}
@@ -146,7 +146,9 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 .town-photos figure{margin:0}
 .town-photos .ph{aspect-ratio:4 / 3;margin:0}
 .town-photos figcaption{margin-top:10px;font-size:12px;letter-spacing:.08em;color:var(--sub)}
-.ph-wide{aspect-ratio:2.4 / 1;margin:56px 0 0}
+.wide-fig{margin:56px 0 0}
+.wide-fig figcaption{margin-top:10px;font-size:12px;letter-spacing:.08em;color:var(--sub)}
+.ph-wide{aspect-ratio:2.4 / 1;margin:0}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0 32px;margin-top:64px}
 .stats li{border-top:1px solid var(--rule-short);padding-top:24px}
 .stats b{display:block;font-family:var(--f-title);font-weight:300;font-size:40px;line-height:1.3;letter-spacing:.02em;color:var(--accent-hl)}
@@ -181,7 +183,9 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 /* ---------- 残す2棟 ---------- */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:64px}
 .ph,.face{display:flex;align-items:flex-end;padding:14px 16px;background:var(--ph);font-size:12px;letter-spacing:.1em;color:var(--sub)}
-.ph{aspect-ratio:3 / 2;margin-bottom:28px}
+.ph{position:relative;overflow:hidden;aspect-ratio:3 / 2;margin-bottom:28px}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.two article:first-child .ph img{object-position:50% 40%}   /* ミュージックバーは縦長の写真。三角の窓と赤いドアが入る位置 */
 .two .to{margin-top:6px;font-size:14px;color:var(--accent)}
 .two .d,.people .d{margin-top:14px;font-size:14px}
 
@@ -226,9 +230,17 @@ body:not(.ready) .hero .place-name,body:not(.ready) .hero h1,body:not(.ready) .h
 /* ---------- これから（横に並ぶ5つの段階） ---------- */
 .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;position:relative}
 .steps li{position:relative;padding-top:36px}
-.steps li::before{content:"";position:absolute;left:0;right:-24px;top:7px;height:1px;background:var(--rule-long)}
-.steps li:last-child::before{right:0}
+.steps::before,.steps::after{content:"";position:absolute;left:7px;right:calc((100% - 96px) / 5 - 8px);top:7px;height:1px;background:var(--rule-long)}
+.steps::after{background:var(--accent-hl);transform:scaleX(0);transform-origin:left center;transition:transform 2.4s cubic-bezier(.45,.1,.3,1)}
+.steps.go::after{transform:none}
+.steps li{z-index:1}
 .steps li::after{content:"";position:absolute;left:0;top:0;width:15px;height:15px;border-radius:50%;background:var(--paper);border:1px solid var(--rule-long)}
+.steps li::after{transition:border-color .5s ease}
+.steps.go li::after{border-color:var(--accent-hl)}
+.steps.go li:nth-child(2)::after{transition-delay:.6s}
+.steps.go li:nth-child(3)::after{transition-delay:1.2s}
+.steps.go li:nth-child(4)::after{transition-delay:1.8s}
+.steps.go li:nth-child(5)::after{transition-delay:2.4s}
 .steps li.now::after{background:var(--accent-hl);border-color:var(--accent-hl);box-shadow:0 0 0 6px rgba(35,160,218,.18)}
 .steps b{display:block;margin-top:8px;font-family:var(--f-heading);font-weight:400;font-size:18px;letter-spacing:.1em;color:var(--ink)}
 .steps span:not(.no){display:block;margin-top:8px;font-size:13px;line-height:1.9}
@@ -302,8 +314,9 @@ fieldset{border:0;margin:0;padding:0}
   .values{grid-template-columns:repeat(2,1fr);gap:40px 32px}
   .steps{grid-template-columns:1fr;gap:0}
   .steps li{padding:0 0 32px 40px}
-  .steps li::before{left:7px;right:auto;top:15px;bottom:0;width:1px;height:auto}
-  .steps li:last-child::before{display:none}
+  .steps::before,.steps::after{left:7px;right:auto;top:8px;bottom:40px;width:1px;height:auto}
+  .steps::after{transform:scaleY(0);transform-origin:center top}
+  .steps.go::after{transform:none}
   .steps b{margin-top:0}
   .works{grid-template-columns:repeat(2,1fr)}
 }
