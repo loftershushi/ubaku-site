@@ -4,6 +4,19 @@
    style.css のあとに読み込む
    ========================================================= */
 
+/* ---------- 【事業ごとの差し色】（2026-10-11） ----------
+   ページごとに --accent-hl（強調の文字・FAQの＋・進め方の番号・After の札・カードの線）を差し替える
+   ほかの色とかぶらないように：ブランド＝錆鉄御納戸 #405B55／東川町の青 #23A0DA（ロゴの横線・トップ）／Yasai＝赤土 #B4553A
+   ※ ロゴの Ū の横線は style.css の :root で決まるので、ここを変えても東川町の青のまま */
+:root{
+  --c-consult:#2D4A78;   /* Consulting：紺青（こんじょう）。信頼・実務 */
+  --c-design:#A3792C;    /* Design：黄土（おうど）。素材・手しごと */
+}
+.page-consulting{--accent-hl:var(--c-consult)}
+.page-design{--accent-hl:var(--c-design)}
+.page-consulting .cross{--accent:var(--c-design)}   /* 相手の事業へ案内する帯は、相手の色で */
+.page-design .cross{--accent:var(--c-consult)}
+
 /* ---------- ページの頭（左上の小さなロゴとメニュー → 事業名と見出し → 写真） ---------- */
 .sub-hero{padding-top:36px}
 .sub-nav{display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:12px;letter-spacing:.18em}
@@ -44,14 +57,14 @@
 .card li:first-child{border-top:0}
 .card:not(.reveal){transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .45s ease}
 @media (hover:hover){
-  .card:hover{transform:translateY(var(--lift));border-top-color:var(--green)}
+  .card:hover{transform:translateY(var(--lift));border-top-color:var(--accent-hl)}
 }
 .price-note{margin-top:40px;font-size:13px;color:var(--sub)}
 
 /* ---------- 進め方（番号つきの横並び） ---------- */
 .flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px;list-style:none;margin:0;padding:0;counter-reset:step}
 .flow li{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--rule-short);padding-top:20px;counter-increment:step}
-.flow li::before{content:counter(step,decimal-leading-zero);font-family:var(--f-title);font-weight:300;font-size:28px;line-height:1;color:var(--green)}
+.flow li::before{content:counter(step,decimal-leading-zero);font-family:var(--f-title);font-weight:300;font-size:28px;line-height:1;color:var(--accent-hl)}
 .flow h3{font-family:var(--f-heading);font-size:17px}
 .flow p{font-size:13px;line-height:1.9;color:var(--muted)}
 
@@ -78,7 +91,7 @@
 .ba .photo{aspect-ratio:3 / 2;padding:0}
 .ba--tall .photo{aspect-ratio:2 / 3;max-height:640px}
 .ba figcaption{position:absolute;left:12px;top:12px;padding:2px 10px;font-family:var(--f-en);font-size:11px;letter-spacing:.16em;color:var(--ink);background:var(--cream)}
-.ba figure:last-child figcaption{color:var(--cream);background:var(--green)}
+.ba figure:last-child figcaption{color:var(--cream);background:var(--accent-hl)}
 .ba-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px}
 .ba-head h3{font-family:var(--f-heading);font-size:18px}
 .ba-head p{font-size:14px;color:var(--muted)}
@@ -94,7 +107,7 @@
 /* ---------- よくあるご質問（開いて読む） ---------- */
 .faq{border-top:1px solid var(--rule-long)}
 .faq details{border-bottom:1px solid var(--rule-short)}
-.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:24px;padding:24px 0;font-family:var(--f-heading);font-size:17px;letter-spacing:.06em}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:24px;padding:24px 0;font-family:var(--f-body);font-weight:400;font-size:16px;letter-spacing:.06em;color:var(--ink)}   /* 小見出しのフォント（Murecho）には「旭」などがなく1字だけ字体が変わるため、本文のゴシックにする */
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"＋";color:var(--accent-hl);flex:none}
 .faq details[open] summary::after{content:"－"}
