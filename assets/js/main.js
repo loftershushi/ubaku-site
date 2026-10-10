@@ -271,7 +271,8 @@
     '.villa .photo', '.villa-text', '.media', '.two article',
     '.concept .kicker', '.concept-title', '.concept-catch', '.tomoe',
     '.numbers-grid li', '.member', '.journal-flow', '.note-links',
-    '.contact-lead', '.contact-grid > div', '.form', '.links-row'
+    '.contact-lead', '.contact-grid > div', '.form', '.links-row',
+    '.js-reveal'   // 下層ページ（/consulting・/design）で動かしたいもの
   ].join(','));
 
   targets.forEach(function (el) { el.classList.add('reveal'); });
@@ -337,8 +338,9 @@
     a.addEventListener('click', function () { setOpen(false); });
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
-  // ロゴ：ページの一番上へ
+  // ロゴ：ページの一番上へ（下層ページでは href="../" なので、そのままトップページへ移る）
   bar.querySelector('.topbar-logo').addEventListener('click', function (e) {
+    if (this.getAttribute('href') !== '#') return;
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });

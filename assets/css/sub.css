@@ -1,0 +1,131 @@
+/* =========================================================
+   下層ページ（/consulting・/design）の追加デザイン
+   色・フォント・余白は style.css の :root の変数をそのまま使う（ここで色を直接書かない）
+   style.css のあとに読み込む
+   ========================================================= */
+
+/* ---------- ページの頭（左上の小さなロゴとメニュー → 事業名と見出し → 写真） ---------- */
+.sub-hero{padding-top:36px}
+.sub-nav{display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:12px;letter-spacing:.18em}
+.sub-nav .sub-logo{width:120px;flex:none}
+.sub-nav ul{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px 28px;list-style:none;margin:0;padding:0}
+.sub-nav .is-current{color:var(--green)}
+.crumb{margin-top:56px;font-family:var(--f-en);font-size:12px;letter-spacing:.14em;color:var(--sub)}
+.crumb a{border-bottom:1px solid var(--rule-short)}
+.sub-title{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 64px;align-items:end;margin-top:20px}
+.sub-title .biz-name{font-size:clamp(44px,5.4vw,72px)}
+.sub-title .label{display:block;margin-bottom:16px}
+.sub-title h1{font-family:var(--f-heading);font-size:clamp(20px,2vw,28px);line-height:1.7}
+.sub-lead{margin-top:16px;font-size:15px;line-height:2.1;color:var(--muted)}
+
+/* 写真（上端をトップページと同じ丘のカーブで切り抜く） */
+.sub-photo{position:relative;aspect-ratio:2.8 / 1;max-height:520px;margin-top:56px;overflow:hidden;background:var(--ph1);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 54 C 320 92, 620 90, 880 62 C 1080 40, 1280 42, 1440 64 L1440 121 L0 121 Z'/%3E%3C/svg%3E") top / 100% var(--ridge-h) no-repeat,linear-gradient(#000,#000) 0 calc(var(--ridge-h) - 1px) / 100% 100% no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 54 C 320 92, 620 90, 880 62 C 1080 40, 1280 42, 1440 64 L1440 121 L0 121 Z'/%3E%3C/svg%3E") top / 100% var(--ridge-h) no-repeat,linear-gradient(#000,#000) 0 calc(var(--ridge-h) - 1px) / 100% 100% no-repeat}
+.sub-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ---------- セクションの余白（トップページと同じ値） ---------- */
+.sub-sec{padding-top:var(--sec-y);padding-bottom:var(--sec-y)}
+.sub-sec + .sub-sec{padding-top:0}   /* 同じ地色が続くときは、上の余白を足さない */
+.sub-band{background:var(--kraft)}   /* 淡いグレーの面 */
+.sub-band .sub-sec{padding-top:var(--sec-y)}
+.sec-lead{max-width:760px;margin:-32px 0 56px;font-size:15px;line-height:2.1;color:var(--muted)}
+
+/* ---------- カードを並べる箱（2列・3列） ---------- */
+.cards{display:grid;gap:48px 64px}
+.cards--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--rule-short);padding-top:28px}
+.card .label{display:block}
+.card h3{font-family:var(--f-heading);font-size:20px;color:var(--ink)}
+.card .body{line-height:2.1}
+.card ul{list-style:none;margin:4px 0 0;padding:0;font-size:14px;line-height:1.9;color:var(--muted)}
+.card li{padding:8px 0;border-top:1px solid var(--rule-short)}
+.card li:first-child{border-top:0}
+.card:not(.reveal){transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .45s ease}
+@media (hover:hover){
+  .card:hover{transform:translateY(var(--lift));border-top-color:var(--green)}
+}
+.price-note{margin-top:40px;font-size:13px;color:var(--sub)}
+
+/* ---------- 進め方（番号つきの横並び） ---------- */
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px;list-style:none;margin:0;padding:0;counter-reset:step}
+.flow li{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--rule-short);padding-top:20px;counter-increment:step}
+.flow li::before{content:counter(step,decimal-leading-zero);font-family:var(--f-title);font-weight:300;font-size:28px;line-height:1;color:var(--green)}
+.flow h3{font-family:var(--f-heading);font-size:17px}
+.flow p{font-size:13px;line-height:1.9;color:var(--muted)}
+
+/* ---------- 事例（写真＋文章の2列） ---------- */
+.case{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:48px}
+.case .photo{grid-column:span 6;min-height:420px}
+.case-text{grid-column:span 6;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.case-text .biz-name{font-size:36px}
+.case-text .catch{font-size:20px}
+.timeline{list-style:none;margin:0;padding:0;font-size:14px;color:var(--muted)}
+.timeline li{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:16px;padding:10px 0;border-top:1px solid var(--rule-short)}
+.timeline li span:first-child{font-family:var(--f-en);font-size:12px;letter-spacing:.1em;color:var(--accent);padding-top:3px}
+
+/* ---------- 実績の物件名と説明（Before / After の上） ---------- */
+.case-intro{display:flex;flex-direction:column;gap:14px;max-width:760px;margin-bottom:64px}
+.case-intro .biz-name{font-size:36px}
+#works .minami{margin-top:var(--block-gap);max-width:760px}
+
+/* ---------- Before / After（2枚を左右に並べる） ---------- */
+.ba-list{display:flex;flex-direction:column;gap:var(--block-gap)}
+.ba{display:flex;flex-direction:column;gap:20px}
+.ba-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.ba figure{position:relative;margin:0}
+.ba .photo{aspect-ratio:3 / 2;padding:0}
+.ba--tall .photo{aspect-ratio:2 / 3;max-height:640px}
+.ba figcaption{position:absolute;left:12px;top:12px;padding:2px 10px;font-family:var(--f-en);font-size:11px;letter-spacing:.16em;color:var(--ink);background:var(--cream)}
+.ba figure:last-child figcaption{color:var(--cream);background:var(--green)}
+.ba-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px}
+.ba-head h3{font-family:var(--f-heading);font-size:18px}
+.ba-head p{font-size:14px;color:var(--muted)}
+
+/* ---------- もう一方の事業へ案内する帯（Consulting ⇄ Design） ---------- */
+.cross{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px 64px;border-top:1px solid var(--rule-long);border-bottom:1px solid var(--rule-long);padding:48px 0}
+.cross .label{display:block;margin-bottom:12px}
+.cross .biz-name{font-size:36px}
+.cross p.body{margin-top:12px;max-width:640px;font-size:15px}
+.cross .more{font-size:14px}
+.cross-inline{display:inline-block;margin-top:8px}
+
+/* ---------- よくあるご質問（開いて読む） ---------- */
+.faq{border-top:1px solid var(--rule-long)}
+.faq details{border-bottom:1px solid var(--rule-short)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:24px;padding:24px 0;font-family:var(--f-heading);font-size:17px;letter-spacing:.06em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";color:var(--accent-hl);flex:none}
+.faq details[open] summary::after{content:"－"}
+.faq details p{padding:0 0 28px;max-width:820px;font-size:14px;line-height:2.1;color:var(--muted)}
+
+/* ---------- タブレット（幅1000px以下） ---------- */
+@media (max-width: 1000px){
+  .sub-title{grid-template-columns:minmax(0,1fr)}
+  .cards--3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .case .photo,.case-text{grid-column:span 12}
+  .case .photo{min-height:320px}
+  .case{gap:32px}
+}
+
+/* ---------- スマホ（幅640px以下） ---------- */
+@media (max-width: 640px){
+  .sub-hero{padding-top:20px}
+  .sub-nav .sub-logo{width:96px}
+  .sub-nav ul{display:none}   /* スマホは上の帯の「Menu」から開く */
+  .sub-title h1 .sp-br{display:inline}   /* 見出しの大事な言葉の前で改行（言葉の途中で折り返さない） */
+  .crumb{margin-top:40px}
+  .sub-photo{aspect-ratio:4 / 3;margin-top:36px;margin-left:calc(var(--pad-x) * -1);margin-right:calc(var(--pad-x) * -1)}
+  .sec-lead{margin:-16px 0 40px}
+  .cards--2,.cards--3{grid-template-columns:minmax(0,1fr)}
+  .flow{grid-template-columns:minmax(0,1fr);gap:0}
+  .flow li{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:12px;row-gap:4px;padding:16px 0}
+  .flow li::before{grid-row:span 2;font-size:22px}
+  .ba-pair{gap:8px}
+  .cross{grid-template-columns:minmax(0,1fr);padding:36px 0}
+  .cross .biz-name,.case-text .biz-name{font-size:30px}
+  .timeline li{grid-template-columns:6.5em minmax(0,1fr);gap:10px}
+  .faq summary{font-size:15px;padding:20px 0}
+}
