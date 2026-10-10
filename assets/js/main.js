@@ -4,7 +4,90 @@
    2. お問い合わせフォーム（Formspreeへ送り、ページ内に「送信しました」を表示）
    3. スクロールで文字や写真がふわっと現れる動き
    4. Journal：noteの記事を2段で流す
+   0. オープニング（大雪山の稜線のイントロ）
    ========================================================= */
+
+/* ---------- 0. オープニング（大雪山の稜線のイントロ） ----------
+   同じタブで一度だけ流す（2回目以降と「動きを減らす」設定では出ない。判定は index.html の head）
+   クリック・キー操作でいつでも飛ばせる */
+(function () {
+  var root = document.documentElement;
+  var op = document.getElementById('opening');
+  if (!op) return;
+  if (!root.classList.contains('is-opening')) { op.remove(); return; }
+  op.hidden = false;
+  try { sessionStorage.setItem('ubaku-opening', '1'); } catch (e) {}
+
+  var DUR = 3800;               // 000→100 までの時間（ミリ秒。元は4700）
+  var STEPS = [0.06, 0.36, 0.64]; // Find → Make → Live に切り替わるタイミング（全体の何割の時点か）
+  var HOLD = 1200;              // 100になってから消え始めるまでの待ち時間（元は1900）
+
+  var count = op.querySelector('.op-count');
+  var line = op.querySelector('.op-line');
+  var shade = op.querySelector('.op-shade');
+  line.style.strokeDasharray = '1 1';
+  line.style.strokeDashoffset = 1;
+  // 線の太さを、画面の幅に関係なく「0.8px」に見えるようにする
+  // （稜線の図は幅1000で描いてあり、画面幅に合わせて拡大されるため、その分だけ細くしておく）
+  var ridgeSvg = op.querySelector('.op-ridge');
+  function fitStroke() { line.style.strokeWidth = (0.8 * 1000 / (ridgeSvg.clientWidth || 1000)).toFixed(3); }
+  fitStroke();
+  window.addEventListener('resize', fitStroke);
+
+  // 稜線のいちばん高いところ（旭岳の山頂）を探し、名前の位置と、出すタイミングを決める
+  var peakAt = 0.6;
+  try {
+    var total = line.getTotalLength(), best = null;
+    for (var k = 0; k <= 400; k++) {
+      var pt = line.getPointAtLength(total * k / 400);
+      if (!best || pt.y < best.y) best = { x: pt.x, y: pt.y, at: k / 400 };
+    }
+    peakAt = best.at;
+    op.style.setProperty('--peak-x', (best.x / 10).toFixed(2));  // 1000幅の中の位置 → ％
+    op.style.setProperty('--peak-y', best.y.toFixed(1));
+  } catch (e) {}
+
+  var t0 = null, raf = null, timer = null, ended = false;
+  // ゆっくり始まって、ゆっくり終わる進み方
+  function ease(x) { return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; }
+
+  function frame(t) {
+    if (t0 === null) t0 = t;
+    var raw = Math.min(1, (t - t0) / DUR);
+    var p = ease(raw);
+    count.textContent = String(Math.round(p * 100)).padStart(3, '0');
+    var drawn = Math.min(1, p / 0.92);
+    line.style.strokeDashoffset = 1 - drawn;                          // 稜線を左から描く
+    if (drawn >= peakAt) op.classList.add('peak');                    // 線が山頂を通ったら、旭岳の名前を出す
+    shade.style.opacity = Math.max(0, Math.min(1, (p - 0.55) / 0.4)); // 稜線の下をうっすら塗る
+    if (raw > STEPS[0]) op.classList.add('s1');
+    if (raw > STEPS[1]) op.classList.add('s2');
+    if (raw > STEPS[2]) op.classList.add('s3');
+    if (raw < 1) { raf = requestAnimationFrame(frame); return; }
+    op.classList.add('done');
+    timer = setTimeout(exit, HOLD);
+  }
+
+  // 消え方：①文字と稜線がふわっと消える（0.7秒）→ ②生成りの白紙だけになったら、
+  //         サイト（同じ生成りの地色）に切り替え、トップの文字が上から順に現れる
+  function exit() {
+    if (ended) return;
+    ended = true;
+    cancelAnimationFrame(raf);
+    clearTimeout(timer);
+    op.classList.add('exit');
+    setTimeout(function () {
+      root.classList.remove('is-opening');   // スクロールとヒーローの登場の動きを再開
+      document.dispatchEvent(new Event('ubaku:opening-end'));
+      op.classList.add('gone');
+    }, 700);
+    setTimeout(function () { op.remove(); }, 1300);
+  }
+
+  op.addEventListener('click', exit);
+  window.addEventListener('keydown', exit, { once: true });
+  raf = requestAnimationFrame(frame);
+})();
 
 /* ---------- 1. ヒーローのスライド ---------- */
 (function () {
@@ -57,7 +140,11 @@
   if (reduceMotion.addEventListener) reduceMotion.addEventListener('change', restart);
 
   show(0);
-  restart();
+  if (document.documentElement.classList.contains('is-opening')) {
+    document.addEventListener('ubaku:opening-end', function () { show(0); restart(); }, { once: true });
+  } else {
+    restart();
+  }
 })();
 
 /* ---------- 4. Journal：noteの記事を2段で流す ----------
@@ -89,21 +176,70 @@
     return a;
   }
 
-  // 新しい順に交互に振り分け（1段目：1,3,5…／2段目：2,4,6…）
   var rows = flow.querySelectorAll('.flow-track');
-  var split = [[], []];
-  notes.forEach(function (n, i) { split[i % 2].push(n); });
-  split.forEach(function (list, k) {
-    var track = rows[k];
-    track.style.setProperty('--count', list.length);
-    // 切れ目なく流すため、同じ並びを2回つなげる（2回目は読み上げ・キーボード操作の対象外）
-    [0, 1].forEach(function (copy) {
-      list.forEach(function (n) {
-        var c = card(n);
-        if (copy) { c.setAttribute('aria-hidden', 'true'); c.tabIndex = -1; }
-        track.appendChild(c);
+
+  // 2段に振り分けて並べる
+  // groups：同じ表紙の記事に同じ番号が入った一覧（まだ調べていないときは null）
+  function build(groups) {
+    var split = [[], []];
+    var used = [{}, {}];   // それぞれの段に、どの表紙がもう入っているか
+    notes.forEach(function (n, i) {
+      var k = split[0].length <= split[1].length ? 0 : 1;   // 基本は少ない方の段へ（＝交互）
+      var g = groups ? groups[i] : i;
+      if (used[k][g] && !used[1 - k][g]) k = 1 - k;          // 同じ表紙がすでにある段は避ける
+      used[k][g] = true;
+      split[k].push(n);
+    });
+    split.forEach(function (list, k) {
+      var track = rows[k];
+      track.textContent = '';
+      track.style.setProperty('--count', list.length);
+      // 切れ目なく流すため、同じ並びを2回つなげる（2回目は読み上げ・キーボード操作の対象外）
+      [0, 1].forEach(function (copy) {
+        list.forEach(function (n) {
+          var c = card(n);
+          if (copy) { c.setAttribute('aria-hidden', 'true'); c.tabIndex = -1; }
+          track.appendChild(c);
+        });
       });
     });
+  }
+  build(null);
+
+  // 表紙の見た目を小さく縮めて比べ、同じ写真の表紙を見つける
+  // （noteでは同じ写真でも画像のアドレスが毎回変わるため、見た目で比べる）
+  function fingerprint(url) {
+    return new Promise(function (resolve) {
+      var img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = function () {
+        try {
+          var c = document.createElement('canvas');
+          c.width = c.height = 8;
+          var x = c.getContext('2d');
+          x.drawImage(img, 0, 0, 8, 8);
+          var d = x.getImageData(0, 0, 8, 8).data, g = [], sum = 0;
+          for (var i = 0; i < 64; i++) { g.push(d[i * 4] * 0.3 + d[i * 4 + 1] * 0.59 + d[i * 4 + 2] * 0.11); sum += g[i]; }
+          resolve(g.map(function (v) { return v > sum / 64 ? 1 : 0; }));   // 明るい／暗いの64マスの模様
+        } catch (e) { resolve(null); }
+      };
+      img.onerror = function () { resolve(null); };
+      img.src = url.replace(/width=\d+/, 'width=64');
+    });
+  }
+  Promise.all(notes.map(function (n) { return fingerprint(n.image); })).then(function (prints) {
+    var groups = prints.map(function (p, i) { return i; });
+    var found = false;
+    prints.forEach(function (p, i) {
+      if (!p) return;
+      for (var j = 0; j < i; j++) {
+        if (!prints[j]) continue;
+        var diff = 0;
+        for (var k = 0; k < 64; k++) if (p[k] !== prints[j][k]) diff++;
+        if (diff <= 4) { groups[i] = groups[j]; found = true; break; }   // ほぼ同じ模様 ＝ 同じ写真
+      }
+    });
+    if (found) build(groups);
   });
 })();
 

@@ -5,9 +5,9 @@
    ========================================================= */
 :root{
   /* --- 色 --- */
-  --cream:#F6F3EC;      /* 生成り（基本の地色） */
-  --kraft:#EFE6D8;      /* クラフト色（数字・Coming soonの地色） */
-  --green:#34403A;      /* 深緑（ブランド色） */
+  --cream:#FFFFFF;      /* 白（基本の地色。2026-10-10 生成り→白） */
+  --kraft:#F4F4F2;      /* 淡いグレー（What We Do・Numbers・Coming soon の面） */
+  --green:#405B55;      /* 錆鉄御納戸（さびてつおなんど：ブランド色。2026-10-10 深緑から変更） */
   --ink:#2B241C;        /* 見出しの文字色 */
   --muted:#4B4236;      /* 本文の文字色 */
   --sub:#6B6457;        /* ラベルの文字色 */
@@ -19,15 +19,15 @@
   --ph-text:#3A3026;         /* プレースホルダーの文字 */
 
   /* --- 罫線（長い線＝見出しの下は濃く、短い線＝各項目の上は薄く） --- */
-  --rule-long:var(--ink);             /* 生成り・クラフト色の上の長い線 */
-  --rule-short:#D5CCBC;               /* 生成り・クラフト色の上の短い線 */
-  --rule-long-on-green:#A9B0A9;       /* 深緑の上の長い線 */
-  --rule-short-on-green:#55615A;      /* 深緑の上の短い線 */
+  --rule-long:#B9C2BE;                /* 見出しの下の長い線（薄いグレー） */
+  --rule-short:#E4E7E5;               /* 項目の上の短い線（さらに薄く、常に見せる） */
+  --rule-long-on-green:#AAB1A8;       /* 深い色（Contact）の上の長い線 */
+  --rule-short-on-green:#60756E;      /* 深い色（Contact）の上の短い線 */
   --rule-hover-on-green:var(--accent-sand); /* マウスを乗せたときの線 */
 
   /* --- Concept（3つの円）の色 --- */
   --c-top:#D2BE9A;      /* 上：ひと（砂色・いちばん濃い） */
-  --c-br:#C4CCC2;       /* 右下：場所（くすんだ緑） */
+  --c-br:#CBD6D2;       /* 右下：場所（くすんだ緑） */
   --c-bl:#E6DBC8;       /* 左下：土地（明るいクラフト色） */
   --c-label:#4A4238;    /* 円の中の文字 */
 
@@ -36,10 +36,28 @@
   --card-gap:32px;      /* カードのあいだ */
   --flow-speed:9s;      /* カード1枚分が流れる時間（小さいほど速い） */
 
+  /* --- オープニング（大雪山の稜線）の色 --- */
+  --op-line:#7C8A92;    /* 稜線の線 */
+  --op-mist:#8E9893;    /* 数字・座標などの小さな文字 */
+  --op-sky1:#D5DCDF;    /* 稜線の下の色（上） */
+  --op-sky2:#E6EAE8;    /* 稜線の下の色（中） */
+
+  /* --- アクセント（見出しの大事な言葉・ラベル・日付の色） --- */
+  --accent:var(--green);
+  --accent-hl:#23A0DA;               /* 【強調の文字の色】知る・泊まる・過ごす・住む。／つないでいく。など（東川町の青。Contact は深い面なので対象外） */
+  --f-biz:'Jost', sans-serif;        /* 【事業名の英字】Ubaku Villa・Media・Design・Consulting と Team の名前 */
+  --f-biz-weight:200;
+  --hero-ratio:2.4 / 1;              /* 【ヒーロー写真】横と縦の比率（東川町のサイトを参考にした横長） */
+  --hero-bleed:40px;
+  --logo-color:#2B241C;              /* 【ロゴ】UBAKŪ の文字の色（黒） */
+  --logo-bar:var(--accent-hl);       /* 【ロゴ】Ū の上の横線の色（東川町の青） */                 /* 【ヒーロー写真】文字の列より左右にはみ出す幅 */
+
   /* --- フォント --- */
-  --f-display:'Cormorant Garamond', serif;              /* 英語の大見出し */
-  --f-heading:'Noto Serif JP', serif;                   /* 日本語の見出し */
+  --f-display:'Cormorant Garamond', serif;              /* UBAKUのロゴ・数字・事業名の英字 */
+  --f-title:'Jost', sans-serif;                         /* セクションの英字見出し（What We Do など）・Numbers の数字 */
+  --f-heading:'Murecho', 'Noto Sans JP', sans-serif;    /* 【小見出しのフォント】h1・Concept の言葉・Values・What We Do・キャッチ・Coming soon・Contact の日本語見出し */
   --f-body:'Noto Sans JP', sans-serif;                  /* 本文・メニュー */
+  --f-serif-jp:'Noto Serif JP', serif;                  /* Concept の図の中の日本語だけ */
   --f-en:Futura, 'Futura PT', 'Jost', sans-serif;       /* 英語の小さな文字 */
 
   /* --- 余白 --- */
@@ -48,6 +66,7 @@
   --block-gap:128px;                /* Business内の各事業のあいだの余白 */
   --head-gap:72px;                  /* 見出しの線から中身までの余白 */
   --ridge-h:120px;                  /* 稜線の高さ */
+  --hill-h:110px;                    /* Numbers の丘の線の高さ */
 
   /* --- 動き --- */
   --reveal-dist:28px;     /* スクロールで下から浮き上がる距離 */
@@ -63,7 +82,10 @@ a{color:inherit;text-decoration:none}
 a[href]:hover{color:var(--green)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offset:3px}
 img{max-width:100%;display:block}
-h1,h2,h3,h4{margin:0;font-weight:600;line-height:1.5}
+h1,h2,h3,h4{margin:0;font-weight:400;line-height:1.5;letter-spacing:.08em}
+/* アクセント：見出しの中の大事な言葉だけ色を変える（<em class="hl">） */
+em.hl{font-style:normal;color:var(--accent-hl)}
+.dark em.hl{color:var(--accent-sand)}
 p{margin:0}
 .wrap{max-width:1440px;margin:0 auto;padding-left:var(--pad-x);padding-right:var(--pad-x)}
 
@@ -76,7 +98,9 @@ p{margin:0}
 /* ---------- 文字の種類 ---------- */
 .display{font-family:var(--f-display);font-weight:600;line-height:1;color:var(--green)}
 .en{font-family:var(--f-en);font-weight:400;line-height:1.6}
-.label{font-size:12px;letter-spacing:.16em;color:var(--sub)}
+/* 表現としての英語（Values の英文・What We Do の Connect など・More to come.）は Cormorant の斜体にそろえる */
+.en-sub,.soon-head .en{font-family:var(--f-display);font-style:italic;font-weight:500;letter-spacing:.01em}
+.label{font-size:12px;letter-spacing:.16em;color:var(--accent)}
 .body{font-size:14px;color:var(--muted)}
 
 /* ---------- Coming soon の小さな札（文字と同じくらいの幅） ---------- */
@@ -92,7 +116,7 @@ p{margin:0}
 
 /* ---------- セクション見出し（左に英語の大見出し、右に日本語） ---------- */
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:1px solid var(--rule-long);padding-bottom:20px;margin-bottom:var(--head-gap)}
-.sec-head h2{font-size:clamp(44px,6vw,72px)}
+.sec-head h2{font-family:var(--f-title);font-weight:200;letter-spacing:.05em;font-size:clamp(44px,6vw,72px)}
 .sec-head .aside{font-family:var(--f-body);font-weight:300;font-size:14px;letter-spacing:.2em;color:var(--muted);text-align:right}   /* 見出し右の日本語は細いゴシック（大きな英字の明朝系と対比させる） */
 
 /* ---------- 稜線（ヒーロー写真の上端・深緑セクションの上端） ---------- */
@@ -153,28 +177,40 @@ p{margin:0}
 /* =========================================================
    ① ヒーロー
    ========================================================= */
-.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;padding-top:36px;padding-bottom:36px}
+html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても、横スクロールを出さない */
+.hero{display:flex;flex-direction:column;padding-top:36px;padding-bottom:36px}
 .nav{display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:12px;letter-spacing:.18em}
 .nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0}
-.hero-main{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;padding-top:40px}
-.hero-mark{font-size:clamp(80px,12vw,170px);line-height:.9;letter-spacing:.04em}
-.hero-copy{max-width:660px;display:flex;flex-direction:column;gap:16px;padding-bottom:12px}
-.hero-copy h1{font-family:var(--f-heading);font-size:clamp(19px,1.9vw,25px);line-height:1.6}
+.nav-place{font-family:'EB Garamond',serif;font-weight:500;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);line-height:1}
+.hero-main{display:flex;justify-content:space-between;align-items:center;gap:40px;padding-top:40px}
+/* ロゴ（UBAKŪ の文字。元データ：02_ブランド・発信/logo/261010_Ubaku logo single2.svg）
+   文字（logo-wordmark-letters.svg）と Ū の横線（logo-wordmark-bar.svg）を重ね、別々の色を付ける。縦横比 330:60 */
+.wordmark{position:relative;display:block;aspect-ratio:330 / 60}
+.wordmark::before,.wordmark::after{content:"";position:absolute;inset:0}
+.wordmark::before{background:var(--logo-color);-webkit-mask:url(../img/logo-wordmark-letters.svg) center / contain no-repeat;mask:url(../img/logo-wordmark-letters.svg) center / contain no-repeat}
+.wordmark::after{background:var(--logo-bar);-webkit-mask:url(../img/logo-wordmark-bar.svg) center / contain no-repeat;mask:url(../img/logo-wordmark-bar.svg) center / contain no-repeat}
+.hero-mark{flex:none;width:clamp(280px,34vw,520px)}
+.hero-copy{max-width:660px;display:flex;flex-direction:column;gap:10px;padding-top:.6%}   /* ロゴの横線の分だけ、ほんの少し下げて文字の中心とそろえる */
+.hero-copy h1{font-family:var(--f-heading);font-size:clamp(18px,1.65vw,25px);line-height:1.6}
 @media (min-width: 1001px){.hero-copy h1{white-space:nowrap}}   /* PCでは1行に収める */
 .hero-copy p{font-size:14px;letter-spacing:.1em;color:var(--muted)}
 
-.slide-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;padding:32px 0 24px}
-.slide-tabs button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:10px;font-size:13px;letter-spacing:.06em;color:var(--sub);line-height:1.7}
-.slide-tabs button::before{content:"";height:1px;background:var(--line)}
+.slide-tabs{order:5;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:18px 0 0}   /* 写真の下に置く */
+.slide-tabs button{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;font-size:12px;letter-spacing:.06em;color:var(--sub);line-height:1.7}
+.slide-tabs button::before{content:"";align-self:stretch;height:1px;background:var(--line)}
 .slide-tabs button[aria-selected="true"]{color:var(--ink)}
 .slide-tabs button[aria-selected="true"]::before{height:2px;background:var(--green)}
 .slide-tabs button:focus-visible{outline:2px solid var(--green);outline-offset:4px}
 
-.panorama{position:relative;flex-grow:1;min-height:clamp(360px,46vw,720px);overflow:hidden}
+.panorama{position:relative;aspect-ratio:var(--hero-ratio);margin-top:40px;margin-left:calc(50% - 50vw + var(--hero-bleed));margin-right:calc(50% - 50vw + var(--hero-bleed));overflow:hidden}
 /* 写真ごとに「切り抜くときに残したい場所」を指定（左右％ 上下％） */
-#slide-0 img{object-position:50% 45%}   /* 大雪山の稜線と丘を残す */
-#slide-1 img{object-position:55% 0%}    /* 照明を残す（上端に合わせる） */
-#slide-2 img{object-position:60% 5%}    /* 窓全体を残す */
+#slide-0 img{object-position:50% 50%}   /* 夕日の大雪山と雪原の斜面を残す */
+#slide-1 img{object-position:50% 40%}   /* 窓の森を真ん中に */
+#slide-2 img{object-position:50% 72%}   /* 丘と一本の木（地平線）を残す */
+/* 写真の上端を丘のカーブで切り抜く（白い形を重ねる方式だと、写真の縁に細い線が出るため、写真そのものを切り抜く）
+   カーブの形を変えるときは、下の d="…" と index.html のヒーローの svg の d を同じにする */
+.hero .ridge{display:none}
+.hero .panorama{-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 54 C 320 92, 620 90, 880 62 C 1080 40, 1280 42, 1440 64 L1440 121 L0 121 Z'/%3E%3C/svg%3E") top / 100% var(--ridge-h) no-repeat,linear-gradient(#000,#000) 0 calc(var(--ridge-h) - 1px) / 100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 54 C 320 92, 620 90, 880 62 C 1080 40, 1280 42, 1440 64 L1440 121 L0 121 Z'/%3E%3C/svg%3E") top / 100% var(--ridge-h) no-repeat,linear-gradient(#000,#000) 0 calc(var(--ridge-h) - 1px) / 100% 100% no-repeat}
 .panorama .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
 .panorama .slide.is-active{opacity:1}
 
@@ -184,7 +220,7 @@ p{margin:0}
    ========================================================= */
 .values,.concept-sec,.business,.team,.journal,.numbers .wrap,.soon .wrap{padding-top:var(--sec-y);padding-bottom:var(--sec-y)}
 .work,.contact{padding-top:calc(var(--sec-y) + var(--ridge-h));padding-bottom:var(--sec-y)}
-.team + .journal,.values + .concept-sec{padding-top:0}   /* 同じ地色が続くときは、上の余白を足さない */
+.team + .journal{padding-top:0}   /* 同じ地色が続くときは、上の余白を足さない */
 
 /* =========================================================
    ② Values
@@ -192,7 +228,11 @@ p{margin:0}
 .values-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:64px;row-gap:56px}   /* 3つを横一列に */
 .value{display:flex;flex-direction:column;gap:12px}
 .value h3{font-family:var(--f-heading);font-size:clamp(20px,1.9vw,26px)}
-.value .en{font-size:20px;color:var(--green)}
+/* 【Values の番号と英語】「01｜Editing the Local.」：Business の「Connect｜知る・つながる」と同じ小さなラベル */
+.value-head{display:flex;align-items:baseline;gap:0;margin:0;font-family:var(--f-body);font-weight:300;font-size:13px;letter-spacing:.16em;color:var(--accent)}
+.value-head .label{font-size:inherit;letter-spacing:inherit}
+.value-head .label::after{content:"｜";color:var(--accent-sand);margin:0 .5em}
+.value-head .en-sub{font-family:inherit;font-style:normal;font-weight:inherit;font-size:inherit;letter-spacing:inherit;color:var(--accent)}
 .value p.body{font-size:15px}
 
 /* =========================================================
@@ -200,6 +240,9 @@ p{margin:0}
    ========================================================= */
 .dark{position:relative;background:var(--green);color:var(--on-green);overflow:hidden}
 .dark--after-kraft .ridge path{fill:var(--kraft)}   /* 直前がクラフト色のとき */
+#work{background:var(--kraft);--on-green:var(--ink);--on-green-sub:var(--muted);--rule-long-on-green:var(--rule-long);--rule-short-on-green:#E0E3E1;--accent-sand:var(--green);--rule-hover-on-green:var(--green)}
+#work .sec-head h2{color:var(--green)}   /* 見出しはほかのセクションと同じ色 */
+#work .badge{background:var(--green);color:#fff}
 .dark .sec-head{border-color:var(--rule-long-on-green)}
 .dark .sec-head h2{color:var(--on-green)}
 .dark .sec-head .aside{color:var(--on-green-sub)}
@@ -210,7 +253,8 @@ p{margin:0}
    ========================================================= */
 .work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:72px 64px}
 .work-item{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--rule-short-on-green);padding-top:24px}
-.work-item .kind{font-size:22px;color:var(--accent-sand)}
+/* What We Do の英語（Connect・Stay など）：Business の「Connect｜知る・つながる」と同じ、細いゴシックで字間広め */
+.work-item .kind{font-family:var(--f-body);font-weight:300;font-size:14px;letter-spacing:.16em;color:var(--accent-sand)}
 .work-item h3{font-family:var(--f-heading);font-size:24px}
 .work-item p{font-size:14px;color:var(--on-green-sub)}
 .work-item .lines{align-self:flex-start;font-size:12px;letter-spacing:.12em;color:var(--on-green)}
@@ -220,9 +264,9 @@ p{margin:0}
 /* =========================================================
    ④ Business
    ========================================================= */
-.biz-name{font-family:var(--f-display);font-weight:600;color:var(--green);line-height:1.1}
-.biz-name-jp{font-family:var(--f-heading);font-size:.6em;letter-spacing:.08em}
-.catch{font-family:var(--f-heading);font-weight:600;line-height:1.6}
+.biz-name{font-family:var(--f-biz);font-weight:var(--f-biz-weight);letter-spacing:.04em;color:var(--green);line-height:1.1}
+.biz-name-jp{white-space:nowrap;font-family:var(--f-serif-jp);font-size:.6em;letter-spacing:.08em}
+.catch{font-family:var(--f-heading);font-weight:400;line-height:1.6;letter-spacing:.08em}
 
 /* Villa（大きく1段） */
 .villa{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:48px;margin-bottom:var(--block-gap)}
@@ -241,7 +285,7 @@ p{margin:0}
 .media .media-photo img,.reveal .media-photo img,.reveal.is-visible .media-photo img{transform:none}   /* 横長の写真は拡大させない */
 .media{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:48px;margin-bottom:var(--block-gap)}
 .media-photo{grid-column:1 / -1;min-height:360px}
-.media-photo img{object-position:40% 52%}   /* 雪から顔を出す草と、雪面の稜線が入るように */
+.media-photo img{object-position:50% 50%}   /* 大雪山の稜線と丘が入るように */
 .media-name{grid-column:span 5;display:flex;flex-direction:column;gap:12px}
 .media-name .biz-name{font-size:40px}
 .media-text{grid-column:span 7;display:flex;flex-direction:column;gap:20px}
@@ -269,12 +313,12 @@ p{margin:0}
 /* =========================================================
    ⑤ Ubaku in Numbers（クラフト色）
    ========================================================= */
-.numbers{background:var(--kraft)}
+.numbers{position:relative;background:var(--kraft)}
+.numbers .hill{display:block;width:100%;height:var(--hill-h);margin-bottom:calc(var(--hill-h) * -0.4)}
+.numbers .hill-fill{fill:var(--cream)}   /* 丘より上は、前のセクションと同じ地色 */
 .numbers-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px;list-style:none;margin:0;padding:0}
 .numbers-grid li{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--rule-short);padding-top:20px}
-.num{font-weight:600;color:var(--green);line-height:1.2}
-.num.en-num{font-family:var(--f-display);font-size:48px}
-.num.jp-num{font-family:var(--f-heading);font-size:38px}
+.num{font-family:var(--f-title);font-weight:300;font-size:40px;letter-spacing:.02em;line-height:1.2;color:var(--green)}
 .numbers-grid p{font-size:13px;line-height:1.8;color:var(--muted)}
 
 /* =========================================================
@@ -284,7 +328,7 @@ p{margin:0}
 .member{display:flex;flex-direction:column;gap:14px}
 .member .photo{min-height:380px}
 .member .photo img{object-position:center 30%}   /* 顔が切れないよう、少し上寄りで切り抜く */
-.member h3{font-family:var(--f-display);font-size:32px;color:var(--green);line-height:1.1}
+.member h3{font-family:var(--f-biz);font-weight:var(--f-biz-weight);letter-spacing:.04em;font-size:32px;color:var(--green);line-height:1.1}
 
 /* =========================================================
    ⑦ Journal
@@ -299,7 +343,7 @@ p{margin:0}
 .note-card{width:var(--card-w);flex:none;display:flex;flex-direction:column;gap:12px}
 .note-card .photo{aspect-ratio:1280 / 670;padding:0}
 .note-card .meta{display:flex;gap:12px;align-items:baseline}
-.note-card .date{font-family:var(--f-en);font-size:12px;letter-spacing:.1em;color:var(--sub)}
+.note-card .date{font-family:var(--f-en);font-size:12px;letter-spacing:.1em;color:var(--accent)}
 .note-card .source{font-family:var(--f-en);font-size:11px;letter-spacing:.1em;color:var(--green)}
 .note-card .title{font-size:14px;line-height:1.8;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .note-card:hover .title{color:var(--green)}
@@ -309,6 +353,17 @@ p{margin:0}
   .flow-row{overflow-x:auto}
   .flow-track{animation:none}
 }
+
+/* =========================================================
+   ② Concept ＋ Values（横並び：左＝Concept図、右＝Values）
+   ========================================================= */
+.cv-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:96px;align-items:start}
+.cv-concept .concept-catch{margin-top:0;font-size:clamp(20px,2vw,28px)}
+.cv-concept .tomoe{max-width:440px;margin-top:24px}        /* 図は少し小さく */
+.cv-values .values-grid{grid-template-columns:minmax(0,1fr);row-gap:0}
+.cv-values .value{padding:28px 0;border-top:1px solid var(--rule-short)}
+.cv-values .value:first-child{border-top:0;padding-top:0}
+.cv-values .value h3{font-size:clamp(19px,1.7vw,23px)}
 
 /* =========================================================
    ②' Concept（Valuesの下・3つの円）
@@ -325,8 +380,9 @@ p{margin:0}
 .tomoe .fill-bl{fill:var(--c-bl)}
 .tomoe .fill-center{fill:var(--cream)}
 .tomoe .gap{fill:none;stroke:var(--cream);stroke-width:8}
-.tomoe .lbl-en{font-family:var(--f-en);font-size:12px;letter-spacing:.04em;fill:var(--muted);text-anchor:middle}
-.tomoe .lbl-jp{font-family:var(--f-heading);font-weight:400;font-size:30px;letter-spacing:.08em;fill:var(--c-label);text-anchor:middle}
+/* 【Concept の英語】[People] など：Futura系の細字（図は縮小表示なので、見た目はこの約半分の大きさ） */
+.tomoe .lbl-en{font-family:'Jost',sans-serif;font-weight:300;font-size:19.6px;letter-spacing:.1em;fill:var(--muted);text-anchor:middle}
+.tomoe .lbl-jp{font-family:var(--f-serif-jp);font-weight:400;font-size:30px;letter-spacing:.08em;fill:var(--c-label);text-anchor:middle}
 .tomoe .lbl-brand{font-family:var(--f-display);font-weight:500;font-size:36px;letter-spacing:.04em;fill:var(--c-label);text-anchor:middle}
 /* 画面に入ったら：円が少し回りながら広がり、文字が 上 → 右下 → 左下 → 真ん中 の順に現れる
    （main.js が .reveal → .is-visible を付ける。枠そのものは動かさない） */
@@ -356,7 +412,7 @@ p{margin:0}
    ⑨ Contact / ⑩ フッター（深緑）
    ========================================================= */
 .contact-lead{max-width:640px;display:flex;flex-direction:column;gap:12px;margin-bottom:64px}
-.contact-lead-title{font-family:var(--f-heading);font-weight:600;font-size:clamp(20px,2vw,26px);color:var(--on-green)}
+.contact-lead-title{font-family:var(--f-heading);font-weight:400;letter-spacing:.08em;font-size:clamp(20px,2vw,26px);color:var(--on-green)}
 .contact-lead p:not(.contact-lead-title){font-size:15px;line-height:2;color:var(--on-green-sub)}
 .contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin-bottom:96px}
 .contact-grid div{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--rule-short-on-green);padding-top:24px}
@@ -392,7 +448,8 @@ p{margin:0}
 .links-row a{font-size:13px;letter-spacing:.1em;color:var(--on-green);border-bottom:1px solid var(--rule-short-on-green);padding-bottom:2px}
 
 footer{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-top:1px solid var(--rule-long-on-green);padding-top:24px;font-size:12px;letter-spacing:.12em;line-height:1.9;color:var(--on-green-sub)}
-footer .display{font-size:40px;color:var(--on-green);letter-spacing:.06em;display:block;margin-bottom:8px}
+footer .footer-logo{width:200px;margin-bottom:16px;--logo-color:var(--on-green)}
+footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:left center;mask-position:left center}
 
 /* =========================================================
    タブレット（幅1000px以下）
@@ -402,6 +459,7 @@ footer .display{font-size:40px;color:var(--on-green);letter-spacing:.06em;displa
   .nav ul{gap:18px;flex-wrap:wrap;justify-content:flex-end}
   .hero-main{flex-direction:column;align-items:flex-start}
   .values-grid,.two,.contact-grid{grid-template-columns:minmax(0,1fr);column-gap:0}
+  .cv-grid{grid-template-columns:minmax(0,1fr);gap:var(--block-gap)}
   .two{row-gap:var(--block-gap)}
   .work-grid,.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .numbers-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -417,12 +475,12 @@ footer .display{font-size:40px;color:var(--on-green);letter-spacing:.06em;displa
    スマホ（幅640px以下）
    ========================================================= */
 @media (max-width: 640px){
-  :root{--sec-y:96px;--block-gap:80px;--head-gap:40px;--ridge-h:60px}
+  :root{--sec-y:96px;--block-gap:80px;--head-gap:40px;--ridge-h:60px;--hill-h:64px}
   .hero{padding-top:20px}
   .nav{flex-direction:column;align-items:flex-start;gap:8px}
   .nav ul{justify-content:flex-start;gap:4px 16px}
   .slide-tabs{grid-template-columns:minmax(0,1fr);gap:12px}
-  .panorama{min-height:260px}
+  .panorama{--hero-ratio:3 / 2;--hero-bleed:0px;margin-top:28px}   /* スマホは少し縦を高く、画面の端まで */
   .work-grid,.team-grid,.numbers-grid{grid-template-columns:minmax(0,1fr)}
   :root{--card-w:260px;--card-gap:20px}
   .note-links{justify-content:flex-start;flex-direction:column}
@@ -437,4 +495,45 @@ footer .display{font-size:40px;color:var(--on-green);letter-spacing:.06em;displa
   footer{flex-direction:column;align-items:flex-start}
   .footer-right{justify-content:flex-start;flex-direction:column;gap:16px}
   .links-row{flex-direction:column;gap:8px}
+}
+
+
+/* =========================================================
+   オープニング（大雪山の稜線のイントロ）
+   000→100と数字が進み、稜線が描かれ、Find → Make → Live と言葉が変わり、
+   最後に幕のように上がって、サイトが現れる（動きは main.js の 0 番）
+   ========================================================= */
+html.is-opening,html.is-opening body{overflow:hidden}          /* オープニング中はスクロールさせない */
+html.is-opening .intro{animation-play-state:paused}             /* ヒーローの登場は、幕が上がるまで待つ */
+.opening{position:fixed;inset:0;z-index:100;background:var(--cream);color:var(--ink);cursor:pointer;transition:opacity .5s ease;--ridge-bottom:30%;--peak-x:57;--peak-y:12}   /* 旭岳の山頂の位置（main.js が稜線から計算して入れる） */
+.opening[hidden]{display:none}
+.op-logo{position:absolute;top:calc(26px + env(safe-area-inset-top,0px));left:var(--pad-x);width:110px}
+.op-coord{position:absolute;top:calc(26px + env(safe-area-inset-top,0px));right:var(--pad-x);text-align:right;font-family:var(--f-en);font-size:11px;letter-spacing:.16em;line-height:1.7;color:var(--op-mist);font-variant-numeric:tabular-nums}
+.op-big{position:absolute;left:50%;top:27%;transform:translateX(-50%);margin:0;display:flex;align-items:flex-end;gap:.24em;font-family:var(--f-display);font-weight:500;font-size:clamp(26px,3.4vw,46px);letter-spacing:.01em;line-height:1;white-space:nowrap}
+.op-verb{display:inline-block;height:1.12em;line-height:1.12em;overflow:hidden;opacity:0;transition:opacity .8s}
+.op-verb i{display:block;text-align:right;height:1.12em;font-style:italic;transition:transform .7s cubic-bezier(.65,0,.25,1)}   /* 言葉が切り替わる速さ（元は1.1秒） */
+.op-rest{display:inline-block;height:1.12em;line-height:1.12em;opacity:0;transition:opacity .8s}
+.opening.s1 .op-verb,.opening.s1 .op-rest{opacity:1}
+.opening.s2 .op-verb i{transform:translateY(-1.12em)}
+.opening.s3 .op-verb i{transform:translateY(-2.24em)}
+.op-ridge{position:absolute;left:0;bottom:var(--ridge-bottom);width:100%;height:auto;aspect-ratio:1000 / 120;overflow:visible}
+.op-line{fill:none;stroke:var(--op-line);stroke-width:.8;stroke-linejoin:round}   /* 太さは main.js が画面幅に合わせて調整 */
+.op-shade{fill:url(#op-mt);opacity:0}
+.op-stop1{stop-color:var(--op-sky1)}
+.op-stop2{stop-color:var(--op-sky2)}
+.op-stop3{stop-color:var(--cream)}
+.op-label{position:absolute;left:calc(var(--peak-x) * 1%);bottom:calc(var(--ridge-bottom) + (120 - var(--peak-y)) * 100vw / 1000 + 8px);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;opacity:0;transition:opacity .9s ease}
+.op-row{display:flex;align-items:baseline;gap:.7em;white-space:nowrap}
+.op-label b{font-family:var(--f-en);font-weight:300;font-size:clamp(12px,1vw,14px);letter-spacing:.2em}
+.op-label small{font-family:var(--f-en);font-weight:300;font-size:11px;letter-spacing:.18em;color:var(--op-mist);font-variant-numeric:tabular-nums}
+.op-label i{width:1px;height:clamp(18px,3vw,36px);background:var(--op-line);transform:scaleY(0);transform-origin:bottom;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.opening.peak .op-label{opacity:1}
+.opening.peak .op-label i{transform:none}
+.op-count{position:absolute;right:var(--pad-x);bottom:calc(100px + env(safe-area-inset-bottom,0px));font-family:var(--f-en);font-size:11px;letter-spacing:.16em;color:var(--op-mist);font-variant-numeric:tabular-nums}
+.opening.exit{pointer-events:none}
+.opening.gone{opacity:0}
+.opening.exit .op-big,.opening.exit .op-count,.opening.exit .op-logo,.opening.exit .op-coord,.opening.exit .op-label,.opening.exit .op-ridge{opacity:0;transition:opacity .7s ease}
+@media (max-width: 640px){
+  .opening{--ridge-bottom:34%}
+  .op-count{bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 }

@@ -3,29 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
+<script>/* オープニングを出すかどうかを、表示の前に決める */try{var q=location.search;if(q.indexOf("nointro")<0&&(q.indexOf("intro")>=0||!sessionStorage.getItem("ubaku-opening"))&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("is-opening")}}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ubaku｜大雪山のふもと（美瑛・東川）のクリエイティブチーム</title>
-<meta name="description" content="大雪山のふもとで、知る・泊まる・過ごす・住む。美瑛と東川を拠点に、大雪山をとりまくまちで活動するクリエイティブチーム、Ubaku。">
+<title>Ubaku｜美瑛・東川町の地域編集チーム</title>
+<meta name="description" content="まちを想い、まちを動かす。美瑛町・東川町を拠点にする地域編集チーム、Ubaku。一棟貸しの宿「Ubaku Villa 宇莫別荘」の運営、地域メディア、改修のデザイン監修、宿と不動産のコンサルティング、移住・二拠点のご相談まで。">
 <link rel="canonical" href="https://ubaku.jp/">
 
 <!-- SNSでシェアされたときの表示（ogp.jpg は 1200×630 で用意する） -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ubaku">
-<meta property="og:title" content="Ubaku｜大雪山のふもと（美瑛・東川）のクリエイティブチーム">
-<meta property="og:description" content="大雪山のふもとで、知る・泊まる・過ごす・住む。美瑛と東川を拠点に、大雪山をとりまくまちで活動するクリエイティブチーム、Ubaku。">
+<meta property="og:title" content="Ubaku｜美瑛・東川町の地域編集チーム">
+<meta property="og:description" content="まちを想い、まちを動かす。美瑛町・東川町を拠点にする地域編集チーム、Ubaku。一棟貸しの宿「Ubaku Villa 宇莫別荘」の運営、地域メディア、改修のデザイン監修、宿と不動産のコンサルティング、移住・二拠点のご相談まで。">
 <meta property="og:url" content="https://ubaku.jp/">
 <meta property="og:image" content="https://ubaku.jp/ogp.jpg">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 
-<!-- ブラウザのタブ・スマホのホーム画面のアイコン（画像は未作成） -->
-<link rel="icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- ブラウザのタブ・スマホのホーム画面のアイコン（ロゴの最後の文字「Ū」。黒い U に東川町の青の横線） -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/img/icon.svg">
+<link rel="icon" type="image/png" href="assets/img/icon-512.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 <!-- フォント（Google Fonts） -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@300&family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
 
 <!-- デザイン（色・フォント・余白はすべてこのファイルで管理） -->
 <link rel="stylesheet" href="assets/css/style.css">
@@ -39,7 +42,8 @@
   "name": "Ubaku",
   "url": "https://ubaku.jp/",
   "email": "info@ubaku.jp",
-  "description": "大雪山のふもとのクリエイティブチーム。美瑛と東川を拠点に、大雪山をとりまくまちで活動。",
+  "logo": "https://ubaku.jp/assets/img/icon-512.png",
+  "description": "まちを想い、まちを動かす、美瑛・東川町の地域編集チーム。美瑛と東川を拠点に、大雪山をとりまくまちで活動。",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "JP",
@@ -59,10 +63,31 @@
 </head>
 <body>
 
+<!-- ======================= オープニング（大雪山の稜線） =======================
+     ページを開いたときに一度だけ流れる（同じタブで2回目以降・動きを減らす設定では出ない）
+     数字が000→100と進み、稜線が描かれ、Find → Make → Live と言葉が変わり、最後に幕のように上がる
+     JSが動かないときは hidden のまま（表示されない） -->
+<div class="opening" id="opening" hidden aria-hidden="true">
+  <span class="op-logo wordmark"></span>
+  <span class="op-coord">43.60°N<br>142.56°E</span>
+  <p class="op-big"><span class="op-verb"><i>Find</i><i>Make</i><i>Live</i></span><span class="op-rest">your place.</span></p>
+  <svg class="op-ridge" viewBox="0 0 1000 120">
+    <defs>
+      <linearGradient id="op-mt" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="700">
+        <stop class="op-stop1" offset="0"/><stop class="op-stop2" offset=".55"/><stop class="op-stop3" offset="1"/>
+      </linearGradient>
+    </defs>
+    <path class="op-shade" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4 L1000 4000 L0 4000 Z"/>
+    <path class="op-line" pathLength="1" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4"/>
+  </svg>
+  <span class="op-label"><span class="op-row"><b>Asahidake</b><small>2,291m</small></span><i></i></span>
+  <span class="op-count">000</span>
+</div>
+
 <!-- ======================= ① ヒーロー ======================= -->
 <header class="hero wrap">
   <nav class="nav intro" style="--d:0s" aria-label="メインメニュー">
-    <span class="en">Biei / Higashikawa, Hokkaido</span>
+    <span class="nav-place">Biei / Higashikawa, Hokkaido</span>
     <ul>
       <li><a href="#values">Values</a></li>
       <li><a href="#work">What We Do</a></li>
@@ -74,103 +99,103 @@
   </nav>
 
   <div class="hero-main">
-    <div class="display hero-mark intro" style="--d:.15s" aria-hidden="true">UBAKU</div>
+    <div class="hero-mark wordmark intro" style="--d:.15s" role="img" aria-label="Ubaku"></div>
     <div class="hero-copy intro" style="--d:.45s">
       <!-- h1はこの1つだけ（文言は固定） -->
-      <h1>大雪山のふもとで、知る・泊まる・過ごす・住む。</h1>
-      <p>大雪山のふもとのクリエイティブチーム、Ubaku。</p>
+      <h1>大雪山のふもとで、<em class="hl">知る・泊まる・過ごす・住む。</em></h1>
+      <p>まちを想い、まちを動かす、美瑛・東川町の地域編集チーム。</p>
     </div>
   </div>
 
   <!-- スライドの切り替えボタン（スライド2・3の文言は見出しにしない） -->
   <div class="slide-tabs intro" style="--d:.7s" role="tablist" aria-label="ヒーロー写真の切り替え">
-    <button type="button" role="tab" id="tab-0" aria-controls="slide-0" aria-selected="true">01　大雪山のふもとで、知る・泊まる・過ごす・住む。</button>
-    <button type="button" role="tab" id="tab-1" aria-controls="slide-1" aria-selected="false" tabindex="-1">02　眺める旅から、暮らす旅へ。</button>
-    <button type="button" role="tab" id="tab-2" aria-controls="slide-2" aria-selected="false" tabindex="-1">03　暮らしに、余白を。</button>
+    <button type="button" role="tab" id="tab-0" aria-controls="slide-0" aria-selected="true">01　雪原と夕暮れの大雪山</button>
+    <button type="button" role="tab" id="tab-1" aria-controls="slide-1" aria-selected="false" tabindex="-1">02　宇莫別荘の窓から見える森</button>
+    <button type="button" role="tab" id="tab-2" aria-controls="slide-2" aria-selected="false" tabindex="-1">03　美瑛の丘の春景色</button>
   </div>
 
   <!-- パノラマ写真（上端を丘の稜線の形で切り抜く）
-       いまの写真は仮。差し替えるときは assets/img の同じ名前のファイルを置き換える
+       写真は 素材 フォルダの元写真から tools/make_images.py で作る（画面の幅に合わせて3種類。ブラウザがちょうどよい1枚を選ぶ）
        1枚目だけ loading="lazy" を付けない -->
   <div class="panorama intro" style="--d:.9s">
-    <svg class="ridge" viewBox="0 0 1296 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 60 C 180 20, 340 20, 500 50 S 820 90, 1000 40 S 1210 20, 1296 44 L1296 0 Z"/></svg>
-    <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="assets/img/hero-01.webp" alt="雪をかぶった大雪山と、美瑛の緑の丘" width="2000" height="1333"></div>
-    <div class="slide photo ph2" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="assets/img/hero-02.webp" alt="Ubaku Villa 宇莫別荘のダイニング" width="2000" height="1333" loading="lazy"></div>
-    <div class="slide photo ph3" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true"><img src="assets/img/hero-03.webp" alt="Ubaku Villa 宇莫別荘の窓から見える森" width="2000" height="1333" loading="lazy"></div>
+    <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 54 C 320 92, 620 90, 880 62 C 1080 40, 1280 42, 1440 64 L1440 0 Z"/></svg>
+    <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="assets/img/hero-01-2400.webp" srcset="assets/img/hero-01-1600.webp 1600w, assets/img/hero-01-2400.webp 2400w, assets/img/hero-01-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="雪原の向こうに、夕日で染まる大雪山" width="3200" height="2133" fetchpriority="high"></div>
+    <div class="slide photo ph2" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="assets/img/hero-02-2400.webp" srcset="assets/img/hero-02-1600.webp 1600w, assets/img/hero-02-2400.webp 2400w, assets/img/hero-02-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="Ubaku Villa 宇莫別荘の窓から見える森" width="3200" height="2135" loading="lazy"></div>
+    <div class="slide photo ph3" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true"><img src="assets/img/hero-03-2400.webp" srcset="assets/img/hero-03-1600.webp 1600w, assets/img/hero-03-2400.webp 2400w, assets/img/hero-03-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="春の美瑛の丘と一本の木" width="3200" height="2134" loading="lazy"></div>
   </div>
 </header>
 
 <main>
 
-<!-- ======================= ② Values ======================= -->
-<section id="values" class="values wrap">
-  <div class="sec-head">
-    <h2 class="display">Values</h2>
-    <span class="aside">大切にしていること</span>
-  </div>
-  <div class="values-grid">
-    <div class="value">
-      <span class="en label">01</span>
-      <h3>眺める旅から、暮らす旅へ。</h3>
-      <p class="en">From Sightseeing to Living.</p>
-      <p class="body">美しい景色を眺めて去る旅から、泊まり、関わり、住まう旅へ。</p>
-    </div>
-    <div class="value">
-      <span class="en label">02</span>
-      <h3>暮らしに、余白を。</h3>
-      <p class="en">Life, with Margin.</p>
-      <p class="body">詰め込まず、急がず。土地の時間が流れこむ余白をつくる。</p>
-    </div>
-    <div class="value">
-      <span class="en label">03</span>
-      <h3>となりで、一緒に。</h3>
-      <p class="en">Right Beside You.</p>
-      <p class="body">移住も、開業も、はじめの一歩は心細いもの。自分たちが通ってきた道をもとに、となりで一緒に考え、支える。</p>
-    </div>
-  </div>
-</section>
-
-<!-- ======================= ②' Concept（Valuesの下・3つの円） =======================
+<!-- ======================= ② Concept ＋ Values（横並び：左＝Concept図、右＝Values） =======================
      3つの円が、上（ひと）→ 右下（場所）→ 左下（土地）→ 上 … とぐるりと順に重なる
      白線は「上に重なっている円のふちのすぐ外側」にだけ引く（半径219＝215＋線の太さの半分） -->
-<section id="concept" class="concept-sec wrap">
-  <div class="concept">
-    <span class="kicker">（Ubakuの考え方）</span>
-    <h2 class="concept-title">Concept</h2>
-    <p class="concept-catch">ひとと、土地と、場所を、<br>つないでいく。</p>
-
-    <div class="tomoe">
-      <svg viewBox="110 20 680 700" role="img" aria-labelledby="tomoe-title">
-        <title id="tomoe-title">ひと・土地・場所の3つの円が重なり、真ん中にUbakuがある図</title>
-        <defs>
-          <clipPath id="clip-top"><circle cx="450" cy="255" r="215"/></clipPath>
-          <clipPath id="clip-br"><circle cx="565" cy="455" r="215"/></clipPath>
-          <clipPath id="clip-bl"><circle cx="335" cy="455" r="215"/></clipPath>
-        </defs>
-        <g class="shapes">
-          <!-- ① 色の面 -->
-          <circle class="fill-top" cx="450" cy="255" r="215"/>
-          <circle class="fill-br" cx="565" cy="455" r="215"/>
-          <circle class="fill-bl" cx="335" cy="455" r="215"/>
-          <g clip-path="url(#clip-bl)"><circle class="fill-br" cx="565" cy="455" r="215"/></g>
-          <g clip-path="url(#clip-br)"><circle class="fill-top" cx="450" cy="255" r="215"/></g>
-          <!-- ② 白線（上に重なっている円のふちだけ） -->
-          <g clip-path="url(#clip-br)"><circle class="gap" cx="450" cy="255" r="219"/></g>
-          <g clip-path="url(#clip-bl)"><circle class="gap" cx="565" cy="455" r="219"/></g>
-          <g clip-path="url(#clip-top)"><circle class="gap" cx="335" cy="455" r="219"/></g>
-          <!-- ③ 3つが重なる真ん中は地色で抜く -->
-          <g clip-path="url(#clip-top)"><g clip-path="url(#clip-br)"><g clip-path="url(#clip-bl)">
-            <rect class="fill-center" x="100" y="0" width="700" height="760"/>
-          </g></g></g>
-        </g>
-        <g class="lbl lbl-top"><text class="lbl-en" x="450" y="172">(People)</text><text class="lbl-jp" x="450" y="212">ひと</text></g>
-        <g class="lbl lbl-bl"><text class="lbl-en" x="268" y="482">(Land)</text><text class="lbl-jp" x="268" y="522">土地</text></g>
-        <g class="lbl lbl-br"><text class="lbl-en" x="632" y="482">(Place)</text><text class="lbl-jp" x="632" y="522">場所</text></g>
-        <g class="lbl lbl-center"><text class="lbl-en" x="450" y="374">(Connect)</text><text class="lbl-brand" x="450" y="414">Ubaku</text></g>
-      </svg>
+<section id="values" class="values wrap">
+  <div class="cv-grid">
+    <div class="cv-concept">
+      <div class="sec-head">
+        <h2 class="display">Concept</h2>
+        <span class="aside">Ubakuの考え方</span>
+      </div>
+      <div class="concept">
+        <p class="concept-catch">ひとと、土地と、場所を、<br><em class="hl">つないでいく。</em></p>
+        <div class="tomoe">
+          <svg viewBox="110 20 680 700" role="img" aria-labelledby="tomoe-title">
+            <title id="tomoe-title">ひと・土地・場所の3つの円が重なり、真ん中にUbakuがある図</title>
+            <defs>
+              <clipPath id="clip-top"><circle cx="450" cy="255" r="215"/></clipPath>
+              <clipPath id="clip-br"><circle cx="565" cy="455" r="215"/></clipPath>
+              <clipPath id="clip-bl"><circle cx="335" cy="455" r="215"/></clipPath>
+            </defs>
+            <g class="shapes">
+              <!-- ① 色の面 -->
+              <circle class="fill-top" cx="450" cy="255" r="215"/>
+              <circle class="fill-br" cx="565" cy="455" r="215"/>
+              <circle class="fill-bl" cx="335" cy="455" r="215"/>
+              <g clip-path="url(#clip-bl)"><circle class="fill-br" cx="565" cy="455" r="215"/></g>
+              <g clip-path="url(#clip-br)"><circle class="fill-top" cx="450" cy="255" r="215"/></g>
+              <!-- ② 白線（上に重なっている円のふちだけ） -->
+              <g clip-path="url(#clip-br)"><circle class="gap" cx="450" cy="255" r="219"/></g>
+              <g clip-path="url(#clip-bl)"><circle class="gap" cx="565" cy="455" r="219"/></g>
+              <g clip-path="url(#clip-top)"><circle class="gap" cx="335" cy="455" r="219"/></g>
+              <!-- ③ 3つが重なる真ん中は地色で抜く -->
+              <g clip-path="url(#clip-top)"><g clip-path="url(#clip-br)"><g clip-path="url(#clip-bl)">
+                <rect class="fill-center" x="100" y="0" width="700" height="760"/>
+              </g></g></g>
+            </g>
+            <g class="lbl lbl-top"><text class="lbl-en" x="450" y="172">[People]</text><text class="lbl-jp" x="450" y="212">ひと</text></g>
+            <g class="lbl lbl-bl"><text class="lbl-en" x="268" y="482">[Land]</text><text class="lbl-jp" x="268" y="522">土地</text></g>
+            <g class="lbl lbl-br"><text class="lbl-en" x="632" y="482">[Place]</text><text class="lbl-jp" x="632" y="522">場所</text></g>
+            <g class="lbl lbl-center"><text class="lbl-en" x="450" y="374">[Connect]</text><text class="lbl-brand" x="450" y="414">Ubaku</text></g>
+          </svg>
+        </div>
+        <!-- 活動エリア -->
+        <p class="area-line">美瑛と東川を拠点に、大雪山をとりまくまちへ。</p>
+      </div>
     </div>
-    <!-- 活動エリア -->
-    <p class="area-line">美瑛と東川を拠点に、大雪山をとりまくまちへ。</p>
+    <div class="cv-values">
+      <div class="sec-head">
+        <h2 class="display">Values</h2>
+        <span class="aside">大切にしていること</span>
+      </div>
+      <div class="values-grid">
+        <div class="value">
+          <p class="value-head"><span class="en label">01</span><span class="en-sub">Editing the Local.</span></p>
+          <h3>あるものを、編み直す。</h3>
+          <p class="body">畑も、空き家も、人の技も。ここにあるものを、新しいかたちでつなぎ直す。</p>
+        </div>
+        <div class="value">
+          <p class="value-head"><span class="en label">02</span><span class="en-sub">Life, with Margin.</span></p>
+          <h3>暮らしに、余白を。</h3>
+          <p class="body">詰め込まず、急がず。土地の時間が流れこむ余白をつくる。</p>
+        </div>
+        <div class="value">
+          <p class="value-head"><span class="en label">03</span><span class="en-sub">Right Beside You.</span></p>
+          <h3>となりで、一緒に。</h3>
+          <p class="body">移住も、開業も、ここで暮らし続けることも。となりで一緒に考え、支える。</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -254,7 +279,7 @@
 
   <!-- Media（1段・カードにしない。ドメインが決まるまでリンクは置かない） -->
   <article id="media" class="media">
-    <div class="photo media-photo"><img src="assets/img/media.webp" alt="雪原から顔を出す枯れ草" width="2000" height="1333" loading="lazy"></div>
+    <div class="photo media-photo"><img src="assets/img/media.webp" alt="雪をかぶった大雪山と、美瑛の緑の丘" width="2000" height="1334" loading="lazy"></div>
     <div class="media-name">
       <span class="label">Connect｜知る・つながる</span>
       <h3 class="biz-name">Ubaku Media</h3>
@@ -307,19 +332,21 @@
   </div>
 </section>
 
-<!-- ======================= ⑤ Ubaku in Numbers（クラフト色） ======================= -->
+<!-- ======================= ⑤ Numbers（クラフト色・上端に丘の輪郭） ======================= -->
 <section class="numbers">
+  <!-- 上端の丘の輪郭（丘より上＝前のセクションの地色） -->
+  <svg class="hill" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path class="hill-fill" d="M0 0 L0 88 C 280 88, 460 10, 760 14 S 1200 92, 1440 52 L1440 0 Z"/></svg>
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="display">Ubaku in Numbers</h2>
+      <h2 class="display">Numbers</h2>
       <span class="aside">数字で見るUbaku</span>
     </div>
     <ul class="numbers-grid">
-      <li><span class="num en-num">2026.1</span><p>Ubaku Villa 宇莫別荘、開業</p></li>
-      <li><span class="num jp-num">1日1組</span><p>一棟まるごと、最大10名まで</p></li>
-      <li><span class="num en-num">80%+</span><p>海外から訪れるゲストの割合（2026年7月時点）</p></li>
-      <li><span class="num jp-num">満点</span><p>Airbnb・Booking.comでの評価（2026年7月時点）</p></li>
-      <li><span class="num jp-num">2棟目</span><p>Ubaku Villa 南邸、準備中</p></li>
+      <li><span class="num">2026.1</span><p>Ubaku Villa 宇莫別荘、開業</p></li>
+      <li><span class="num">1日1組</span><p>一棟まるごと、最大10名まで</p></li>
+      <li><span class="num">80%+</span><p>海外から訪れるゲストの割合（2026年7月時点）</p></li>
+      <li><span class="num">満点</span><p>Airbnb・Booking.comでの評価（2026年7月時点）</p></li>
+      <li><span class="num">2棟目</span><p>Ubaku Villa 南邸、準備中</p></li>
     </ul>
   </div>
 </section>
@@ -344,7 +371,7 @@
       <p class="body">沖縄から北海道へ飛び込んだ元小学校教員。いまは美瑛の農家さんとともに畑に立ち、土と人をつなぎながら、この町に関わる人を増やしている。</p>
     </div>
     <div class="member">
-      <div class="photo ph2"><img src="assets/img/yushin.webp" alt="Yushin" width="1038" height="890" loading="lazy"></div>
+      <div class="photo ph2"><img src="assets/img/yushin.webp" alt="Yushin" width="1108" height="1121" loading="lazy"></div>
       <span class="label">Connector｜結ぶ人</span>
       <h3>Yushin</h3>
       <p class="body">美瑛生まれ。曹洞宗大本山永平寺での修行を経て、ふだんは旭川で僧侶を務める。美瑛の野菜と人の縁を、町の外へ結んでいく。</p>
@@ -403,7 +430,7 @@
       <span class="aside">お問い合わせ</span>
     </div>
     <div class="contact-lead">
-      <p class="contact-lead-title">どんなことでも、お気軽に。</p>
+      <p class="contact-lead-title">どんなことでも、<em class="hl">お気軽に。</em></p>
       <p>宿のこと、移住や二拠点のこと、不動産のこと、野菜のこと。まだ形になっていない思いつきでも大丈夫です。お話しできるのを、楽しみに待っています。</p>
     </div>
     <div class="contact-grid">
@@ -462,8 +489,8 @@
     <!-- ======================= ⑩ フッター ======================= -->
     <footer>
       <div>
-        <span class="display">UBAKU</span>
-        <span>Ubaku｜大雪山のふもとのクリエイティブチーム</span><br>
+        <span class="footer-logo wordmark" role="img" aria-label="Ubaku"></span>
+        <span>Ubaku｜まちを想い、まちを動かす、美瑛・東川町の地域編集チーム</span><br>
         <!-- 郵便番号は確認後に「〒」付きで先頭に追記する -->
         <span>北海道上川郡美瑛町旭町4丁目10-8-103</span>
       </div>
