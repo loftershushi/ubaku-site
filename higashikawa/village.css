@@ -22,6 +22,9 @@
   --ph:#DCE6EB;         /* 写真が入るまでの箱の色 */
   --logo-color:#2B241C; /* UBAKŪ の文字 */
   --logo-bar:var(--accent-hl); /* UBAKŪ の横線（東川町の青） */
+  /* UBAKU Letter の購読（../assets/css/letter.css）が使う色を、このページの色に当てはめる */
+  --cream:var(--paper);   /* 札・窓・購読欄の地 */
+  --green:var(--deep);    /* ボタン・Letter の文字（ubaku.jp の緑の代わりに深い水の色） */
 
   /* --- フォント（ubaku.jp と同じ） --- */
   --f-title:'Jost', sans-serif;                         /* 英字の大見出し・数字・小さなラベル */

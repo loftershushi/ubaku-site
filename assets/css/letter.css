@@ -128,6 +128,7 @@
   .lt-fab,.lt-pop,.lt-btn,.lt-btn::after,.lt-chip span,.lt-ridge path,.lt-top-line{transition:none}
   [data-step]{animation:none !important}
 }
+.gotcha{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}   /* ロボット用の罠の欄（人には見えない） */
 .lt-error{color:#B4553A}   /* 送れなかったときの文（Yasai の赤土に近い色） */
 .lt-ts:empty{display:none}
 .lt-ts iframe{max-width:100%}
