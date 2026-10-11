@@ -35,11 +35,12 @@
 .lt-row:focus-within{border-bottom-color:var(--green)}
 /* 入力した文字：細い字だとスマホや自動入力で薄く見えるので、ふつうの太さ・濃い色に固定する。
    16px 未満だと iPhone で入力時に画面が拡大されるので 16px */
-.lt-input{flex:1;min-width:0;font:inherit;font-weight:400;font-size:16px;letter-spacing:.02em;color:var(--ink);-webkit-text-fill-color:var(--ink);opacity:1;background:transparent;border:0;padding:12px 2px;border-radius:0;-webkit-appearance:none;appearance:none}
+/* .lt-row を付けて強くしているのは、東川ページの入力欄の共通の見た目（枠線・角丸・色）に負けないようにするため */
+.lt-row .lt-input{flex:1;width:auto;min-width:0;font:inherit;font-weight:400;font-size:16px;letter-spacing:.02em;color:var(--ink);-webkit-text-fill-color:var(--ink);opacity:1;background:transparent;border:0;padding:12px 2px;border-radius:0;-webkit-appearance:none;appearance:none}
 .lt-input::placeholder{font-weight:300;color:var(--sub);-webkit-text-fill-color:var(--sub);opacity:.7}
 /* ブラウザの自動入力（保存したアドレスを選んだとき）でも、地の色と文字の色を変えない */
 .lt-input:-webkit-autofill,.lt-input:-webkit-autofill:hover,.lt-input:-webkit-autofill:focus{-webkit-text-fill-color:var(--ink);-webkit-box-shadow:0 0 0 1000px var(--cream) inset;box-shadow:0 0 0 1000px var(--cream) inset;transition:background-color 9999s ease 0s}
-.lt-input:focus{outline:none}
+.lt-row .lt-input:focus{outline:none;border:0;background:transparent}
 .lt-btn{flex:none;display:inline-flex;align-items:center;gap:10px;font:inherit;font-size:13px;letter-spacing:.16em;color:var(--cream);background:var(--green);
   border:0;padding:11px 22px;cursor:pointer;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .lt-btn::after{content:"→";font-family:var(--f-title);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
