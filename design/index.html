@@ -28,9 +28,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
 
-<!-- デザイン：トップページと共通の style.css ＋ 下層ページ用の sub.css -->
+<!-- デザイン：トップページと共通の style.css ＋ 下層ページ用の sub.css ＋ UBAKU Letter の札 -->
 <link rel="stylesheet" href="../assets/css/style.css">
 <link rel="stylesheet" href="../assets/css/sub.css">
+<link rel="stylesheet" href="../assets/css/letter.css">
 
 <!-- Googleにページの内容を伝えるデータ（このページで受けている仕事） -->
 <script type="application/ld+json">
@@ -46,17 +47,23 @@
 </head>
 <body class="page-design">
 
-<!-- ======================= 固定メニュー（細い帯。下にスクロールすると上に出る） ======================= -->
+<!-- ページの構成はトップページと同じ流れ（オープニングはなし）
+     ① ヒーロー → ② 考え方＋強み → ③ Scope（淡いグレー・稜線）→ ④ Works（ビフォー・アフター）
+     → ⑤ Flow（丘の帯）→ ⑥ Fee（料金の目安）→ ⑦ FAQ → ⑧ Consulting へ → ⑨ Contact（深い色）
+     UBAKU Letter の購読は右下の札だけ（ページの中の購読欄・フッターには出さない） -->
+
+<!-- ======================= 固定メニュー（細い帯） ======================= -->
 <div class="topbar" id="topbar">
   <div class="topbar-inner wrap">
     <a class="topbar-logo wordmark" href="../" aria-label="UBAKU トップページへ"></a>
     <button type="button" class="topbar-menu" aria-expanded="false" aria-controls="topbar-list">Menu</button>
     <nav class="topbar-nav" aria-label="メニュー">
       <ul id="topbar-list">
-        <li><a href="#works">Works</a></li>
+        <li><a href="#approach">Approach</a></li>
         <li><a href="#scope">Scope</a></li>
+        <li><a href="#works">Works</a></li>
         <li><a href="#flow">Flow</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#fee">Fee</a></li>
         <li><a href="../consulting/">Consulting</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -64,42 +71,112 @@
   </div>
 </div>
 
-<!-- ======================= ページの頭 ======================= -->
-<header class="sub-hero wrap">
-  <nav class="sub-nav intro" style="--d:0s" aria-label="メインメニュー">
-    <a class="sub-logo wordmark" href="../" aria-label="UBAKU トップページへ"></a>
+<!-- ======================= ① ヒーロー ======================= -->
+<header class="hero wrap">
+  <nav class="nav intro" style="--d:0s" aria-label="メインメニュー">
+    <span class="nav-place"><a href="../">UBAKU</a> / Design</span>
     <ul>
-      <li><a href="#works">Works</a></li>
+      <li><a href="#approach">Approach</a></li>
       <li><a href="#scope">Scope</a></li>
+      <li><a href="#works">Works</a></li>
       <li><a href="#flow">Flow</a></li>
-      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#fee">Fee</a></li>
       <li><a href="../consulting/">Consulting</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <p class="crumb intro" style="--d:.15s"><a href="../">UBAKU</a>　/　Design</p>
-
-  <div class="sub-title intro" style="--d:.3s">
-    <div>
+  <div class="hero-main">
+    <div class="hero-biz intro" style="--d:.15s">
       <span class="label">Design｜考える</span>
-      <p class="biz-name">UBAKU Design</p>
+      <p class="biz-name"><span>UBAKU</span>Design</p>
     </div>
-    <div>
+    <div class="hero-copy intro" style="--d:.5s">
       <!-- h1 はこの1つだけ -->
       <h1>改修を、<br class="sp-br"><em class="hl">デザイン監修とプロデュースで。</em></h1>
-      <p class="sub-lead">古い建物には、新しく建てるものにはない時間の厚みがあります。UBAKU Designは、その建物の良さを生かした改修を、コンセプトづくりから仕上がりまで伴走します。宿・住宅・店舗・事務所など、建物の種類は問いません。</p>
+      <p class="hero-lead">宿・住宅・店舗・事務所など、建物の良さを生かした改修を、仕上がりまで。</p>
     </div>
   </div>
 
-  <div class="sub-photo intro" style="--d:.7s">
-    <img src="../assets/img/works/01-living-after.webp" alt="改修後の UBAKU Villa 宇莫別荘のリビング" width="1600" height="1067" fetchpriority="high">
+  <!-- 写真（1枚・上端を丘の稜線の形で切り抜く） -->
+  <div class="panorama intro" style="--d:1s">
+    <div class="slide photo is-active"><img src="../assets/img/works/01-living-after.webp" alt="改修後の UBAKU Villa 宇莫別荘のリビング" width="2400" height="1600" fetchpriority="high"></div>
   </div>
 </header>
 
 <main>
 
-<!-- ======================= Works｜改修の実績（ビフォー・アフター）=======================
+<!-- ======================= ② 考え方（左）＋ 強み（右） ======================= -->
+<section id="approach" class="values wrap">
+  <div class="cv-grid">
+    <div class="cv-concept">
+      <div class="sec-head">
+        <h2 class="display">Approach</h2>
+        <span class="aside">考え方</span>
+      </div>
+      <div class="approach js-reveal">
+        <p class="concept-catch">壊して新しくするより、<br><em class="hl">あるものを、生かす。</em></p>
+        <p class="body">古い建物には、新しく建てるものにはない時間の厚みがあります。UBAKU Designは、その建物の良さを残しながら、いまの暮らしや使い方に合わせて編み直す改修を、コンセプトづくりから仕上がりまで伴走します。</p>
+        <ul class="tags" aria-label="対象の建物">
+          <li>宿</li><li>住宅</li><li>店舗</li><li>事務所</li><li>空き家</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cv-values">
+      <div class="sec-head">
+        <h2 class="display">Strength</h2>
+        <span class="aside">UBAKU Designにできること</span>
+      </div>
+      <div class="values-grid">
+        <div class="value">
+          <p class="value-head"><span class="en label">01</span><span class="en-sub">Through Users' Eyes.</span></p>
+          <h3>使う人の目線で考える。</h3>
+          <p class="body">自分たちで宿を運営しているからこそ、泊まる人・働く人・掃除をする人まで、使う人の目線で改修を考えます。</p>
+        </div>
+        <div class="value">
+          <p class="value-head"><span class="en label">02</span><span class="en-sub">Numbers, Too.</span></p>
+          <h3>事業の数字まで見る。</h3>
+          <p class="body">見た目だけでなく、改修にかける費用と、その後の収支まで。不動産の実務の目線で、無理のない改修を一緒に決めます。</p>
+        </div>
+        <div class="value">
+          <p class="value-head"><span class="en label">03</span><span class="en-sub">On Your Side.</span></p>
+          <h3>お客さまの側に立つ。</h3>
+          <p class="body">工事は請け負わず、監修とプロデュースに専念します。工事会社とのあいだに立って、仕上がりまで見届けます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ③ Scope（淡いグレー・上端に稜線） ======================= -->
+<section id="scope" class="dark light-band">
+  <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 50 C 220 100, 420 100, 640 60 S 1000 10, 1200 50 S 1380 80, 1440 60 L1440 0 Z"/></svg>
+  <div class="work wrap">
+    <div class="sec-head">
+      <h2 class="display">Scope</h2>
+      <span class="aside">お受けする範囲</span>
+    </div>
+    <div class="work-grid work-grid--3">
+      <div class="work-item">
+        <span class="en kind">Renovation</span>
+        <h3>構造に手を加えない改修</h3>
+        <p>内装・設備の更新、間取りの見直しなど、柱や梁などの構造に手を加えない範囲の改修を、デザイン監修とプロデュースでお手伝いします。宿・住宅・店舗・事務所など、建物の種類は問いません。</p>
+      </div>
+      <div class="work-item">
+        <span class="en kind">Produce</span>
+        <h3>工事は、信頼できる会社へ</h3>
+        <p>工事はご紹介する工事会社と直接ご契約いただきます。UBAKUは工事を請け負わず、監修とプロデュースに専念します。</p>
+      </div>
+      <div class="work-item">
+        <span class="en kind">Partner</span>
+        <h3>大きな改修は、建築士と</h3>
+        <p>確認申請が必要になるような大規模な改修は、提携する建築士と連携して進めます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ④ Works｜改修の実績（ビフォー・アフター）=======================
      写真の元データ：50_コンサル・設計\52_Design（改修・デザイン監修）\02_実績（写真・図面のコピー）\01_宇莫別荘
      サイト用の画像は tools/make_works_images.py で作る -->
 <section id="works" class="sub-sec wrap">
@@ -118,22 +195,22 @@
     <div class="ba js-reveal">
       <div class="ba-head"><h3>リビング</h3><p>木目の壁と石油ストーブの部屋を、窓の景色が映える白い空間に。</p></div>
       <div class="ba-pair">
-        <figure><div class="photo"><img src="../assets/img/works/01-living-before.webp" alt="改修前のリビング。木目の壁とレンガの柱" width="1600" height="1067" loading="lazy"></div><figcaption>Before</figcaption></figure>
-        <figure><div class="photo"><img src="../assets/img/works/01-living-after.webp" alt="改修後のリビング。白い壁と明るい木の床、ソファと大きな窓" width="1600" height="1067" loading="lazy"></div><figcaption>After</figcaption></figure>
+        <figure><div class="photo"><img src="../assets/img/works/01-living-before.webp" alt="改修前のリビング。木目の壁とレンガの柱" width="2400" height="1600" loading="lazy"></div><figcaption>Before</figcaption></figure>
+        <figure><div class="photo"><img src="../assets/img/works/01-living-after.webp" alt="改修後のリビング。白い壁と明るい木の床、ソファと大きな窓" width="2400" height="1600" loading="lazy"></div><figcaption>After</figcaption></figure>
       </div>
     </div>
     <div class="ba js-reveal">
       <div class="ba-head"><h3>キッチン</h3><p>古い流し台を、ゲストが料理を楽しめるシステムキッチンに。</p></div>
       <div class="ba-pair">
-        <figure><div class="photo"><img src="../assets/img/works/01-kitchen-before.webp" alt="改修前のキッチン。古い流し台と吊り戸棚" width="1600" height="1067" loading="lazy"></div><figcaption>Before</figcaption></figure>
-        <figure><div class="photo"><img src="../assets/img/works/01-kitchen-after.webp" alt="改修後のキッチン。黒いシステムキッチンと白い壁" width="1600" height="1067" loading="lazy"></div><figcaption>After</figcaption></figure>
+        <figure><div class="photo"><img src="../assets/img/works/01-kitchen-before.webp" alt="改修前のキッチン。古い流し台と吊り戸棚" width="2400" height="1600" loading="lazy"></div><figcaption>Before</figcaption></figure>
+        <figure><div class="photo"><img src="../assets/img/works/01-kitchen-after.webp" alt="改修後のキッチン。黒いシステムキッチンと白い壁" width="2400" height="1600" loading="lazy"></div><figcaption>After</figcaption></figure>
       </div>
     </div>
     <div class="ba ba--tall js-reveal">
       <div class="ba-head"><h3>トイレ</h3><p>手すりの付いた古いトイレを、落ち着いた色の空間に。</p></div>
       <div class="ba-pair">
-        <figure><div class="photo"><img src="../assets/img/works/01-restroom-before.webp" alt="改修前のトイレ" width="1600" height="2400" loading="lazy"></div><figcaption>Before</figcaption></figure>
-        <figure><div class="photo"><img src="../assets/img/works/01-restroom-after.webp" alt="改修後のトイレ。グレーの壁と間接照明" width="1600" height="2400" loading="lazy"></div><figcaption>After</figcaption></figure>
+        <figure><div class="photo"><img src="../assets/img/works/01-restroom-before.webp" alt="改修前のトイレ" width="1775" height="2662" loading="lazy"></div><figcaption>Before</figcaption></figure>
+        <figure><div class="photo"><img src="../assets/img/works/01-restroom-after.webp" alt="改修後のトイレ。グレーの壁と間接照明" width="2160" height="3240" loading="lazy"></div><figcaption>After</figcaption></figure>
       </div>
     </div>
   </div>
@@ -144,86 +221,53 @@
   </div>
 </section>
 
-<!-- ======================= Scope｜お受けする範囲 ======================= -->
-<div class="sub-band">
-<section id="scope" class="sub-sec wrap">
-  <div class="sec-head">
-    <h2 class="display">Scope</h2>
-    <span class="aside">お受けする範囲</span>
-  </div>
-  <div class="cards cards--3">
-    <article class="card js-reveal">
-      <span class="label">01｜Renovation</span>
-      <h3>構造に手を加えない改修</h3>
-      <p class="body">内装・設備の更新、間取りの見直しなど、柱や梁などの構造に手を加えない範囲の改修を、デザイン監修とプロデュースでお手伝いします。宿・住宅・店舗・事務所など、建物の種類は問いません。</p>
-    </article>
-    <article class="card js-reveal">
-      <span class="label">02｜Produce</span>
-      <h3>工事は、信頼できる会社へ</h3>
-      <p class="body">工事はご紹介する工事会社と直接ご契約いただきます。UBAKUは工事を請け負わず、監修とプロデュースに専念するので、立場をはさまずに、お客さまの側に立って進められます。</p>
-    </article>
-    <article class="card js-reveal">
-      <span class="label">03｜Partner</span>
-      <h3>大きな改修は、建築士と</h3>
-      <p class="body">確認申請が必要になるような大規模な改修は、提携する建築士と連携して進めます。</p>
-    </article>
-  </div>
-</section>
-</div>
-
-<!-- ======================= Flow｜進め方 ======================= -->
-<section id="flow" class="sub-sec wrap">
-  <div class="sec-head">
-    <h2 class="display">Flow</h2>
-    <span class="aside">進め方</span>
-  </div>
-  <ol class="flow">
-    <li class="js-reveal"><h3>ヒアリング</h3><p>建物の状態と、どう使いたいかをうかがいます。</p></li>
-    <li class="js-reveal"><h3>コンセプト</h3><p>その建物と土地らしさを生かした方向性を決めます。</p></li>
-    <li class="js-reveal"><h3>事業企画</h3><p>宿や店舗なら、改修にかける費用と収支の見通しを立てます。</p></li>
-    <li class="js-reveal"><h3>プラン・素材監修</h3><p>間取り・色・素材・家具まで、仕上がりを監修します。</p></li>
-    <li class="js-reveal"><h3>工事会社紹介</h3><p>工事会社をご紹介し、仕上がりまで伴走します。</p></li>
-  </ol>
-</section>
-
-<!-- ======================= Strength｜UBAKU Designの考え方 ======================= -->
-<section class="sub-sec wrap">
-  <div class="sec-head">
-    <h2 class="display">Strength</h2>
-    <span class="aside">UBAKU Designにできること</span>
-  </div>
-  <div class="cards cards--3">
-    <article class="card js-reveal">
-      <span class="label">01</span>
-      <h3>使う人の目線で考える。</h3>
-      <p class="body">自分たちで宿を運営しているからこそ、泊まる人・働く人・掃除をする人まで、使う人の目線で改修を考えます。</p>
-    </article>
-    <article class="card js-reveal">
-      <span class="label">02</span>
-      <h3>事業の数字まで見る。</h3>
-      <p class="body">見た目だけでなく、改修にかける費用と、その後の収支まで。不動産の実務の目線で、無理のない改修を一緒に決めます。</p>
-    </article>
-    <article class="card js-reveal">
-      <span class="label">03</span>
-      <h3>あるものを、生かす。</h3>
-      <p class="body">壊して新しくするのではなく、その建物にしかない良さを残し、いまの暮らしや使い方に合わせて編み直します。</p>
-    </article>
-  </div>
-</section>
-
-<!-- ======================= UBAKU Consulting へ案内する帯（相互リンク） ======================= -->
-<section class="sub-sec wrap">
-  <div class="cross js-reveal">
-    <div>
-      <span class="label">Consult｜支える</span>
-      <p class="biz-name">UBAKU Consulting</p>
-      <p class="body">宿の開業・運営、不動産開発や新規事業のご相談は、UBAKU Consulting が承ります。改修とあわせて、事業の組み立てからご相談いただけます。</p>
+<!-- ======================= ⑤ Flow（丘の帯・トップの Numbers と同じ形） ======================= -->
+<section id="flow" class="numbers">
+  <svg class="hill" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path class="hill-fill" d="M0 0 L0 88 C 280 88, 460 10, 760 14 S 1200 92, 1440 52 L1440 0 Z"/></svg>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="display">Flow</h2>
+      <span class="aside">進め方</span>
     </div>
-    <a class="more" href="../consulting/">開業・事業企画の相談をする →</a>
+    <ol class="numbers-grid numbers-grid--steps">
+      <li><span class="num">01</span><strong>ヒアリング</strong><p>建物の状態と、どう使いたいかをうかがいます。</p></li>
+      <li><span class="num">02</span><strong>コンセプト</strong><p>その建物と土地らしさを生かした方向性を決めます。</p></li>
+      <li><span class="num">03</span><strong>事業企画</strong><p>宿や店舗なら、改修にかける費用と収支の見通しを立てます。</p></li>
+      <li><span class="num">04</span><strong>プラン・素材監修</strong><p>間取り・色・素材・家具まで、仕上がりを監修します。</p></li>
+      <li><span class="num">05</span><strong>工事会社紹介</strong><p>工事会社をご紹介し、仕上がりまで伴走します。</p></li>
+    </ol>
   </div>
 </section>
 
-<!-- ======================= FAQ｜よくあるご質問 ======================= -->
+<!-- ======================= ⑥ Fee｜料金の目安 ======================= -->
+<section id="fee" class="sub-sec wrap">
+  <div class="sec-head">
+    <h2 class="display">Fee</h2>
+    <span class="aside">料金の目安</span>
+  </div>
+  <div class="cards cards--2">
+    <article class="card js-reveal">
+      <span class="label">Design｜改修</span>
+      <h3>改修のデザイン監修</h3>
+      <dl class="price-list">
+        <div><dt>デザイン監修<small>コンセプト・プラン・素材の監修、工事会社のご紹介</small></dt><dd>工事費の10%〜</dd></div>
+        <div><dt>家具選定サポート</dt><dd>¥100,000〜</dd></div>
+      </dl>
+    </article>
+    <article class="card js-reveal">
+      <span class="label">Stay｜宿をはじめるなら</span>
+      <h3>開業の準備もあわせて</h3>
+      <p class="body">宿として開業するなら、物件選定・収支シミュレーション（無償）から、コンセプト提案、予約サイトの登録、撮影まで、UBAKU Consulting がまとめてお手伝いします。</p>
+      <a class="more" href="../consulting/#menu">宿の開業・運営支援の料金を見る →</a>
+    </article>
+  </div>
+  <ul class="notes">
+    <li>金額はすべて目安です。建物の規模や内容によって変わります。消費税・現地への交通費の扱いは、お見積りのときにご案内します。</li>
+    <li>工事の費用は、ご紹介する工事会社と直接ご契約いただきます。</li>
+  </ul>
+</section>
+
+<!-- ======================= ⑦ FAQ｜よくあるご質問 ======================= -->
 <section id="faq" class="sub-sec wrap">
   <div class="sec-head">
     <h2 class="display">FAQ</h2>
@@ -243,8 +287,8 @@
       <p>確認申請が必要になるような大規模な改修は、提携する建築士と連携して進めます。まずは建物の状態をお聞かせください。</p>
     </details>
     <details>
-      <summary>費用はどのくらいかかりますか？</summary>
-      <p>建物の大きさや改修の範囲に合わせてお見積りします。まずはお問い合わせフォームから、建物の状況とご希望をお聞かせください。</p>
+      <summary>「工事費の10%〜」は、何にかかる費用ですか？</summary>
+      <p>コンセプトづくり、プラン・色・素材の監修、工事会社のご紹介と、仕上がりまでの伴走にかかる費用です。工事そのものの費用は、工事会社と直接ご契約いただきます。</p>
     </details>
     <details>
       <summary>改修したあとの、宿の開業や運営も相談できますか？</summary>
@@ -253,9 +297,21 @@
   </div>
 </section>
 
+<!-- ======================= ⑧ UBAKU Consulting へ（相互リンク・Consulting の色で） ======================= -->
+<section class="sub-sec wrap">
+  <div class="cross js-reveal">
+    <div>
+      <span class="label">Consult｜支える</span>
+      <p class="biz-name">UBAKU Consulting</p>
+      <p class="body">宿の開業・運営、不動産開発や新規事業のご相談は、UBAKU Consulting が承ります。改修とあわせて、事業の組み立てからご相談いただけます。</p>
+    </div>
+    <a class="more" href="../consulting/">開業・事業企画の相談をする →</a>
+  </div>
+</section>
+
 </main>
 
-<!-- ======================= Contact（深い色・上端に稜線） =======================
+<!-- ======================= ⑨ Contact（深い色・上端に稜線） =======================
      フォームはトップページと同じ Web3Forms。種別は「デザイン監修・改修プロデュース」を最初から選んでおく -->
 <section id="contact" class="dark">
   <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 70 C 200 20, 420 20, 620 60 S 980 110, 1180 50 S 1380 30, 1440 45 L1440 0 Z"/></svg>
@@ -308,6 +364,7 @@
       </div>
     </form>
 
+    <!-- フッター（トップと同じ。購読の案内は入れない） -->
     <footer>
       <div>
         <a class="footer-logo wordmark" href="../" aria-label="UBAKU トップページへ"></a>
@@ -327,5 +384,7 @@
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
 <script src="../assets/js/main.js"></script>
+<!-- UBAKU Letter：右下の札だけ（data-band="off" でページの中の購読欄は入れない） -->
+<script src="../assets/js/letter.js" data-privacy="../privacy/" data-band="off"></script>
 </body>
 </html>

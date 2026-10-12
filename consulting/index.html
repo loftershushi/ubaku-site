@@ -28,9 +28,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
 
-<!-- デザイン：トップページと共通の style.css ＋ 下層ページ用の sub.css -->
+<!-- デザイン：トップページと共通の style.css ＋ 下層ページ用の sub.css ＋ UBAKU Letter の札 -->
 <link rel="stylesheet" href="../assets/css/style.css">
 <link rel="stylesheet" href="../assets/css/sub.css">
+<link rel="stylesheet" href="../assets/css/letter.css">
 
 <!-- Googleにページの内容を伝えるデータ（このページで受けている仕事） -->
 <script type="application/ld+json">
@@ -47,14 +48,19 @@
 </head>
 <body class="page-consulting">
 
-<!-- ======================= 固定メニュー（細い帯。下にスクロールすると上に出る） ======================= -->
+<!-- ページの構成はトップページと同じ流れ（オープニングはなし）
+     ① ヒーロー → ② 考え方＋強み → ③ Services（淡いグレー・稜線）→ ④ For → ⑤ Menu（料金の目安）→ ⑥ Case
+     → ⑦ Numbers（丘の帯）→ ⑧ FAQ → ⑨ Design へ → ⑩ Contact（深い色）
+     UBAKU Letter の購読は右下の札だけ（ページの中の購読欄・フッターには出さない） -->
+
+<!-- ======================= 固定メニュー（細い帯） ======================= -->
 <div class="topbar" id="topbar">
   <div class="topbar-inner wrap">
     <a class="topbar-logo wordmark" href="../" aria-label="UBAKU トップページへ"></a>
     <button type="button" class="topbar-menu" aria-expanded="false" aria-controls="topbar-list">Menu</button>
     <nav class="topbar-nav" aria-label="メニュー">
       <ul id="topbar-list">
-        <li><a href="#for">For</a></li>
+        <li><a href="#approach">Approach</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#menu">Menu</a></li>
         <li><a href="#case">Case</a></li>
@@ -66,13 +72,13 @@
   </div>
 </div>
 
-<!-- ======================= ページの頭 ======================= -->
-<header class="sub-hero wrap">
-  <nav class="sub-nav intro" style="--d:0s" aria-label="メインメニュー">
-    <a class="sub-logo wordmark" href="../" aria-label="UBAKU トップページへ"></a>
+<!-- ======================= ① ヒーロー ======================= -->
+<header class="hero wrap">
+  <nav class="nav intro" style="--d:0s" aria-label="メインメニュー">
+    <span class="nav-place"><a href="../">UBAKU</a> / Consulting</span>
     <ul>
-      <li><a href="#for">For</a></li>
-        <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#menu">Menu</a></li>
       <li><a href="#case">Case</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -81,28 +87,100 @@
     </ul>
   </nav>
 
-  <p class="crumb intro" style="--d:.15s"><a href="../">UBAKU</a>　/　Consulting</p>
-
-  <div class="sub-title intro" style="--d:.3s">
-    <div>
+  <div class="hero-main">
+    <div class="hero-biz intro" style="--d:.15s">
       <span class="label">Consult｜支える</span>
-      <p class="biz-name">UBAKU Consulting</p>
+      <p class="biz-name"><span>UBAKU</span>Consulting</p>
     </div>
-    <div>
+    <div class="hero-copy intro" style="--d:.5s">
       <!-- h1 はこの1つだけ -->
       <h1>宿と不動産の実務から、<br class="sp-br"><em class="hl">事業をかたちに。</em></h1>
-      <p class="sub-lead">不動産開発、新規事業、そして宿の開業まで。東京の大手不動産会社で培った収益不動産の実務と、自分たちで宿を立ち上げ、運営してきた現場の経験。その両方で、事業のとなりに立ちます。旭川・北海道をはじめ、全国対応。</p>
+      <p class="hero-lead">不動産開発、新規事業、そして宿の開業まで。旭川・北海道をはじめ、全国対応。</p>
     </div>
   </div>
 
-  <div class="sub-photo intro" style="--d:.7s">
-    <img src="../assets/img/works/01-exterior.webp" alt="雪の夜に明かりがともる UBAKU Villa 宇莫別荘" width="1536" height="1024" fetchpriority="high">
+  <!-- 写真（1枚・上端を丘の稜線の形で切り抜く） -->
+  <div class="panorama intro" style="--d:1s">
+    <div class="slide photo is-active"><img src="../assets/img/works/01-exterior.webp" alt="雪の夜に明かりがともる UBAKU Villa 宇莫別荘" width="1536" height="1024" fetchpriority="high"></div>
   </div>
 </header>
 
 <main>
 
-<!-- ======================= For｜こんな方へ（企業向けを先に） ======================= -->
+<!-- ======================= ② 考え方（左）＋ 強み（右） ======================= -->
+<section id="approach" class="values wrap">
+  <div class="cv-grid">
+    <div class="cv-concept">
+      <div class="sec-head">
+        <h2 class="display">Approach</h2>
+        <span class="aside">考え方</span>
+      </div>
+      <div class="approach js-reveal">
+        <p class="concept-catch">東京の実務と、地方の現場を、<br><em class="hl">ひとつの事業に。</em></p>
+        <p class="body">東京の大手不動産会社で培った、収益不動産の開発と新規事業の実務。そして、北海道で宿を一から立ち上げ、運営してきた現場の経験。その両方を持つチームとして、事業の組み立てから、かたちになるまで、となりで一緒に考えます。</p>
+        <ul class="tags" aria-label="ご相談の多い分野">
+          <li>不動産開発</li><li>事業企画</li><li>新規事業</li><li>宿の開業</li><li>運営の仕組み</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cv-values">
+      <div class="sec-head">
+        <h2 class="display">Strength</h2>
+        <span class="aside">UBAKUにできること</span>
+      </div>
+      <div class="values-grid">
+        <div class="value">
+          <p class="value-head"><span class="en label">01</span><span class="en-sub">Tokyo × Local.</span></p>
+          <h3>東京と地方、両方の目線。</h3>
+          <p class="body">収益不動産の開発や新規事業に携わってきた数字の見方と、北海道で宿を立ち上げた現場の感覚。どちらか一方では見えないところまで、一緒に考えます。</p>
+        </div>
+        <div class="value">
+          <p class="value-head"><span class="en label">02</span><span class="en-sub">Tested First.</span></p>
+          <h3>試したことだけを、手渡す。</h3>
+          <p class="body">机の上の提案ではなく、自分たちの宿で実際に試し、うまくいったやり方をお渡しします。</p>
+        </div>
+        <div class="value">
+          <p class="value-head"><span class="en label">03</span><span class="en-sub">Run It Yourself.</span></p>
+          <h3>自分で回せる仕組みを残す。</h3>
+          <p class="body">運営を代わりに引き受けるのではなく、少ない手間で回せる仕組みを残します。支援で使う仕組みは、チーム内の研究開発部門「UBAKU Lab」で開発・検証しています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ③ Services（淡いグレー・上端に稜線） ======================= -->
+<section id="services" class="dark light-band">
+  <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 50 C 220 100, 420 100, 640 60 S 1000 10, 1200 50 S 1380 80, 1440 60 L1440 0 Z"/></svg>
+  <div class="work wrap">
+    <div class="sec-head">
+      <h2 class="display">Services</h2>
+      <span class="aside">3つの支援</span>
+    </div>
+    <div class="work-grid work-grid--3">
+      <div class="work-item">
+        <span class="en kind">Real Estate</span>
+        <h3>不動産開発・事業企画</h3>
+        <p>収益不動産の開発、賃貸住宅やオフィスの企画、投資用不動産の検討まで。立地や需要の読み方、事業収支、商品の企画を、地域の事業者の方と一緒に組み立てます。</p>
+        <span class="en lines">For developers</span>
+      </div>
+      <div class="work-item">
+        <span class="en kind">New Business</span>
+        <h3>不動産の新規事業</h3>
+        <p>デベロッパーの新しい事業、建設会社がはじめる不動産事業など、「これまでやったことのない事業」の立ち上げを支援します。事業の組み立てから、数字の見通し、小さく試して確かめる進め方まで。</p>
+        <span class="en lines">For developers / construction</span>
+      </div>
+      <div class="work-item">
+        <span class="en kind">Stay</span>
+        <h3>宿泊施設の開業・運営</h3>
+        <p>運営代行ではなく、オーナーが少ない手間で、自分の力で宿を回せる仕組みづくりを支援します。物件選びと収支の見通しから、予約サイトへの登録、撮影、清掃やゲスト対応の仕組みまで。</p>
+        <a class="en lines" href="#menu">料金の目安を見る →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ④ For｜こんな方へ ======================= -->
 <section id="for" class="sub-sec wrap">
   <div class="sec-head">
     <h2 class="display">For</h2>
@@ -132,92 +210,69 @@
   </div>
 </section>
 
-<!-- ======================= Services｜3つの支援 ======================= -->
-<div class="sub-band">
-<section id="services" class="sub-sec wrap">
-  <div class="sec-head">
-    <h2 class="display">Services</h2>
-    <span class="aside">3つの支援</span>
-  </div>
-  <div class="cards cards--3">
-    <article class="card js-reveal">
-      <span class="label">01｜Real Estate</span>
-      <h3>不動産開発・事業企画</h3>
-      <p class="body">収益不動産の開発、賃貸住宅やオフィスの企画、投資用不動産の検討まで。東京の大手不動産会社での実務をもとに、立地や需要の読み方、事業収支、商品の企画を、地方の事業者の方と一緒に組み立てます。</p>
-    </article>
-    <article class="card js-reveal">
-      <span class="label">02｜New Business</span>
-      <h3>不動産の新規事業</h3>
-      <p class="body">デベロッパーの新しい事業、建設会社がはじめる不動産事業など、「これまでやったことのない事業」の立ち上げを支援します。事業の組み立てから、数字の見通し、小さく試して確かめる進め方まで。</p>
-    </article>
-    <article class="card js-reveal">
-      <span class="label">03｜Stay</span>
-      <h3>宿泊施設の開業・運営</h3>
-      <p class="body">運営代行ではなく、オーナーが少ない手間で、自分の力で宿を回せる仕組みづくりを支援します。物件選びと収支の見通しから、予約サイトへの登録、撮影、清掃やゲスト対応の仕組みまで。必要なものを、必要なだけ。</p>
-    </article>
-  </div>
-</section>
-</div>
-
-<!-- ======================= Menu｜宿の開業・運営支援の内容（3つの段階） =======================
-     項目は旧 UBAKU Lab ページ案（50_コンサル・設計\51_Consulting\01_サイト原稿\ubakulab.html）から
-     ※ メニューの名前と料金は見直し中（Notion タスク「UBAKU Lab パッケージ内容の再精査」）。料金は決まるまで載せない
-     ※ 法務系（旅館業法・用途地域・建築や消防の確認）は、見直しで決まったら「開業前」に足す
-     ※ 旧案の「内装設計」は UBAKU Design の担当に移した -->
+<!-- ======================= ⑤ Menu｜宿の開業・運営支援の料金の目安 =======================
+     金額は 2026-10-12 mashuさん案。原稿・料金の元は 50_コンサル・設計\51_Consulting\02_サービス・料金
+     ※ 法務系（旅館業法・用途地域・建築や消防の確認）は、見直しで決まったら「開業前」に足す -->
 <section id="menu" class="sub-sec wrap">
   <div class="sec-head">
     <h2 class="display">Menu</h2>
-    <span class="aside">宿の開業・運営支援の内容</span>
+    <span class="aside">宿の開業・運営支援の料金の目安</span>
   </div>
   <p class="sec-lead">宿をはじめる前から、開業後まで。3つの段階に分けて、いまのあなたに必要なところだけをお手伝いします。</p>
   <div class="cards cards--3">
     <article class="card js-reveal">
       <span class="label">01｜開業前</span>
       <h3>夢を、かたちにする。</h3>
-      <ul>
-        <li>物件選定サポート</li>
-        <li>収支シミュレーション</li>
-        <li>競合調査</li>
-        <li>コンセプト提案</li>
-        <li>ロゴデザイン</li>
-        <li>家具選定サポート</li>
-      </ul>
+      <dl class="price-list">
+        <div><dt>物件選定サポート</dt><dd class="free">無償</dd></div>
+        <div><dt>収支シミュレーション</dt><dd class="free">無償</dd></div>
+        <div><dt>競合調査</dt><dd>¥50,000〜</dd></div>
+        <div><dt>コンセプト提案</dt><dd>¥100,000〜</dd></div>
+        <div><dt>ロゴデザイン</dt><dd>¥50,000〜</dd></div>
+        <div><dt><a class="more cross-inline" href="../design/">デザイン監修</a><small>UBAKU Design が担当</small></dt><dd>工事費の10%〜</dd></div>
+        <div><dt>家具選定サポート</dt><dd>¥100,000〜</dd></div>
+      </dl>
     </article>
     <article class="card js-reveal">
       <span class="label">02｜立ち上げ</span>
       <h3>宿を、世界に届ける。</h3>
-      <ul>
-        <li>予約サイト（OTA）への登録・初期設定</li>
-        <li>説明文の作成</li>
-        <li>自動返信の設定</li>
-        <li>ハウスルールの作成</li>
-        <li>写真撮影</li>
-        <li>HP作成</li>
-      </ul>
+      <dl class="price-list">
+        <div><dt>説明文章作成</dt><dd>¥50,000〜</dd></div>
+        <div><dt>自動返信設定</dt><dd>¥50,000〜</dd></div>
+        <div><dt>予約サイト（OTA）登録・初期設定</dt><dd>¥100,000〜</dd></div>
+        <div><dt>ハウスルール作成</dt><dd>¥50,000〜</dd></div>
+        <div><dt>写真撮影<small>15枚〜</small></dt><dd>¥60,000〜</dd></div>
+        <div><dt>HP作成</dt><dd>¥150,000〜</dd></div>
+      </dl>
     </article>
     <article class="card js-reveal">
-      <span class="label">03｜運営</span>
+      <span class="label">03｜運営サポート</span>
       <h3>宿を、育て続ける。</h3>
-      <ul>
-        <li>月次レポートと運営改善の相談</li>
-        <li>レビュー改善の提案</li>
-      </ul>
+      <dl class="price-list">
+        <div><dt>月次レポート</dt><dd>¥50,000〜 / 月</dd></div>
+        <div><dt>運営改善コンサル</dt><dd>¥100,000〜</dd></div>
+        <div><dt>レビュー改善提案</dt><dd>¥50,000〜</dd></div>
+      </dl>
+      <p class="support-note"><strong>運営代行は行っていません。</strong>日々の運営はオーナーご自身で。UBAKUは、仕組みづくりと改善の相談で支えます。そのため、運営サポートのメニューはあえて少なくしています。</p>
     </article>
   </div>
-  <p class="price-note">料金は、ご相談の内容に合わせてお見積りします。内装や改修のご相談は <a class="more cross-inline" href="../design/">UBAKU Design</a> が担当します。</p>
+  <ul class="notes">
+    <li>金額はすべて目安です。建物の規模や内容によって変わります。消費税・現地への交通費の扱いは、お見積りのときにご案内します。</li>
+    <li>不動産開発・事業企画、不動産の新規事業のご支援は、内容に合わせてお見積りします。</li>
+  </ul>
 </section>
 
-<!-- ======================= Case｜事例（自分たちの宿で、まず試した） ======================= -->
-<section id="case" class="sub-sec wrap">
+<!-- ======================= ⑥ Case｜事例（トップの Villa と同じ形） ======================= -->
+<section id="case" class="business wrap">
   <div class="sec-head">
     <h2 class="display">Case</h2>
     <span class="aside">まず、自分たちの宿で試した。</span>
   </div>
-  <article class="case">
-    <div class="photo zoom js-reveal"><img src="../assets/img/works/01-living-after.webp" alt="UBAKU Villa 宇莫別荘のリビング" width="1600" height="1067" loading="lazy"></div>
-    <div class="case-text js-reveal">
+  <article class="villa">
+    <div class="photo zoom"><img src="../assets/img/works/01-living-after.webp" alt="UBAKU Villa 宇莫別荘のリビング" width="2400" height="1600" loading="lazy"></div>
+    <div class="villa-text">
       <span class="label">Case 01｜北海道美瑛町</span>
-      <p class="biz-name">UBAKU Villa <span class="biz-name-jp">宇莫別荘</span></p>
+      <h3 class="biz-name">UBAKU Villa <span class="biz-name-jp">宇莫別荘</span></h3>
       <p class="catch">1日1組限定の、一棟貸しの宿。</p>
       <p class="body">美瑛の集落・中宇莫別に建つ築約60年の建物を、物件探しから自分たちで手がけ、2026年1月に開業しました。いまお客さまにお渡ししている支援は、すべてこの宿で一度試したものです。</p>
       <ol class="timeline">
@@ -227,53 +282,30 @@
         <li><span>Step 4</span><span>旅館業の許可、予約サイト・自動返信・スマートロックの準備</span></li>
         <li><span>2026.1</span><span>開業。少ない人数で回せる運営へ</span></li>
       </ol>
-      <ul class="facts">
-        <li>ゲストの8割以上が海外から（2026年7月時点）</li>
-        <li>Airbnb・Booking.comで満点評価（2026年7月時点）</li>
-      </ul>
       <a class="more" href="../design/#works">この宿の改修のビフォー・アフターを見る（UBAKU Design）</a>
     </div>
   </article>
 </section>
 
-<!-- ======================= Strength｜UBAKUの強み ======================= -->
-<section class="sub-sec wrap">
-  <div class="sec-head">
-    <h2 class="display">Strength</h2>
-    <span class="aside">UBAKUにできること</span>
-  </div>
-  <div class="cards cards--3">
-    <article class="card js-reveal">
-      <span class="label">01</span>
-      <h3>東京と地方、両方の目線。</h3>
-      <p class="body">東京の大手不動産会社で、収益不動産の開発や新規事業に携わってきた数字の見方。そして、北海道で宿を一から立ち上げた現場の感覚。どちらか一方では見えないところまで、一緒に考えます。</p>
-    </article>
-    <article class="card js-reveal">
-      <span class="label">02</span>
-      <h3>試したことだけを、手渡す。</h3>
-      <p class="body">机の上の提案ではなく、自分たちの宿で実際に試し、うまくいったやり方をお渡しします。</p>
-    </article>
-    <article class="card js-reveal">
-      <span class="label">03</span>
-      <h3>自分で回せる仕組み。</h3>
-      <p class="body">運営を代わりに引き受けるのではなく、オーナーが少ない手間で回せる仕組みを残します。支援で使う仕組みは、チーム内の研究開発部門「UBAKU Lab」で開発・検証しています。</p>
-    </article>
-  </div>
-</section>
-
-<!-- ======================= UBAKU Design へ案内する帯（相互リンク） ======================= -->
-<section class="sub-sec wrap">
-  <div class="cross js-reveal">
-    <div>
-      <span class="label">Design｜考える</span>
-      <p class="biz-name">UBAKU Design</p>
-      <p class="body">建物の改修は、UBAKU Design がデザイン監修とプロデュースで伴走します。宇莫別荘の改修のビフォー・アフターも、こちらでご覧いただけます。</p>
+<!-- ======================= ⑦ Numbers（丘の帯） ======================= -->
+<section class="numbers">
+  <svg class="hill" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path class="hill-fill" d="M0 0 L0 88 C 280 88, 460 10, 760 14 S 1200 92, 1440 52 L1440 0 Z"/></svg>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="display">Numbers</h2>
+      <span class="aside">数字で見る宇莫別荘</span>
     </div>
-    <a class="more" href="../design/">改修の実績を見る →</a>
+    <ul class="numbers-grid">
+      <li><span class="num">2026.1</span><p>UBAKU Villa 宇莫別荘、開業</p></li>
+      <li><span class="num">1日1組</span><p>一棟まるごと、最大10名まで</p></li>
+      <li><span class="num">80%+</span><p>海外から訪れるゲストの割合（2026年7月時点）</p></li>
+      <li><span class="num">満点</span><p>Airbnb・Booking.comでの評価（2026年7月時点）</p></li>
+      <li><span class="num">全国</span><p>旭川・北海道をはじめ、全国でご相談を承ります</p></li>
+    </ul>
   </div>
 </section>
 
-<!-- ======================= FAQ｜よくあるご質問 ======================= -->
+<!-- ======================= ⑧ FAQ｜よくあるご質問 ======================= -->
 <section id="faq" class="sub-sec wrap">
   <div class="sec-head">
     <h2 class="display">FAQ</h2>
@@ -290,7 +322,7 @@
     </details>
     <details>
       <summary>宿の運営をまるごとお願いできますか？</summary>
-      <p>UBAKU Consulting は運営代行ではなく、オーナーご自身が少ない手間で宿を回せるようにする支援です。仕組みづくりと、運営が軌道に乗るまでの伴走をお手伝いします。</p>
+      <p>UBAKU Consulting は運営代行ではなく、オーナーご自身が少ない手間で宿を回せるようにする支援です。仕組みづくりと、運営が軌道に乗るまでの改善の相談でお手伝いします。</p>
     </details>
     <details>
       <summary>どの地域まで対応していますか？</summary>
@@ -301,24 +333,32 @@
       <p>はい。予約サイトの登録だけ、撮影だけ、といったご相談も歓迎です。必要なものを、必要なだけお手伝いします。</p>
     </details>
     <details>
-      <summary>費用はどのくらいかかりますか？</summary>
-      <p>ご相談の内容と範囲に合わせてお見積りします。まずはお問い合わせフォームから、いまの状況をお聞かせください。</p>
+      <summary>物件選定と収支シミュレーションは、本当に無償ですか？</summary>
+      <p>はい。宿をはじめるかどうかを決める前の、最初の一歩として無償でお受けしています。そのうえで、必要なところだけをお申し込みいただけます。</p>
     </details>
     <details>
       <summary>物件の売買や仲介もお願いできますか？</summary>
       <p>物件の売買・仲介は行っていません。物件選びの相談や、事業として成り立つかどうかの検討をお手伝いします。</p>
     </details>
-    <details>
-      <summary>改修や内装も相談できますか？</summary>
-      <p>建物の改修・内装は <a class="more cross-inline" href="../design/">UBAKU Design</a> がデザイン監修とプロデュースを担当します。開業の相談とあわせて、まとめてご相談いただけます。</p>
-    </details>
+  </div>
+</section>
+
+<!-- ======================= ⑨ UBAKU Design へ（相互リンク・Design の色で） ======================= -->
+<section class="sub-sec wrap">
+  <div class="cross js-reveal">
+    <div>
+      <span class="label">Design｜考える</span>
+      <p class="biz-name">UBAKU Design</p>
+      <p class="body">建物の改修は、UBAKU Design がデザイン監修とプロデュースで伴走します。宇莫別荘の改修のビフォー・アフターも、こちらでご覧いただけます。</p>
+    </div>
+    <a class="more" href="../design/">改修の実績を見る →</a>
   </div>
 </section>
 
 </main>
 
-<!-- ======================= Contact（深い色・上端に稜線） =======================
-     フォームはトップページと同じ Web3Forms。種別は「宿の開業・運営」を最初から選んでおく -->
+<!-- ======================= ⑩ Contact（深い色・上端に稜線） =======================
+     フォームはトップページと同じ Web3Forms。種別は企業向けの「不動産・事業企画」を一番上に -->
 <section id="contact" class="dark">
   <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 70 C 200 20, 420 20, 620 60 S 980 110, 1180 50 S 1380 30, 1440 45 L1440 0 Z"/></svg>
   <div class="contact wrap">
@@ -370,6 +410,7 @@
       </div>
     </form>
 
+    <!-- フッター（トップと同じ。購読の案内は入れない） -->
     <footer>
       <div>
         <a class="footer-logo wordmark" href="../" aria-label="UBAKU トップページへ"></a>
@@ -389,5 +430,7 @@
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
 <script src="../assets/js/main.js"></script>
+<!-- UBAKU Letter：右下の札だけ（data-band="off" でページの中の購読欄は入れない） -->
+<script src="../assets/js/letter.js" data-privacy="../privacy/" data-band="off"></script>
 </body>
 </html>

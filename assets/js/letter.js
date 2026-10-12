@@ -18,6 +18,7 @@
   //   data-privacy … プライバシーポリシーの場所（そのページから見た場所）
   //   data-after   … ページの中の購読欄を、どの区切り（id）のあとに入れるか
   //   data-hide    … この区切り（id）が見えている間は札を隠す（問い合わせ欄など）
+  //   data-band    … "off" にすると、ページの中の購読欄は入れず、右下の札だけにする（/consulting・/design）
   var CONF = (document.currentScript && document.currentScript.dataset) || {};
   var PRIVACY = CONF.privacy || 'privacy/';
 
@@ -240,7 +241,7 @@
       formHTML('band') +
     '</div>';
   var anchor = document.getElementById(CONF.after || 'journal');
-  if (anchor) anchor.after(band);
+  if (anchor && CONF.band !== 'off') anchor.after(band);
 
   document.body.appendChild(fab);
   document.body.appendChild(pop);

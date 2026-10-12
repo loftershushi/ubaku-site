@@ -10,8 +10,8 @@
    ※ ロゴの Ū の横線は style.css の :root で決まるので、ここを変えても東川町の青のまま */
 :root{
   /* 色は NIPPON COLORS（nipponcolors.com）から選ぶ。候補は仮公開の colors/（差し色を選ぶページ）で見比べられる */
-  --c-consult:#0B346E;   /* Consulting：瑠璃紺（RURIKON・仮）。信頼・実務 */
-  --c-design:#B68E55;    /* Design：黄土（OHDO・仮）。素材・手しごと */
+  --c-consult:#77428D;   /* Consulting：江戸紫（EDOMURASAKI）。2026-10-12 mashuさん決定 */
+  --c-design:#CA7A2C;    /* Design：琥珀（KOHAKU）。2026-10-12 mashuさん決定 */
 }
 .page-consulting{--accent-hl:var(--c-consult)}
 .page-design{--accent-hl:var(--c-design)}
@@ -164,3 +164,59 @@
   .policy-dl dd{border-top:0;padding-top:4px}
   .policy-item{padding:32px 0}
 }
+
+
+/* =========================================================
+   トップページと同じ構成の下層ページ（/consulting・/design。2026-10-12）
+   ヒーロー → 考え方＋強み（横並び）→ 淡いグレーの帯（上端に稜線）→ 白 → 丘の帯 → 白 … → Contact
+   部品はトップと同じ（.hero・.cv-grid・.value・.work-grid・.villa・.numbers）。ここではその違いだけを書く
+   ========================================================= */
+
+/* ---------- ① ヒーロー：左はロゴの代わりに事業名（写真は1枚・切り替えなし） ---------- */
+.nav-place a{border-bottom:1px solid var(--rule-short)}
+.hero-biz{flex:none;display:flex;flex-direction:column;gap:12px}
+.hero-biz .biz-name{font-size:clamp(52px,6.2vw,96px);line-height:1}
+.hero-biz .biz-name span{display:block;font-size:.3em;letter-spacing:.3em;color:var(--sub);margin-bottom:.5em}
+.hero-copy .hero-lead{font-size:14px;line-height:2;letter-spacing:.04em;color:var(--muted)}
+.panorama .slide img{object-position:50% 60%}
+
+/* ---------- ② 考え方（左）：Concept の図の代わりに、言葉と短い文章 ---------- */
+.approach{display:flex;flex-direction:column;gap:24px}
+.approach .concept-catch{margin-top:0;font-size:clamp(20px,2vw,28px)}
+.approach .body{font-size:15px;line-height:2.1;max-width:560px}
+.approach .tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:8px 0 0;padding:0}
+.approach .tags li{font-size:12px;letter-spacing:.1em;color:var(--accent-hl);border:1px solid currentColor;padding:4px 12px}
+
+/* ---------- ③ 淡いグレーの帯（トップの What We Do と同じ形。事業の色を差す） ---------- */
+.dark.light-band{--panel:var(--kraft);--on-green:var(--ink);--on-green-sub:var(--muted);--rule-long-on-green:var(--rule-long);--rule-short-on-green:#E0E3E1;--accent-sand:var(--accent-hl);--rule-hover-on-green:var(--accent-hl)}
+.light-band .sec-head h2{color:var(--green)}
+.light-band .work-grid--3 h3{font-size:22px}
+
+/* ---------- ⑤ 丘の帯（トップの Numbers と同じ形）：数字の色を事業の色に ---------- */
+.numbers .num{color:var(--accent-hl)}
+.numbers-grid--steps .num{font-size:32px}
+.numbers-grid--steps strong{font-family:var(--f-heading);font-weight:400;font-size:16px;color:var(--ink)}
+.numbers + .sub-sec{padding-top:var(--sec-y)}
+
+/* ---------- 料金の目安（項目と金額を左右に） ---------- */
+.price-list{margin:4px 0 0;padding:0}
+.price-list > div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:10px 0;border-top:1px solid var(--rule-short);font-size:14px}
+.price-list > div:first-child{border-top:0}
+.price-list dt{color:var(--ink)}
+.price-list dt small{display:block;font-size:11px;color:var(--sub);letter-spacing:.04em}
+.price-list dd{margin:0;flex:none;font-family:var(--f-title);font-weight:300;font-size:15px;letter-spacing:.04em;color:var(--accent-hl);white-space:nowrap}
+.price-list dd.free{font-family:var(--f-body);font-size:13px;letter-spacing:.1em}
+.support-note{margin-top:20px;padding:16px 18px;background:var(--kraft);font-size:13px;line-height:1.9;color:var(--muted)}
+.support-note strong{font-weight:400;color:var(--ink)}
+.notes{margin-top:40px;padding:0;list-style:none;font-size:13px;line-height:1.9;color:var(--sub)}
+.notes li::before{content:"※ "}
+
+/* ---------- 事例（トップの Villa と同じ形）の中の流れ ---------- */
+.villa-text .timeline{margin-top:4px}
+
+@media (max-width: 640px){
+  .hero-biz .biz-name{font-size:52px}
+  .price-list > div{font-size:13px}
+  .price-list dd{font-size:14px}
+}
+.sub-sec + .business{padding-top:0}   /* Menu（白）→ Case（白）のように同じ地色が続くときは、上の余白を足さない */
