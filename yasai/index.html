@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 仮公開用（ubaku-site/yasai）：デザイン案 C4 のコピー。元データは 21_Yasai（野菜直販）/03_自社サイト（BASE・yasai.ubaku.jp）/01_デザイン案。
      ubaku.jp へのリンクは仮公開用に「../」にしてある。本番の Yasai は BASE（yasai.ubaku.jp）で作るので、このページは本番公開しない。
-     C4案（2026-10-16）：C3を元に ubaku.jp の最新ルールへ更新（大文字の UBAKU・Ū の横線は東川町の青・日本語見出しは Murecho・共通の動き・サイトアイコン）
+     C4案（2026-10-16）：C3を元に ubaku.jp の最新ルールへ更新（大文字の UBAKU・Ū の横線は事業の色＝赤土・稜線の上のすき間をなくした・日本語見出しは Murecho・共通の動き・サイトアイコン）
      C3案（2026-10-10）：C2を元に、差し色を赤土に決定・試作用の色切り替えを削除・ubaku.jp との行き来の導線を追加
      揃えたもの：UBAKŪ のロゴ・フォント（Jost＋Noto Sans JP）・稜線・見出しの形・余白・最後の深い面
      変えたもの：差し色（温かい色）・季節の色の丸・買うボタンを目立たせる -->
@@ -30,7 +30,6 @@
   --accent-soft:#F6E7E1;   /* 差し色のごく淡い色（札の地など） */
 
   /* --- UBAKU 共通の色（ubaku.jp と同じ値。家族に見せるための色） --- */
-  --brand-blue:#23A0DA;    /* 東川町の青。UBAKŪ の Ū の横線（全サイト共通） */
   --white:#FFFFFF;         /* 基本の地色 */
   --kraft:#F4F4F2;         /* 淡いグレーの面（旬便・お届けについて） */
   --deep:#405B55;          /* 錆鉄御納戸。最後の「卸のご相談」の面だけに使う */
@@ -94,7 +93,7 @@ img{max-width:100%;display:block}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ロゴ（UBAKŪ の文字は ubaku.jp と同じデータ。Ū の横線は東川町の青で全サイト共通） */
-.wordmark{display:block;color:var(--ink);--logo-bar:var(--brand-blue)}
+.wordmark{display:block;color:var(--ink);--logo-bar:var(--accent)}   /* 子サイトでは Ū の横線をその事業の色に（2026-10-16 決定。Yasai＝赤土） */
 .wordmark svg{display:block;width:100%;height:auto}
 
 /* 写真が入るまでの仮の箱（写真の指示を中に書いておく） */
@@ -119,12 +118,15 @@ img{max-width:100%;display:block}
 /* 季節の色の丸 */
 .dot{display:inline-block;width:10px;height:10px;border-radius:50%;flex:none}
 
-/* 稜線（セクションの上端を丘の形で切る。ubaku.jp と同じ形） */
-.ridge-top{position:relative}
-.ridge-top::before{content:"";position:absolute;left:0;right:0;top:calc(var(--ridge-h) * -1 + 1px);height:var(--ridge-h);background:inherit;
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 120 L0 70 C 200 20, 420 20, 620 60 S 980 110, 1180 50 S 1380 30, 1440 45 L1440 120 Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
-          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 120 L0 70 C 200 20, 420 20, 620 60 S 980 110, 1180 50 S 1380 30, 1440 45 L1440 120 Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat}
-.ridge-space{margin-top:var(--ridge-h)}   /* 稜線のぶん、上を空ける */
+/* 稜線（セクションの上端を丘の形で切る。ubaku.jp と同じ形）
+   2026-10-16 修正：稜線の上に白いすき間が出ていたので、ubaku.jp と同じやり方に変更。
+   セクションの上に稜線の高さ分の余白を足し、その部分の「稜線より上」を直前のセクションの色（--ridge-prev）で塗る */
+.ridge-top{position:relative;--ridge-prev:var(--white)}
+.ridge-top::before{content:"";position:absolute;left:0;right:0;top:-1px;height:calc(var(--ridge-h) + 1px);background:var(--ridge-prev);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 70 C 200 20, 420 20, 620 60 S 980 110, 1180 50 S 1380 30, 1440 45 L1440 0 Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 70 C 200 20, 420 20, 620 60 S 980 110, 1180 50 S 1380 30, 1440 45 L1440 0 Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat}
+.ridge-top.sec{padding-top:calc(var(--sec-y) + var(--ridge-h))}   /* 稜線のぶん、セクションの中で上を足す（外にすき間を作らない） */
+.ridge-after-kraft{--ridge-prev:var(--kraft)}   /* 直前のセクションが淡いグレーのとき */
 
 /* ===============================================================
    ヘッダー
@@ -394,7 +396,7 @@ img{max-width:100%;display:block}
 </section>
 
 <!-- ===== Shun-bin｜美瑛 旬便（淡いグレーの面・上端を稜線で切る） ===== -->
-<section class="sec sec--kraft ridge-top ridge-space" id="shunbin" aria-labelledby="shun-title">
+<section class="sec sec--kraft ridge-top" id="shunbin" aria-labelledby="shun-title">
   <div class="wrap">
     <div class="head reveal"><h2 class="head-en" id="shun-title">Shun-bin</h2><span class="head-jp">美瑛 旬便</span></div>
     <div class="shun">
@@ -433,7 +435,7 @@ img{max-width:100%;display:block}
 </section>
 
 <!-- ===== Delivery｜お届けについて（淡いグレーの面） ===== -->
-<section class="sec sec--kraft ridge-top ridge-space" id="delivery" aria-labelledby="deliv-title">
+<section class="sec sec--kraft ridge-top" id="delivery" aria-labelledby="deliv-title">
   <div class="wrap">
     <div class="head reveal"><h2 class="head-en" id="deliv-title">Delivery</h2><span class="head-jp">お届けについて</span></div>
     <div class="deliv">
@@ -465,7 +467,7 @@ img{max-width:100%;display:block}
 </section>
 
 <!-- ===== Wholesale｜卸のご相談（深い面・稜線。ubaku.jp の Contact と同じ扱い） ===== -->
-<section class="sec wholesale ridge-top ridge-space" id="wholesale" aria-labelledby="ws-title">
+<section class="sec wholesale ridge-top ridge-after-kraft" id="wholesale" aria-labelledby="ws-title">
   <div class="wrap">
     <div class="head reveal"><h2 class="head-en" id="ws-title">Wholesale</h2><span class="head-jp">卸のご相談</span></div>
     <div class="wholesale-body reveal">
