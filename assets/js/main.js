@@ -287,6 +287,7 @@
   var targets = document.querySelectorAll([
     '.sec-head', '.value', '.work-item',
     '.villa .photo', '.villa-text', '.media', '.two article',
+    '.biz3 article', '.work-wide',   // What We Do（2026-10-16 に Business をまとめた）
     '.concept .kicker', '.concept-title', '.concept-catch', '.tomoe',
     '.numbers-grid li', '.member', '.journal-flow', '.note-links',
     '.contact-lead', '.contact-grid > div', '.form', '.links-row',

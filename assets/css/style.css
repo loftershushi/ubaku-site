@@ -277,10 +277,30 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 /* What We Do の英語（Connect・Stay など）：Business の「Connect｜知る・つながる」と同じ、細いゴシックで字間広め */
 .work-item .kind{font-family:var(--f-body);font-weight:300;font-size:14px;letter-spacing:.16em;color:var(--accent-sand)}
 .work-item h3{font-family:var(--f-heading);font-size:24px}
-.work-item p{font-size:14px;color:var(--on-green-sub)}
+.work-item p{text-wrap:pretty;font-size:14px;color:var(--on-green-sub)}
 .work-item .lines{align-self:flex-start;font-size:12px;letter-spacing:.12em;color:var(--on-green)}
 .work-item a.lines{border-bottom:1px solid var(--rule-short-on-green);padding-bottom:2px}
 .lines-soon{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+
+/* What We Do の 01〜03：動いている事業（写真つきの3つ並び。2026-10-16 に Business をここへまとめた） */
+.biz3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px;margin-bottom:var(--block-gap)}
+.biz3 article{display:flex;flex-direction:column;gap:16px}
+.biz3 .photo{aspect-ratio:3 / 2;padding:0;margin-bottom:8px}
+#villa .photo img{object-position:100% 50%}   /* 右端の看板が切れないよう右にそろえる */
+.biz3 .biz-name{font-size:30px}
+.biz3 .catch{font-size:17px;color:var(--ink)}
+.biz3 .body{font-size:14px;line-height:2;color:var(--muted);text-wrap:pretty}   /* 最後の行に1〜2字だけ残らないように */
+/* 下に1行（南邸・改修のご相談・UBAKU Lab）。margin-top:auto で3つの高さをそろえる */
+.biz-extra{text-wrap:pretty;margin-top:auto;border-top:1px solid var(--rule-short-on-green);padding-top:16px;font-size:13px;line-height:1.9;color:var(--sub)}
+.biz-extra span{display:block;color:var(--ink)}
+
+/* What We Do の 04〜06 の上の横長の大雪山の写真（下から幕が上がるように現れる。拡大はしない） */
+.work-wide{aspect-ratio:3 / 1;padding:0;margin-bottom:56px}
+.work-wide img{object-position:50% 62%}   /* 雪の稜線と丘が入る位置 */
+.work-wide.reveal{clip-path:inset(100% 0 0 0);transition:clip-path 1.6s cubic-bezier(.2,.7,.2,1)}
+.work-wide.reveal.is-visible{clip-path:inset(0 0 0 0)}
+.work-wide.reveal img,.work-wide.reveal.is-visible img{transform:none}
+.work-item .catch{text-wrap:pretty;font-family:var(--f-heading);font-size:16px;line-height:1.7;color:var(--on-green)}
 
 /* =========================================================
    ④ Business
@@ -462,6 +482,8 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
    タブレット（幅1000px以下）
    ========================================================= */
 @media (max-width: 1000px){
+  .biz3{grid-template-columns:minmax(0,1fr);gap:var(--block-gap)}
+  .biz3 .photo{aspect-ratio:16 / 9}
   :root{--sec-y:120px;--block-gap:96px;--head-gap:56px;--ridge-h:90px}
   .nav ul{gap:18px;flex-wrap:wrap;justify-content:flex-end}
   .topbar-nav ul{gap:18px}
@@ -482,6 +504,8 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
    スマホ（幅640px以下）
    ========================================================= */
 @media (max-width: 640px){
+  .work-wide{aspect-ratio:2 / 1;margin-bottom:40px}
+  .biz3 .biz-name{font-size:28px}
   :root{--sec-y:96px;--block-gap:80px;--head-gap:40px;--ridge-h:60px;--hill-h:64px}
   .hero{padding-top:20px}
   .nav{flex-direction:column;align-items:flex-start;gap:8px}
