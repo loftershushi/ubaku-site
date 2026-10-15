@@ -13,8 +13,8 @@
   --c-consult:#77428D;   /* Consulting：江戸紫（EDOMURASAKI）。2026-10-12 mashuさん決定 */
   --c-design:#CA7A2C;    /* Design：琥珀（KOHAKU）。2026-10-12 mashuさん決定 */
 }
-.page-consulting{--accent-hl:var(--c-consult)}
-.page-design{--accent-hl:var(--c-design)}
+.page-consulting{--accent-hl:var(--c-consult);--logo-bar:var(--c-consult)}   /* ロゴ UBAKŪ の Ū の横線も、その事業の色に（2026-10-16 mashuさん「そのほうが可愛らしい」） */
+.page-design{--accent-hl:var(--c-design);--logo-bar:var(--c-design)}
 .page-consulting .cross{--accent:var(--c-design)}   /* 相手の事業へ案内する帯は、相手の色で */
 .page-design .cross{--accent:var(--c-consult)}
 

@@ -239,7 +239,7 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
    ========================================================= */
 .values,.concept-sec,.business,.team,.journal,.numbers .wrap{padding-top:var(--sec-y);padding-bottom:var(--sec-y)}
 .work,.contact{padding-top:calc(var(--sec-y) + var(--ridge-h));padding-bottom:var(--sec-y)}
-.contact{padding-bottom:calc(var(--sec-y) * 2 / 3)}   /* フッターの住所の下の余白（ふつうの余白の 2/3） */
+.contact{padding-top:calc(var(--sec-y) * 2 / 3 + var(--ridge-h));padding-bottom:calc(var(--sec-y) * 2 / 3)}   /* 上の余白・フッターの住所の下の余白とも、ふつうの余白の 2/3（2026-10-16 上も 2/3 に） */   /* フッターの住所の下の余白（ふつうの余白の 2/3） */
 .team + .journal{padding-top:0}   /* 同じ地色が続くときは、上の余白を足さない */
 
 /* =========================================================
@@ -295,7 +295,8 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .biz-extra span{display:block;color:var(--ink)}
 
 /* What We Do の 04〜06 の上の横長の大雪山の写真（下から幕が上がるように現れる。拡大はしない） */
-.work-wide{aspect-ratio:3 / 1;padding:0;margin-bottom:56px}
+.work{container-type:inline-size}
+.work-wide{height:calc((100cqw - 112px) / 3 * 2 / 3);padding:0;margin-bottom:56px}   /* 01〜03 の写真（3列・横3：縦2）と同じ高さ。112px は列のすき間2つ分 */
 .work-wide img{object-position:50% 62%}   /* 雪の稜線と丘が入る位置 */
 .work-wide.reveal{clip-path:inset(100% 0 0 0);transition:clip-path 1.6s cubic-bezier(.2,.7,.2,1)}
 .work-wide.reveal.is-visible{clip-path:inset(0 0 0 0)}
@@ -363,6 +364,9 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .num{white-space:nowrap;font-family:var(--f-title);font-weight:300;font-size:40px;letter-spacing:.02em;line-height:1.2;color:var(--green)}
 .num small{font-family:var(--f-body);font-size:14px;margin:0 2px;color:var(--muted)}   /* 単位（.01・%+・棟目 など）は小さな文字（東川ヴィレッジと同じ） */
 .num .cnt{font-variant-numeric:tabular-nums}   /* 回っている間に幅がガタつかないように */
+.odo-digit{display:inline-block;height:1.2em;overflow:hidden;vertical-align:bottom}   /* スロットの窓（1けたぶん） */
+.odo-strip{display:block}
+.odo-strip span{display:block;height:1.2em;line-height:1.2}
 .numbers-grid p{font-size:13px;line-height:1.8;color:var(--muted)}
 
 /* =========================================================
@@ -426,6 +430,8 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 /* 【Concept の英語】[People] など：Futura系の細字（図は縮小表示なので、見た目はこの約半分の大きさ） */
 .tomoe .lbl-en{font-family:'Jost',sans-serif;font-weight:300;font-size:19.6px;letter-spacing:.1em;fill:var(--muted);text-anchor:middle}
 .tomoe .lbl-jp{font-family:var(--f-serif-jp);font-weight:400;font-size:30px;letter-spacing:.08em;fill:var(--c-label);text-anchor:middle}
+.tomoe .logo-letters{fill:var(--logo-color);stroke:var(--logo-color);stroke-width:1.1171;stroke-miterlimit:10}   /* 真ん中の UBAKŪ（ロゴのデータ。2026-10-16） */
+.tomoe .logo-bar{fill:var(--logo-bar)}
 .tomoe .lbl-brand{font-family:var(--f-display);font-weight:500;font-size:36px;letter-spacing:.04em;fill:var(--c-label);text-anchor:middle}
 /* 画面に入ったら：円が少し回りながら広がり、文字が 上 → 右下 → 左下 → 真ん中 の順に現れる
    （main.js が .reveal → .is-visible を付ける。枠そのものは動かさない） */
@@ -484,6 +490,7 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
 @media (max-width: 1000px){
   .biz3{grid-template-columns:minmax(0,1fr);gap:var(--block-gap)}
   .biz3 .photo{aspect-ratio:16 / 9}
+  .work-wide{height:calc(100cqw * 9 / 16)}   /* 1列のときも 01〜03 の写真と同じ高さ */
   :root{--sec-y:120px;--block-gap:96px;--head-gap:56px;--ridge-h:90px}
   .nav ul{gap:18px;flex-wrap:wrap;justify-content:flex-end}
   .topbar-nav ul{gap:18px}
@@ -504,7 +511,7 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
    スマホ（幅640px以下）
    ========================================================= */
 @media (max-width: 640px){
-  .work-wide{aspect-ratio:2 / 1;margin-bottom:40px}
+  .work-wide{margin-bottom:40px}
   .biz3 .biz-name{font-size:28px}
   :root{--sec-y:96px;--block-gap:80px;--head-gap:40px;--ridge-h:60px;--hill-h:64px}
   .hero{padding-top:20px}

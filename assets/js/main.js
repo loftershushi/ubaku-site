@@ -365,13 +365,44 @@
   });
 })();
 
-/* ---------- Numbers：画面に入ったら、数字が 0 から速く回って最後に今の値で止まる（東川ヴィレッジのページと同じ動き） ----------
+/* ---------- Numbers：画面に入ったら、数字が速く回って最後に今の値で止まる ----------
+   ・100以上（2026 など）：0 から数え上がる（東川ヴィレッジのページと同じ動き）
+   ・100未満（1日1組・80・2 など）：数え上げだと動きが少ないので、各けたが 0〜9 をスロットのように
+     縦に何周か回ってから止まる（2026-10-16）。後ろのけたほど多く回る
    data-from（始まりの数。なければ0）→ data-to（最後の数）。前後の文字は data-pre・data-suf */
 (function () {
   var counts = document.querySelectorAll('.cnt');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!counts.length || reduce || !('IntersectionObserver' in window)) return;   // 動きを減らす設定では、最初から最後の値のまま
+  // スロットのように回す（100未満の数）
+  function roll(el) {
+    var to = String(el.dataset.to), dur = 1800, t0 = null, strips = [];
+    el.textContent = '';
+    el.setAttribute('aria-label', to);
+    to.split('').forEach(function (d, i) {
+      var box = document.createElement('span'), strip = document.createElement('span');
+      box.className = 'odo-digit';
+      strip.className = 'odo-strip';
+      var n = (2 + i) * 10 + (+d);              // 2周＋けたの位置の分だけ多く回ってから、その数字で止まる
+      var html = '';
+      for (var k = 0; k <= n; k++) html += '<span>' + (k % 10) + '</span>';
+      strip.innerHTML = html;
+      box.appendChild(strip);
+      el.appendChild(box);
+      strips.push({ el: strip, n: n });
+    });
+    function frame(t) {
+      if (!t0) t0 = t;
+      var k = Math.min((t - t0) / dur, 1);
+      var e = 1 - Math.pow(1 - k, 4);            // 最初は速く、最後にゆっくり止まる
+      strips.forEach(function (s) { s.el.style.transform = 'translateY(' + (-s.n * e * 1.2) + 'em)'; });
+      if (k < 1) requestAnimationFrame(frame);
+      else el.textContent = to;                  // 止まったら、ふつうの文字に戻す
+    }
+    requestAnimationFrame(frame);
+  }
   function run(el) {
+    if (+el.dataset.to < 100) return roll(el);
     var from = +(el.dataset.from || 0), to = +el.dataset.to, pre = el.dataset.pre || '', suf = el.dataset.suf || '';
     var dur = 1600, t0 = null;
     function frame(t) {
