@@ -376,14 +376,14 @@
   if (!counts.length || reduce || !('IntersectionObserver' in window)) return;   // 動きを減らす設定では、最初から最後の値のまま
   // スロットのように回す（100未満の数）
   function roll(el) {
-    var to = String(el.dataset.to), dur = 1800, t0 = null, strips = [];
+    var to = String(el.dataset.to), dur = 2600, t0 = null, strips = [];
     el.textContent = '';
     el.setAttribute('aria-label', to);
     to.split('').forEach(function (d, i) {
       var box = document.createElement('span'), strip = document.createElement('span');
       box.className = 'odo-digit';
       strip.className = 'odo-strip';
-      var n = (2 + i) * 10 + (+d);              // 2周＋けたの位置の分だけ多く回ってから、その数字で止まる
+      var n = (5 + i) * 10 + (+d);              // 5周＋けたの位置の分だけ多く回ってから、その数字で止まる
       var html = '';
       for (var k = 0; k <= n; k++) html += '<span>' + (k % 10) + '</span>';
       strip.innerHTML = html;
@@ -394,8 +394,12 @@
     function frame(t) {
       if (!t0) t0 = t;
       var k = Math.min((t - t0) / dur, 1);
-      var e = 1 - Math.pow(1 - k, 4);            // 最初は速く、最後にゆっくり止まる
-      strips.forEach(function (s) { s.el.style.transform = 'translateY(' + (-s.n * e * 1.2) + 'em)'; });
+      var e = 1 - Math.pow(1 - k, 5);            // 最初はとても速く、だんだんゆっくりになって止まる
+      var blur = 2.5 * Math.pow(1 - k, 4);       // 速いあいだだけ、少しぼかして回っている感じを出す
+      strips.forEach(function (s) {
+        s.el.style.transform = 'translateY(' + (-s.n * e * 1.2) + 'em)';
+        s.el.style.filter = blur > 0.1 ? 'blur(' + blur.toFixed(2) + 'px)' : '';
+      });
       if (k < 1) requestAnimationFrame(frame);
       else el.textContent = to;                  // 止まったら、ふつうの文字に戻す
     }
@@ -404,11 +408,11 @@
   function run(el) {
     if (+el.dataset.to < 100) return roll(el);
     var from = +(el.dataset.from || 0), to = +el.dataset.to, pre = el.dataset.pre || '', suf = el.dataset.suf || '';
-    var dur = 1600, t0 = null;
+    var dur = 2600, t0 = null;   // スロットの数字と同じ長さで、同時に止まるように
     function frame(t) {
       if (!t0) t0 = t;
       var k = Math.min((t - t0) / dur, 1);
-      var e = 1 - Math.pow(1 - k, 4);            // 最初は速く、最後にゆっくり止まる
+      var e = 1 - Math.pow(1 - k, 5);            // 最初はとても速く、だんだんゆっくりになって止まる（スロットと同じ）
       el.textContent = pre + Math.round(from + (to - from) * e) + suf;
       if (k < 1) requestAnimationFrame(frame);
     }
@@ -418,6 +422,18 @@
     entries.forEach(function (e) { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
   }, { threshold: 0.6 });
   counts.forEach(function (el) { io.observe(el); });
+})();
+
+/* ---------- What We Do の大雪山の写真：幕が上がりきってから、マウスを乗せると拡大（01〜03 の写真と同じ動き） ---------- */
+(function () {
+  var wide = document.getElementById('work-wide');
+  if (!wide) return;
+  function done() { wide.classList.add('zoom'); }
+  // 現れる動きがないとき（動きを減らす設定など）は、最初から拡大を付ける
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return done();
+  wide.addEventListener('transitionend', function (e) {
+    if (e.target === wide && e.propertyName === 'clip-path') done();
+  });
 })();
 
 /* ---------- 「続きを読む」（スマホだけ。たたんである文章を開く・閉じる） ---------- */

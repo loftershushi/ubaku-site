@@ -296,7 +296,7 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 
 /* What We Do の 04〜06 の上の横長の大雪山の写真（下から幕が上がるように現れる。拡大はしない） */
 .work{container-type:inline-size}
-.work-wide{height:calc((100cqw - 112px) / 3 * 2 / 3);padding:0;margin-bottom:56px}   /* 01〜03 の写真（3列・横3：縦2）と同じ高さ。112px は列のすき間2つ分 */
+.work-wide{height:calc((100cqw - 112px) / 3);padding:0;margin-bottom:56px}   /* 01〜03 の写真（3列・横3：縦2）の 1.5倍の高さ（横に長いので、同じ高さだと低く見えるため。2026-10-16）。112px は列のすき間2つ分 */
 .work-wide img{object-position:50% 62%}   /* 雪の稜線と丘が入る位置 */
 .work-wide.reveal{clip-path:inset(100% 0 0 0);transition:clip-path 1.6s cubic-bezier(.2,.7,.2,1)}
 .work-wide.reveal.is-visible{clip-path:inset(0 0 0 0)}
@@ -359,6 +359,9 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .numbers{position:relative;background:var(--kraft)}
 .numbers .hill{display:block;width:100%;height:var(--hill-h);margin-bottom:calc(var(--hill-h) * -0.4)}
 .numbers .hill-fill{fill:var(--cream)}   /* 丘より上は、前のセクションと同じ地色 */
+.numbers--joined{margin-top:-1px}   /* 境目に細いすき間が見えないよう、1px 重ねる */
+.numbers--joined .hill{display:none}   /* 前が同じ淡いグレー（What We Do）のときは丘を出さない */
+.numbers--joined .wrap{padding-top:0}   /* 上の余白は What We Do の下の余白（--sec-y）だけにして、二重にしない */
 .numbers-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px;list-style:none;margin:0;padding:0}
 .numbers-grid li{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--rule-short);padding-top:20px}
 .num{white-space:nowrap;font-family:var(--f-title);font-weight:300;font-size:40px;letter-spacing:.02em;line-height:1.2;color:var(--green)}

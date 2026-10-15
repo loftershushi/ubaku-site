@@ -262,7 +262,7 @@
     </div>
 
     <!-- 04〜06：これからの仕事（上に横長の大雪山の写真1枚＋3つ並び） -->
-    <div class="photo work-wide"><img src="assets/img/media.webp" alt="雪をかぶった大雪山と、美瑛の緑の丘" width="2000" height="1334" loading="lazy"></div>
+    <div class="photo work-wide" id="work-wide"><img src="assets/img/media.webp" alt="雪をかぶった大雪山と、美瑛の緑の丘" width="2000" height="1334" loading="lazy"></div>
     <div class="work-grid">
       <div class="work-item">
         <span class="en kind">Connect</span>
@@ -290,8 +290,9 @@
 </section>
 
 <!-- ======================= ⑤ Numbers（クラフト色・上端に丘の輪郭） ======================= -->
-<section class="numbers">
-  <!-- 上端の丘の輪郭（丘より上＝前のセクションの地色） -->
+<!-- 直前の What We Do も同じ淡いグレーなので、丘の輪郭は出さず、1枚の面として続ける（2026-10-16） -->
+<section class="numbers numbers--joined">
+  <!-- 上端の丘の輪郭（丘より上＝前のセクションの地色。前が白のときだけ使う） -->
   <svg class="hill" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path class="hill-fill" d="M0 0 L0 88 C 280 88, 460 10, 760 14 S 1200 92, 1440 52 L1440 0 Z"/></svg>
   <div class="wrap">
     <div class="sec-head">
