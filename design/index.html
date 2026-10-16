@@ -98,9 +98,20 @@
     </div>
   </div>
 
-  <!-- 写真（1枚・上端を丘の稜線の形で切り抜く） -->
+  <!-- 写真の切り替えボタン（写真のタイトル。トップと同じく写真の下に並ぶ・6秒ごとに自動で切り替え） -->
+  <div class="slide-tabs slide-tabs--4 intro" style="--d:1.6s" role="tablist" aria-label="写真の切り替え">
+    <button type="button" role="tab" id="tab-0" aria-controls="slide-0" aria-selected="true">01　リビングからダイニングへ</button>
+    <button type="button" role="tab" id="tab-1" aria-controls="slide-1" aria-selected="false" tabindex="-1">02　ストーブのあるリビング</button>
+    <button type="button" role="tab" id="tab-2" aria-controls="slide-2" aria-selected="false" tabindex="-1">03　窓辺の寝室</button>
+    <button type="button" role="tab" id="tab-3" aria-controls="slide-3" aria-selected="false" tabindex="-1">04　緑を望む寝室</button>
+  </div>
+
+  <!-- 写真（上端の曲線は、トップと少しだけ違う形。sub.css の「ヒーローの曲線」） -->
   <div class="panorama intro" style="--d:1s">
-    <div class="slide photo is-active"><img src="../assets/img/works/01-living-after.webp" alt="改修後の UBAKU Villa 宇莫別荘のリビング" width="2400" height="1600" fetchpriority="high"></div>
+    <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="../assets/img/works/01-hero-01.webp" alt="改修後の UBAKU Villa 宇莫別荘。リビングの奥にダイニングが続く" width="2400" height="1600" fetchpriority="high"></div>
+    <div class="slide photo" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="../assets/img/works/01-hero-02.webp" alt="ストーブと大きなスクリーンのあるリビング" width="2400" height="1600" loading="lazy"></div>
+    <div class="slide photo" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true"><img src="../assets/img/works/01-hero-03.webp" alt="窓辺の寝室。白いシーツと深い緑のクッション" width="2400" height="1601" loading="lazy"></div>
+    <div class="slide photo" id="slide-3" role="tabpanel" aria-labelledby="tab-3" aria-hidden="true"><img src="../assets/img/works/01-hero-04.webp" alt="ベッドが2台並ぶ寝室と、緑の見える窓" width="2400" height="1601" loading="lazy"></div>
   </div>
 </header>
 
@@ -191,27 +202,66 @@
     <p class="body">美瑛の集落・中宇莫別に建つ築約60年の建物を、フルリノベーションして一棟貸しの宿に。暗く閉じていた部屋に光を入れ、窓の外の森や丘が主役になるよう、白い壁と明るい木の床でまとめました。2026年1月開業。</p>
   </div>
 
+  <!-- 横長の4組（1組ずつ）→ 縦長の4組（2組ずつ横に並べる）。
+       動き：画面に入ると Before が先に現れ、少し遅れて After が左から右へ現れる（sub.css の Before / After） -->
   <div class="ba-list">
     <div class="ba js-reveal">
-      <div class="ba-head"><h3>リビング</h3><p>木目の壁と石油ストーブの部屋を、窓の景色が映える白い空間に。</p></div>
+      <div class="ba-head"><h3>リビング</h3><p>木目の壁とレンガの柱の部屋を、窓の景色が映える白い空間に。</p></div>
       <div class="ba-pair">
-        <figure><div class="photo"><img src="../assets/img/works/01-living-before.webp" alt="改修前のリビング。木目の壁とレンガの柱" width="2400" height="1600" loading="lazy"></div><figcaption>Before</figcaption></figure>
-        <figure><div class="photo"><img src="../assets/img/works/01-living-after.webp" alt="改修後のリビング。白い壁と明るい木の床、ソファと大きな窓" width="2400" height="1600" loading="lazy"></div><figcaption>After</figcaption></figure>
+        <figure class="ba-before"><div class="photo"><img src="../assets/img/works/01-living-before.webp" alt="改修前のリビング。木目の壁とレンガの柱" width="2400" height="1600" loading="lazy"></div><figcaption>Before</figcaption></figure>
+        <figure class="ba-after"><div class="photo"><img src="../assets/img/works/01-living-after.webp" alt="改修後のリビング。白い壁と明るい木の床、ソファと窓" width="2400" height="1600" loading="lazy"></div><figcaption>After</figcaption></figure>
       </div>
     </div>
     <div class="ba js-reveal">
       <div class="ba-head"><h3>キッチン</h3><p>古い流し台を、ゲストが料理を楽しめるシステムキッチンに。</p></div>
       <div class="ba-pair">
-        <figure><div class="photo"><img src="../assets/img/works/01-kitchen-before.webp" alt="改修前のキッチン。古い流し台と吊り戸棚" width="2400" height="1600" loading="lazy"></div><figcaption>Before</figcaption></figure>
-        <figure><div class="photo"><img src="../assets/img/works/01-kitchen-after.webp" alt="改修後のキッチン。黒いシステムキッチンと白い壁" width="2400" height="1600" loading="lazy"></div><figcaption>After</figcaption></figure>
+        <figure class="ba-before"><div class="photo"><img src="../assets/img/works/01-kitchen-before.webp" alt="改修前のキッチン。古い流し台と吊り戸棚" width="2400" height="1600" loading="lazy"></div><figcaption>Before</figcaption></figure>
+        <figure class="ba-after"><div class="photo"><img src="../assets/img/works/01-kitchen-after.webp" alt="改修後のキッチン。黒いシステムキッチンと白い壁" width="2400" height="1600" loading="lazy"></div><figcaption>After</figcaption></figure>
+      </div>
+    </div>
+    <div class="ba js-reveal">
+      <div class="ba-head"><h3>寝室</h3><p>畳の和室を、木の天井とアクセントの壁紙の寝室に。</p></div>
+      <div class="ba-pair">
+        <figure class="ba-before"><div class="photo"><img src="../assets/img/works/01-bedroom-before.webp" alt="改修前の寝室。畳の和室" width="2400" height="1600" loading="lazy"></div><figcaption>Before</figcaption></figure>
+        <figure class="ba-after"><div class="photo"><img src="../assets/img/works/01-bedroom-after.webp" alt="改修後の寝室。木の天井とアクセントの壁紙、ベッド" width="2400" height="1600" loading="lazy"></div><figcaption>After</figcaption></figure>
+      </div>
+    </div>
+    <div class="ba js-reveal">
+      <div class="ba-head"><h3>浴室</h3><p>タイル張りの浴室を、ゆったり入れる明るい浴室に。</p></div>
+      <div class="ba-pair">
+        <figure class="ba-before"><div class="photo"><img src="../assets/img/works/01-bathroom-before.webp" alt="改修前の浴室。タイル張りの浴室と小さな浴槽" width="2400" height="1600" loading="lazy"></div><figcaption>Before</figcaption></figure>
+        <figure class="ba-after"><div class="photo"><img src="../assets/img/works/01-bathroom-after.webp" alt="改修後の浴室。明るいユニットバス" width="2400" height="1600" loading="lazy"></div><figcaption>After</figcaption></figure>
+      </div>
+    </div>
+    <div class="ba-row">
+    <div class="ba ba--tall js-reveal">
+      <div class="ba-head"><h3>洗面室</h3><p>古い勝手口まわりを、丸い鏡が並ぶ洗面室に。</p></div>
+      <div class="ba-pair">
+        <figure class="ba-before"><div class="photo"><img src="../assets/img/works/01-washroom-before.webp" alt="改修前の洗面室。古い勝手口まわり" width="1600" height="2400" loading="lazy"></div><figcaption>Before</figcaption></figure>
+        <figure class="ba-after"><div class="photo"><img src="../assets/img/works/01-washroom-after.webp" alt="改修後の洗面室。丸い鏡が二つ並ぶ洗面台" width="1600" height="2400" loading="lazy"></div><figcaption>After</figcaption></figure>
       </div>
     </div>
     <div class="ba ba--tall js-reveal">
-      <div class="ba-head"><h3>トイレ</h3><p>手すりの付いた古いトイレを、落ち着いた色の空間に。</p></div>
+      <div class="ba-head"><h3>トイレ</h3><p>手すりの付いた古いトイレを、手洗いのある落ち着いた空間に。</p></div>
       <div class="ba-pair">
-        <figure><div class="photo"><img src="../assets/img/works/01-restroom-before.webp" alt="改修前のトイレ" width="1775" height="2662" loading="lazy"></div><figcaption>Before</figcaption></figure>
-        <figure><div class="photo"><img src="../assets/img/works/01-restroom-after.webp" alt="改修後のトイレ。グレーの壁と間接照明" width="2160" height="3240" loading="lazy"></div><figcaption>After</figcaption></figure>
+        <figure class="ba-before"><div class="photo"><img src="../assets/img/works/01-restroom-before.webp" alt="改修前のトイレ。手すりの付いた古いトイレ" width="1600" height="2400" loading="lazy"></div><figcaption>Before</figcaption></figure>
+        <figure class="ba-after"><div class="photo"><img src="../assets/img/works/01-restroom-after.webp" alt="改修後のトイレ。グレーの壁と手洗い、間接照明" width="1600" height="2400" loading="lazy"></div><figcaption>After</figcaption></figure>
       </div>
+    </div>
+    <div class="ba ba--tall js-reveal">
+      <div class="ba-head"><h3>ランドリー</h3><p>細長い廊下のような場所を、洗濯機を置けるランドリーに。</p></div>
+      <div class="ba-pair">
+        <figure class="ba-before"><div class="photo"><img src="../assets/img/works/01-washing-machine-before.webp" alt="改修前のランドリー。細長い廊下のような空間" width="1600" height="2400" loading="lazy"></div><figcaption>Before</figcaption></figure>
+        <figure class="ba-after"><div class="photo"><img src="../assets/img/works/01-washing-machine-after.webp" alt="改修後のランドリー。白い壁と洗濯機" width="1600" height="2400" loading="lazy"></div><figcaption>After</figcaption></figure>
+      </div>
+    </div>
+    <div class="ba ba--tall js-reveal">
+      <div class="ba-head"><h3>ワークスペース</h3><p>畳の小部屋を、二人で使えるワークスペースに。</p></div>
+      <div class="ba-pair">
+        <figure class="ba-before"><div class="photo"><img src="../assets/img/works/01-multipurpose-room-before.webp" alt="改修前のワークスペース。畳の小部屋" width="1600" height="2400" loading="lazy"></div><figcaption>Before</figcaption></figure>
+        <figure class="ba-after"><div class="photo"><img src="../assets/img/works/01-multipurpose-room-after.webp" alt="改修後のワークスペース。窓辺のカウンターと椅子が2脚" width="1600" height="2400" loading="lazy"></div><figcaption>After</figcaption></figure>
+      </div>
+    </div>
     </div>
   </div>
 

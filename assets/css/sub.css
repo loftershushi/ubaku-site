@@ -15,6 +15,7 @@
 }
 .page-consulting{--accent-hl:var(--c-consult);--logo-bar:var(--c-consult)}   /* ロゴ UBAKŪ の Ū の横線も、その事業の色に（2026-10-16 mashuさん「そのほうが可愛らしい」） */
 .page-design{--accent-hl:var(--c-design);--logo-bar:var(--c-design)}
+.page-consulting,.page-design{--accent:var(--accent-hl)}   /* ラベル（Consult｜支える・01｜開業前 など）と Strength の番号も事業の色に（2026-10-16。緑のままだと強調の文字と2色が混ざって見えた） */
 .page-consulting .cross{--accent:var(--c-design)}   /* 相手の事業へ案内する帯は、相手の色で */
 .page-design .cross{--accent:var(--c-consult)}
 
@@ -220,3 +221,45 @@
   .price-list dd{font-size:14px}
 }
 .sub-sec + .business{padding-top:0}   /* Menu（白）→ Case（白）のように同じ地色が続くときは、上の余白を足さない */
+
+
+/* =========================================================
+   2026-10-16 追加：ヒーローの曲線・写真の切り替え・Before / After
+   ========================================================= */
+
+/* ---------- ヒーローの曲線（トップと同じ考え方の丘のカーブ。事業ごとに少しだけ形を変える） ----------
+   トップ：左が低く、真ん中で沈み、右で少し上がる
+   Design：左から右へ、ゆるやかに一度ふくらんで下がる
+   Consulting：左が高く、真ん中でゆったり沈み、右でまた上がる */
+.page-design .hero .panorama{-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 72 C 260 50, 520 34, 780 52 C 1040 70, 1260 88, 1440 60 L1440 121 L0 121 Z'/%3E%3C/svg%3E") top / 100% var(--ridge-h) no-repeat,linear-gradient(#000,#000) 0 calc(var(--ridge-h) - 1px) / 100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 72 C 260 50, 520 34, 780 52 C 1040 70, 1260 88, 1440 60 L1440 121 L0 121 Z'/%3E%3C/svg%3E") top / 100% var(--ridge-h) no-repeat,linear-gradient(#000,#000) 0 calc(var(--ridge-h) - 1px) / 100% 100% no-repeat}
+.page-consulting .hero .panorama{-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 44 C 240 44, 460 86, 720 84 C 980 82, 1200 46, 1440 50 L1440 121 L0 121 Z'/%3E%3C/svg%3E") top / 100% var(--ridge-h) no-repeat,linear-gradient(#000,#000) 0 calc(var(--ridge-h) - 1px) / 100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 44 C 240 44, 460 86, 720 84 C 980 82, 1200 46, 1440 50 L1440 121 L0 121 Z'/%3E%3C/svg%3E") top / 100% var(--ridge-h) no-repeat,linear-gradient(#000,#000) 0 calc(var(--ridge-h) - 1px) / 100% 100% no-repeat}
+
+/* ---------- 写真の切り替えボタン（写真のタイトル）：枚数に合わせて並べる・選んでいる線は事業の色 ---------- */
+.slide-tabs--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.slide-tabs--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.page-consulting .slide-tabs button[aria-selected="true"]::before,.page-design .slide-tabs button[aria-selected="true"]::before{background:var(--accent-hl)}
+@media (max-width: 640px){
+  .slide-tabs--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .slide-tabs--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+
+/* ---------- Before / After の並べ方 ----------
+   横長の写真：1組ずつ（左 Before・右 After）
+   縦長の写真：2組ずつ横に並べる（1行に Before・After・Before・After）。写真は列の幅いっぱい＝中央がそろう */
+.ba--tall .photo{aspect-ratio:2 / 3;max-height:none}
+.ba-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--block-gap) 48px}
+.ba-row .ba-pair{gap:12px}
+.ba-row .ba-head{flex-direction:column;gap:4px}
+.ba .photo img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){
+  .ba figure:hover .photo img{transform:scale(1.04)}
+}
+/* 動き：画面に入ると、Before がふわっと現れ（ほかの写真と同じ）、少し遅れて After が左から右へ現れる。After の札は最後に
+   （main.js が .js-reveal に .reveal → .is-visible を付ける。「動きを減らす」設定の人は最初から全部見える） */
+.ba.reveal .ba-after .photo{clip-path:inset(0 100% 0 0);transition:clip-path 1.3s cubic-bezier(.65,0,.25,1) .55s}
+.ba.reveal.is-visible .ba-after .photo{clip-path:inset(0 0 0 0)}
+.ba.reveal .ba-after figcaption{opacity:0;transform:translateY(6px);transition:opacity .6s ease 1.5s,transform .6s ease 1.5s}
+.ba.reveal.is-visible .ba-after figcaption{opacity:1;transform:none}
+@media (max-width: 1000px){
+  .ba-row{grid-template-columns:minmax(0,1fr)}
+}
