@@ -67,7 +67,7 @@
   --block-gap:128px;                /* Business内の各事業のあいだの余白 */
   --head-gap:72px;                  /* 見出しの線から中身までの余白 */
   --ridge-h:120px;                  /* 稜線の高さ */
-  --hero-max-h:max(380px, calc(100svh - 330px));   /* 【ヒーロー写真】写真の高さの上限（開いた画面の中に、写真の下の 01・02・03 まで収まるように） */
+  --hero-max-h:max(380px, calc(100svh - 280px));   /* 【ヒーロー写真】写真の高さの上限（開いた画面の一番下に 01・02・03 が来て、その下に少しだけ余白が残るように。2026-10-16 に 330px→280px＋写真の上のすき間 40px→0 で、写真は約1.1〜1.2倍に） */
   --topbar-h:56px;                  /* 【固定メニュー】細い帯の高さ */
   --hill-h:110px;                    /* Numbers の丘の線の高さ */
 
@@ -193,7 +193,7 @@ p{margin:0}
    ① ヒーロー
    ========================================================= */
 html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても、横スクロールを出さない */
-.hero{display:flex;flex-direction:column;padding-top:36px;padding-bottom:36px}
+.hero{display:flex;flex-direction:column;padding-top:36px;padding-bottom:16px}   /* 下は 01・02・03 の下に少しだけ余白（2026-10-16 36px→16px） */
 .nav{display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:12px;letter-spacing:.18em}
 .nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0}
 /* ---------- 固定メニュー（細い帯）：ふだんは画面の上に隠しておき、.is-shown で下りてくる ---------- */
@@ -225,7 +225,7 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .slide-tabs button[aria-selected="true"]::before{height:2px;background:var(--green)}
 .slide-tabs button:focus-visible{outline:2px solid var(--green);outline-offset:4px}
 
-.panorama{position:relative;aspect-ratio:var(--hero-ratio);max-height:var(--hero-max-h);margin-top:40px;margin-left:calc(50% - 50vw + var(--hero-bleed));margin-right:calc(50% - 50vw + var(--hero-bleed));overflow:hidden}
+.panorama{position:relative;aspect-ratio:var(--hero-ratio);max-height:var(--hero-max-h);margin-top:0;margin-left:calc(50% - 50vw + var(--hero-bleed));margin-right:calc(50% - 50vw + var(--hero-bleed));overflow:hidden}
 /* 写真ごとに「切り抜くときに残したい場所」を指定（左右％ 上下％） */
 #slide-0 img{object-position:50% 50%}   /* 素材の写真は横長（2.4:1）に切り抜き済み。スマホでは左右が少し切れる */
 #slide-1 img{object-position:50% 50%}
