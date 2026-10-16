@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <script>/* オープニングを出すかどうかを、表示の前に決める（ページを開くたび毎回。?nointro のときと「動きを減らす」設定の人には出さない） */try{if(location.search.indexOf("nointro")<0&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("is-opening")}}catch(e){}</script>
-<script>/* 比べ用（2026-10-16）：?green=fumoto で fumotobito の緑に／?numbers=a・b・c で Numbers の背景の試作に */try{var q=location.search;if(q.indexOf("green=fumoto")>=0){document.documentElement.classList.add("g-fumoto")}var m=q.match(/numbers=([abc])/);if(m){document.documentElement.classList.add("n-"+m[1])}}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UBAKU｜北海道美瑛・東川町の地域プロデュースチーム</title>
 <meta name="description" content="まちを想い、まちを動かす。美瑛町・東川町を拠点にする地域プロデュースチーム、UBAKU。一棟貸しの宿「UBAKU Villa 宇莫別荘」の運営、地域メディア、改修のデザイン監修、宿と不動産のコンサルティング、移住・二拠点のご相談まで。">
@@ -233,32 +232,38 @@
     <div class="biz3">
       <article id="villa">
         <div class="photo zoom"><img src="assets/img/villa.webp" alt="UBAKU Villa 宇莫別荘の入口の木製サイン" width="2000" height="1333" loading="lazy"></div>
-        <span class="label">Stay｜泊まる</span>
-        <h3 class="biz-name">UBAKU Villa <span class="biz-name-jp">宇莫別荘</span></h3>
-        <p class="catch">暮らしに余白をもたらす貸切宿。</p>
-        <p class="body">美瑛の集落・中宇莫別に建つ、1日1組限定の一棟貸しの宿。築約60年の建物をフルリノベーションし、2026年1月に開業。約1,800㎡の敷地に、最大10名で一棟まるごと過ごせます。旭川空港から車で約18分、美瑛駅から車で約10分。</p>
-        <p class="biz-extra"><span>UBAKU Villa 南邸｜Coming soon</span>美瑛駅から歩いて10分の宿を準備中。</p>
-        <a class="more" href="https://ubakuvilla.com">宇莫別荘の公式サイトへ</a>
+        <div class="biz-body lift-card">   <!-- マウスを乗せると、この文字の部分だけが少し浮く -->
+          <span class="label">Stay｜泊まる</span>
+          <h3 class="biz-name">UBAKU Villa <span class="biz-name-jp">宇莫別荘</span></h3>
+          <p class="catch">暮らしに余白をもたらす貸切宿。</p>
+          <p class="body">美瑛の集落・中宇莫別に建つ、1日1組限定の一棟貸しの宿。築約60年の建物をフルリノベーションし、2026年1月に開業。約1,800㎡の敷地に、最大10名で一棟まるごと過ごせます。旭川空港から車で約18分、美瑛駅から車で約10分。</p>
+          <p class="biz-extra"><span>UBAKU Villa 南邸｜Coming soon</span>美瑛駅から歩いて10分の宿を準備中。</p>
+          <a class="more" href="https://ubakuvilla.com">宇莫別荘の公式サイトへ</a>
+        </div>
       </article>
 
       <article id="design">
         <div class="photo zoom"><img src="assets/img/design.webp" alt="花と木のカードスタンド" width="2000" height="1333" loading="lazy"></div>
-        <span class="label">Design｜考える</span>
-        <h3 class="biz-name">UBAKU Design</h3>
-        <p class="catch">デザイン監修とプロデュースで建物再生。</p>
-        <p class="body">古い建物には、新しく建てるものにはない時間の厚みがあります。その良さを生かした改修を、コンセプトづくりから仕上がりまで伴走。工事はご紹介する工事会社と直接ご契約いただき、UBAKUは監修とプロデュースに専念します。</p>
-        <p class="biz-extra">宿のほか、住宅・店舗・事務所の改修も、お気軽にご相談ください。</p>
-        <a class="more" href="design/">改修の実績を見る</a>
+        <div class="biz-body lift-card">   <!-- マウスを乗せると、この文字の部分だけが少し浮く -->
+          <span class="label">Design｜考える</span>
+          <h3 class="biz-name">UBAKU Design</h3>
+          <p class="catch">デザイン監修とプロデュースで建物再生。</p>
+          <p class="body">古い建物には、新しく建てるものにはない時間の厚みがあります。その良さを生かした改修を、コンセプトづくりから仕上がりまで伴走。工事はご紹介する工事会社と直接ご契約いただき、UBAKUは監修とプロデュースに専念します。</p>
+          <p class="biz-extra">宿のほか、住宅・店舗・事務所の改修も、お気軽にご相談ください。</p>
+          <a class="more" href="design/">改修の実績を見る</a>
+        </div>
       </article>
 
       <article id="consulting">
         <div class="photo zoom"><img src="assets/img/consulting.webp" alt="木の丸いテーブルに置かれたアアルトの本" width="2000" height="1333" loading="lazy"></div>
-        <span class="label">Consult｜支える</span>
-        <h3 class="biz-name">UBAKU Consulting</h3>
-        <p class="catch">宿と不動産の実務から、事業をかたちに。</p>
-        <p class="body">宿の開業・運営の仕組みづくりから、不動産開発・投資用不動産・新規事業の立ち上げまで。都会の収益不動産で培った数字の見方と、地方で宿を立ち上げた現場感覚で、事業の組み立てを支えます。北海道に限らず、全国対応。</p>
-        <p class="biz-extra">支援の仕組みは、チームの小さなラボ「UBAKU Lab」で開発・検証。</p>
-        <a class="more" href="consulting/">サポートの詳細を知る</a>
+        <div class="biz-body lift-card">   <!-- マウスを乗せると、この文字の部分だけが少し浮く -->
+          <span class="label">Consult｜支える</span>
+          <h3 class="biz-name">UBAKU Consulting</h3>
+          <p class="catch">宿と不動産の実務から、事業をかたちに。</p>
+          <p class="body">宿の開業・運営の仕組みづくりから、不動産開発・投資用不動産・新規事業の立ち上げまで。都会の収益不動産で培った数字の見方と、地方で宿を立ち上げた現場感覚で、事業の組み立てを支えます。北海道に限らず、全国対応。</p>
+          <p class="biz-extra">支援の仕組みは、チームの小さなラボ「UBAKU Lab」で開発・検証。</p>
+          <a class="more" href="consulting/">サポートの詳細を知る</a>
+        </div>
       </article>
     </div>
 
@@ -291,9 +296,8 @@
 </section>
 
 <!-- ======================= ⑤ Numbers（クラフト色・上端に丘の輪郭） ======================= -->
-<!-- 直前の What We Do も同じ淡いグレーなので、丘の輪郭は出さず、1枚の面として続ける（2026-10-16） -->
-<section class="numbers numbers--joined">
-  <!-- 上端の丘の輪郭（丘より上＝前のセクションの地色。前が白のときだけ使う） -->
+<section class="numbers">
+  <!-- 上端の丘の輪郭（丘より上＝前の What We Do の淡いグレー。その下が白の Numbers。2026-10-16） -->
   <svg class="hill" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path class="hill-fill" d="M0 0 L0 88 C 280 88, 460 10, 760 14 S 1200 92, 1440 52 L1440 0 Z"/></svg>
   <div class="wrap">
     <div class="sec-head">
