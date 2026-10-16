@@ -30,7 +30,7 @@
 
 <!-- デザイン：トップページと共通の style.css ＋ 下層ページ用の sub.css ＋ UBAKU Letter の札 -->
 <link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="../assets/css/sub.css">
+<link rel="stylesheet" href="../assets/css/sub.css?v=20261016b">
 <link rel="stylesheet" href="../assets/css/letter.css">
 
 <!-- Googleにページの内容を伝えるデータ（このページで受けている仕事） -->
@@ -73,7 +73,7 @@
 </div>
 
 <!-- ======================= ① ヒーロー ======================= -->
-<header class="hero wrap">
+<header class="hero hero--center wrap">   <!-- 写真が1枚なので、事業名と見出しは中央そろい -->
   <nav class="nav intro" style="--d:0s" aria-label="メインメニュー">
     <span class="nav-place"><a href="../">UBAKU</a> / Consulting</span>
     <ul>
@@ -99,16 +99,9 @@
     </div>
   </div>
 
-  <!-- 写真の切り替えボタン（写真のタイトル。トップと同じく写真の下に並ぶ・6秒ごとに自動で切り替え） -->
-  <div class="slide-tabs slide-tabs--2 intro" style="--d:1.6s" role="tablist" aria-label="写真の切り替え">
-    <button type="button" role="tab" id="tab-0" aria-controls="slide-0" aria-selected="true">01　リビングのテーブル</button>
-    <button type="button" role="tab" id="tab-1" aria-controls="slide-1" aria-selected="false" tabindex="-1">02　冬の宇莫別荘</button>
-  </div>
-
-  <!-- 写真（上端の曲線は、トップと少しだけ違う形。sub.css の「ヒーローの曲線」） -->
+  <!-- 写真（1枚。上端の曲線はトップと少しだけ違う形＝sub.css の「ヒーローの曲線」。写真は下の部分を見せる） -->
   <div class="panorama intro" style="--d:1s">
-    <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="../assets/img/consulting/hero.webp" alt="UBAKU Villa 宇莫別荘のリビング。木の丸いテーブルに一冊の本" width="2400" height="1600" fetchpriority="high"></div>
-    <div class="slide photo" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="../assets/img/consulting/ubaku-villa.webp" alt="雪景色の中の UBAKU Villa 宇莫別荘" width="1535" height="1025" loading="lazy"></div>
+    <div class="slide photo is-active"><img src="../assets/img/consulting/hero.webp" alt="UBAKU Villa 宇莫別荘のリビング。木の丸いテーブルに一冊の本" width="2400" height="1600" fetchpriority="high"></div>
   </div>
 </header>
 
@@ -276,7 +269,7 @@
     <span class="aside">まず、自分たちの宿で試した。</span>
   </div>
   <article class="villa">
-    <div class="photo zoom"><img src="../assets/img/works/01-living-after.webp" alt="UBAKU Villa 宇莫別荘のリビング" width="2400" height="1600" loading="lazy"></div>
+    <div class="photo zoom"><img src="../assets/img/consulting/ubaku-villa.webp" alt="雪景色の中の UBAKU Villa 宇莫別荘" width="1535" height="1025" loading="lazy"></div>
     <div class="villa-text">
       <span class="label">Case 01｜北海道美瑛町</span>
       <h3 class="biz-name">UBAKU Villa <span class="biz-name-jp">宇莫別荘</span></h3>

@@ -30,7 +30,7 @@
 
 <!-- デザイン：トップページと共通の style.css ＋ 下層ページ用の sub.css ＋ UBAKU Letter の札 -->
 <link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="../assets/css/sub.css">
+<link rel="stylesheet" href="../assets/css/sub.css?v=20261016b">
 <link rel="stylesheet" href="../assets/css/letter.css">
 
 <!-- Googleにページの内容を伝えるデータ（このページで受けている仕事） -->
@@ -99,19 +99,17 @@
   </div>
 
   <!-- 写真の切り替えボタン（写真のタイトル。トップと同じく写真の下に並ぶ・6秒ごとに自動で切り替え） -->
-  <div class="slide-tabs slide-tabs--4 intro" style="--d:1.6s" role="tablist" aria-label="写真の切り替え">
+  <div class="slide-tabs slide-tabs--3 intro" style="--d:1.6s" role="tablist" aria-label="写真の切り替え">
     <button type="button" role="tab" id="tab-0" aria-controls="slide-0" aria-selected="true">01　リビングからダイニングへ</button>
     <button type="button" role="tab" id="tab-1" aria-controls="slide-1" aria-selected="false" tabindex="-1">02　ストーブのあるリビング</button>
-    <button type="button" role="tab" id="tab-2" aria-controls="slide-2" aria-selected="false" tabindex="-1">03　窓辺の寝室</button>
-    <button type="button" role="tab" id="tab-3" aria-controls="slide-3" aria-selected="false" tabindex="-1">04　緑を望む寝室</button>
+    <button type="button" role="tab" id="tab-2" aria-controls="slide-2" aria-selected="false" tabindex="-1">03　緑を望む寝室</button>
   </div>
 
   <!-- 写真（上端の曲線は、トップと少しだけ違う形。sub.css の「ヒーローの曲線」） -->
   <div class="panorama intro" style="--d:1s">
     <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="../assets/img/works/01-hero-01.webp" alt="改修後の UBAKU Villa 宇莫別荘。リビングの奥にダイニングが続く" width="2400" height="1600" fetchpriority="high"></div>
     <div class="slide photo" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="../assets/img/works/01-hero-02.webp" alt="ストーブと大きなスクリーンのあるリビング" width="2400" height="1600" loading="lazy"></div>
-    <div class="slide photo" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true"><img src="../assets/img/works/01-hero-03.webp" alt="窓辺の寝室。白いシーツと深い緑のクッション" width="2400" height="1601" loading="lazy"></div>
-    <div class="slide photo" id="slide-3" role="tabpanel" aria-labelledby="tab-3" aria-hidden="true"><img src="../assets/img/works/01-hero-04.webp" alt="ベッドが2台並ぶ寝室と、緑の見える窓" width="2400" height="1601" loading="lazy"></div>
+    <div class="slide photo" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true"><img src="../assets/img/works/01-hero-03.webp" alt="ベッドが2台並ぶ寝室と、緑の見える窓" width="2400" height="1601" loading="lazy"></div>
   </div>
 </header>
 

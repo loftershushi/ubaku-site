@@ -260,6 +260,21 @@
 .ba.reveal.is-visible .ba-after .photo{clip-path:inset(0 0 0 0)}
 .ba.reveal .ba-after figcaption{opacity:0;transform:translateY(6px);transition:opacity .6s ease 1.5s,transform .6s ease 1.5s}
 .ba.reveal.is-visible .ba-after figcaption{opacity:1;transform:none}
-@media (max-width: 1000px){
-  .ba-row{grid-template-columns:minmax(0,1fr)}
+@media (max-width: 640px){
+  .ba-row{grid-template-columns:minmax(0,1fr)}   /* スマホだけ1組ずつ（縦写真2枚が横に並ぶ）。タブレット以上は4枚並び */
 }
+
+/* 2026-10-16：縦写真は細長いので、タブレット以上は4枚並び（2組ずつ）。組と組のあいだの上下の余白をはっきり取る */
+.ba-row{row-gap:calc(var(--block-gap) * .8)}
+.ba-list > .ba,.ba-row > .ba{margin:0}
+.ba-head{margin-bottom:4px}
+
+/* ---------- Consulting：ヒーローの写真が1枚のときは、事業名と見出しを中央そろいにする。写真は下の部分を見せる ---------- */
+.hero--center .hero-main{flex-direction:column;align-items:center;text-align:center;gap:28px}
+.hero--center .hero-biz{align-items:center}
+.hero--center .hero-copy{align-items:center;max-width:720px}
+.hero--center .hero-copy h1{white-space:normal}
+.page-consulting .hero .panorama .slide img{object-position:50% 100%}
+/* 横に並んだ2組の説明文の行数が違っても、写真の上端をそろえる（2組で行の高さを共有する） */
+.ba-row{grid-auto-rows:auto}
+.ba-row > .ba{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:20px}
