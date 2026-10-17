@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ヒーローの並べ方｜試作</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/sub.css?v=20261017b">
+<style>
+/* =========================================================
+   Consulting・Design のヒーロー（事業名・見出し・説明の3行）の並べ方の試作（仮公開だけ・本番には出さない）
+   4つの案を、本物のフォント・色・写真で並べて見比べる
+   ========================================================= */
+.lo-intro{padding:40px var(--pad-x) 0;max-width:1440px;margin:0 auto}
+.lo-intro h1{font-family:var(--f-heading);font-size:22px}
+.lo-intro p{font-size:13px;color:var(--muted);margin-top:8px}
+.lo-switch{display:flex;gap:8px;margin-top:16px}
+.lo-switch button{all:unset;cursor:pointer;font-family:var(--f-title);font-size:14px;letter-spacing:.1em;padding:6px 16px;border:1px solid var(--rule-long)}
+.lo-switch button[aria-pressed="true"]{background:var(--accent-hl);border-color:var(--accent-hl);color:#fff}
+.lo{border-top:1px solid var(--rule-long);margin-top:56px;padding-top:24px}
+.lo-name{display:flex;gap:16px;align-items:baseline;padding:0 var(--pad-x);max-width:1440px;margin:0 auto}
+.lo-name b{font-family:var(--f-title);font-weight:300;font-size:28px;color:var(--accent-hl)}
+.lo-name span{font-size:13px;color:var(--muted)}
+.lo .hero{padding-bottom:0}
+.lo .biz-name .lo-n{display:inline;font-size:1em;letter-spacing:inherit;color:inherit;margin:0}
+.lo .panorama{height:260px;aspect-ratio:auto;max-height:none}
+.lo .panorama img{object-position:50% 100%}
+
+/* 案A：左右に並べる（今の Design・トップと同じ形） */
+.lo--a .hero-main{flex-direction:row;align-items:center;text-align:left}
+/* 案B：中央にまとめる（今の Consulting） */
+.lo--b .hero-main{flex-direction:column;align-items:center;text-align:center;gap:24px}
+.lo--b .hero-biz{align-items:center}
+.lo--b .hero-copy{align-items:center}
+.lo--b .hero-copy h1{white-space:normal}
+/* 案C：名前を横いっぱいに大きく、その下に見出しと説明を左右に */
+.lo--c .hero-main{display:block}
+.lo--c .hero-biz .biz-name{font-size:clamp(56px,8.6vw,132px);white-space:nowrap}
+.lo--c .hero-biz .biz-name span{display:inline;font-size:1em;letter-spacing:.04em;color:inherit;margin:0 .25em 0 0}
+.lo--c .lo-c-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 64px;align-items:end;margin-top:28px;padding-top:24px;border-top:1px solid var(--rule-short)}
+.lo--c .hero-copy{max-width:none}
+/* 案D：見出しを主役に（事業名は小さく上に、見出しを大きく） */
+.lo--d .hero-main{display:block}
+.lo--d .lo-d-name{font-family:var(--f-title);font-weight:300;font-size:20px;letter-spacing:.16em;color:var(--green)}
+.lo--d .lo-d-name i{font-style:normal;color:var(--sub);margin-right:.5em}
+.lo--d h1{font-family:var(--f-heading);font-size:clamp(28px,3.4vw,48px);line-height:1.5;margin-top:20px;white-space:normal}
+.lo--d .hero-lead{margin-top:14px}
+@media (max-width: 640px){
+  .lo--a .hero-main{flex-direction:column;align-items:flex-start}
+  .lo--c .lo-c-row{grid-template-columns:minmax(0,1fr)}
+  .lo--c .hero-biz .biz-name{font-size:44px;white-space:normal}
+  .lo .panorama{height:200px}
+}
+</style>
+</head>
+<body class="page-consulting" id="lo-body">
+
+<div class="lo-intro">
+  <h1>ヒーローの並べ方（Consulting・Design 共通）の試作</h1>
+  <p>事業名・見出し・説明の3行の並べ方を4案。「Consult｜支える」の札はどの案でも外しています。上のボタンで Consulting / Design の文言と色を切り替えられます。</p>
+  <div class="lo-switch" role="group" aria-label="ページの切り替え">
+    <button type="button" data-p="consulting" aria-pressed="true">Consulting</button>
+    <button type="button" data-p="design" aria-pressed="false">Design</button>
+  </div>
+</div>
+
+<!-- 4つの案（中身は下の script で Consulting / Design の文言を入れる） -->
+<section class="lo lo--a">
+  <p class="lo-name"><b>A</b><span>左右に並べる（今の Design・トップと同じ形）。いちばん落ち着いて、トップとの家族感が強い</span></p>
+  <header class="hero wrap"><div class="hero-main">
+    <div class="hero-biz"><p class="biz-name"><span>UBAKU</span><span class="lo-n" data-k="name"></span></p></div>
+    <div class="hero-copy"><h1 data-k="h1"></h1><p class="hero-lead" data-k="lead"></p></div>
+  </div><div class="panorama"><div class="slide photo is-active"><img data-k="img" alt=""></div></div></header>
+</section>
+
+<section class="lo lo--b">
+  <p class="lo-name"><b>B</b><span>中央にまとめる（今の Consulting）。写真が1枚のとき、正面性が出る</span></p>
+  <header class="hero wrap"><div class="hero-main">
+    <div class="hero-biz"><p class="biz-name"><span>UBAKU</span><span class="lo-n" data-k="name"></span></p></div>
+    <div class="hero-copy"><h1 data-k="h1"></h1><p class="hero-lead" data-k="lead"></p></div>
+  </div><div class="panorama"><div class="slide photo is-active"><img data-k="img" alt=""></div></div></header>
+</section>
+
+<section class="lo lo--c">
+  <p class="lo-name"><b>C</b><span>名前を横いっぱいに大きく、その下に見出しと説明を左右に。雑誌の表紙のように強い</span></p>
+  <header class="hero wrap"><div class="hero-main">
+    <div class="hero-biz"><p class="biz-name"><span>UBAKU</span><span class="lo-n" data-k="name"></span></p></div>
+    <div class="lo-c-row"><div class="hero-copy"><h1 data-k="h1"></h1></div><p class="hero-lead" data-k="lead"></p></div>
+  </div><div class="panorama"><div class="slide photo is-active"><img data-k="img" alt=""></div></div></header>
+</section>
+
+<section class="lo lo--d">
+  <p class="lo-name"><b>D</b><span>見出しを主役に。事業名は小さく上に置き、言葉で伝える</span></p>
+  <header class="hero wrap"><div class="hero-main">
+    <p class="lo-d-name"><i>UBAKU</i><span data-k="name"></span></p>
+    <h1 data-k="h1"></h1><p class="hero-lead" data-k="lead"></p>
+  </div><div class="panorama"><div class="slide photo is-active"><img data-k="img" alt=""></div></div></header>
+</section>
+
+<div style="height:80px"></div>
+
+<script>
+// Consulting / Design の文言と色を切り替える（今のページと同じ文言）
+var TEXT = {
+  consulting: { cls: 'page-consulting', name: 'Consulting',
+    h1: '宿と不動産の実務から、<br><em class="hl">事業をかたちに。</em>',
+    lead: '不動産開発、新規事業、そして宿の開業まで。旭川・北海道をはじめ、全国対応。',
+    img: '../assets/img/consulting/hero.webp' },
+  design: { cls: 'page-design', name: 'Design',
+    h1: '建物も、ブランドも、<br><em class="hl">その土地らしく。</em>',
+    lead: '改修のデザイン監修から、宿やお店のブランディングまで。',
+    img: '../assets/img/works/01-hero-01.webp' }
+};
+function show(p) {
+  var t = TEXT[p];
+  document.body.className = t.cls;
+  document.querySelectorAll('[data-k="name"]').forEach(function (e) { e.textContent = t.name; });
+  document.querySelectorAll('[data-k="h1"]').forEach(function (e) { e.innerHTML = t.h1; });
+  document.querySelectorAll('[data-k="lead"]').forEach(function (e) { e.textContent = t.lead; });
+  document.querySelectorAll('[data-k="img"]').forEach(function (e) { e.src = t.img; });
+  document.querySelectorAll('.lo-switch button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.p === p ? 'true' : 'false'); });
+}
+document.querySelectorAll('.lo-switch button').forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.p); }); });
+show('consulting');
+</script>
+</body>
+</html>

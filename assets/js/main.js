@@ -19,6 +19,10 @@
 
   var DUR = 3800;               // 000→100 までの時間（ミリ秒。元は4700）
   var STEPS = [0.06, 0.36, 0.64]; // Find → Build → Live に切り替わるタイミング（全体の何割の時点か。2026-10-17 元の動きに戻した）
+  // 動詞（Find・Build・Live）を1文字ずつの部品に分ける（1文字ずつ下から入って上へ抜ける動きのため。試作 B）
+  op.querySelectorAll('.op-verb i').forEach(function (w) {
+    w.innerHTML = w.textContent.split('').map(function (ch, i) { return '<span style="--i:' + i + '">' + ch + '</span>'; }).join('');
+  });
   var HOLD = 1200;              // 100になってから消え始めるまでの待ち時間（元は1900）
 
   var count = op.querySelector('.op-count');
@@ -90,7 +94,7 @@
   // （届く前に始めると、最初は代わりのフォントで大きめに表示され、届いた瞬間に小さく切り替わって見えるため）
   // 回線が遅いときは、1.5秒待っても届かなければそのまま始める
   var fontsReady = (document.fonts && document.fonts.load) ? Promise.all([
-    document.fonts.load('italic 500 40px "Cormorant Garamond"', 'Find'),
+    document.fonts.load('italic 500 40px "Cormorant Garamond"', 'Find Build Live your place.'),
     document.fonts.load('500 40px "Cormorant Garamond"', 'your place.'),
     document.fonts.load('300 14px "Jost"', 'Asahidake 2,291m')
   ]) : Promise.resolve();
@@ -460,6 +464,14 @@ document.querySelectorAll('.fold-btn').forEach(function (btn) {
 /* ---------- 2. お問い合わせフォーム ---------- */
 // メールアドレス：ページの文字には「info［at］ubaku.jp」とだけ書き、開いたあとに本当のアドレスとリンクに組み立てる
 // （アドレスを集めて回るロボットは、ページの文字をそのまま読むため）
+// メールのボタン（2026-10-17）：アドレスはページのどこにも書かず、押したときだけ組み立ててメールを開く
+// （ページを読み取ってアドレスを集めるロボットに見つからないように）。メールが開けない環境では href のお問い合わせへ
+document.querySelectorAll('.js-mail-btn').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.location.href = 'mailto:' + a.dataset.user + '@' + a.dataset.domain;
+  });
+});
 document.querySelectorAll('.js-mail').forEach(function (a) {
   var addr = a.dataset.user + '@' + a.dataset.domain;
   a.href = 'mailto:' + addr;
@@ -501,4 +513,37 @@ document.querySelectorAll('.js-mail').forEach(function (a) {
       button.disabled = false;
     });
   });
+})();
+
+
+/* ---------- 下層ページ（/consulting・/design）のヒーロー写真の高さ（2026-10-17） ----------
+   開いた画面の一番下に、写真の下の 01・02・03（写真が1枚なら写真の下端）が来て、その下が約10pxになるように、
+   写真の高さを画面に合わせる（トップは style.css の --hero-max-h で同じ見え方にしている）
+   ・事業名と見出しの段の高さは画面の幅で変わるので、ここで毎回はかって決める
+   ・スマホのアドレスバーの出入りで高さが揺れないよう、画面の幅が変わったときだけ計り直す */
+(function () {
+  if (!document.body.matches('.page-consulting, .page-design')) return;
+  var pano = document.querySelector('.hero .panorama');
+  if (!pano) return;
+  var tabs = document.querySelector('.hero .slide-tabs');
+  var GAP = 10;   // 一番下の余白（px）
+  var lastW = 0;
+
+  function fit() {
+    var w = window.innerWidth;
+    if (w === lastW) return;
+    lastW = w;
+    pano.style.height = '';
+    pano.style.maxHeight = 'none';
+    var top = pano.getBoundingClientRect().top + window.scrollY;
+    var below = tabs ? tabs.offsetHeight : 0;
+    var h = window.innerHeight - top - below - GAP;
+    var min = w <= 640 ? 240 : 320;          // 画面がとても低いときでも、写真が小さくなりすぎないように
+    var max = w <= 640 ? w * 1.1 : w * 0.62; // 縦に長い画面で、写真が大きくなりすぎないように
+    pano.style.aspectRatio = 'auto';
+    pano.style.height = Math.round(Math.min(max, Math.max(min, h))) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { lastW = 0; fit(); });
 })();

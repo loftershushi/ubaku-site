@@ -416,3 +416,39 @@
 /* UBAKU Villa のロゴの画像は周りの余白が広いので、タイルの中では大きめに置く */
 .vi-face > .vi-villa{width:min(118%,280px);max-width:none}
 .vi-face--cards .bcard--villa-back .vi-villa{width:70%}
+
+
+/* =========================================================
+   2026-10-17 追加（2）
+   ========================================================= */
+
+/* ---------- 考え方の図（トップの Concept と同じ3つの円）：円の色に事業の色を少し混ぜる ---------- */
+.approach .tomoe--sub{max-width:420px;margin:8px auto 0}
+.page-consulting .tomoe--sub{--c-top:#D7C6DE;--c-br:#CBD6D2;--c-bl:#E6DBC8}   /* 上＝江戸紫をうすく */
+.page-design .tomoe--sub{--c-top:#EBCDAA;--c-br:#CBD6D2;--c-bl:#E6DBC8}      /* 上＝琥珀をうすく */
+.tomoe .lbl-jp--center{font-family:var(--f-heading);font-size:26px;letter-spacing:.06em}
+.approach{gap:20px}
+.approach .body{font-size:14px}
+
+/* ---------- 丘の帯（Numbers・Flow）：下層ページでは白い区切りのあとに来るので、
+   トップの昔の形と同じく「丘より上＝白、下＝淡いグレー」にする（トップは今、白の帯） ---------- */
+.page-consulting .numbers,.page-design .numbers{background:var(--kraft)}
+.page-consulting .numbers .hill-fill,.page-design .numbers .hill-fill{fill:var(--cream)}
+/* 丘の帯のあと（Fee・FAQ）の余白を詰める */
+.page-consulting .numbers .wrap,.page-design .numbers .wrap{padding-bottom:calc(var(--sec-y) * .6)}
+.numbers + .sub-sec{padding-top:calc(var(--sec-y) * .6)}
+
+/* ---------- Design の Before / After：組と組のあいだを詰める ---------- */
+.ba-list{gap:64px}
+.ba-row{row-gap:56px}
+.ba{gap:14px}
+#brand{margin-top:96px}
+
+/* ---------- Consulting の Case：写真は横3：縦2 ---------- */
+.page-consulting #case .villa .photo{min-height:0;aspect-ratio:3 / 2;align-self:center}
+
+@media (max-width: 640px){
+  .ba-list{gap:48px}
+  .ba-row{row-gap:44px}
+  .approach .tomoe--sub{max-width:320px}
+}

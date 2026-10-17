@@ -605,12 +605,17 @@ html.is-opening .intro,html.is-opening .panorama.intro .slide img{animation-play
 .op-coord{position:absolute;top:calc(26px + env(safe-area-inset-top,0px));right:var(--pad-x);text-align:right;font-family:var(--f-en);font-size:11px;letter-spacing:.16em;line-height:1.7;color:var(--op-mist);font-variant-numeric:tabular-nums}
 .op-big{position:absolute;left:50%;top:27%;transform:translateX(-50%);margin:0;display:flex;align-items:flex-end;gap:.24em;font-family:var(--f-display);font-weight:500;font-size:clamp(23px,calc(3.4vw - 3px),43px);letter-spacing:.01em;line-height:1;white-space:nowrap}   /* 文字の大きさ（2026-10-17 に約2pt＝3px小さく） */
 /* 英文の動き：動詞だけが下から切り替わる（Find → Build → Live）。後ろの「your place.」は動かない */
-.op-verb{display:inline-block;height:1.12em;line-height:1.12em;overflow:hidden;opacity:0;transition:opacity .8s;padding:0 .18em 0 .12em;margin:0 -.18em 0 -.12em}   /* 斜体の文字は左右にはみ出すので、切れないように見えない余白を足す（並びの位置は変えない） */
-.op-verb i{display:block;text-align:right;height:1.12em;font-style:italic;transition:transform .7s cubic-bezier(.65,0,.25,1)}   /* 言葉が切り替わる速さ */
-.op-rest{display:inline-block;height:1.12em;line-height:1.12em;opacity:0;transition:opacity .8s}
-.opening.s1 .op-verb,.opening.s1 .op-rest{opacity:1}
-.opening.s2 .op-verb i{transform:translateY(-1.12em)}
-.opening.s3 .op-verb i{transform:translateY(-2.24em)}
+.op-verb{position:relative;display:inline-block;height:1.2em;line-height:1.2em;overflow:hidden;font-style:italic;padding:0 .18em 0 .12em;margin:0 -.18em 0 -.12em}   /* 斜体の文字は左右にはみ出すので、切れないように見えない余白を足す（並びの位置は変えない） */
+.op-size{visibility:hidden}   /* 一番長い「Build」の幅だけをとる見えない文字 */
+.op-verb i{position:absolute;right:.18em;top:0;font-style:italic;white-space:nowrap}   /* 3つの動詞を同じ場所に重ね、右にそろえる */
+.op-verb i span{display:inline-block;transform:translateY(110%);transition:transform .6s cubic-bezier(.65,0,.25,1);transition-delay:calc(var(--i) * 45ms)}   /* 1文字ずつ 0.045秒ずつ遅れて動く */
+.op-rest{display:inline-block;height:1.2em;line-height:1.2em;font-style:italic;opacity:0;transition:opacity .8s}   /* your place. も斜体（2026-10-17） */
+.opening.s1 .op-rest{opacity:1}
+.opening.s1 .op-verb i:nth-of-type(1) span{transform:none}                                   /* Find が下から入る */
+.opening.s2 .op-verb i:nth-of-type(1) span{transform:translateY(-110%)}                     /* Find が上へ抜け */
+.opening.s2 .op-verb i:nth-of-type(2) span{transform:none}                                   /* Build が下から入る */
+.opening.s3 .op-verb i:nth-of-type(2) span{transform:translateY(-110%)}
+.opening.s3 .op-verb i:nth-of-type(3) span{transform:none}                                   /* Live で止まる */
 .op-ridge{position:absolute;left:0;bottom:var(--ridge-bottom);width:100%;height:auto;aspect-ratio:1000 / 120;overflow:visible}
 .op-line{fill:none;stroke:var(--op-line);stroke-width:.8;stroke-linejoin:round}   /* 太さは main.js が画面幅に合わせて調整 */
 .op-shade{fill:url(#op-mt);opacity:0}
