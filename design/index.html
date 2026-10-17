@@ -30,7 +30,7 @@
 
 <!-- デザイン：トップページと共通の style.css ＋ 下層ページ用の sub.css ＋ UBAKU Letter の札 -->
 <link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="../assets/css/sub.css?v=20261017b">
+<link rel="stylesheet" href="../assets/css/sub.css?v=20261017d">
 <link rel="stylesheet" href="../assets/css/letter.css">
 
 <!-- Googleにページの内容を伝えるデータ（このページで受けている仕事） -->
@@ -86,12 +86,10 @@
     </ul>
   </nav>
 
-  <div class="hero-main">
-    <div class="hero-biz intro" style="--d:.15s">
-      <span class="label">Design｜考える</span>
-      <p class="biz-name"><span>UBAKU</span>Design</p>
-    </div>
-    <div class="hero-copy intro" style="--d:.5s">
+  <!-- 案D（2026-10-17）：事業名は小さく上に、見出しを主役に。見出しは PC では1行、スマホだけ「、」のあとで改行 -->
+  <div class="hero-main hero-main--d">
+    <div class="hero-copy intro" style="--d:.15s">
+      <p class="hero-name"><span>UBAKU</span>Design</p>
       <!-- h1 はこの1つだけ -->
       <h1>建物も、ブランドも、<br class="sp-br"><em class="hl">その土地らしく。</em></h1>
       <p class="hero-lead">改修のデザイン監修から、宿やお店のブランディングまで。</p>
@@ -596,7 +594,7 @@
 </section>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="../assets/js/main.js?v=20261017"></script>
+<script src="../assets/js/main.js?v=20261017d"></script>
 <!-- UBAKU Letter：右下の札だけ（data-band="off" でページの中の購読欄は入れない） -->
 <script src="../assets/js/letter.js" data-privacy="../privacy/" data-band="off"></script>
 </body>

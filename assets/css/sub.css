@@ -452,3 +452,18 @@
   .ba-row{row-gap:44px}
   .approach .tomoe--sub{max-width:320px}
 }
+
+/* ---------- ヒーロー案D（2026-10-17 決定）：事業名は小さく上に、見出しを主役に ----------
+   見出しは PC では1行（style.css の nowrap）、スマホだけ「、」のあとで改行（h1 の中の br.sp-br） */
+.hero-main--d{display:block;padding-top:48px}
+.hero-main--d .hero-copy{max-width:none;gap:0;padding-top:0}
+.hero-name{font-family:var(--f-title);font-weight:300;font-size:20px;letter-spacing:.16em;line-height:1;color:var(--green)}
+.hero-name span{color:var(--sub);margin-right:.5em}
+.hero-main--d .hero-copy h1{font-size:clamp(28px,3.4vw,48px);line-height:1.5;margin-top:22px}
+.hero-main--d .hero-lead{margin-top:14px}
+.hero-main--d ~ .panorama{margin-top:8px}
+@media (max-width: 640px){
+  .hero-main--d{padding-top:32px}
+  .hero-name{font-size:16px}
+  .hero-main--d .hero-copy h1{font-size:26px;margin-top:16px}
+}

@@ -539,7 +539,7 @@ document.querySelectorAll('.js-mail').forEach(function (a) {
     var below = tabs ? tabs.offsetHeight : 0;
     var h = window.innerHeight - top - below - GAP;
     var min = w <= 640 ? 240 : 320;          // 画面がとても低いときでも、写真が小さくなりすぎないように
-    var max = w <= 640 ? w * 1.1 : w * 0.62; // 縦に長い画面で、写真が大きくなりすぎないように
+    var max = w <= 640 ? w * 1.5 : w * 0.62; // 縦に長い画面で、写真が大きくなりすぎないように
     pano.style.aspectRatio = 'auto';
     pano.style.height = Math.round(Math.min(max, Math.max(min, h))) + 'px';
   }
