@@ -467,3 +467,9 @@
   .hero-name{font-size:16px}
   .hero-main--d .hero-copy h1{font-size:26px;margin-top:16px}
 }
+
+/* ---------- 左上のロゴ（2026-10-17）：文字の「UBAKU / Consulting」をやめて UBAKŪ のロゴに。横線はこのページの色（--logo-bar） ---------- */
+.nav-logo{display:block;flex:none;width:120px}
+@media (max-width: 640px){ .nav-logo{width:96px} }
+/* Consulting のヒーロー写真：テーブルの上の本（AALTO）が見える位置で切り抜く */
+.page-consulting .hero .panorama .slide img{object-position:50% 42%}
