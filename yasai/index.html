@@ -4,13 +4,14 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 仮公開用（ubaku-site/yasai）：デザイン案 C4 のコピー。元データは 21_Yasai（野菜直販）/03_自社サイト（BASE・yasai.ubaku.jp）/01_デザイン案。
-     ubaku.jp へのリンクは仮公開用に「../」、アイコンは同じフォルダーのものにしてある。本番の Yasai は BASE（yasai.ubaku.jp）で作るので、このページは本番公開しない。
+<!-- 仮公開用（ubaku-site/yasai）：デザイン案 C5 のコピー。元データは 21_Yasai（野菜直販）/03_自社サイト（BASE・yasai.ubaku.jp）/01_デザイン案。
+     ubaku.jp へのリンクは「../」、アイコンは同じフォルダー、写真は img/ にしてある。本番の Yasai は BASE（yasai.ubaku.jp）で作るので、このページは本番公開しない。
+     C5案（2026-10-17）：C4 に仮の写真を入れた版（宇莫別荘の撮影素材 11361017 から。アスパラ・とうもろこし・玉ねぎは写真がないので、トマトの写真で仮に埋めて「写真は後日更新」と表示）
      C4案（2026-10-16）：C3を元に ubaku.jp の最新ルールへ更新（大文字の UBAKU・Ū の横線は事業の色＝赤土・稜線の上のすき間をなくした・日本語見出しは Murecho・共通の動き・サイトアイコン）
      C3案（2026-10-10）：C2を元に、差し色を赤土に決定・試作用の色切り替えを削除・ubaku.jp との行き来の導線を追加
      揃えたもの：UBAKŪ のロゴ・フォント（Jost＋Noto Sans JP）・稜線・見出しの形・余白・最後の深い面
      変えたもの：差し色（温かい色）・季節の色の丸・買うボタンを目立たせる -->
-<title>UBAKU Yasai｜北海道美瑛の規格外野菜を産地直送（C4案）</title>
+<title>UBAKU Yasai｜北海道美瑛の規格外野菜を産地直送（C5案）</title>
 <meta name="description" content="はみだしても、北海道美瑛の味。形やサイズが少しちがうだけの美瑛の野菜を、農家さんから産地直送でお届けします。春のアスパラ・夏のトマト・秋の玉ねぎの「美瑛 旬便」も受付中。">
 <!-- サイトのアイコン（Ū の横線が赤土の Yasai 用。元ファイルは 01_ブランド（ロゴ・VI・コピー）/アイコン。BASE ではここのファイルを設定画面で入れる） -->
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -32,7 +33,7 @@
   /* --- UBAKU 共通の色（ubaku.jp と同じ値。家族に見せるための色） --- */
   --white:#FFFFFF;         /* 基本の地色 */
   --kraft:#F4F4F2;         /* 淡いグレーの面（旬便・お届けについて） */
-  --deep:#29463D;          /* ブランドの緑（2026-10-16 から fumotobito と同じ #29463D。旧：錆鉄御納戸 #405B55）。最後の「卸のご相談」の面だけに使う */
+  --deep:#405B55;          /* 錆鉄御納戸。最後の「卸のご相談」の面だけに使う */
   --ink:#2B241C;           /* 見出しの文字 */
   --muted:#4B4236;         /* 本文の文字 */
   --sub:#6B6457;           /* ラベル・補足の文字 */
@@ -97,6 +98,11 @@ img{max-width:100%;display:block}
 .wordmark svg{display:block;width:100%;height:auto}
 
 /* 写真が入るまでの仮の箱（写真の指示を中に書いておく） */
+.ph.has-img,.panorama .ph.has-img{padding:0;background:none}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph.has-img{position:relative}
+/* 写真がまだなく、別の写真で仮に埋めている枠に出す札（撮れたら later ごと消す） */
+.ph .later{position:absolute;left:12px;top:12px;z-index:1;padding:2px 12px;border-radius:12px;background:rgba(255,255,255,.92);color:var(--sub);font-size:11px;letter-spacing:.08em;line-height:1.9}
 .ph{display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:12px;line-height:1.8;color:var(--sub);background:var(--ph-sky);overflow:hidden}
 
 /* ボタン（買う・予約するは差し色で塗る。それ以外は線だけ） */
@@ -340,7 +346,7 @@ img{max-width:100%;display:block}
     </div>
   </div>
   <div class="panorama">
-    <div class="ph" role="img" aria-label="美瑛の丘と青空の前で、ふぞろいなトマトを手のひらにのせた写真">PHOTO：青空と美瑛の丘の前で、ふぞろいなトマトを手のひらにのせる<br>（人の手と空がメイン・横長）</div>
+    <div class="ph has-img"><img src="img/hero.webp" alt="色も形もふぞろいな、美瑛のトマト"></div>
   </div>
 </section>
 
@@ -350,8 +356,8 @@ img{max-width:100%;display:block}
     <div class="head reveal"><h2 class="head-en" id="story-title">Story</h2><span class="head-jp">はみだしのこと</span></div>
     <div class="story">
       <div class="story-photos reveal">
-        <div class="zoom"><div class="ph" style="background:var(--ph-red)" role="img" aria-label="手のひらにのった、少し割れたトマト">PHOTO：手のひらにのった、少し割れたトマト</div></div>
-        <div class="zoom"><div class="ph" style="background:var(--ph-green)" role="img" aria-label="収穫の合間に休む農家さん">PHOTO：収穫の合間に休む農家さんの笑顔</div></div>
+        <div class="zoom"><div class="ph has-img"><img src="img/story-1.webp" alt="手のひらにのせたトマト" loading="lazy"></div></div>
+        <div class="zoom"><div class="ph has-img"><img src="img/story-2.webp" alt="トマトのハウスで笑う農家さん" loading="lazy"></div></div>
       </div>
       <div class="story-text reveal">
         <h3>おいしいのに、<br>お店に並ばない野菜があります。</h3>
@@ -368,25 +374,25 @@ img{max-width:100%;display:block}
     <div class="head reveal"><h2 class="head-en" id="veg-title">Vegetables</h2><span class="head-jp">美瑛の野菜</span></div>
     <div class="items">
       <a class="item reveal lift" href="#shop">
-        <div class="zoom"><div class="ph" style="background:var(--ph-green)" role="img" aria-label="朝露のついたアスパラ">PHOTO：朝露のアスパラ</div></div>
+        <div class="zoom"><div class="ph has-img"><img src="img/veg-asparagus.webp" alt="美瑛アスパラ（写真は後日更新。今は仮の写真）" loading="lazy"><span class="later">写真は後日更新</span></div></div>
         <span class="item-season"><span class="dot" style="background:var(--spring)"></span>春 5月〜　<span class="badge">予約受付中</span></span>
         <span class="item-name">美瑛アスパラ<span class="item-price">[価格]</span></span>
         <span class="item-copy">雪どけのあとの、最初の緑。</span>
       </a>
       <a class="item reveal lift" href="#shop">
-        <div class="zoom"><div class="ph" style="background:var(--ph-red)" role="img" aria-label="かごいっぱいのトマト">PHOTO：かごいっぱいのトマト</div></div>
+        <div class="zoom"><div class="ph has-img"><img src="img/veg-tomato.webp" alt="赤く熟したトマト" loading="lazy"></div></div>
         <span class="item-season"><span class="dot" style="background:var(--summer)"></span>夏 [時期]</span>
         <span class="item-name">はみだし美瑛トマト 4kg<span class="item-price">[価格]</span></span>
         <span class="item-copy">ちょっと割れても、ちゃんと赤い。</span>
       </a>
       <a class="item reveal lift" href="#shop">
-        <div class="zoom"><div class="ph" style="background:var(--ph-yellow)" role="img" aria-label="皮をむいたとうもろこし">PHOTO：皮をむいたとうもろこし</div></div>
+        <div class="zoom"><div class="ph has-img"><img src="img/veg-corn.webp" alt="美瑛とうもろこし（写真は後日更新。今は仮の写真）" loading="lazy"><span class="later">写真は後日更新</span></div></div>
         <span class="item-season"><span class="dot" style="background:var(--corn)"></span>夏 [時期]・クール便</span>
         <span class="item-name">美瑛とうもろこし<span class="item-price">[価格]</span></span>
         <span class="item-copy">朝もぎを、冷たいまま。</span>
       </a>
       <a class="item reveal lift" href="#shunbin">
-        <div class="zoom"><div class="ph" style="background:var(--ph-brown)" role="img" aria-label="箱に詰めた玉ねぎ">PHOTO：玉ねぎの箱詰め</div></div>
+        <div class="zoom"><div class="ph has-img"><img src="img/veg-onion.webp" alt="はみだし美瑛玉ねぎ（写真は後日更新。今は仮の写真）" loading="lazy"><span class="later">写真は後日更新</span></div></div>
         <span class="item-season"><span class="dot" style="background:var(--autumn)"></span>秋 [時期]・旬便でお届け</span>
         <span class="item-name">はみだし美瑛玉ねぎ 20kg<span class="item-price">[価格]</span></span>
         <span class="item-copy">冬じゅう、台所にある安心。</span>
@@ -424,7 +430,7 @@ img{max-width:100%;display:block}
   <div class="wrap">
     <div class="head reveal"><h2 class="head-en" id="farmer-title">Farmers</h2><span class="head-jp">畑からのひとこと</span></div>
     <div class="farmer">
-      <div class="ph reveal" role="img" aria-label="畑に立つ農家さんのポートレート">PHOTO：畑に立つ農家さんのポートレート<br>（自然な笑顔・縦長）</div>
+      <div class="ph has-img reveal"><img src="img/farmer.webp" alt="トマトのハウスに立つ農家さん" loading="lazy"></div>
       <div class="farmer-text reveal">
         <span class="farmer-en">From the field.</span>
         <blockquote>「[農家さんのことば。例：形で捨てるのがずっと悔しかった、など実際の声を入れる]」</blockquote>
