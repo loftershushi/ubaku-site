@@ -278,3 +278,141 @@
 /* 横に並んだ2組の説明文の行数が違っても、写真の上端をそろえる（2組で行の高さを共有する） */
 .ba-row{grid-auto-rows:auto}
 .ba-row > .ba{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:20px}
+
+
+/* =========================================================
+   2026-10-17 追加：Design の Works を「Space｜空間」と「Brand｜ブランド」の2つに
+   ブランドは、ビジュアルアイデンティティ一式を小さなタイル（ロゴ・色・書体・名刺・案内・Web）で見せる
+   各ブランドの色は article の style（--b-main＝そのブランドの主な色、--b-sub＝差し色）で渡す
+   ========================================================= */
+
+/* ---------- Works の中の小見出し（Space / Brand） ---------- */
+.works-sub{display:flex;align-items:baseline;gap:16px;margin:0 0 40px;padding-bottom:14px;border-bottom:1px solid var(--rule-short)}
+.works-sub-en{font-family:var(--f-title);font-weight:200;font-size:clamp(28px,3vw,40px);letter-spacing:.05em;color:var(--accent-hl);line-height:1}
+.works-sub-ja{font-size:13px;letter-spacing:.16em;color:var(--muted)}
+#brand{margin-top:var(--block-gap)}
+
+/* ---------- 1つのブランド ---------- */
+.brand{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px;margin-bottom:var(--block-gap)}
+.brand-head{display:flex;flex-direction:column;gap:16px;align-self:start;position:sticky;top:calc(var(--topbar-h) + 24px)}
+.brand-head .biz-name{font-size:40px}
+.brand-head .body{line-height:2.1}
+.brand-made{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.brand-made li{font-size:11px;letter-spacing:.08em;color:var(--muted);border:1px solid var(--rule-short);padding:3px 10px}
+.brand-credit{font-family:var(--f-en);font-size:12px;letter-spacing:.14em;color:var(--accent-hl)}
+
+/* ---------- タイルを並べる箱（6列） ---------- */
+.vi-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;align-content:start}
+.vi{margin:0;display:flex;flex-direction:column;gap:8px}
+.vi--w2{grid-column:span 2}.vi--w3{grid-column:span 3}.vi--w4{grid-column:span 4}.vi--w6{grid-column:span 6}
+.vi figcaption{font-family:var(--f-en);font-size:11px;letter-spacing:.1em;color:var(--sub)}
+.vi-face{position:relative;flex:1;min-height:180px;display:flex;align-items:center;justify-content:center;padding:28px;background:var(--cream);outline:1px solid var(--rule-short);outline-offset:-1px;overflow:hidden}
+.vi-face--main{background:var(--b-main);outline:0}
+.vi--logo .vi-face{min-height:220px}
+
+/* ロゴ */
+.vi-wordmark{width:min(78%,360px)}
+.vi-wordmark--light{--logo-color:#fff;width:min(82%,220px)}
+.vi-face--system{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;align-items:end}
+.vi-face--system div{display:flex;flex-direction:column;align-items:center;gap:10px}
+.vi-face--system .wordmark{width:100%;max-width:150px}
+.vi-face--system small{font-family:var(--f-en);font-size:11px;letter-spacing:.1em;color:var(--sub)}
+.vi-villa{width:min(78%,200px);height:auto;aspect-ratio:1}
+/* UBAKU Villa の金色のロゴ：白いロゴの形を型にして、金色で塗る */
+.vi-villa--gold{display:block;background:var(--b-sub);-webkit-mask:url(../img/works/03-logo-white.webp) center / contain no-repeat;mask:url(../img/works/03-logo-white.webp) center / contain no-repeat}
+
+/* カラー */
+.vi-face--palette{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:stretch;padding:16px}
+.vi-face--palette3{grid-template-columns:minmax(0,1fr)}
+.vi-face--palette span{display:flex;flex-direction:column;justify-content:flex-end;min-height:64px;padding:8px;background:var(--c);color:#fff;font-size:11px;letter-spacing:.06em;line-height:1.5}
+.vi-face--palette span.is-light{color:var(--ink);outline:1px solid var(--rule-short);outline-offset:-1px}
+.vi-face--palette b{font-family:var(--f-en);font-weight:400;letter-spacing:.1em}
+
+/* 書体 */
+.vi-face--type{flex-direction:column;align-items:flex-start;justify-content:center;gap:2px}
+.vi-face--type p{margin:0;line-height:1.4;color:var(--ink)}
+.vi-face--type .t-en{font-family:var(--f-title);font-weight:200;font-size:30px;letter-spacing:.05em}
+.vi-face--type .t-jp{font-family:var(--f-heading);font-size:20px;letter-spacing:.08em;margin-top:10px}
+.vi-face--type .t-body{font-family:var(--f-body);font-weight:300;font-size:14px;margin-top:10px}
+.vi-face--type small{font-family:var(--f-en);font-size:10px;letter-spacing:.1em;color:var(--sub)}
+
+/* 名刺（見本。名前・住所はダミー） */
+.vi-face--cards{gap:16px;background:var(--kraft);outline:0;padding:28px 20px}
+.bcard{flex:none;width:46%;aspect-ratio:91 / 55;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.08);padding:5% 6%;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;font-size:6px;line-height:1.6;color:var(--ink)}
+.bcard small,.bcard b{display:block;font-weight:300}
+.bcard--ubaku .wordmark{width:42%}
+.bcard--ubaku .bc-tag{font-size:5px;letter-spacing:.06em;color:var(--muted);margin-top:3%}
+.bcard--ubaku .bc-bar{display:block;width:8%;height:1px;background:#23A0DA;margin:8% 0 4%}
+.bcard--ubaku .bc-name{font-family:var(--f-heading);font-size:11px;letter-spacing:.12em}
+.bcard--ubaku .bc-role{font-size:5px;color:var(--muted)}
+.bcard--ubaku .bc-info{font-size:4.6px;line-height:1.7;color:var(--muted);margin-top:auto}
+.bcard--ubaku-back{align-items:center;justify-content:center;text-align:center;gap:4%}
+.bcard--ubaku-back .bc-copy{margin:0;font-family:var(--f-display);font-style:italic;font-size:12px;color:var(--ink)}
+.bcard--ubaku-back small{font-size:5px;color:var(--muted)}
+.bcard--ubaku-back svg{width:70%;height:auto;margin-top:6%}
+.bcard--ubaku-back path{fill:none;stroke:#23A0DA;stroke-width:1.2}
+.vi-face--cards-tall{flex-direction:column;padding:20px}
+.vi-face--cards-tall .bcard{width:78%}
+.bcard--villa-back{background:var(--b-main);align-items:center;justify-content:center}
+.bcard--villa-back .vi-villa{width:44%}
+.bcard--villa{align-items:center;text-align:center}
+.bcard--villa img{width:20%;height:auto;margin-bottom:2%}
+.bcard--villa .bc-role{font-size:4.6px;letter-spacing:.2em;color:var(--muted)}
+.bcard--villa .bc-name{font-family:var(--f-serif-jp);font-size:10px;letter-spacing:.2em}
+.bcard--villa .bc-en{font-family:var(--f-display);font-size:6px;letter-spacing:.14em;color:var(--muted)}
+.bcard--villa .bc-info{font-size:4.4px;line-height:1.7;color:var(--muted);margin-top:auto}
+
+/* アイコン */
+.vi-face--icon{background:var(--kraft);outline:0}
+.vi-face--icon img{width:min(56%,140px);height:auto;border-radius:22%;box-shadow:0 6px 18px rgba(0,0,0,.1)}
+
+/* 写真・画像そのまま（OGP・バナー・アイコン表・レターヘッド・Webサイト） */
+.vi-face--photo{padding:0;min-height:0}
+.vi-face--photo img{display:block;width:100%;height:100%;object-fit:cover}
+.vi-face--paper{background:var(--kraft);outline:0;padding:20px 28px}
+.vi-face--paper img{width:auto;height:100%;max-height:360px;object-fit:contain;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.vi--tall .vi-face{min-height:360px}
+.vi-face--web{max-height:360px;align-items:flex-start}
+.vi-face--web img{object-position:top}
+.vi .vi-face img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){ .vi:hover .vi-face--photo img{transform:scale(1.03)} }
+
+/* ---------- Flow：改修とブランドの2通り ---------- */
+.flow-label{display:flex;align-items:baseline;gap:14px;margin:0 0 20px;font-size:13px;letter-spacing:.16em;color:var(--muted)}
+.flow-label span{font-family:var(--f-title);font-weight:300;font-size:20px;letter-spacing:.06em;color:var(--accent-hl)}
+.numbers-grid--steps + .flow-label{margin-top:56px}
+
+/* ---------- Consulting の料金表：デザインの仕事は Design のページへ ---------- */
+.price-list dd.to-design{font-family:var(--f-en);font-size:12px;letter-spacing:.08em}
+.price-list dd.to-design a{color:var(--c-design);border-bottom:1px solid currentColor}
+
+@media (max-width: 1000px){
+  .brand{grid-template-columns:minmax(0,1fr);gap:32px}
+  .brand-head{position:static}
+}
+@media (max-width: 640px){
+  .vi-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .vi--w2,.vi--w3{grid-column:span 1}
+  .vi--w4,.vi--w6{grid-column:span 2}
+  .vi-face{min-height:140px;padding:18px}
+  .vi-face--system{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .vi-face--palette{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vi-face--palette3{grid-template-columns:minmax(0,1fr)}
+  .vi-face--palette span{min-height:44px}
+  .bcard{width:48%}
+  .vi-face--cards-tall .bcard{width:88%}
+  .vi--tall .vi-face{min-height:240px}
+}
+/* 横長のバナーは元の比率のまま。設備アイコンの表は切らずに全体を見せる（地はそのブランドの緑） */
+.vi-face--banner{flex:none;aspect-ratio:2400 / 878}
+.vi-face--contain{background:var(--b-main);outline:0}
+.vi-face--photo.vi-face--contain img{object-fit:contain}
+.vi--tall .vi-face{height:390px;flex:none}
+.vi-face--web{max-height:none}
+@media (max-width: 640px){
+  .vi--tall{grid-column:span 2}
+  .vi--tall .vi-face{height:300px}
+}
+/* UBAKU Villa のロゴの画像は周りの余白が広いので、タイルの中では大きめに置く */
+.vi-face > .vi-villa{width:min(118%,280px);max-width:none}
+.vi-face--cards .bcard--villa-back .vi-villa{width:70%}
