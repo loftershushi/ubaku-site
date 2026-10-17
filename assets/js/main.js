@@ -18,26 +18,7 @@
   op.hidden = false;
 
   var DUR = 3800;               // 000→100 までの時間（ミリ秒。元は4700）
-  var STEPS = [0.06, 0.42];       // 1行目「Find your place.」→ 2行目「Live your time.」が現れ始めるタイミング（全体の何割の時点か）
-
-  // 英文を1文字ずつの部品に分ける（1文字ずつ順に浮かび上がらせるため。空白はそのまま残す）
-  op.querySelectorAll('.op-l1, .op-l2').forEach(function (lineEl) {
-    var i = 0;
-    (function split(node) {
-      Array.prototype.slice.call(node.childNodes).forEach(function (c) {
-        if (c.nodeType === 3) {
-          var frag = document.createDocumentFragment();
-          c.textContent.split('').forEach(function (ch) {
-            if (ch === ' ') { frag.appendChild(document.createTextNode(' ')); return; }
-            var s = document.createElement('span');
-            s.className = 'ch'; s.textContent = ch; s.style.setProperty('--i', i++);
-            frag.appendChild(s);
-          });
-          node.replaceChild(frag, c);
-        } else { split(c); }
-      });
-    })(lineEl);
-  });
+  var STEPS = [0.06, 0.36, 0.64]; // Find → Build → Live に切り替わるタイミング（全体の何割の時点か。2026-10-17 元の動きに戻した）
   var HOLD = 1200;              // 100になってから消え始めるまでの待ち時間（元は1900）
 
   var count = op.querySelector('.op-count');
@@ -80,6 +61,7 @@
     shade.style.opacity = Math.max(0, Math.min(1, (p - 0.55) / 0.4)); // 稜線の下をうっすら塗る
     if (raw > STEPS[0]) op.classList.add('s1');
     if (raw > STEPS[1]) op.classList.add('s2');
+    if (raw > STEPS[2]) op.classList.add('s3');
     if (raw < 1) { raf = requestAnimationFrame(frame); return; }
     op.classList.add('done');
     timer = setTimeout(exit, HOLD);
@@ -109,7 +91,7 @@
   // 回線が遅いときは、1.5秒待っても届かなければそのまま始める
   var fontsReady = (document.fonts && document.fonts.load) ? Promise.all([
     document.fonts.load('italic 500 40px "Cormorant Garamond"', 'Find'),
-    document.fonts.load('500 40px "Cormorant Garamond"', 'your place. your time.'),
+    document.fonts.load('500 40px "Cormorant Garamond"', 'your place.'),
     document.fonts.load('300 14px "Jost"', 'Asahidake 2,291m')
   ]) : Promise.resolve();
   var started = false;
@@ -308,7 +290,7 @@
     '.biz3 article', '.work-wide',   // What We Do（2026-10-16 に Business をまとめた）
     '.concept .kicker', '.concept-title', '.concept-catch', '.tomoe',
     '.numbers-grid li', '.member', '.journal-flow', '.note-links',
-    '.contact-lead', '.contact-grid > div', '.form', '.links-row',
+    '.contact-lead', '.contact-grid > div', '.form',   // '.links-row'（フッターのメール・SNS）は一番下で現れないことがあるので外した（2026-10-17）
     '.js-reveal'   // 下層ページ（/consulting・/design）で動かしたいもの
   ].join(','));
 
