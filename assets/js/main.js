@@ -123,6 +123,24 @@
   setTimeout(start, 1500);
 })();
 
+/* ---------- ヒーローの写真の高さ：開いた画面の一番下に 01・02・03 が来るように合わせる（その下は .hero の padding-bottom＝約5px） ----------
+   CSS の --hero-max-h（画面の高さ − 決まった数）だと、画面ごとに文字の大きさが違ってずれるため、実際の高さを測って決める（2026-10-17）
+   スマホ（640px以下）は正方形の写真のままなので何もしない。横幅が狭めの画面では写真の縦横の比率が先に効く */
+(function () {
+  var hero = document.querySelector('.hero');
+  var pano = hero && hero.querySelector('.panorama');
+  if (!pano) return;
+  function fit() {
+    if (window.innerWidth <= 640) { pano.style.maxHeight = ''; return; }
+    pano.style.maxHeight = 'none';                          // いったん上限を外して、写真以外の部分の高さを測る
+    var others = hero.offsetHeight - pano.offsetHeight;     // ロゴ・文字・01〜03・下の余白
+    pano.style.maxHeight = Math.max(380, window.innerHeight - others) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+
 /* ---------- 1. ヒーローのスライド ---------- */
 (function () {
   var tabs = document.querySelectorAll('.slide-tabs [role="tab"]');
