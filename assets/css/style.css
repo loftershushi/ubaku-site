@@ -67,7 +67,7 @@
   --block-gap:128px;                /* Business内の各事業のあいだの余白 */
   --head-gap:72px;                  /* 見出しの線から中身までの余白 */
   --ridge-h:120px;                  /* 稜線の高さ */
-  --hero-max-h:max(380px, calc(100svh - 275px));   /* 【ヒーロー写真】写真の高さの上限（開いた画面の一番下に 01・02・03 が来て、その下に少しだけ余白が残るように。2026-10-16 に 330px→280px＋写真の上のすき間 40px→0 で、写真は約1.1〜1.2倍に。2026-10-17 に 275px：一番下の余白を約10pxに） */
+  --hero-max-h:max(380px, calc(100svh - 270px));   /* 【ヒーロー写真】写真の高さの上限（開いた画面の一番下に 01・02・03 が来て、その下に少しだけ余白が残るように。2026-10-16 に 330px→280px＋写真の上のすき間 40px→0 で、写真は約1.1〜1.2倍に。2026-10-17 に 270px：一番下の余白を約5pxに） */
   --topbar-h:56px;                  /* 【固定メニュー】細い帯の高さ */
   --hill-h:110px;                    /* Numbers の丘の線の高さ */
 
@@ -487,6 +487,12 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .links-row li{display:flex;align-items:baseline;gap:12px}
 .links-row .label{font-size:11px;color:var(--on-green-sub)}
 .links-row a{font-size:13px;letter-spacing:.1em;color:var(--on-green);border-bottom:1px solid var(--rule-short-on-green);padding-bottom:2px}
+/* SNS のアイコン（Instagram・note。2026-10-17）。線だけの小さなアイコンで、マウスを乗せると色が変わる */
+.links-row li.sns{align-items:center;gap:16px}
+.links-row a.sns-icon{display:inline-flex;width:22px;height:22px;padding:0;border:0;color:var(--on-green)}
+.links-row a.sns-icon::after{display:none}
+.sns-icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.sns-icon svg .dot{fill:currentColor;stroke:none}
 
 footer{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-top:1px solid var(--rule-long-on-green);padding-top:24px;font-size:12px;letter-spacing:.12em;line-height:1.9;color:var(--on-green-sub)}
 footer .footer-logo{width:200px;margin-bottom:16px;--logo-color:var(--on-green)}
@@ -589,7 +595,7 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
    ========================================================= */
 html.is-opening,html.is-opening body{overflow:hidden}          /* オープニング中はスクロールさせない */
 html.is-opening .intro,html.is-opening .panorama.intro .slide img{animation-play-state:paused}             /* ヒーローの登場は、幕が上がるまで待つ */
-.opening{position:fixed;inset:0;z-index:100;background:var(--cream);color:var(--ink);cursor:pointer;transition:opacity .5s ease;--ridge-bottom:20%;--peak-x:57;--peak-y:12}   /* 稜線の下端の高さ（2026-10-17 30%→20%：英文と旭岳の名前が近すぎたので稜線ごと下げた）。旭岳の山頂の位置は main.js が稜線から計算して入れる */
+.opening{position:fixed;inset:0;z-index:100;background:var(--cream);color:var(--ink);cursor:pointer;transition:opacity .5s ease;--ridge-bottom:10%;--peak-x:57;--peak-y:12}   /* 稜線の下端の高さ（2026-10-17 30%→20%→10%：英文と旭岳の名前が近すぎたので稜線ごと下げた）。旭岳の山頂の位置は main.js が稜線から計算して入れる */
 .opening[hidden]{display:none}
 .opening:not(.ready) .op-logo,.opening:not(.ready) .op-coord,.opening:not(.ready) .op-count{opacity:0}   /* フォントが届くまで文字を出さない */
 .op-logo,.op-coord,.op-count{transition:opacity .6s ease}
