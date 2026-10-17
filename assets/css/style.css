@@ -67,7 +67,7 @@
   --block-gap:128px;                /* Business内の各事業のあいだの余白 */
   --head-gap:72px;                  /* 見出しの線から中身までの余白 */
   --ridge-h:120px;                  /* 稜線の高さ */
-  --hero-max-h:max(380px, calc(100svh - 280px));   /* 【ヒーロー写真】写真の高さの上限（開いた画面の一番下に 01・02・03 が来て、その下に少しだけ余白が残るように。2026-10-16 に 330px→280px＋写真の上のすき間 40px→0 で、写真は約1.1〜1.2倍に） */
+  --hero-max-h:max(380px, calc(100svh - 275px));   /* 【ヒーロー写真】写真の高さの上限（開いた画面の一番下に 01・02・03 が来て、その下に少しだけ余白が残るように。2026-10-16 に 330px→280px＋写真の上のすき間 40px→0 で、写真は約1.1〜1.2倍に。2026-10-17 に 275px：一番下の余白を約10pxに） */
   --topbar-h:56px;                  /* 【固定メニュー】細い帯の高さ */
   --hill-h:110px;                    /* Numbers の丘の線の高さ */
 
@@ -306,7 +306,9 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .work-wide.reveal{clip-path:inset(100% 0 0 0);transition:clip-path 1.6s cubic-bezier(.2,.7,.2,1)}
 .work-wide.reveal.is-visible{clip-path:inset(0 0 0 0)}
 .work-wide.reveal img,.work-wide.reveal.is-visible img{transform:none}
-.work-item .catch{text-wrap:pretty;font-family:var(--f-heading);font-size:16px;line-height:1.7;color:var(--on-green)}
+.work-item .label{font-size:12px}   /* 「Connect｜知る・つながる」の1行（01〜03 と同じ形。2026-10-17） */
+.work-item h3.work-catch{text-wrap:pretty;word-break:auto-phrase;font-size:17px;line-height:1.7}   /* 見出しはキャッチの文（大雪山のふもとの、…）。01〜03 のキャッチと同じ大きさ。折り返すときは言葉の切れ目で（auto-phrase） */
+.nw{white-space:nowrap}   /* この中では改行しない（言葉の途中で折り返さないように） */
 
 /* =========================================================
    ④ Business
@@ -542,10 +544,9 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   :root{--card-w:260px;--card-gap:20px}
   .note-links{justify-content:flex-start;flex-direction:column}
   .work-grid{gap:40px}
-  /* What We Do：英語と見出しを同じ行に（例：Connect　知る・つながる） */
-  .work-item{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:baseline;column-gap:14px;row-gap:10px;padding-top:20px}
-  .work-item > :not(.kind):not(h3){grid-column:1 / -1;justify-self:start}
-  .work-item h3{font-size:22px}
+  /* What We Do の 04〜06：札「Connect｜知る・つながる」は1行のまま、その下に見出し（2026-10-17） */
+  .work-item{gap:10px;padding-top:20px}
+  .work-item h3.work-catch{font-size:17px}
   /* 「続きを読む」：閉じているあいだは隠す（Team の紹介文は3行まで見せる） */
   .fold:not(.is-open){display:none}
   .fold-clamp:not(.is-open){display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
@@ -588,7 +589,7 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
    ========================================================= */
 html.is-opening,html.is-opening body{overflow:hidden}          /* オープニング中はスクロールさせない */
 html.is-opening .intro,html.is-opening .panorama.intro .slide img{animation-play-state:paused}             /* ヒーローの登場は、幕が上がるまで待つ */
-.opening{position:fixed;inset:0;z-index:100;background:var(--cream);color:var(--ink);cursor:pointer;transition:opacity .5s ease;--ridge-bottom:30%;--peak-x:57;--peak-y:12}   /* 旭岳の山頂の位置（main.js が稜線から計算して入れる） */
+.opening{position:fixed;inset:0;z-index:100;background:var(--cream);color:var(--ink);cursor:pointer;transition:opacity .5s ease;--ridge-bottom:20%;--peak-x:57;--peak-y:12}   /* 稜線の下端の高さ（2026-10-17 30%→20%：英文と旭岳の名前が近すぎたので稜線ごと下げた）。旭岳の山頂の位置は main.js が稜線から計算して入れる */
 .opening[hidden]{display:none}
 .opening:not(.ready) .op-logo,.opening:not(.ready) .op-coord,.opening:not(.ready) .op-count{opacity:0}   /* フォントが届くまで文字を出さない */
 .op-logo,.op-coord,.op-count{transition:opacity .6s ease}
