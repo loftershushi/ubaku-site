@@ -4,15 +4,17 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 仮公開用（ubaku-site/yasai）：デザイン案 C5 のコピー。元データは 21_Yasai（野菜直販）/03_自社サイト（BASE・yasai.ubaku.jp）/01_デザイン案。
+<!-- 仮公開用（ubaku-site/yasai）：デザイン案 C6 のコピー。元データは 21_Yasai（野菜直販）/03_自社サイト（BASE・yasai.ubaku.jp）/01_デザイン案。
      ubaku.jp へのリンクは「../」、アイコンは同じフォルダー、写真は img/ にしてある。本番の Yasai は BASE（yasai.ubaku.jp）で作るので、このページは本番公開しない。
-     C5案（2026-10-17）：C4 に仮の写真を入れた版（宇莫別荘の撮影素材 11361017 から。アスパラ・とうもろこし・玉ねぎは写真がないので、トマトの写真で仮に埋めて「写真は後日更新」と表示）
+     C6案（2026-10-19）：商品をトマトとアスパラに絞った版。Vegetables はトマト3サイズ（4kg／5kg／6kg・価格あり）とアスパラ3サイズ（500g／1kg／2kg・価格未定）を横3枚ずつ。
+     旬便は「春のアスパラ・夏のトマト」の年2便に。写真は宇莫別荘の撮影素材（11361017・11461018）から。アスパラは写真がないのでトマトで仮に埋めて「写真は後日更新」
+     C5案（2026-10-17）：C4 に仮の写真を入れた版
      C4案（2026-10-16）：C3を元に ubaku.jp の最新ルールへ更新（大文字の UBAKU・Ū の横線は事業の色＝赤土・稜線の上のすき間をなくした・日本語見出しは Murecho・共通の動き・サイトアイコン）
      C3案（2026-10-10）：C2を元に、差し色を赤土に決定・試作用の色切り替えを削除・ubaku.jp との行き来の導線を追加
      揃えたもの：UBAKŪ のロゴ・フォント（Jost＋Noto Sans JP）・稜線・見出しの形・余白・最後の深い面
      変えたもの：差し色（温かい色）・季節の色の丸・買うボタンを目立たせる -->
-<title>UBAKU Yasai｜北海道美瑛の規格外野菜を産地直送（C5案）</title>
-<meta name="description" content="はみだしても、北海道美瑛の味。形やサイズが少しちがうだけの美瑛の野菜を、農家さんから産地直送でお届けします。春のアスパラ・夏のトマト・秋の玉ねぎの「美瑛 旬便」も受付中。">
+<title>UBAKU Yasai｜北海道美瑛の規格外野菜を産地直送（C6案）</title>
+<meta name="description" content="はみだしても、北海道美瑛の味。形やサイズが少しちがうだけの美瑛のトマトとアスパラを、農家さんから産地直送でお届けします。春のアスパラ・夏のトマトが届く「美瑛 旬便」も受付中。">
 <!-- サイトのアイコン（Ū の横線が赤土の Yasai 用。元ファイルは 01_ブランド（ロゴ・VI・コピー）/アイコン。BASE ではここのファイルを設定画面で入れる） -->
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="icon-512.png">
@@ -45,8 +47,6 @@
   /* --- 季節の色の丸（C案から引き継ぎ） --- */
   --spring:#8CC07A;        /* 春：アスパラ */
   --summer:#EF8A72;        /* 夏：トマト */
-  --corn:#EFC94C;          /* 夏：とうもろこし */
-  --autumn:#D9A066;        /* 秋：玉ねぎ */
 
   /* --- 写真が入るまでの仮の面の色 --- */
   --ph-sky:#E4ECEF;
@@ -192,6 +192,16 @@ img{max-width:100%;display:block}
 .item-price{font-family:var(--f-en);font-size:14px;white-space:nowrap}
 .item-copy{font-size:13px;color:var(--sub)}
 .badge{display:inline-block;padding:1px 10px;border-radius:12px;background:var(--accent-soft);color:var(--accent);font-size:11px;letter-spacing:.08em}
+
+/* 商品グループ（トマト・アスパラ）の見出し。グループのあいだは大きく空ける */
+.veg-group + .veg-group{margin-top:calc(var(--sec-y) * .6)}
+.veg-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-bottom:28px}
+.veg-head h3{font-size:clamp(19px,2vw,23px);letter-spacing:.1em}
+.veg-en{font-family:var(--f-en);font-size:12px;letter-spacing:.18em;color:var(--sub);text-transform:uppercase}
+.veg-head p{flex-basis:100%;font-size:14px;color:var(--muted)}
+.items--3{grid-template-columns:repeat(3,minmax(0,1fr))}   /* 横3枚（スマホでは1枚ずつ） */
+@media (max-width:760px){ .items--3{grid-template-columns:1fr;gap:48px} }
+.item-price{font-family:var(--f-en);font-size:15px}
 
 /* ===============================================================
    Shun-bin｜美瑛 旬便
@@ -346,7 +356,7 @@ img{max-width:100%;display:block}
     </div>
   </div>
   <div class="panorama">
-    <div class="ph has-img"><img src="img/hero.webp" alt="色も形もふぞろいな、美瑛のトマト"></div>
+    <div class="ph has-img"><img src="img/hero.webp" alt="美瑛の丘を背に、手のひらにのせた割れ目のあるトマト"></div>
   </div>
 </section>
 
@@ -356,7 +366,7 @@ img{max-width:100%;display:block}
     <div class="head reveal"><h2 class="head-en" id="story-title">Story</h2><span class="head-jp">はみだしのこと</span></div>
     <div class="story">
       <div class="story-photos reveal">
-        <div class="zoom"><div class="ph has-img"><img src="img/story-1.webp" alt="手のひらにのせたトマト" loading="lazy"></div></div>
+        <div class="zoom"><div class="ph has-img"><img src="img/story-1.webp" alt="両手いっぱいのトマト" loading="lazy"></div></div>
         <div class="zoom"><div class="ph has-img"><img src="img/story-2.webp" alt="トマトのハウスで笑う農家さん" loading="lazy"></div></div>
       </div>
       <div class="story-text reveal">
@@ -368,35 +378,59 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- ===== Vegetables｜美瑛の野菜 ===== -->
+<!-- ===== Vegetables｜美瑛の野菜（2026-10-19 トマトとアスパラに絞った） ===== -->
 <section class="sec" id="vegetables" aria-labelledby="veg-title" style="padding-top:0">
   <div class="wrap">
     <div class="head reveal"><h2 class="head-en" id="veg-title">Vegetables</h2><span class="head-jp">美瑛の野菜</span></div>
-    <div class="items">
-      <a class="item reveal lift" href="#shop">
-        <div class="zoom"><div class="ph has-img"><img src="img/veg-asparagus.webp" alt="美瑛アスパラ（写真は後日更新。今は仮の写真）" loading="lazy"><span class="later">写真は後日更新</span></div></div>
-        <span class="item-season"><span class="dot" style="background:var(--spring)"></span>春 5月〜　<span class="badge">予約受付中</span></span>
-        <span class="item-name">美瑛アスパラ<span class="item-price">[価格]</span></span>
-        <span class="item-copy">雪どけのあとの、最初の緑。</span>
-      </a>
-      <a class="item reveal lift" href="#shop">
-        <div class="zoom"><div class="ph has-img"><img src="img/veg-tomato.webp" alt="赤く熟したトマト" loading="lazy"></div></div>
-        <span class="item-season"><span class="dot" style="background:var(--summer)"></span>夏 [時期]</span>
-        <span class="item-name">はみだし美瑛トマト 4kg<span class="item-price">[価格]</span></span>
-        <span class="item-copy">ちょっと割れても、ちゃんと赤い。</span>
-      </a>
-      <a class="item reveal lift" href="#shop">
-        <div class="zoom"><div class="ph has-img"><img src="img/veg-corn.webp" alt="美瑛とうもろこし（写真は後日更新。今は仮の写真）" loading="lazy"><span class="later">写真は後日更新</span></div></div>
-        <span class="item-season"><span class="dot" style="background:var(--corn)"></span>夏 [時期]・クール便</span>
-        <span class="item-name">美瑛とうもろこし<span class="item-price">[価格]</span></span>
-        <span class="item-copy">朝もぎを、冷たいまま。</span>
-      </a>
-      <a class="item reveal lift" href="#shunbin">
-        <div class="zoom"><div class="ph has-img"><img src="img/veg-onion.webp" alt="はみだし美瑛玉ねぎ（写真は後日更新。今は仮の写真）" loading="lazy"><span class="later">写真は後日更新</span></div></div>
-        <span class="item-season"><span class="dot" style="background:var(--autumn)"></span>秋 [時期]・旬便でお届け</span>
-        <span class="item-name">はみだし美瑛玉ねぎ 20kg<span class="item-price">[価格]</span></span>
-        <span class="item-copy">冬じゅう、台所にある安心。</span>
-      </a>
+
+    <!-- トマト（価格は 2026-10-19 決定） -->
+    <div class="veg-group">
+      <div class="veg-head reveal"><span class="dot" style="background:var(--summer)"></span><h3>はみだし美瑛トマト</h3><span class="veg-en">Tomato</span><p>ちょっと割れても、ちゃんと赤い。夏から秋の、美瑛のトマトです。</p></div>
+      <div class="items items--3">
+        <a class="item reveal lift" href="#shop">
+          <div class="zoom"><div class="ph has-img"><img src="img/tomato-4kg.webp" alt="台の上に積んだ美瑛のトマト" loading="lazy"></div></div>
+          <span class="item-season"><span class="dot" style="background:var(--summer)"></span>夏〜秋 [時期]</span>
+          <span class="item-name">はみだし美瑛トマト 4kg<span class="item-price">3,099円</span></span>
+          <span class="item-copy">まずはご家庭で。サラダに、そのままに。</span>
+        </a>
+        <a class="item reveal lift" href="#shop">
+          <div class="zoom"><div class="ph has-img"><img src="img/tomato-5kg.webp" alt="テーブルいっぱいに並べた美瑛のトマト" loading="lazy"></div></div>
+          <span class="item-season"><span class="dot" style="background:var(--summer)"></span>夏〜秋 [時期]</span>
+          <span class="item-name">はみだし美瑛トマト 5kg<span class="item-price">3,299円</span></span>
+          <span class="item-copy">煮込みにも、ソースにも。</span>
+        </a>
+        <a class="item reveal lift" href="#shop">
+          <div class="zoom"><div class="ph has-img"><img src="img/tomato-6kg.webp" alt="コンテナいっぱいの美瑛のトマト" loading="lazy"></div></div>
+          <span class="item-season"><span class="dot" style="background:var(--summer)"></span>夏〜秋 [時期]</span>
+          <span class="item-name">はみだし美瑛トマト 6kg<span class="item-price">3,499円</span></span>
+          <span class="item-copy">たっぷり使いたい方に。おすそわけにも。</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- アスパラ（価格は未定・写真は後日更新） -->
+    <div class="veg-group">
+      <div class="veg-head reveal"><span class="dot" style="background:var(--spring)"></span><h3>はみだし美瑛アスパラ</h3><span class="veg-en">Asparagus</span><p>雪どけのあとの、最初の緑。5月からのお届けを、いまご予約いただけます。</p></div>
+      <div class="items items--3">
+        <a class="item reveal lift" href="#shop">
+          <div class="zoom"><div class="ph has-img"><img src="img/asparagus-500g.webp" alt="はみだし美瑛アスパラ 500g（写真は後日更新。今は仮の写真）" loading="lazy"><span class="later">写真は後日更新</span></div></div>
+          <span class="item-season"><span class="dot" style="background:var(--spring)"></span>春 5月〜　<span class="badge">予約受付中</span></span>
+          <span class="item-name">はみだし美瑛アスパラ 500g<span class="item-price">[価格]</span></span>
+          <span class="item-copy">まずはお試しに。</span>
+        </a>
+        <a class="item reveal lift" href="#shop">
+          <div class="zoom"><div class="ph has-img"><img src="img/asparagus-1kg.webp" alt="はみだし美瑛アスパラ 1kg（写真は後日更新。今は仮の写真）" loading="lazy"><span class="later">写真は後日更新</span></div></div>
+          <span class="item-season"><span class="dot" style="background:var(--spring)"></span>春 5月〜　<span class="badge">予約受付中</span></span>
+          <span class="item-name">はみだし美瑛アスパラ 1kg<span class="item-price">[価格]</span></span>
+          <span class="item-copy">家族でたっぷり。</span>
+        </a>
+        <a class="item reveal lift" href="#shop">
+          <div class="zoom"><div class="ph has-img"><img src="img/asparagus-2kg.webp" alt="はみだし美瑛アスパラ 2kg（写真は後日更新。今は仮の写真）" loading="lazy"><span class="later">写真は後日更新</span></div></div>
+          <span class="item-season"><span class="dot" style="background:var(--spring)"></span>春 5月〜　<span class="badge">予約受付中</span></span>
+          <span class="item-name">はみだし美瑛アスパラ 2kg<span class="item-price">[価格]</span></span>
+          <span class="item-copy">春のごちそうを、おすそわけにも。</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -409,17 +443,16 @@ img{max-width:100%;display:block}
       <div class="shun-text reveal">
         <span class="label">Early bird ／ 年内早割 受付中</span>
         <h3>美瑛 旬便</h3>
-        <p>春のアスパラ、夏のトマト、秋の玉ねぎ。<br>美瑛でいちばんおいしい時期の野菜が、年に3回届きます。<br>申し込みは一度だけ。あとは季節がくるのを待つだけです。</p>
+        <p>春のアスパラと、夏のトマト。<br>美瑛でいちばんおいしい時期の野菜が、年に2回届きます。<br>申し込みは一度だけ。あとは季節がくるのを待つだけです。</p>
         <div class="shun-price">
           <a class="btn btn--fill" href="#shop">早割で予約する</a>
           <span>送料込 [価格] → 早割 [早割価格]</span>
         </div>
-        <p class="shun-note">※ お支払いはお申し込み時に3便分まとめて。<br>※ 天候で出荷できないときの扱い：[代わりの野菜／返金 を決めて記載]</p>
+        <p class="shun-note">※ お支払いはお申し込み時に2便分まとめて。<br>※ 天候で出荷できないときの扱い：[代わりの野菜／返金 を決めて記載]</p>
       </div>
       <div class="shun-list reveal">
         <div class="shun-row"><span class="no">01</span><span class="when"><span class="dot" style="background:var(--spring)"></span>春の便　[5〜6月]</span><b>アスパラ</b></div>
         <div class="shun-row"><span class="no">02</span><span class="when"><span class="dot" style="background:var(--summer)"></span>夏の便　[8月]</span><b>トマト</b></div>
-        <div class="shun-row"><span class="no">03</span><span class="when"><span class="dot" style="background:var(--autumn)"></span>秋の便　[9〜10月]</span><b>玉ねぎ</b></div>
       </div>
     </div>
   </div>
@@ -466,7 +499,7 @@ img{max-width:100%;display:block}
       <h3>よくある質問</h3>
       <details><summary>規格外の野菜は、味がちがいますか？</summary><p>ちがいません。形や大きさで出荷できなかっただけで、同じ畑で同じように育った野菜です。</p></details>
       <details><summary>旬便は途中でやめられますか？</summary><p>[決まりしだい記載。例：お支払い済みのため途中解約は不可、など]</p></details>
-      <details><summary>送料はいくらですか？</summary><p>表示価格はすべて送料込みです。[沖縄・離島の扱いを記載]</p></details>
+      <details><summary>送料はいくらですか？</summary><p>[送料込みかどうか・沖縄や離島の扱いを決めて記載]</p></details>
       <details><summary>のし・ギフト対応はできますか？</summary><p>[対応可否を記載]</p></details>
     </div>
   </div>
