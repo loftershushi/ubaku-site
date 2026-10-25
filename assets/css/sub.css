@@ -518,3 +518,6 @@
 .cv-grid--single .sub-diagram{grid-area:diagram;margin:0;justify-self:center;width:100%}
 .cv-grid--single .approach > .body{grid-area:body;align-self:start}
 @media (max-width: 1000px){.cv-grid--single .approach{grid-template-columns:minmax(0,1fr);grid-template-areas:"catch" "diagram" "body"}.cv-grid--single .sub-diagram{margin:24px 0}}
+/* Design：考え方の下に、建物から Web までの1本の線（強み）を横いっぱいに（2026-10-25） */
+.cv-grid--single .reach{margin-top:clamp(56px,6vw,96px);padding-top:clamp(40px,4vw,56px);border-top:1px solid var(--rule-short)}
+.cv-grid--single .reach-notes{max-width:880px;margin-left:auto;margin-right:auto}
