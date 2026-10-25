@@ -574,3 +574,11 @@
 .vi--wide-web .vi-face{height:440px;min-height:0;flex:none}
 .vi--wide-web .vi-face img{object-fit:cover;object-position:50% 0}
 @media (max-width: 640px){.vi--wide-web .vi-face{height:240px}}
+
+/* 2026-10-25：Flow の Space と Brand のあいだを少し広く */
+#flow .numbers-grid--steps + .flow-label{margin-top:88px}
+/* 2026-10-25：UBAKU Letter の画面は、横の ubaku.jp の画面と同じ高さに（画像は高さに関係させず、上から見せる） */
+.vi-face--shot.vi-face--top{flex:1;min-height:0;height:auto;position:relative}
+.vi-face--shot.vi-face--top img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0}
+/* 2026-10-25：宇莫別荘のロゴ（白地・緑の地・金）は3つとも同じ大きさで、少し小さく */
+.vi-face > img.vi-villa,.vi-face > .vi-villa.vi-villa--gold{width:min(60%,190px);max-width:none;height:auto;aspect-ratio:1381 / 918}
