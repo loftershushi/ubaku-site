@@ -29,9 +29,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
 
 <!-- デザイン：トップページと共通の style.css ＋ 下層ページ用の sub.css ＋ UBAKU Letter の札 -->
-<link rel="stylesheet" href="../assets/css/style.css?v=202610252235">
-<link rel="stylesheet" href="../assets/css/sub.css?v=202610252235">
-<link rel="stylesheet" href="../assets/css/letter.css?v=202610252235">
+<link rel="stylesheet" href="../assets/css/style.css?v=202610252246">
+<link rel="stylesheet" href="../assets/css/sub.css?v=202610252246">
+<link rel="stylesheet" href="../assets/css/letter.css?v=202610252246">
 
 <!-- Googleにページの内容を伝えるデータ（このページで受けている仕事） -->
 <script type="application/ld+json">
@@ -124,31 +124,16 @@
       </div>
       <div class="approach js-reveal">
         <p class="concept-catch">壊して新しくするより、<br><em class="hl">あるものを、生かす。</em></p>
-        <div class="tomoe tomoe--sub">
-          <svg viewBox="110 20 680 700" role="img" aria-labelledby="dt-title">
-            <title id="dt-title">空間・土地・ブランドの3つの円が重なり、真ん中に「編み直す」がある図</title>
-            <defs>
-              <clipPath id="dt-top"><circle cx="450" cy="255" r="215"/></clipPath>
-              <clipPath id="dt-br"><circle cx="565" cy="455" r="215"/></clipPath>
-              <clipPath id="dt-bl"><circle cx="335" cy="455" r="215"/></clipPath>
-            </defs>
-            <g class="shapes">
-              <circle class="fill-top" cx="450" cy="255" r="215"/>
-              <circle class="fill-br" cx="565" cy="455" r="215"/>
-              <circle class="fill-bl" cx="335" cy="455" r="215"/>
-              <g clip-path="url(#dt-bl)"><circle class="fill-br" cx="565" cy="455" r="215"/></g>
-              <g clip-path="url(#dt-br)"><circle class="fill-top" cx="450" cy="255" r="215"/></g>
-              <g clip-path="url(#dt-br)"><circle class="gap" cx="450" cy="255" r="219"/></g>
-              <g clip-path="url(#dt-bl)"><circle class="gap" cx="565" cy="455" r="219"/></g>
-              <g clip-path="url(#dt-top)"><circle class="gap" cx="335" cy="455" r="219"/></g>
-              <g clip-path="url(#dt-top)"><g clip-path="url(#dt-br)"><g clip-path="url(#dt-bl)">
-                <rect class="fill-center" x="100" y="0" width="700" height="760"/>
-              </g></g></g>
-            </g>
-            <g class="lbl lbl-top"><text class="lbl-en" x="450" y="172">[Space]</text><text class="lbl-jp" x="450" y="212">空間</text></g>
-            <g class="lbl lbl-bl"><text class="lbl-en" x="268" y="482">[Local]</text><text class="lbl-jp" x="268" y="522">土地</text></g>
-            <g class="lbl lbl-br"><text class="lbl-en" x="632" y="482">[Brand]</text><text class="lbl-jp" x="632" y="522">ブランド</text></g>
-            <g class="lbl lbl-center"><text class="lbl-en" x="450" y="374">[Design]</text><text class="lbl-jp lbl-jp--center" x="450" y="414">編み直す</text></g>
+        <div class="sub-diagram">
+          <!-- 考え方の図（2026-10-25 試作 D2 に決定）：「土地」「空間」「ブランド」を少しずつずらして重ねた3枚の層。下から積み上げる順番も伝える。トップの3つの円とは別の形 -->
+          <svg viewBox="0 0 440 260" role="img" aria-labelledby="dt-title">
+            <title id="dt-title">土地・空間・ブランドの3つの層が、少しずつずれて重なる図</title>
+            <rect class="draw" pathLength="1" x="60" y="140" width="220" height="90" fill="#fff" stroke="#C9CDCB" stroke-width="1.2"/>
+            <rect class="draw draw--2" pathLength="1" x="110" y="95" width="220" height="90" fill="#fff" stroke="color-mix(in srgb, var(--accent-hl) 45%, #fff)" stroke-width="1.2"/>
+            <rect class="draw draw--late" pathLength="1" x="160" y="50" width="220" height="90" fill="#fff" stroke="var(--accent-hl)" stroke-width="2"/>
+            <text class="d-en" x="72" y="222">[Local] 土地</text>
+            <text class="d-en" x="122" y="177">[Space] 空間</text>
+            <text class="d-en d-accent d-fade" x="172" y="132">[Brand] ブランド</text>
           </svg>
         </div>
         <p class="body">古い建物にも、まちの小さなお店にも、そこにしかない時間の厚みがあります。UBAKU Designは、その良さを残しながら、いまの使い方に合わせて編み直します。改修では建物を、ブランディングでは名前や佇まいを。コンセプトづくりから仕上がりまで伴走します。</p>
@@ -159,21 +144,13 @@
         <h2 class="display">Strength</h2>
         <span class="aside">UBAKU Designにできること</span>
       </div>
-      <div class="values-grid">
-        <div class="value">
-          <p class="value-head"><span class="en label">01</span><span class="en-sub">Through Users' Eyes.</span></p>
-          <h3>使う人の目線で考える。</h3>
-          <p class="body">自分たちで宿を運営しているからこそ、泊まる人・働く人・掃除をする人まで、使う人の目線でデザインを考えます。</p>
-        </div>
-        <div class="value">
-          <p class="value-head"><span class="en label">02</span><span class="en-sub">Numbers, Too.</span></p>
-          <h3>事業の数字まで見る。</h3>
-          <p class="body">見た目だけでなく、かける費用と、その後の収支まで。不動産の実務の目線で、無理のない改修やブランドづくりを一緒に決めます。</p>
-        </div>
-        <div class="value">
-          <p class="value-head"><span class="en label">03</span><span class="en-sub">One World.</span></p>
-          <h3>ひとつの世界観で、つくり切る。</h3>
-          <p class="body">建物の改修から、ビジュアルデザイン、館内の案内、Webデザインまで。ばらばらに頼むと揃いにくいものを、同じ世界観で一貫してつくります。</p>
+      <!-- 強み（2026-10-25 試作 S-D に決定）：仕事の範囲を1本の線でつなぎ「ひとつの世界観でつくれる」を見せる。残りの2つは短く添える -->
+      <div class="reach js-reveal">
+        <ol class="reach-line"><li>建物</li><li>内装</li><li>家具</li><li>サイン</li><li>印刷物</li><li>Web</li></ol>
+        <p class="reach-cap">建物から Web まで、<br class="sp-br">ひとつの世界観で。</p>
+        <div class="reach-notes">
+          <div><b>使う人の目線で</b>自分たちで宿を運営しているから、泊まる人・働く人・掃除をする人まで考えます。</div>
+          <div><b>数字まで見る</b>かける費用と、その後の収支まで。不動産の実務の目線で、無理のない改修とブランドづくりを。</div>
         </div>
       </div>
     </div>
@@ -593,9 +570,9 @@
 </section>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="../assets/js/main.js?v=202610252235"></script>
+<script src="../assets/js/main.js?v=202610252246"></script>
 <!-- UBAKU Letter：右下の札だけ（data-band="off" でページの中の購読欄は入れない） -->
-<script src="../assets/js/letter.js?v=202610252235" data-privacy="../privacy/" data-band="off"></script>
+<script src="../assets/js/letter.js?v=202610252246" data-privacy="../privacy/" data-band="off"></script>
 
 <!-- ページの一番上へ戻るボタン（矢印だけ。スクロールすると右下の UBAKU Letter の札の上に出る。2026-10-25） -->
 <a class="to-top" href="#" aria-label="ページの一番上へ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></a>

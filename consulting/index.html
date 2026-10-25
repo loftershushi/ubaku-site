@@ -29,9 +29,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
 
 <!-- デザイン：トップページと共通の style.css ＋ 下層ページ用の sub.css ＋ UBAKU Letter の札 -->
-<link rel="stylesheet" href="../assets/css/style.css?v=202610252235">
-<link rel="stylesheet" href="../assets/css/sub.css?v=202610252235">
-<link rel="stylesheet" href="../assets/css/letter.css?v=202610252235">
+<link rel="stylesheet" href="../assets/css/style.css?v=202610252246">
+<link rel="stylesheet" href="../assets/css/sub.css?v=202610252246">
+<link rel="stylesheet" href="../assets/css/letter.css?v=202610252246">
 
 <!-- Googleにページの内容を伝えるデータ（このページで受けている仕事） -->
 <script type="application/ld+json">
@@ -116,31 +116,16 @@
       </div>
       <div class="approach js-reveal">
         <p class="concept-catch">東京の実務と、地方の現場を、<br><em class="hl">ひとつの事業に。</em></p>
-        <div class="tomoe tomoe--sub">
-          <svg viewBox="110 20 680 700" role="img" aria-labelledby="ct-title">
-            <title id="ct-title">東京の実務・地方の現場・自分たちの宿の3つの円が重なり、真ん中に「ひとつの事業」がある図</title>
-            <defs>
-              <clipPath id="ct-top"><circle cx="450" cy="255" r="215"/></clipPath>
-              <clipPath id="ct-br"><circle cx="565" cy="455" r="215"/></clipPath>
-              <clipPath id="ct-bl"><circle cx="335" cy="455" r="215"/></clipPath>
-            </defs>
-            <g class="shapes">
-              <circle class="fill-top" cx="450" cy="255" r="215"/>
-              <circle class="fill-br" cx="565" cy="455" r="215"/>
-              <circle class="fill-bl" cx="335" cy="455" r="215"/>
-              <g clip-path="url(#ct-bl)"><circle class="fill-br" cx="565" cy="455" r="215"/></g>
-              <g clip-path="url(#ct-br)"><circle class="fill-top" cx="450" cy="255" r="215"/></g>
-              <g clip-path="url(#ct-br)"><circle class="gap" cx="450" cy="255" r="219"/></g>
-              <g clip-path="url(#ct-bl)"><circle class="gap" cx="565" cy="455" r="219"/></g>
-              <g clip-path="url(#ct-top)"><circle class="gap" cx="335" cy="455" r="219"/></g>
-              <g clip-path="url(#ct-top)"><g clip-path="url(#ct-br)"><g clip-path="url(#ct-bl)">
-                <rect class="fill-center" x="100" y="0" width="700" height="760"/>
-              </g></g></g>
-            </g>
-            <g class="lbl lbl-top"><text class="lbl-en" x="450" y="172">[Tokyo]</text><text class="lbl-jp" x="450" y="212">東京の実務</text></g>
-            <g class="lbl lbl-bl"><text class="lbl-en" x="268" y="482">[Local]</text><text class="lbl-jp" x="268" y="522">地方の現場</text></g>
-            <g class="lbl lbl-br"><text class="lbl-en" x="632" y="482">[Stay]</text><text class="lbl-jp" x="632" y="522">自分たちの宿</text></g>
-            <g class="lbl lbl-center"><text class="lbl-en" x="450" y="374">[Consulting]</text><text class="lbl-jp lbl-jp--center" x="450" y="414">ひとつの事業</text></g>
+        <div class="sub-diagram">
+          <!-- 考え方の図（2026-10-25 試作 C1 に決定）：「東京の実務」と「地方の現場」の2本の線が流れてきて合流し、1本の「事業」になる。トップの3つの円とは別の形 -->
+          <svg viewBox="0 0 440 260" role="img" aria-labelledby="ct-title">
+            <title id="ct-title">東京の実務と地方の現場の2本の線が合流して、ひとつの事業になる図</title>
+            <path class="draw" pathLength="1" d="M20 60 C 150 60, 190 130, 270 130" fill="none" stroke="var(--sub)" stroke-width="1.2"/>
+            <path class="draw" pathLength="1" d="M20 200 C 150 200, 190 130, 270 130" fill="none" stroke="var(--sub)" stroke-width="1.2"/>
+            <path class="draw draw--late" pathLength="1" d="M270 130 L 420 130" fill="none" stroke="var(--accent-hl)" stroke-width="3"/>
+            <text class="d-en" x="20" y="44">[Tokyo]</text><text class="d-jp" x="20" y="84">東京の実務</text>
+            <text class="d-en" x="20" y="184">[Local]</text><text class="d-jp" x="20" y="224">地方の現場</text>
+            <g class="d-fade"><text class="d-en d-accent" x="420" y="112" text-anchor="end">[Consulting]</text><text class="d-jp d-accent" x="420" y="160" text-anchor="end">ひとつの事業</text></g>
           </svg>
         </div>
         <p class="body">東京の大手不動産会社で培った、収益不動産の開発と新規事業の実務。北海道で宿を一から立ち上げ、運営してきた現場の経験。その両方を持つチームとして、事業の組み立てから、かたちになるまで、となりで一緒に考えます。</p>
@@ -445,9 +430,9 @@
 </section>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="../assets/js/main.js?v=202610252235"></script>
+<script src="../assets/js/main.js?v=202610252246"></script>
 <!-- UBAKU Letter：右下の札だけ（data-band="off" でページの中の購読欄は入れない） -->
-<script src="../assets/js/letter.js?v=202610252235" data-privacy="../privacy/" data-band="off"></script>
+<script src="../assets/js/letter.js?v=202610252246" data-privacy="../privacy/" data-band="off"></script>
 
 <!-- ページの一番上へ戻るボタン（矢印だけ。スクロールすると右下の UBAKU Letter の札の上に出る。2026-10-25） -->
 <a class="to-top" href="#" aria-label="ページの一番上へ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></a>

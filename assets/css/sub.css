@@ -485,3 +485,28 @@
 .menu-cta .more{margin-left:12px}
 /* スマホ：Before / After の札を小さく（2026-10-25） */
 @media (max-width: 640px){.ba figcaption{left:8px;top:8px;padding:1px 7px;font-size:9px;letter-spacing:.12em}.ba{gap:12px}}
+
+/* ---------- 考え方の図（Consulting＝合流する2本の線、Design＝重なる3つの層。2026-10-25）：画面に入ると線が描かれる ---------- */
+.sub-diagram{max-width:460px;margin:28px 0 8px}
+.sub-diagram svg{display:block;width:100%;height:auto;overflow:visible}
+.sub-diagram .d-en{font-family:var(--f-title);font-weight:300;font-size:11px;letter-spacing:.1em;fill:var(--sub)}
+.sub-diagram .d-jp{font-family:var(--f-heading);font-size:15px;letter-spacing:.06em;fill:var(--ink)}
+.sub-diagram .d-accent{fill:var(--accent-hl)}
+.sub-diagram .draw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1)}
+.sub-diagram .draw--2{transition-delay:.3s}
+.sub-diagram .draw--late{transition-delay:.9s}
+.sub-diagram .d-fade{opacity:0;transition:opacity .8s ease 1.6s}
+.is-visible .sub-diagram .draw,.no-js .sub-diagram .draw{stroke-dashoffset:0}
+.is-visible .sub-diagram .d-fade{opacity:1}
+@media (prefers-reduced-motion: reduce){.sub-diagram .draw{stroke-dashoffset:0;transition:none}.sub-diagram .d-fade{opacity:1;transition:none}}
+
+/* ---------- Design の強み：建物から Web までの1本の線（2026-10-25） ---------- */
+.reach{margin-top:8px}
+.reach-line{display:flex;justify-content:space-between;list-style:none;margin:0;padding:0;position:relative;font-size:13px;letter-spacing:.06em;color:var(--ink)}
+.reach-line::before{content:"";position:absolute;left:8%;right:8%;top:6px;height:1px;background:var(--accent-hl)}
+.reach-line li{position:relative;flex:1;padding-top:24px;text-align:center}
+.reach-line li::before{content:"";position:absolute;left:50%;top:0;width:13px;height:13px;margin-left:-6.5px;border-radius:50%;background:#fff;border:1px solid var(--accent-hl)}
+.reach-cap{margin:28px 0 0;text-align:center;font-family:var(--f-heading);font-size:18px;letter-spacing:.1em;color:var(--accent-hl)}
+.reach-notes{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;font-size:13px;line-height:2;color:var(--muted)}
+.reach-notes b{display:block;font-weight:400;font-size:15px;color:var(--ink);margin-bottom:4px}
+@media (max-width: 640px){.reach-line{flex-wrap:wrap;row-gap:18px}.reach-line li{flex:0 0 33.3%}.reach-line::before{display:none}.reach-notes{grid-template-columns:1fr}.reach-cap{font-size:16px}.reach-cap .sp-br{display:inline}}
