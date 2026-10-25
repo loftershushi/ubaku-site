@@ -117,10 +117,14 @@
   var pano = hero && hero.querySelector('.panorama');
   if (!pano) return;
   function fit() {
-    if (window.innerWidth <= 640) { pano.style.maxHeight = ''; return; }
+    if (window.innerWidth <= 640) { pano.style.maxHeight = ''; pano.style.height = ''; pano.style.aspectRatio = ''; return; }
     pano.style.maxHeight = 'none';                          // いったん上限を外して、写真以外の部分の高さを測る
     var others = hero.offsetHeight - pano.offsetHeight;     // ロゴ・文字・01〜03・下の余白
-    pano.style.maxHeight = Math.max(380, window.innerHeight - others) + 'px';
+    // 写真の縦横比（2.8：1）にしばられず、画面の一番下まで縦に伸ばす（2026-10-25。左右は写真が少し切れる）
+    // ただし伸ばしすぎて縦長に見えないよう、横：縦＝1.6：1 より縦長にはしない
+    var h = Math.min(window.innerHeight - others, pano.offsetWidth / 1.6);
+    pano.style.aspectRatio = 'auto';
+    pano.style.height = Math.max(380, h) + 'px';
   }
   fit();
   window.addEventListener('resize', fit);

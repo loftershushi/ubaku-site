@@ -1,6 +1,41 @@
 /* noteの記事一覧（tools/make_notes.py で自動作成。手で直さない） */
 window.UBAKU_NOTES = [
   {
+    "title": "『旅する蝶』と、旅する僕",
+    "url": "https://note.com/loftershushi/n/ne84485a449b4",
+    "date": "2026.10.25",
+    "source": "mashu",
+    "image": "https://assets.st-note.com/production/uploads/images/328344926/rectangle_large_type_2_7cefdcb1dbc3b95ecc1be52c5f3634c9.png?width=600"
+  },
+  {
+    "title": "HBC北海道放送「今日ドキッ！」で紹介されました｜空き家を再生した美瑛の一棟貸し宿「UBAKU Villa 宇莫別荘」",
+    "url": "https://note.com/ubakuvilla/n/n76a052fe0563",
+    "date": "2026.10.19",
+    "source": "UBAKU Villa 宇莫別荘",
+    "image": "https://assets.st-note.com/production/uploads/images/325966507/rectangle_large_type_2_6c9cccc1f1f589db55fa3b1b31625028.jpeg?width=600"
+  },
+  {
+    "title": "美瑛・富良野へのアクセスガイド｜旭川空港から車で約18分の一棟貸しヴィラ UBAKU Villa 宇莫別荘への行き方",
+    "url": "https://note.com/ubakuvilla/n/nf3856d8c6f2f",
+    "date": "2026.10.13",
+    "source": "UBAKU Villa 宇莫別荘",
+    "image": "https://assets.st-note.com/production/uploads/images/322206394/rectangle_large_type_2_239018b9eddc3957bc003ef0fd72cb2d.jpeg?width=600"
+  },
+  {
+    "title": "美瑛に1週間滞在するなら秋冬もいい｜一棟貸しヴィラ UBAKU Villa 宇莫別荘を拠点にした中長期滞在",
+    "url": "https://note.com/ubakuvilla/n/n7b598312d229",
+    "date": "2026.10.08",
+    "source": "UBAKU Villa 宇莫別荘",
+    "image": "https://assets.st-note.com/production/uploads/images/322197479/rectangle_large_type_2_bb91c1945cf8f3d60515e7c076924d9e.jpeg?width=600"
+  },
+  {
+    "title": "9年前、東川町へ向かう途中で出会った人がいた",
+    "url": "https://note.com/loftershushi/n/nbc38736eb092",
+    "date": "2026.10.06",
+    "source": "mashu",
+    "image": "https://assets.st-note.com/production/uploads/images/318937210/rectangle_large_type_2_fa9dcbccf95e1678f40458a5e0653ebb.jpeg?width=600"
+  },
+  {
     "title": "信用金庫に断られた僕が、日本政策金融公庫で4桁万円を借りるまで",
     "url": "https://note.com/loftershushi/n/n4aecc6285478",
     "date": "2026.09.29",

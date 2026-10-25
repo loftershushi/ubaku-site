@@ -193,7 +193,7 @@ p{margin:0}
    ① ヒーロー
    ========================================================= */
 html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても、横スクロールを出さない */
-.hero{display:flex;flex-direction:column;padding-top:24px;padding-bottom:10px}   /* 上はページの一番上の余白（2026-10-17 36px→24px＝2/3）。下は 01・02・03 の下に約10px（2026-10-17。写真の高さは main.js の「ヒーローの写真の高さ」が画面に合わせて計算） */
+.hero{display:flex;flex-direction:column;padding-top:24px;padding-bottom:13px}   /* 2026-10-25 下は約10pt＝13px */   /* 上はページの一番上の余白（2026-10-17 36px→24px＝2/3）。下は 01・02・03 の下に約10px（2026-10-17。写真の高さは main.js の「ヒーローの写真の高さ」が画面に合わせて計算） */
 .nav{display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:12px;letter-spacing:.18em}
 .nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0}
 /* ---------- 固定メニュー（細い帯）：ふだんは画面の上に隠しておき、.is-shown で下りてくる ---------- */
