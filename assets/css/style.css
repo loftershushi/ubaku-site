@@ -302,7 +302,7 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 /* What We Do の 04〜06 の上の横長の大雪山の写真（下から幕が上がるように現れる。拡大はしない） */
 .work{container-type:inline-size}
 .work-wide{height:calc((100cqw - 112px) / 3);padding:0;margin-bottom:56px}   /* 01〜03 の写真（3列・横3：縦2）の 1.5倍の高さ（横に長いので、同じ高さだと低く見えるため。2026-10-16）。112px は列のすき間2つ分 */
-.work-wide img{object-position:50% 62%}   /* 雪の稜線と丘が入る位置 */
+.work-wide img{object-position:50% 50%}   /* 雪の稜線と丘が入る位置 */
 .work-wide.reveal{clip-path:inset(100% 0 0 0);transition:clip-path 1.6s cubic-bezier(.2,.7,.2,1)}
 .work-wide.reveal.is-visible{clip-path:inset(0 0 0 0)}
 .work-wide.reveal img,.work-wide.reveal.is-visible img{transform:none}
@@ -638,3 +638,17 @@ html.is-opening .intro,html.is-opening .panorama.intro .slide img{animation-play
   .op-big{top:34%}   /* スマホは稜線を下げた分、英文も少し下げて、上下のバランスをとる */
   .op-count{bottom:calc(20px + env(safe-area-inset-bottom,0px))}   /* 100 の数字は画面の一番下近くに（2026-10-17） */
 }
+
+/* ---------- フッター：UBAKU のサイトの行（3ページ共通。2026-10-25） ---------- */
+.footer-family{display:flex;flex-wrap:wrap;gap:6px 20px;list-style:none;margin:0 0 10px;padding:0;font-family:var(--f-title);font-weight:300;font-size:12px;letter-spacing:.12em}
+.footer-family a{color:var(--on-green-sub)}
+.footer-family a:hover{color:var(--on-green)}
+
+/* ---------- ページの一番上へ戻る矢印（2026-10-25）：右下の UBAKU Letter の札のすぐ上。ヒーローを過ぎたら出る（main.js） ---------- */
+.to-top{position:fixed;right:24px;bottom:calc(24px + var(--lt-fab-h, 0px) + 12px);z-index:61;width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;background:rgba(255,255,255,.92);color:var(--green);border:1px solid var(--rule-short);box-shadow:0 4px 14px rgba(43,36,28,.08);
+  opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .4s ease,transform .4s cubic-bezier(.2,.7,.2,1),bottom .4s ease}
+.to-top.is-shown{opacity:1;transform:none;pointer-events:auto}
+.to-top svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover){.to-top:hover{background:var(--green);color:#fff;border-color:var(--green)}}
+@media (max-width: 640px){.to-top{right:16px;bottom:calc(16px + var(--lt-fab-h, 0px) + 10px);width:36px;height:36px}}

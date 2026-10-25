@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 検索エンジンに知らせるページの一覧（2026-10-25 に下層ページを追加。本公開の日 2026-10-28 を更新日にする） -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://ubaku.jp/</loc>
-    <lastmod>2026-10-01</lastmod>
-  </url>
+  <url><loc>https://ubaku.jp/</loc><lastmod>2026-10-28</lastmod></url>
+  <url><loc>https://ubaku.jp/design/</loc><lastmod>2026-10-28</lastmod></url>
+  <url><loc>https://ubaku.jp/consulting/</loc><lastmod>2026-10-28</lastmod></url>
+  <url><loc>https://ubaku.jp/privacy/</loc><lastmod>2026-10-28</lastmod></url>
 </urlset>

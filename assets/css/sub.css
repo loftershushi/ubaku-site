@@ -473,3 +473,9 @@
 @media (max-width: 640px){ .nav-logo{width:96px} }
 /* Consulting のヒーロー写真：テーブルの上の本（AALTO）が見える位置で切り抜く */
 .page-consulting .hero .panorama .slide img{object-position:50% 42%}
+
+/* 左上：ロゴの横に名乗り（2026-10-25） */
+.nav-brand{display:flex;align-items:center;gap:18px;min-width:0}
+.nav-tagline{font-size:11px;letter-spacing:.1em;line-height:1.6;color:var(--sub);white-space:nowrap}
+@media (max-width: 1000px){.nav-tagline{white-space:normal}}
+@media (max-width: 640px){.nav-brand{flex-direction:column;align-items:flex-start;gap:6px}.nav-tagline{font-size:10px}.nav-tagline .sp-br{display:inline}}

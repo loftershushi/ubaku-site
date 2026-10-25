@@ -131,6 +131,24 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 })();
 
+/* ---------- ページの一番上へ戻る矢印（2026-10-25） ----------
+   画面の高さの1枚分より下にスクロールしたら出す。右下の UBAKU Letter の札（.lt-fab）が出ているときは、その上に重ならないよう高さを合わせる */
+(function () {
+  var btn = document.querySelector('.to-top');
+  if (!btn) return;
+  btn.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  function update() {
+    btn.classList.toggle('is-shown', window.scrollY > window.innerHeight * 0.9);
+    var fab = document.querySelector('.lt-fab');
+    var h = (fab && fab.classList.contains('is-shown')) ? fab.offsetHeight : 0;
+    document.documentElement.style.setProperty('--lt-fab-h', h + 'px');
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  setInterval(update, 1500);   // 札が開いた・たたまれたときにも位置を合わせる
+  update();
+})();
+
 /* ---------- 1. ヒーローのスライド ---------- */
 (function () {
   var tabs = document.querySelectorAll('.slide-tabs [role="tab"]');
