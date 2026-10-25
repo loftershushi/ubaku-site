@@ -133,7 +133,8 @@
 
 /* ---------- ページの一番上へ戻る矢印（2026-10-25） ----------
    画面の高さの1枚分より下にスクロールしたら出す。右下の UBAKU Letter の札（.lt-fab）が出ているときは、その上に重ならないよう高さを合わせる */
-(function () {
+// ※ 矢印の部品はページの一番下（このプログラムより後ろ）にあるので、ページを読み終えてから探す（2026-10-25 修正）
+function initToTop() {
   var btn = document.querySelector('.to-top');
   if (!btn) return;
   btn.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
@@ -147,7 +148,8 @@
   window.addEventListener('resize', update);
   setInterval(update, 1500);   // 札が開いた・たたまれたときにも位置を合わせる
   update();
-})();
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initToTop); else initToTop();
 
 /* ---------- 1. ヒーローのスライド ---------- */
 (function () {
@@ -266,6 +268,33 @@
   }
   build(null);
 
+  // 最新の記事を真ん中に（2026-10-25）：Journal が画面に入るまで流れを止めておき、
+  // 入ったときに、それぞれの段の1枚目（上の段＝いちばん新しい記事）が横の真ん中に来る位置から流し始める
+  function centerFirst() {
+    rows.forEach(function (track) {
+      var row = track.parentElement, first = track.children[0];
+      var dur = parseFloat(getComputedStyle(track).animationDuration);
+      if (!first || !dur) return;                                  // 動きを減らす設定のときは何もしない
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      var P = track.offsetWidth / 2 + gap / 2;                     // 1周で動く距離（CSS の flow と同じ）
+      var d = row.clientWidth / 2 - first.offsetWidth / 2;          // 1枚目を真ん中に置くための右へのずれ
+      var f = row.classList.contains('reverse') ? d / P : (P - d) / P;
+      f = ((f % 1) + 1) % 1;
+      track.style.animationDelay = (-f * dur) + 's';
+    });
+  }
+  rows.forEach(function (t) { t.classList.add('is-waiting'); });
+  centerFirst();
+  if ('IntersectionObserver' in window) {
+    var seen = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      centerFirst();
+      rows.forEach(function (t) { t.classList.remove('is-waiting'); });
+      seen.disconnect();
+    }, { threshold: 0.35 });
+    seen.observe(flow);
+  } else rows.forEach(function (t) { t.classList.remove('is-waiting'); });
+
   // 表紙の見た目を小さく縮めて比べ、同じ写真の表紙を見つける
   // （noteでは同じ写真でも画像のアドレスが毎回変わるため、見た目で比べる）
   function fingerprint(url) {
@@ -299,7 +328,7 @@
         if (diff <= 4) { groups[i] = groups[j]; found = true; break; }   // ほぼ同じ模様 ＝ 同じ写真
       }
     });
-    if (found) build(groups);
+    if (found) { build(groups); centerFirst(); }
   });
 })();
 
