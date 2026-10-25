@@ -510,3 +510,11 @@
 .reach-notes{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;font-size:13px;line-height:2;color:var(--muted)}
 .reach-notes b{display:block;font-weight:400;font-size:15px;color:var(--ink);margin-bottom:4px}
 @media (max-width: 640px){.reach-line{flex-wrap:wrap;row-gap:18px}.reach-line li{flex:0 0 33.3%}.reach-line::before{display:none}.reach-notes{grid-template-columns:1fr}.reach-cap{font-size:16px}.reach-cap .sp-br{display:inline}}
+
+/* Consulting の考え方：強みの欄をなくしたので、1列にして「言葉と文章（左）」「図（右）」を並べる（2026-10-25） */
+.cv-grid--single{grid-template-columns:minmax(0,1fr)}
+.cv-grid--single .approach{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"catch diagram" "body diagram";column-gap:96px;align-items:center}
+.cv-grid--single .concept-catch{grid-area:catch;align-self:end}
+.cv-grid--single .sub-diagram{grid-area:diagram;margin:0;justify-self:center;width:100%}
+.cv-grid--single .approach > .body{grid-area:body;align-self:start}
+@media (max-width: 1000px){.cv-grid--single .approach{grid-template-columns:minmax(0,1fr);grid-template-areas:"catch" "diagram" "body"}.cv-grid--single .sub-diagram{margin:24px 0}}

@@ -652,5 +652,5 @@ html.is-opening .intro,html.is-opening .panorama.intro .slide img{animation-play
   opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .4s ease,transform .4s cubic-bezier(.2,.7,.2,1),bottom .4s ease}
 .to-top.is-shown{opacity:1;transform:none;pointer-events:auto}
 .to-top svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
-@media (hover:hover){.to-top:hover{background:var(--logo-bar);color:#fff;border-color:var(--logo-bar)}}   /* 2026-10-25：マウスを乗せると東川町の青（下層は事業の色）に白い矢印 */
+@media (hover:hover){.to-top:hover,a.to-top[href]:hover{background:var(--logo-bar);color:#fff;border-color:var(--logo-bar)}}   /* a[href]:hover の色に負けないよう強めに指定（矢印は白） */   /* 2026-10-25：マウスを乗せると東川町の青（下層は事業の色）に白い矢印 */
 @media (max-width: 640px){.links-row li.sns{gap:22px}.to-top{right:16px;bottom:calc(16px + var(--lt-fab-h, 0px) + 10px);width:36px;height:36px}}
