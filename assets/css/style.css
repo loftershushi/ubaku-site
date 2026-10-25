@@ -204,7 +204,7 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .topbar-logo{width:96px;flex:none}   /* 小さな UBAKŪ（押すとページの一番上へ） */
 .topbar-nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0;font-size:12px;letter-spacing:.18em}
 .topbar-menu{display:none}
-.nav-place{font-family:'EB Garamond',serif;font-weight:500;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);line-height:1}
+.nav-place{font-family:var(--f-title);font-weight:300;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--sub);line-height:1}   /* 左上の地名：メニューと同じ細い Jost・薄いグレーで静かに（2026-10-25。旧：EB Garamond 500・13px・黒） */
 .hero-main{display:flex;justify-content:space-between;align-items:center;gap:40px;padding-top:40px}
 /* ロゴ（UBAKŪ の文字。元データ：02_ブランド・発信/logo/261010_Ubaku logo single2.svg）
    文字（logo-wordmark-letters.svg）と Ū の横線（logo-wordmark-bar.svg）を重ね、別々の色を付ける。縦横比 330:60 */
@@ -212,7 +212,7 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .wordmark::before,.wordmark::after{content:"";position:absolute;inset:0}
 .wordmark::before{background:var(--logo-color);-webkit-mask:url(../img/logo-wordmark-letters.svg) center / contain no-repeat;mask:url(../img/logo-wordmark-letters.svg) center / contain no-repeat}
 .wordmark::after{background:var(--logo-bar);-webkit-mask:url(../img/logo-wordmark-bar.svg) center / contain no-repeat;mask:url(../img/logo-wordmark-bar.svg) center / contain no-repeat}
-.hero-mark{flex:none;width:clamp(280px,34vw,520px)}
+.hero-mark{flex:none;width:clamp(200px,24vw,364px)}   /* ロゴの大きさ（2026-10-25 に約70%へ。旧：clamp(280px,34vw,520px)） */
 .hero-copy{max-width:660px;display:flex;flex-direction:column;gap:10px;padding-top:.6%}   /* ロゴの横線の分だけ、ほんの少し下げて文字の中心とそろえる */
 .hero-copy h1{font-family:var(--f-heading);font-size:clamp(18px,1.65vw,25px);line-height:1.6}
 @media (min-width: 1001px){.hero-copy h1{white-space:nowrap}}   /* PCでは1行に収める */
