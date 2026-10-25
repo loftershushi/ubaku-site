@@ -178,6 +178,7 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
   function restart() {
     clearInterval(timer);
     if (reduceMotion.matches) return;
+    if (location.search.indexOf('noslide') >= 0) return;   // ?noslide：自動で切り替えない（実績用のスクリーンショットを撮るとき）
     timer = setInterval(function () { show((current + 1) % tabs.length); }, INTERVAL);
   }
 

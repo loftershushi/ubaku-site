@@ -524,3 +524,21 @@
 /* 名刺：本物の名刺のデータ（表・裏）を2枚並べる（2026-10-25） */
 .vi-face--card-img{display:flex;align-items:center;justify-content:center;gap:6%;padding:8% 10%}
 .vi-face--card-img img{width:38%;height:auto;box-shadow:0 10px 24px rgba(43,36,28,.14)}
+.vi-face--card-img img.is-wide{width:46%}   /* 宿泊のご案内のカードは少し大きい */
+.vi-face--shot img{box-shadow:none}
+.vi-face--top img{object-position:50% 0}   /* メールの画面は上から見せる */
+
+/* ---------- Design の Flow：番号の丸を1本の線でつなぐ形に（2026-10-25「普通だね」を受けて）。Space と Brand の2本の線 ---------- */
+#flow .numbers-grid--steps{position:relative;gap:24px}
+#flow .numbers-grid--steps::before{content:"";position:absolute;left:28px;right:calc(20% - 28px);top:28px;height:1px;background:var(--accent-hl);opacity:.55}   /* 丸と丸をつなぐ線 */
+#flow .numbers-grid--steps li{border-top:0;padding-top:0;gap:8px;position:relative}
+#flow .numbers-grid--steps .num{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;border:1px solid var(--accent-hl);background:var(--cream);color:var(--accent-hl);font-size:18px;margin-bottom:10px}
+#flow .numbers-grid--steps li:last-child .num{background:var(--accent-hl);color:#fff}   /* 最後（仕上がり）は塗りつぶし */
+#flow .numbers-grid--steps strong{font-family:var(--f-heading);font-weight:400;font-size:17px;color:var(--ink)}
+@media (hover:hover){#flow .numbers-grid--steps li:hover .num{background:var(--accent-hl);color:#fff}}
+@media (max-width: 640px){
+  #flow .numbers-grid--steps{grid-template-columns:minmax(0,1fr);gap:0}
+  #flow .numbers-grid--steps::before{left:22px;right:auto;top:22px;bottom:22px;width:1px;height:auto}   /* スマホは縦の線 */
+  #flow .numbers-grid--steps li{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:16px;row-gap:2px;padding:0 0 18px}
+  #flow .numbers-grid--steps .num{width:44px;height:44px;font-size:15px;grid-row:span 2;margin:0}
+}
