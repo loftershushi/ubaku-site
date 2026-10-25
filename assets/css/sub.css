@@ -562,3 +562,15 @@
   .page-design .cv-concept .reach-line{margin-top:48px}
   .page-design .cv-concept .reach-notes{margin-top:36px}
 }
+/* 2026-10-25：宇莫別荘の新しいロゴは横長なので、正方形に押し込まない（縦横比を保つ） */
+.vi-face > img.vi-villa{aspect-ratio:auto;height:auto;width:min(80%,260px);object-fit:contain}
+.vi-villa--gold{aspect-ratio:1381 / 918;width:min(80%,260px)}
+/* メッセージカード・宿泊のご案内（1枚ずつ） */
+.vi-face--one img,.vi-face--one img.is-wide{width:auto;max-width:72%;max-height:86%}
+/* サイトの画面：切り抜かず、画面全体を見せる */
+.vi-face--shot:not(.vi-face--top){aspect-ratio:1440 / 900;flex:none;min-height:0;height:auto}
+.vi-face--shot:not(.vi-face--top) img{object-fit:contain}
+/* 宇莫別荘の Webサイト：横いっぱいに（上から見せる） */
+.vi--wide-web .vi-face{height:440px;min-height:0;flex:none}
+.vi--wide-web .vi-face img{object-fit:cover;object-position:50% 0}
+@media (max-width: 640px){.vi--wide-web .vi-face{height:240px}}
