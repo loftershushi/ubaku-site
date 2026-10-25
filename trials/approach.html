@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>考え方と強み 試作</title>
+<!-- Consulting・Design の「考え方（図）」と「強み」の試作（2026-10-25。仮公開だけ。決まったら消す）
+     トップ（UBAKU）の3つの円とは別の形にする。色は Consulting＝江戸紫、Design＝琥珀 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&family=Jost:wght@200;300&display=swap">
+<style>
+  :root{--ink:#2B241C;--muted:#4B4236;--sub:#6B6457;--rule:#E4E7E5;--panel:#F4F4F2;--c:#77428D;--d:#CA7A2C}
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;color:var(--ink);font-family:'Noto Sans JP',sans-serif;font-weight:300}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+  header{padding:40px 0 8px}
+  h1{font-size:20px;font-weight:400;letter-spacing:.08em;margin:0 0 8px}
+  header p,.lead{font-size:13px;color:var(--sub);line-height:1.9;margin:0}
+  h2.page{font-family:'Jost',sans-serif;font-weight:200;font-size:34px;letter-spacing:.05em;margin:56px 0 4px}
+  .c-page h2.page{color:var(--c)} .d-page h2.page{color:var(--d)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,500px),1fr));gap:20px;margin-top:20px}
+  .card{background:var(--panel);padding:20px}
+  .card h3{margin:0 0 4px;font-size:14px;font-weight:400;letter-spacing:.08em}
+  .card h3 b{font-family:'Jost',sans-serif;font-weight:300;margin-right:.5em}
+  .c-page .card h3 b{color:var(--c)} .d-page .card h3 b{color:var(--d)}
+  .card .lead{margin-bottom:14px;font-size:12px}
+  .stage{background:#fff;padding:24px;min-height:300px;display:flex;align-items:center;justify-content:center}
+  svg{display:block;width:100%;height:auto;max-width:440px}
+  svg text{font-family:'Noto Sans JP',sans-serif;font-weight:300}
+  svg .en{font-family:'Jost',sans-serif;font-weight:300;letter-spacing:.1em}
+  /* 線が描かれていく動き（くり返し） */
+  .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 3.2s cubic-bezier(.4,0,.2,1) infinite}
+  .draw.late{animation-delay:.5s}
+  @keyframes draw{0%{stroke-dashoffset:1}55%,100%{stroke-dashoffset:0}}
+  .fade{opacity:0;animation:fade 3.2s ease infinite}
+  @keyframes fade{0%,45%{opacity:0}65%,100%{opacity:1}}
+
+  /* 強みの試作 */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%}
+  .two > div{padding:18px 18px 8px}
+  .two h4{margin:0 0 10px;font-size:13px;font-weight:400;letter-spacing:.1em}
+  .two ul{margin:0;padding:0;list-style:none;font-size:13px;line-height:2}
+  .two .do{border-top:2px solid var(--c)} .two .do h4{color:var(--c)}
+  .two .dont{border-top:2px solid #C9CDCB} .two .dont h4{color:var(--sub)} .two .dont li{color:var(--sub)}
+  .two li::before{content:"— ";color:inherit;opacity:.5}
+  .span{width:100%}
+  .span ol{display:flex;justify-content:space-between;list-style:none;margin:0;padding:0;position:relative;font-size:12px;letter-spacing:.06em}
+  .span ol::before{content:"";position:absolute;left:4px;right:4px;top:5px;height:1px;background:var(--d)}
+  .span li{position:relative;padding-top:20px;text-align:center;flex:1}
+  .span li::before{content:"";position:absolute;left:50%;top:0;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:#fff;border:1px solid var(--d)}
+  .span .cap{margin:18px 0 0;text-align:center;font-size:13px;color:var(--d);letter-spacing:.12em}
+  .span .notes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px;font-size:12px;line-height:1.9;color:var(--muted)}
+  .span .notes b{display:block;font-weight:400;color:var(--ink);margin-bottom:2px}
+  @media (max-width:640px){.two{grid-template-columns:1fr}.span ol{flex-wrap:wrap;row-gap:14px}.span li{flex:0 0 33%}.span ol::before{display:none}.span .notes{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Consulting・Design の「考え方の図」と「強み」：試作</h1>
+  <p>トップの3つの円とは別の形にしました。図は線が描かれていく動きで、くり返し流れます。気に入った記号を教えてください（Consulting と Design で1つずつ）。</p>
+</header>
+
+<!-- ======================= Consulting ======================= -->
+<section class="c-page">
+  <h2 class="page">Consulting</h2>
+  <p class="lead">言葉：東京の実務と、地方の現場を、ひとつの事業に。</p>
+  <div class="grid">
+    <div class="card"><h3><b>C1</b>2本の流れが、1本になる</h3><p class="lead">「東京の実務」と「地方の現場」の2本の線が流れてきて、合流して1本の「事業」になる。川が出会うイメージ。</p>
+      <div class="stage"><svg viewBox="0 0 440 260" aria-label="2本の線が合流して1本になる図">
+        <path class="draw" pathLength="1" d="M20 60 C 150 60, 190 130, 270 130" fill="none" stroke="#6B6457" stroke-width="1.2"/>
+        <path class="draw" pathLength="1" d="M20 200 C 150 200, 190 130, 270 130" fill="none" stroke="#6B6457" stroke-width="1.2"/>
+        <path class="draw late" pathLength="1" d="M270 130 L 420 130" fill="none" stroke="#77428D" stroke-width="3"/>
+        <text class="en" x="20" y="44" font-size="11" fill="#6B6457">[Tokyo]</text><text x="20" y="84" font-size="15" fill="#2B241C">東京の実務</text>
+        <text class="en" x="20" y="184" font-size="11" fill="#6B6457">[Local]</text><text x="20" y="224" font-size="15" fill="#2B241C">地方の現場</text>
+        <g class="fade"><text class="en" x="420" y="112" font-size="11" fill="#77428D" text-anchor="end">[Consulting]</text><text x="420" y="160" font-size="16" fill="#77428D" text-anchor="end">ひとつの事業</text></g>
+      </svg></div></div>
+
+    <div class="card"><h3><b>C2</b>数字が、山なみになる</h3><p class="lead">収益不動産の「数字（棒グラフ）」のてっぺんをつなぐと、大雪山の稜線になる。数字の見方と、地方の現場が、ひとつにつながる。</p>
+      <div class="stage"><svg viewBox="0 0 440 260" aria-label="棒グラフの頂点をつなぐと山なみになる図">
+        <g fill="#E8E1EC">
+          <rect x="40" y="170" width="26" height="60"/><rect x="86" y="140" width="26" height="90"/><rect x="132" y="150" width="26" height="80"/>
+          <rect x="178" y="110" width="26" height="120"/><rect x="224" y="80" width="26" height="150"/><rect x="270" y="105" width="26" height="125"/>
+          <rect x="316" y="135" width="26" height="95"/><rect x="362" y="155" width="26" height="75"/>
+        </g>
+        <line x1="20" y1="230" x2="420" y2="230" stroke="#C9CDCB"/>
+        <path class="draw" pathLength="1" d="M20 185 L53 170 L99 140 L145 150 L191 110 L237 80 L283 105 L329 135 L375 155 L420 168" fill="none" stroke="#77428D" stroke-width="2" stroke-linejoin="round"/>
+        <text class="en" x="20" y="40" font-size="11" fill="#6B6457">[Numbers] × [Local]</text>
+        <g class="fade"><text x="20" y="64" font-size="16" fill="#77428D">数字の目線と、現場の感覚を、ひとつに。</text></g>
+      </svg></div></div>
+
+    <div class="card" style="grid-column:1/-1"><h3><b>S-C</b>強み：やること／やらないこと</h3><p class="lead">トップと同じ「3つの強み」ではなく、2列で言い切る。ほかのコンサルとの違いが一目で伝わる。</p>
+      <div class="stage"><div class="two">
+        <div class="do"><h4>UBAKU がやること</h4><ul><li>自分たちの宿で試したやり方を渡す</li><li>事業の数字と、現場の動きを両方見る</li><li>オーナーが自分で回せる仕組みを残す</li></ul></div>
+        <div class="dont"><h4>UBAKU がやらないこと</h4><ul><li>机の上だけの提案</li><li>運営の丸ごと代行</li><li>物件の売買・仲介</li></ul></div>
+      </div></div></div>
+  </div>
+</section>
+
+<!-- ======================= Design ======================= -->
+<section class="d-page">
+  <h2 class="page">Design</h2>
+  <p class="lead">言葉：壊して新しくするより、あるものを、生かす。</p>
+  <div class="grid">
+    <div class="card"><h3><b>D1</b>あるものの線を、なぞり直す</h3><p class="lead">古い建物の輪郭（グレーの点線）を、琥珀の線がなぞり直し、窓や入口が少しだけ足される。「壊さずに、編み直す」を絵にした形。</p>
+      <div class="stage"><svg viewBox="0 0 440 260" aria-label="古い建物の輪郭を新しい線がなぞり直す図">
+        <path d="M100 220 L100 120 L220 50 L340 120 L340 220 Z" fill="none" stroke="#B9C2BE" stroke-width="1.2" stroke-dasharray="4 5"/>
+        <path class="draw" pathLength="1" d="M100 220 L100 120 L220 50 L340 120 L340 220 Z" fill="none" stroke="#CA7A2C" stroke-width="2" stroke-linejoin="round"/>
+        <g class="fade" fill="none" stroke="#CA7A2C" stroke-width="1.5"><rect x="140" y="140" width="44" height="44"/><path d="M240 220 L240 160 L290 160 L290 220"/></g>
+        <line x1="40" y1="220" x2="400" y2="220" stroke="#C9CDCB"/>
+        <text class="en" x="40" y="250" font-size="11" fill="#6B6457">[Before] あるもの</text>
+        <text class="en fade" x="400" y="250" font-size="11" fill="#CA7A2C" text-anchor="end">[After] 生かして、編み直す</text>
+      </svg></div></div>
+
+    <div class="card"><h3><b>D2</b>3つの層が、重なる</h3><p class="lead">「土地」「空間」「ブランド」を、少しずつずらして重ねた3枚の層に。下から積み上げていく、デザインの順番も伝わる。</p>
+      <div class="stage"><svg viewBox="0 0 440 260" aria-label="土地・空間・ブランドの3つの層が重なる図">
+        <g fill="#fff" stroke-width="1.2">
+          <rect class="draw" pathLength="1" x="60" y="140" width="220" height="90" stroke="#C9CDCB"/>
+          <rect class="draw" pathLength="1" x="110" y="95" width="220" height="90" stroke="#D9B48C" style="animation-delay:.25s"/>
+          <rect class="draw" pathLength="1" x="160" y="50" width="220" height="90" stroke="#CA7A2C" style="animation-delay:.5s;stroke-width:2"/>
+        </g>
+        <text class="en" x="72" y="222" font-size="11" fill="#6B6457">[Local] 土地</text>
+        <text class="en" x="122" y="177" font-size="11" fill="#6B6457">[Space] 空間</text>
+        <text class="en fade" x="172" y="132" font-size="11" fill="#CA7A2C">[Brand] ブランド</text>
+      </svg></div></div>
+
+    <div class="card" style="grid-column:1/-1"><h3><b>S-D</b>強み：ひとつの線でつながる仕事の範囲</h3><p class="lead">トップと同じ「3つの強み」ではなく、建物からWebまでを1本の線でつないで「全部ひとつの世界観でつくれる」を見せる。残りの2つは短く添える。</p>
+      <div class="stage"><div class="span">
+        <ol><li>建物</li><li>内装</li><li>家具</li><li>サイン</li><li>印刷物</li><li>Web</li></ol>
+        <p class="cap">建物から Web まで、ひとつの世界観で。</p>
+        <div class="notes"><div><b>使う人の目線で</b>自分たちで宿を運営しているから、泊まる人・掃除をする人まで考えます。</div><div><b>数字まで見る</b>かける費用と、その後の収支まで。無理のない改修とブランドづくりを。</div></div>
+      </div></div></div>
+  </div>
+</section>
+<p style="height:64px"></p>
+</div>
+</body>
+</html>

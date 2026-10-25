@@ -483,7 +483,8 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .form-status{font-size:14px;color:var(--on-green)}
 
 /* メール・Instagram（同じ大きさで横に並べる） */
-.footer-right{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:flex-end;gap:12px 48px}
+.footer-right{display:flex;flex-direction:column;align-items:flex-end;gap:14px}   /* 右側は縦に：アイコン → UBAKU のサイトの行 → プライバシーポリシー（2026-10-25） */
+@media (min-width: 641px){footer > div:first-child > span:first-of-type{white-space:nowrap}}   /* 名乗りを途中で改行しない（パソコン） */
 .links-row{display:flex;flex-wrap:wrap;gap:12px 40px;list-style:none;margin:0;padding:0}
 .links-row li{display:flex;align-items:baseline;gap:12px}
 .links-row .label{font-size:11px;color:var(--on-green-sub)}
@@ -586,7 +587,7 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .media-photo,.two .photo{min-height:240px}
   .form{margin-bottom:80px}
   footer{flex-direction:column;align-items:flex-start}
-  .footer-right{justify-content:flex-start;flex-direction:column;gap:16px}
+  .footer-right{align-items:flex-start;gap:16px}
   .links-row{flex-direction:column;gap:8px}
 }
 
@@ -604,7 +605,7 @@ html.is-opening .intro,html.is-opening .panorama.intro .slide img{animation-play
 .op-logo,.op-coord,.op-count{transition:opacity .6s ease}
 .op-logo{position:absolute;top:calc(26px + env(safe-area-inset-top,0px));left:var(--pad-x);width:110px}
 .op-coord{position:absolute;top:calc(26px + env(safe-area-inset-top,0px));right:var(--pad-x);text-align:right;font-family:var(--f-en);font-size:11px;letter-spacing:.16em;line-height:1.7;color:var(--op-mist);font-variant-numeric:tabular-nums}
-.op-big{position:absolute;left:50%;top:27%;transform:translateX(-50%);margin:0;display:flex;align-items:flex-end;gap:.24em;font-family:var(--f-display);font-weight:500;font-size:clamp(23px,calc(3.4vw - 3px),43px);letter-spacing:.01em;line-height:1;white-space:nowrap}   /* 文字の大きさ（2026-10-17 に約2pt＝3px小さく） */
+.op-big{position:absolute;left:50%;top:27%;transform:translateX(-50%);margin:0;display:flex;align-items:flex-end;gap:.24em;font-family:var(--f-title);font-weight:300;font-size:clamp(20px,calc(3vw - 3px),37px);letter-spacing:.03em;line-height:1;white-space:nowrap}   /* 2026-10-25：旭岳の名前・サイトの英字と同じ Jost の細い斜体に。大きさも少し小さく（旧：Cormorant 500・最大43px） */
 /* 英文の動き：動詞だけが下から切り替わる（Find → Build → Live）。後ろの「your place.」は動かない */
 .op-verb{position:relative;display:inline-block;height:1.2em;line-height:1.2em;overflow:hidden;font-style:italic;padding:0 .18em 0 .12em;margin:0 -.18em 0 -.12em}   /* 斜体の文字は左右にはみ出すので、切れないように見えない余白を足す（並びの位置は変えない） */
 .op-size{visibility:hidden}   /* 一番長い「Build」の幅だけをとる見えない文字 */
@@ -647,9 +648,9 @@ html.is-opening .intro,html.is-opening .panorama.intro .slide img{animation-play
 
 /* ---------- ページの一番上へ戻る矢印（2026-10-25）：右下の UBAKU Letter の札のすぐ上。ヒーローを過ぎたら出る（main.js） ---------- */
 .to-top{position:fixed;right:24px;bottom:calc(24px + var(--lt-fab-h, 0px) + 12px);z-index:61;width:40px;height:40px;display:flex;align-items:center;justify-content:center;
-  border-radius:50%;background:rgba(255,255,255,.92);color:var(--green);border:1px solid var(--rule-short);box-shadow:0 4px 14px rgba(43,36,28,.08);
+  border-radius:50%;background:rgba(255,255,255,.95);color:var(--logo-bar);border:1px solid var(--rule-short);box-shadow:0 4px 14px rgba(43,36,28,.08);
   opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .4s ease,transform .4s cubic-bezier(.2,.7,.2,1),bottom .4s ease}
 .to-top.is-shown{opacity:1;transform:none;pointer-events:auto}
 .to-top svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
-@media (hover:hover){.to-top:hover{background:var(--green);color:#fff;border-color:var(--green)}}
+@media (hover:hover){.to-top:hover{background:var(--logo-bar);color:#fff;border-color:var(--logo-bar)}}   /* 2026-10-25：マウスを乗せると東川町の青（下層は事業の色）に白い矢印 */
 @media (max-width: 640px){.links-row li.sns{gap:22px}.to-top{right:16px;bottom:calc(16px + var(--lt-fab-h, 0px) + 10px);width:36px;height:36px}}

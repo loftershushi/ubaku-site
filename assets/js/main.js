@@ -94,8 +94,7 @@
   // （届く前に始めると、最初は代わりのフォントで大きめに表示され、届いた瞬間に小さく切り替わって見えるため）
   // 回線が遅いときは、1.5秒待っても届かなければそのまま始める
   var fontsReady = (document.fonts && document.fonts.load) ? Promise.all([
-    document.fonts.load('italic 500 40px "Cormorant Garamond"', 'Find Build Live your place.'),
-    document.fonts.load('500 40px "Cormorant Garamond"', 'your place.'),
+    document.fonts.load('italic 300 40px "Jost"', 'Find Build Live your place.'),
     document.fonts.load('300 14px "Jost"', 'Asahidake 2,291m')
   ]) : Promise.resolve();
   var started = false;
