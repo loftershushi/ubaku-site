@@ -542,3 +542,23 @@
   #flow .numbers-grid--steps li{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:16px;row-gap:2px;padding:0 0 18px}
   #flow .numbers-grid--steps .num{width:44px;height:44px;font-size:15px;grid-row:span 2;margin:0}
 }
+
+/* ---------- Design の Concept のバランス（2026-10-25 作り直し）----------
+   左の列＝文字（言葉 → 説明文 → 使う人の目線で／数字まで見る）、右の列＝絵（3つの層の図 → 建物から Web までの1本の線）。
+   左右の重さをそろえるため、.approach と .reach の箱をなくして（display:contents）、中身を1つの格子に並べ直す */
+.page-design .cv-grid--single .cv-concept{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:clamp(48px,7vw,112px);
+  grid-template-areas:"head head" "catch diagram" "body diagram" "notes line" "notes cap";align-items:start}
+.page-design .cv-concept > .sec-head{grid-area:head}
+.page-design .cv-grid--single .approach,.page-design .cv-grid--single .reach{display:contents}
+.page-design .cv-concept .concept-catch{grid-area:catch;align-self:end;margin:0}
+.page-design .cv-concept .approach > .body{grid-area:body;margin-top:24px}
+.page-design .cv-concept .sub-diagram{grid-area:diagram;align-self:center;justify-self:center;max-width:480px;margin:0}
+.page-design .cv-concept .reach-line{grid-area:line;margin-top:64px}
+.page-design .cv-concept .reach-cap{grid-area:cap;margin-top:24px}
+.page-design .cv-concept .reach-notes{grid-area:notes;grid-template-columns:minmax(0,1fr);gap:20px;margin:56px 0 0;padding-top:28px;border-top:1px solid var(--rule-short);max-width:none}
+@media (max-width: 1000px){
+  .page-design .cv-grid--single .cv-concept{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "catch" "diagram" "body" "line" "cap" "notes"}
+  .page-design .cv-concept .sub-diagram{margin:32px 0}
+  .page-design .cv-concept .reach-line{margin-top:48px}
+  .page-design .cv-concept .reach-notes{margin-top:36px}
+}
