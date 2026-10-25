@@ -496,8 +496,8 @@
 .sub-diagram .draw--2{transition-delay:.3s}
 .sub-diagram .draw--late{transition-delay:.9s}
 .sub-diagram .d-fade{opacity:0;transition:opacity .8s ease 1.6s}
-.is-visible .sub-diagram .draw,.no-js .sub-diagram .draw{stroke-dashoffset:0}
-.is-visible .sub-diagram .d-fade{opacity:1}
+.is-visible .sub-diagram .draw,.sub-diagram.is-visible .draw,.no-js .sub-diagram .draw{stroke-dashoffset:0}
+.is-visible .sub-diagram .d-fade,.sub-diagram.is-visible .d-fade{opacity:1}   /* 図そのものが画面に入ったときにも描く（Design は外側の箱が display:contents で、画面に入ったかを測れないため。2026-10-25） */
 @media (prefers-reduced-motion: reduce){.sub-diagram .draw{stroke-dashoffset:0;transition:none}.sub-diagram .d-fade{opacity:1;transition:none}}
 
 /* ---------- Design の強み：建物から Web までの1本の線（2026-10-25） ---------- */

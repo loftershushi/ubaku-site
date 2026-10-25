@@ -346,6 +346,7 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
     '.concept .kicker', '.concept-title', '.concept-catch', '.tomoe',
     '.numbers-grid li', '.member', '.journal-flow', '.note-links',
     '.contact-lead', '.contact-grid > div', '.form',   // '.links-row'（フッターのメール・SNS）は一番下で現れないことがあるので外した（2026-10-17）
+    '.sub-diagram',   // 下層ページの考え方の図（画面に入ると線が描かれる。2026-10-25）
     '.js-reveal'   // 下層ページ（/consulting・/design）で動かしたいもの
   ].join(','));
 
