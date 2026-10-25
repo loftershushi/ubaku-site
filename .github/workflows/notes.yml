@@ -1,0 +1,38 @@
+# note の記事を、毎週日曜の夜（日本時間 21:00）に自動で取り込む（2026-10-25）
+# 3つの note（mashu・UBAKU Villa 宇莫別荘・UBAKU）の記事一覧を読み、assets/js/notes.js を作り直す。
+# 新しい記事があったときだけ保存（commit）し、GitHub Pages が自動でサイトを更新する。
+# GitHub の「Actions」の画面から「Run workflow」を押せば、いつでも手動でも動かせる。
+# 元のファイルは ubaku-site/.github/workflows/notes.yml（tools/build.py が公開用リポジトリにコピーする）
+name: note の記事を取り込む
+
+on:
+  schedule:
+    - cron: "0 12 * * 0"   # 毎週日曜 12:00（世界標準時）＝ 日本時間 21:00
+  workflow_dispatch:        # 手動で動かすボタン
+
+permissions:
+  contents: write           # notes.js を保存（commit）するために必要
+
+jobs:
+  notes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: note の記事一覧を読み込む
+        env:
+          NOTES_OUT: assets/js/notes.js
+        run: python .github/scripts/make_notes.py
+      - name: 変わっていたら保存する
+        run: |
+          if git diff --quiet assets/js/notes.js; then
+            echo "新しい記事はありませんでした"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+            git add assets/js/notes.js
+            git commit -m "note の記事を自動で取り込み"
+            git push
+          fi
