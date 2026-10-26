@@ -577,7 +577,7 @@ document.querySelectorAll('.js-mail').forEach(function (a) {
     }).then(function () {
       form.reset();
       if (window.hcaptcha) { try { window.hcaptcha.reset(); } catch (err) {} }
-      status.textContent = '送信しました。お問い合わせありがとうございます。';
+      status.textContent = '送信しました。お問い合わせありがとうございます。内容を確認のうえ、5営業日以内にご入力のメールアドレスへご連絡します。';   // 自動返信はないので、いつ返事が来るかをここで伝える（2026-10-26）
     }).catch(function () {
       // メールアドレスは、ロボットに拾われないよう分けて書いておき、ここで組み立てる
       status.textContent = '送信できませんでした。お手数ですが ' + 'info' + '@' + 'ubaku.jp' + ' へ直接メールでお送りください。';
