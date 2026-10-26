@@ -634,3 +634,12 @@
 .cross{border-top:0;border-bottom:0;background:var(--kraft);padding:48px clamp(24px,4vw,56px)}
 .cross .more{justify-self:start}
 @media (max-width: 640px){.faq summary{padding:16px 16px}.faq details p{padding:0 16px 18px 40px}.cross{padding:32px 20px}}
+/* ---------- スマホの調整（2026-10-26 精査） ---------- */
+.flow-label,.card h3,.case-text h3{text-wrap:balance}
+.timeline li{border-top:0;padding:8px 0}   /* 事例の流れも線をなくす */
+@media (max-width: 640px){
+  .vi--logo .vi-face,.vi-face--main,.vi-m2 .vi-face,.vi-m3 > .vi-face:not(.vi-face--top):not(.vi-face--phone):not(.vi-face--one){min-height:0;aspect-ratio:1;flex:none;height:auto}   /* ロゴの枠は縦に長くせず正方形に */
+  .sub-diagram .d-en{font-size:15px}   /* 図はスマホで縮むので、図の中の文字は大きめに */
+  .sub-diagram .d-jp{font-size:21px}
+  .sub-diagram{margin:28px auto}
+}

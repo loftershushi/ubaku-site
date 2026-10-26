@@ -662,3 +662,12 @@ html.is-opening .intro,html.is-opening .panorama.intro .slide img{animation-play
 .to-top svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 @media (hover:hover){.to-top:hover,a.to-top[href]:hover{background:var(--logo-bar);color:#fff;border-color:var(--logo-bar)}}   /* a[href]:hover の色に負けないよう強めに指定（矢印は白） */   /* 2026-10-25：マウスを乗せると東川町の青（下層は事業の色）に白い矢印 */
 @media (max-width: 640px){.links-row li.sns{gap:22px}.to-top{right:16px;bottom:calc(16px + var(--lt-fab-h, 0px) + 10px);width:36px;height:36px}}
+
+/* ---------- スマホをすっきり見せるための全体の調整（2026-10-26 精査） ---------- */
+/* 見出しは、最後の行に1〜2文字だけ残らないよう、行の長さをそろえて折り返す（短い見出しだけ。本文の段落には使わない） */
+h1,h2,h3,h4,.catch,.concept-catch,.work-catch,.contact-lead-title,.sec-head .aside,.biz-extra span{text-wrap:balance}
+@media (max-width: 640px){
+  /* フッターの UBAKU のサイトの行は 2×2 にそろえる */
+  .footer-family{display:grid;grid-template-columns:repeat(2,max-content);gap:8px 28px}
+  footer > div:first-child > span:first-of-type{display:block;text-wrap:balance}   /* 名乗りは行の長さをそろえて2行に */
+}
