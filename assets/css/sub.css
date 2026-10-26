@@ -589,3 +589,48 @@
   .reach-line li::before{width:11px;height:11px;margin-left:-5.5px}
   .reach-line::before{display:block;top:5px}
 }
+
+/* ---------- スマホのブランド実績（2026-10-26）：6つに分けた格子で、半分（vi-m3）・3分の1（vi-m2）・横いっぱい（vi-m6）を決める ---------- */
+@media (max-width: 640px){
+  .vi-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+  .vi.vi-m2{grid-column:span 2}
+  .vi.vi-m3{grid-column:span 3}
+  .vi.vi-m6{grid-column:span 6}
+  .vi.vi-m-last{order:1}   /* サイトの画面は最後に横いっぱい（アイコンの見本とメールの画面を横に並べるため） */
+  .vi-face--system{gap:28px 18px;padding:28px 20px}   /* 事業ごとの4つは、あいだを広く */
+  .vi-face--shot.vi-face--top,.vi-face--phone{flex:none;aspect-ratio:3 / 4;height:auto}   /* メールの画面とアイコンの見本は同じ形で並べる */
+  .vi-face > img.vi-villa,.vi-face > .vi-villa.vi-villa--gold{width:78%}
+  .vi-face--card-img{padding:8% 6%}
+  .vi-face--card-img:not(.vi-face--one),.vi-face--icon{aspect-ratio:1;flex:none;height:auto;min-height:0}   /* 名刺とアイコンは同じ大きさの正方形で横並び */
+}
+
+/* ---------- スマホのホーム画面の見本（iPhone のアプリが並ぶ画面。2026-10-26） ---------- */
+.vi-face--phone{background:#EEF1F2}
+.phone{position:relative;width:min(56%,150px);aspect-ratio:9 / 19;border-radius:20px;border:5px solid #1D1D1F;background:linear-gradient(160deg,#BFD4E0,#E9EFF2 60%,#D9E4E9);padding:18% 9% 0;box-shadow:0 10px 24px rgba(43,36,28,.16);overflow:hidden}
+.phone-apps,.phone-dock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12% 14%}
+.phone i,.phone-ubaku img{display:block;aspect-ratio:1;border-radius:24%;background:var(--a)}
+.phone-ubaku{display:flex;flex-direction:column;align-items:center;gap:2px}
+.phone-ubaku img{width:100%;height:auto;background:#fff}
+.phone-ubaku small{font-size:5px;letter-spacing:0;color:#1D1D1F;line-height:1}
+.phone-dock{position:absolute;left:6%;right:6%;bottom:4%;padding:5% 5%;border-radius:12px;background:rgba(255,255,255,.45)}
+
+/* ---------- Flow（スマホ）：01〜05 の丸の間隔をそろえる ---------- */
+@media (max-width: 640px){ #flow .numbers-grid--steps{grid-auto-rows:1fr} }
+
+/* ---------- 線を減らす（2026-10-26：「全体的に線が多い」。Design・Consulting 共通） ---------- */
+/* メニュー：項目のあいだの線をなくし、文字の大きさをそろえる */
+.price-list > div{border-top:0;padding:6px 0;font-size:15px}
+.price-list dt small{font-size:12px;margin-top:2px}
+.card li{border-top:0;padding:4px 0}
+/* よくある質問：質問ごとの線をやめ、質問の頭に「Q」。開いた答えは淡い面の上に */
+.faq{border-top:0}
+.faq details{border-bottom:0;margin-bottom:8px;background:var(--kraft)}   /* 白い地の上に、淡いグレーの面 */
+.faq summary{padding:20px 22px}
+.faq summary::before{content:"Q";font-family:var(--f-title);font-weight:300;color:var(--accent-hl);margin-right:14px;flex:none}
+.faq summary{justify-content:flex-start}
+.faq summary::after{margin-left:auto}
+.faq details p{padding:0 22px 22px 50px}
+/* ほかの事業への案内：上下の線はやめ、リンクの下線は文字の長さだけに */
+.cross{border-top:0;border-bottom:0;background:var(--kraft);padding:48px clamp(24px,4vw,56px)}
+.cross .more{justify-self:start}
+@media (max-width: 640px){.faq summary{padding:16px 16px}.faq details p{padding:0 16px 18px 40px}.cross{padding:32px 20px}}
