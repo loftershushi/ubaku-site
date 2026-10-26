@@ -365,6 +365,7 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
     '.concept .kicker', '.concept-title', '.concept-catch', '.tomoe',
     '.numbers-grid li', '.member', '.journal-flow', '.note-links',
     '.contact-lead', '.contact-grid > div', '.form',   // '.links-row'（フッターのメール・SNS）は一番下で現れないことがあるので外した（2026-10-17）
+    '.reach-line',   // Design の「建物 → … → Web」の線（画面に入ると左から右へ伸びる）
     '.sub-diagram',   // 下層ページの考え方の図（画面に入ると線が描かれる。2026-10-25）
     '.js-reveal'   // 下層ページ（/consulting・/design）で動かしたいもの
   ].join(','));
@@ -604,6 +605,8 @@ document.querySelectorAll('.js-mail').forEach(function (a) {
     var w = window.innerWidth;
     if (w === lastW) return;
     lastW = w;
+    // スマホは計算せず、CSS の決まった形（縦4：横5）のまま（文字が届いたあとに測り直すと、写真が一瞬大きく見えたため。2026-10-26）
+    if (w <= 640) { pano.style.height = ''; pano.style.aspectRatio = ''; pano.style.maxHeight = ''; return; }
     pano.style.height = '';
     pano.style.maxHeight = 'none';
     var top = pano.getBoundingClientRect().top + window.scrollY;

@@ -671,3 +671,15 @@ h1,h2,h3,h4,.catch,.concept-catch,.work-catch,.contact-lead-title,.sec-head .asi
   .footer-family{display:grid;grid-template-columns:repeat(2,max-content);gap:8px 28px}
   footer > div:first-child > span:first-of-type{display:block;text-wrap:balance}   /* 名乗りは行の長さをそろえて2行に */
 }
+
+/* ---------- 2026-10-26 スマホの調整 ---------- */
+@media (max-width: 640px){
+  .panorama.intro .slide img{animation:none}   /* 写真がゆっくり縮む動きはスマホではやめる（一瞬大きく見えるため）。ふわっと現れる動きは残す */
+  /* 一番上の段：地名（トップ）・ロゴ（下層ページ）と「Menu ＋」の高さをそろえる */
+  .nav{align-items:flex-start}
+  .nav .nav-menu{padding:0 0 0 16px;line-height:20px}
+  .nav-place{line-height:20px}
+  /* Journal の3つの note のリンクは横に並べる */
+  .note-links{flex-direction:row;flex-wrap:nowrap;justify-content:space-between;gap:10px}
+  .note-links .more{font-size:12px;letter-spacing:.04em;white-space:nowrap}
+}
