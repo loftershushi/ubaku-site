@@ -661,3 +661,16 @@
 @media (max-width: 640px){.vi-face--system{gap:30px 26px;padding:32px 26px}.vi-face--system .wordmark{max-width:96px}}
 /* よくある質問と、その下の案内の面は、もっと薄いグレーに */
 .faq details,.cross{background:#F9F9F8}
+/* ---------- 2026-10-26 ---------- */
+.menu-cta{margin-top:28px}
+/* メッセージカードは実物どおり、宿泊のご案内より小さく */
+.vi-face--one img[src*="03-card-front"]{max-width:40%;max-height:66%}
+.vi-face--one img[src*="03-card-welcome"]{max-width:76%;max-height:88%}
+/* Consulting：事例と Numbers のあいだを詰める */
+.page-consulting #case{padding-bottom:calc(var(--sec-y) * .45)}
+@media (max-width: 640px){
+  /* Design のスマホのヒーロー写真：見せたいもの（窓・ダイニング／ベッドと窓）が左右の真ん中に来るように */
+  .page-design #slide-0 img{object-position:30% 50%}
+  .page-design #slide-2 img{object-position:30% 50%}
+  .contact-lead-title .sp-br{display:inline}   /* 「建物のこと、ブランドのこと、／お聞かせください。」の位置で改行 */
+}
