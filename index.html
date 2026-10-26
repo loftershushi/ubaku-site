@@ -32,8 +32,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:ital,wght@0,200;0,300;0,400;1,300&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
 
 <!-- デザイン（色・フォント・余白はすべてこのファイルで管理） -->
-<link rel="stylesheet" href="assets/css/style.css?v=202610262011">
-<link rel="stylesheet" href="assets/css/letter.css?v=202610262011">   <!-- UBAKU Letter（メルマガ）の購読：右下の札・窓・Journal のあとの購読欄 -->
+<link rel="stylesheet" href="assets/css/style.css?v=202610262043">
+<link rel="stylesheet" href="assets/css/letter.css?v=202610262043">   <!-- UBAKU Letter（メルマガ）の購読：右下の札・窓・Journal のあとの購読欄 -->
 
 <!-- Googleに会社情報を伝えるデータ（構造化データ）
      ロゴ画像と note のURLが決まったら "logo" と sameAs に追加する -->
@@ -141,9 +141,11 @@
        1枚目だけ loading="lazy" を付けない -->
   <div class="panorama intro" style="--d:1s">
     <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 54 C 320 92, 620 90, 880 62 C 1080 40, 1280 42, 1440 64 L1440 0 Z"/></svg>
-    <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="assets/img/hero-01-2400.webp" srcset="assets/img/hero-01-1600.webp 1600w, assets/img/hero-01-2400.webp 2400w, assets/img/hero-01-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="初雪をかぶった大雪山国立公園と、美瑛の丘" width="3200" height="1198" fetchpriority="high"></div>
-    <div class="slide photo ph2" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="assets/img/hero-02-2400.webp" srcset="assets/img/hero-02-1600.webp 1600w, assets/img/hero-02-2400.webp 2400w, assets/img/hero-02-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="UBAKU Villa 宇莫別荘の窓から見る森" width="3200" height="1128" loading="lazy"></div>
-    <div class="slide photo ph3" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true"><img src="assets/img/hero-03-2400.webp" srcset="assets/img/hero-03-1600.webp 1600w, assets/img/hero-03-2400.webp 2400w, assets/img/hero-03-3200.webp 3200w" sizes="(max-width: 640px) 100vw, calc(100vw - 80px)" alt="春の美瑛の丘と一本の木" width="3200" height="1143" loading="lazy"></div>
+    <!-- 写真の sizes（2026-10-26）：枠いっぱいに切り抜いて表示するので、実際に表示される幅は「画面の幅」より広い。
+         スマホ（正方形の枠）は「画面の幅×写真の横長の比率」、PCは「枠の高さ×比率」と「枠の幅」の大きいほう。これでブラウザが十分な大きさの画像を選ぶ -->
+    <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="assets/img/hero-01-2400.webp" srcset="assets/img/hero-01-1600.webp 1600w, assets/img/hero-01-2400.webp 2400w, assets/img/hero-01-3200.webp 3200w, assets/img/hero-01-4000.webp 4000w" sizes="(max-width: 640px) 254vw, max(calc(100vw - 80px), calc((100vh - 220px) * 2.54))" alt="初雪をかぶった大雪山国立公園と、美瑛の丘" width="3200" height="1198" fetchpriority="high"></div>
+    <div class="slide photo ph2" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="assets/img/hero-02-2400.webp" srcset="assets/img/hero-02-1600.webp 1600w, assets/img/hero-02-2400.webp 2400w, assets/img/hero-02-3200.webp 3200w" sizes="(max-width: 640px) 284vw, max(calc(100vw - 80px), calc((100vh - 220px) * 2.84))" alt="UBAKU Villa 宇莫別荘の窓から見る森" width="3200" height="1128" loading="lazy"></div>
+    <div class="slide photo ph3" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true"><img src="assets/img/hero-03-2400.webp" srcset="assets/img/hero-03-1600.webp 1600w, assets/img/hero-03-2400.webp 2400w, assets/img/hero-03-3200.webp 3200w" sizes="(max-width: 640px) 280vw, max(calc(100vw - 80px), calc((100vh - 220px) * 2.8))" alt="春の美瑛の丘と一本の木" width="3200" height="1143" loading="lazy"></div>
   </div>
 </header>
 
@@ -444,9 +446,9 @@
 </section>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="assets/js/notes.js?v=202610262011"></script>
-<script src="assets/js/main.js?v=202610262011"></script>
-<script src="assets/js/letter.js?v=202610262011"></script>
+<script src="assets/js/notes.js?v=202610262043"></script>
+<script src="assets/js/main.js?v=202610262043"></script>
+<script src="assets/js/letter.js?v=202610262043"></script>
 
 <!-- ページの一番上へ戻るボタン（矢印だけ。スクロールすると右下の UBAKU Letter の札の上に出る。2026-10-25） -->
 <a class="to-top" href="#" aria-label="ページの一番上へ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></a>
