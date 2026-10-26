@@ -203,7 +203,7 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .topbar-inner{height:var(--topbar-h);display:flex;align-items:center;justify-content:space-between;gap:24px}
 .topbar-logo{width:96px;flex:none}   /* 小さな UBAKŪ（押すとページの一番上へ） */
 .topbar-nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0;font-size:12px;letter-spacing:.18em}
-.topbar-menu{display:none}
+.topbar-menu,.nav-menu{display:none}
 .nav-place{font-family:var(--f-title);font-weight:300;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--sub);line-height:1}   /* 左上の地名：メニューと同じ細い Jost・薄いグレーで静かに（2026-10-25。旧：EB Garamond 500・13px・黒） */
 .hero-main{display:flex;justify-content:space-between;align-items:center;gap:40px;padding-top:40px}
 /* ロゴ（UBAKŪ の文字。元データ：02_ブランド・発信/logo/261010_Ubaku logo single2.svg）
@@ -224,6 +224,7 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .slide-tabs button[aria-selected="true"]{color:var(--ink)}
 .slide-tabs button[aria-selected="true"]::before{height:2px;background:var(--green)}
 .slide-tabs button:focus-visible{outline:2px solid var(--green);outline-offset:4px}
+.slide-tabs .tab-short{display:none}   /* スマホだけの短い説明（01 山／02 森／03 丘。2026-10-26） */
 
 .panorama{position:relative;aspect-ratio:var(--hero-ratio);max-height:var(--hero-max-h);margin-top:0;margin-left:calc(50% - 50vw + var(--hero-bleed));margin-right:calc(50% - 50vw + var(--hero-bleed));overflow:hidden}
 /* 写真ごとに「切り抜くときに残したい場所」を指定（左右％ 上下％） */
@@ -533,12 +534,17 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .biz3 .biz-name{font-size:28px}
   :root{--sec-y:96px;--block-gap:80px;--head-gap:40px;--ridge-h:60px;--hill-h:64px}
   .hero{padding-top:20px}
-  .nav{flex-direction:column;align-items:flex-start;gap:8px}
-  .nav ul{justify-content:flex-start;gap:4px 16px}
+  /* ヒーローのメニュー（2026-10-26）：スマホは一覧をたたみ、右に「Menu ＋」ボタン。押すと下に一覧が開く（多くのサイトと同じ形） */
+  .nav{position:relative;flex-direction:row;align-items:flex-start;flex-wrap:wrap;gap:8px}
+  .nav ul{display:none}
+  .nav .nav-menu{display:block;margin-left:auto}
+  .nav.is-open ul{display:flex;flex-direction:column;flex-basis:100%;gap:0;margin-top:12px;border-top:1px solid var(--rule-short);font-size:14px}
+  .nav.is-open ul li{border-bottom:1px solid var(--rule-short)}
+  .nav.is-open ul a{display:block;padding:12px 0}
   /* 固定メニュー：スマホは右側を「Menu」ボタンにして、押すと帯の下に一覧が開く */
-  .topbar-menu{display:block;padding:8px 0 8px 16px;border:0;background:none;font:inherit;font-family:var(--f-title);font-weight:300;font-size:13px;letter-spacing:.18em;color:var(--ink);cursor:pointer}
-  .topbar-menu::after{content:"＋";margin-left:.6em;color:var(--accent-hl)}
-  .topbar-menu[aria-expanded="true"]::after{content:"－"}
+  .topbar-menu,.nav-menu{display:block;padding:8px 0 8px 16px;border:0;background:none;font:inherit;font-family:var(--f-title);font-weight:300;font-size:13px;letter-spacing:.18em;color:var(--ink);cursor:pointer}
+  .topbar-menu::after,.nav-menu::after{content:"＋";margin-left:.6em;color:var(--accent-hl)}
+  .topbar-menu[aria-expanded="true"]::after,.nav-menu[aria-expanded="true"]::after{content:"－"}
   .topbar-nav{position:absolute;top:100%;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--rule-short);display:none}
   .topbar.is-open .topbar-nav{display:block}
   .topbar-nav ul{flex-direction:column;gap:0;padding:4px var(--pad-x) 12px;font-size:14px}
@@ -547,7 +553,9 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .hero-copy h1 .sp-br{display:inline}   /* スマホだけ「知る・泊まる・過ごす・住む。」の前で改行 */
   /* スマホは写真の下に3本のバーだけ（01・02・03 と写真の説明の文字は出さない。読み上げ用には残す） */
   .slide-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding-top:14px}
-  .slide-tabs button{font-size:0;gap:0;padding:6px 0 10px}   /* 指で押しやすいよう、バーの上下に少し余白 */
+  .slide-tabs button{font-size:0;gap:8px;padding:6px 0 10px}   /* 指で押しやすいよう、バーの上下に少し余白 */
+  .slide-tabs .tab-long{display:none}
+  .slide-tabs .tab-short{display:block;font-family:var(--f-title);font-weight:300;font-size:12px;letter-spacing:.2em}
   .panorama{--hero-ratio:1 / 1;--hero-bleed:0px;--hero-max-h:none;margin-top:28px}   /* 【ヒーロー写真】スマホは正方形で大きく、画面の端まで */
   #slide-2 img{object-position:72% 50%}   /* スマホでは左右が大きく切れるので、丘の一本の木を残す */
   .work-grid,.team-grid{grid-template-columns:minmax(0,1fr)}

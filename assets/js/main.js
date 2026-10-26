@@ -150,6 +150,25 @@ function initToTop() {
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initToTop); else initToTop();
 
+/* ---------- ヒーローのメニュー（スマホ）：一覧をたたんで「Menu」ボタンにする（2026-10-26） ---------- */
+(function () {
+  document.querySelectorAll('.hero .nav').forEach(function (nav) {
+    var ul = nav.querySelector('ul');
+    if (!ul) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'nav-menu';
+    btn.textContent = 'Menu';
+    btn.setAttribute('aria-expanded', 'false');
+    nav.insertBefore(btn, ul);
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    ul.addEventListener('click', function (e) { if (e.target.closest('a')) { nav.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); } });
+  });
+})();
+
 /* ---------- 1. ヒーローのスライド ---------- */
 (function () {
   var tabs = document.querySelectorAll('.slide-tabs [role="tab"]');

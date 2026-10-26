@@ -582,3 +582,10 @@
 .vi-face--shot.vi-face--top img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0}
 /* 2026-10-25：宇莫別荘のロゴ（白地・緑の地・金）は3つとも同じ大きさで、少し小さく */
 .vi-face > img.vi-villa,.vi-face > .vi-villa.vi-villa--gold{width:min(60%,190px);max-width:none;height:auto;aspect-ratio:1381 / 918}
+/* 2026-10-26：スマホでも「建物 → 内装 → 家具 → サイン → 印刷物 → Web」は折り返さず1本の線のまま（文字を小さく） */
+@media (max-width: 640px){
+  .reach-line{flex-wrap:nowrap;font-size:11px;letter-spacing:0}
+  .reach-line li{flex:1;padding-top:20px}
+  .reach-line li::before{width:11px;height:11px;margin-left:-5.5px}
+  .reach-line::before{display:block;top:5px}
+}
