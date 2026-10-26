@@ -670,7 +670,7 @@
 .page-consulting #case{padding-bottom:calc(var(--sec-y) * .45)}
 @media (max-width: 640px){
   /* Design のスマホのヒーロー写真：見せたいもの（窓・ダイニング／ベッドと窓）が左右の真ん中に来るように */
-  .page-design #slide-0 img{object-position:30% 50%}
-  .page-design #slide-2 img{object-position:30% 50%}
+  .page-design #slide-0 img{object-position:45% 50%}   /* 照明が左右の真ん中に来る位置（写真の幅の約47%の所にある） */
+  .page-design #slide-2 img{object-position:51% 50%}   /* 窓が左右の真ん中に来る位置（写真の幅の約51%の所にある） */
   .contact-lead-title .sp-br{display:inline}   /* 「建物のこと、ブランドのこと、／お聞かせください。」の位置で改行 */
 }
