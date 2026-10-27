@@ -154,7 +154,7 @@ p{margin:0}
 .fold-wrap{display:contents}   /* 中身を包むだけの箱。並び方や余白は今までどおり */
 .fold-btn{display:none}
 .sp-br{display:none}   /* スマホだけで使う改行（パソコンでは改行しない） */
-.phrase{display:inline-block}   /* 言葉のまとまり。改行はまとまりの切れ目でだけ起きる（入れ子にすると、外側の切れ目から先に改行される）（名乗り「まちを想い、まちを動かす」北海道美瑛町・東川町の地域プロデュースチーム。2026-10-27） */
+.phrase{display:inline-block}   /* 言葉のまとまり。改行はまとまりの切れ目でだけ起きる（入れ子にすると、外側の切れ目から先に改行される）（名乗り「まちを想い、まちを動かす」北海道美瑛・東川町の地域プロデュースチーム。2026-10-27） */
 .more{align-self:flex-start;display:inline-block;font-size:13px;letter-spacing:.1em;border-bottom:1px solid var(--rule-long);padding:12px 0 6px}
 
 /* ---------- アニメーション③：リンクの下線が、マウスを乗せると左から伸びる ----------
