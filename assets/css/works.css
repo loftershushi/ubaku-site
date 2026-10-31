@@ -281,3 +281,13 @@
 /* Design のページの Works 欄に置いた事例カード（2026-10-31）：見出しのすぐ下から始め、下は南邸の一文へつなぐ */
 .wk-list--in-design{padding-top:clamp(40px,5vw,72px);padding-bottom:0}
 .wk-all{margin-top:clamp(32px,4vw,56px)}
+
+/* ---------- 2026-11-01 スマホの改行（mashuさん）----------
+   ・物語の見出し：英語（Approach など）を上の行、日本語を下の行に。日本語は読点の切れ目でだけ折り返す
+   ・Next Project：施設名が「宇／莫別荘」と切れていた → 日本語名は下の行に小さく。UBAKU のページの Next も同じ大きさにそろえる */
+@media (max-width: 760px){
+  .wk-chapter-head h3 .wk-ch-en{display:block;font-family:var(--f-en);font-size:12px;letter-spacing:.2em;color:var(--accent-hl);margin-bottom:6px}
+  .wk-chapter-head h3 .wk-ch-bar{display:none}
+  .wk-nextcase-link .wk-name{font-size:clamp(34px,10.5vw,44px);line-height:1.15}
+  .wk-nextcase-link .wk-name span{display:block;margin:10px 0 0;font-size:.5em}
+}

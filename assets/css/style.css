@@ -684,3 +684,22 @@ h1,h2,h3,h4,.catch,.concept-catch,.work-catch,.contact-lead-title,.sec-head .asi
   .note-links{flex-direction:row;flex-wrap:nowrap;justify-content:space-between;gap:10px}
   .note-links .more{font-size:12px;letter-spacing:.04em;white-space:nowrap}
 }
+
+/* Numbers の見出しの下の一文「私たちの最初の事業、UBAKU Villa 宇莫別荘から。」（2026-10-31） */
+.numbers-note{margin:-12px 0 32px;font-size:14px;letter-spacing:.08em;color:var(--muted)}
+
+/* What We Do の状態の札（営業中・受付中）と、Stay の中の「移住・二拠点のご相談も受付中」（2026-10-31 改善方針 Ver.2。試作 top-v2 から移した） */
+.status{align-self:flex-start;display:inline-block;padding:3px 10px;font-size:11px;letter-spacing:.16em;line-height:1.6;border:1px solid currentColor}
+.status.is-open{color:var(--green)}
+.biz-body .status{margin:-4px 0 4px}
+.biz-sub-link{align-self:flex-start;font-size:12px;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--rule-short-on-green);padding-bottom:2px;margin:-4px 0 4px;transition:color .3s ease,border-color .3s ease}
+.biz-sub-link:hover{color:var(--green);border-color:var(--green)}
+
+/* What We Do の下の吹き出し「移住・二拠点のご相談も、受付中です。」（2026-10-31）
+   白い吹き出しの左上に小さな三角のしっぽ。マウスを乗せると少し浮く */
+.live-bubble{position:relative;display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px 16px;margin-top:clamp(48px,6vw,80px);padding:16px 26px;background:#fff;border-radius:999px;box-shadow:0 8px 24px rgba(43,36,28,.08);color:var(--ink);font-size:14px;letter-spacing:.06em;transition:transform .3s ease,box-shadow .3s ease}
+.live-bubble::before{content:"";position:absolute;left:40px;top:-9px;border:10px solid transparent;border-top:0;border-bottom-color:#fff}
+.live-bubble:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(43,36,28,.12)}
+.live-bubble-en{font-size:11px;letter-spacing:.2em;color:var(--green)}
+.live-bubble-go{font-size:12px;letter-spacing:.12em;color:var(--green);border-bottom:1px solid currentColor;padding-bottom:1px}
+@media (max-width:640px){.live-bubble{border-radius:20px;padding:14px 20px;font-size:13px}}

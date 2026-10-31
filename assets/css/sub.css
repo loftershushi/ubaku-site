@@ -678,3 +678,12 @@
 /* ---------- Consulting：住宅宿泊管理業者の登録番号（2026-10-31） ---------- */
 .support-note .reg-no{display:block;margin-top:8px;font-size:12px;color:var(--sub);letter-spacing:.04em}
 
+
+/* ---------- 2026-11-01 スマホ：ロゴと「Menu ＋」を同じ段にそろえる（mashuさん）----------
+   これまでは ロゴ＋名乗り の箱が横いっぱいを取り、Menu が次の行に落ちていた。
+   箱を「残りの幅だけ」にして、Menu をロゴと同じ高さの右端に置く */
+@media (max-width: 640px){
+  .hero .nav{flex-wrap:wrap}
+  .hero .nav .nav-brand{flex:1 1 0;min-width:0}
+  .hero .nav .nav-menu{flex:none;margin-left:12px}
+}
