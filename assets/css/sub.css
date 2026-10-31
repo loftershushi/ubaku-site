@@ -674,3 +674,7 @@
   .page-design #slide-2 img{object-position:51% 50%}   /* 窓が左右の真ん中に来る位置（写真の幅の約51%の所にある） */
   .contact-lead-title .sp-br{display:inline}   /* 「建物のこと、ブランドのこと、／お聞かせください。」の位置で改行 */
 }
+
+/* ---------- Consulting：住宅宿泊管理業者の登録番号（2026-10-31） ---------- */
+.support-note .reg-no{display:block;margin-top:8px;font-size:12px;color:var(--sub);letter-spacing:.04em}
+

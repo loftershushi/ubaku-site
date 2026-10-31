@@ -19,6 +19,7 @@
   //   data-after   … ページの中の購読欄を、どの区切り（id）のあとに入れるか
   //   data-hide    … この区切り（id）が見えている間は札を隠す（問い合わせ欄など）
   //   data-band    … "off" にすると、ページの中の購読欄は入れず、右下の札だけにする（/consulting・/design）
+  //   data-auto    … "on" にすると、ページを開いて少したったら、真ん中に大きな窓を自動で出す（トップだけ。2026-10-31）
   var CONF = (document.currentScript && document.currentScript.dataset) || {};
   var PRIVACY = CONF.privacy || 'privacy/';
 
@@ -176,7 +177,7 @@
     data.append('html_type', 'simple');
 
     buttons.forEach(function (b) { b.disabled = true; });
-    function done() { form.classList.replace('is-step2', 'is-step3'); notify(email, interests); }
+    function done() { form.classList.replace('is-step2', 'is-step3'); notify(email, interests); remember('done'); }
     function fail() {
       buttons.forEach(function (b) { b.disabled = false; });
       var note = form.querySelector('.lt-error') || form.querySelector('[data-step="2"]').appendChild(document.createElement('p'));
@@ -197,6 +198,20 @@
           return fetch(BREVO_ACTION, { method: 'POST', body: data, mode: 'no-cors' }).then(done, fail);
         });
     }, fail);
+  }
+
+  // ---------- この端末に覚えておく（たたんだ日・登録したか）。使えない環境では何もしない ----------
+  var fabForced = false;   // 大きな窓をたたんだあとは、ヒーローの上でも札を出す
+  var modalOpen = false;   // 大きな窓が開いているあいだは札を隠す
+  function recall() {
+    try { return JSON.parse(localStorage.getItem('ubakuLetter')) || {}; } catch (e) { return {}; }
+  }
+  function remember(what) {
+    try {
+      var m = recall();
+      if (what === 'done') m.done = true; else m.folded = Date.now();
+      localStorage.setItem('ubakuLetter', JSON.stringify(m));
+    } catch (e) {}
   }
 
   // ---------- 右下の札 ----------
@@ -280,9 +295,76 @@
       else return;
     }
     var pastHero = hero ? hero.getBoundingClientRect().bottom < 0 : scrollY > innerHeight;
-    fab.classList.toggle('is-shown', pastHero && !nearForm);
+    fab.classList.toggle('is-shown', (pastHero || fabForced) && !nearForm && !modalOpen);
   }
   addEventListener('scroll', update, { passive: true });
   addEventListener('resize', update);
   update();
+
+  // ---------- 真ん中に自動で出る大きな窓（トップだけ・2026-10-31 mashuさん） ----------
+  // ・オープニングが終わってから 6秒後に1回だけ出す
+  // ・右上の「たたむ」・まわりの薄い面・Esc で、右下の札へ吸い込まれるように小さくなる（そのあとは札がずっと出る）
+  // ・たたんだ人には7日間は自動で出さない。登録した人には二度と出さない（この端末のブラウザに覚えておく）
+  // ・形は右下の札と同じ（白い面の上辺が大雪山の輪郭）。写真は入れない（2026-10-31 mashuさん）
+  if (CONF.auto !== 'on') return;
+  var DAYS = 7;
+  var TRY_ALWAYS = false;  // true にすると毎回出す（確認用）。公開中は false＝たたんだ人・登録した人には7日間出さない
+  var memo = recall();
+  if (!TRY_ALWAYS && (memo.done || (memo.folded && Date.now() - memo.folded < DAYS * 864e5))) return;
+
+  var modal = document.createElement('div');
+  modal.className = 'lt-modal';
+  modal.innerHTML =
+    '<div class="lt-modal-veil"></div>' +
+    '<div class="lt-modal-card" role="dialog" aria-modal="true" aria-label="UBAKU Letter の購読">' + TOP +
+      '<div class="lt-modal-body">' +
+        '<div class="lt-pop-head">' + LOGO +
+          '<button type="button" class="lt-modal-fold" aria-label="たたんで右下の札に戻す"><span class="lt-modal-fold-ja">たたむ</span><span class="lt-modal-fold-ic" aria-hidden="true"></span></button>' +
+        '</div>' +
+        '<p class="lt-kicker-ja2">月に一度のメールマガジン</p>' +
+        '<p class="lt-catch">大雪山のふもとから、<br><em>月に一度の手紙を。</em></p>' +
+        '<p class="lt-lead">季節のうつろい、宿や畑のこと、まちで動きはじめたこと。美瑛と東川町で暮らすわたしたちから、ひと月分の近況をお届けします。</p>' +
+        formHTML('modal') +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(modal);
+  wire(modal.querySelector('.lt-form'));
+  var card = modal.querySelector('.lt-modal-card');
+
+  function showModal() {
+    if (modalOpen || pop.classList.contains('is-open')) return;
+    if (inView(band) || inView(contact)) return;   // 申し込みの欄が見えているときは出さない
+    modalOpen = true;
+    fab.classList.remove('is-shown');
+    modal.classList.add('is-open');
+    setTimeout(function () { var i = modal.querySelector('.is-step1 .lt-input'); if (i) i.focus({ preventScroll: true }); }, 600);
+  }
+  // たたむ：窓が右下の札の位置まで縮みながら動いて消え、札が現れる
+  function foldModal() {
+    if (!modalOpen) return;
+    var done = modal.querySelector('.is-step3');
+    remember(done ? 'done' : 'folded');
+    fabForced = true;
+    var c = card.getBoundingClientRect();
+    var r = fab.getBoundingClientRect();   // 札は見えなくても場所は決まっている
+    var dx = (r.left + r.width / 2) - (c.left + c.width / 2);
+    var dy = (r.top + r.height / 2) - (c.top + c.height / 2);
+    var sc = Math.max(r.width / c.width, .12);
+    card.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(' + sc + ')';
+    modal.classList.add('is-folding');
+    setTimeout(function () {
+      modal.classList.remove('is-open', 'is-folding');
+      card.style.transform = '';
+      modalOpen = false;
+      update();
+    }, 620);
+  }
+  modal.querySelector('.lt-modal-fold').addEventListener('click', foldModal);
+  modal.querySelector('.lt-modal-veil').addEventListener('click', foldModal);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modalOpen) foldModal(); });
+
+  function later() { setTimeout(showModal, 6000); }
+  if (document.documentElement.classList.contains('is-opening')) {
+    document.addEventListener('ubaku:opening-end', later, { once: true });
+  } else later();
 })();

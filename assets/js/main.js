@@ -17,6 +17,34 @@
   if (!root.classList.contains('is-opening')) { op.remove(); return; }
   op.hidden = false;
 
+  // 右上の天気：大雪山のふもと（東川町）のいまの気温と天気を、無料の天気サービス Open-Meteo から読む（2026-10-31）
+  // イントロは数秒で終わるので、2.5秒で届かなければあきらめる（何も出さない）
+  (function () {
+    var box = op.querySelector('.op-weather');
+    if (!box || !window.fetch) return;
+    // 天気の番号（WMO の天気コード）→ 英語の短い言葉
+    function word(c) {
+      if (c === 0) return 'Clear';
+      if (c <= 2) return 'Partly cloudy';
+      if (c === 3) return 'Cloudy';
+      if (c <= 48) return 'Fog';
+      if (c <= 67 || (c >= 80 && c <= 82)) return 'Rain';
+      if (c <= 77 || c === 85 || c === 86) return 'Snow';
+      return 'Thunder';
+    }
+    var ctl = window.AbortController ? new AbortController() : null;
+    if (ctl) setTimeout(function () { ctl.abort(); }, 2500);
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=43.70&longitude=142.51&current=temperature_2m,weather_code&timezone=Asia%2FTokyo', ctl ? { signal: ctl.signal } : {})
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        var c = j && j.current;
+        if (!c || typeof c.temperature_2m !== 'number') return;
+        box.innerHTML = 'Higashikawa, Hokkaido<br>' + Math.round(c.temperature_2m) + '°C　' + word(c.weather_code);
+        box.classList.add('is-in');
+      })
+      .catch(function () {});
+  })();
+
   var DUR = 3800;               // 000→100 までの時間（ミリ秒。元は4700）
   var STEPS = [0.06, 0.36, 0.64]; // Find → Build → Live に切り替わるタイミング（全体の何割の時点か。2026-10-17 元の動きに戻した）
   // 動詞（Find・Build・Live）を1文字ずつの部品に分ける（1文字ずつ下から入って上へ抜ける動きのため。試作 B）

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 検索エンジンに知らせるページの一覧（2026-10-25 に下層ページを追加。本公開の日 2026-10-26 を更新日にした） -->
+<!-- 検索エンジンに知らせるページの一覧（2026-10-25 に下層ページを追加。本公開の日 2026-10-26 を更新日にした。2026-10-31 に Works の3ページを追加） -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ubaku.jp/</loc><lastmod>2026-10-26</lastmod></url>
-  <url><loc>https://ubaku.jp/design/</loc><lastmod>2026-10-26</lastmod></url>
-  <url><loc>https://ubaku.jp/consulting/</loc><lastmod>2026-10-26</lastmod></url>
-  <url><loc>https://ubaku.jp/privacy/</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://ubaku.jp/</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://ubaku.jp/design/</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://ubaku.jp/design/works/</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://ubaku.jp/design/works/ubaku-villa/</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://ubaku.jp/design/works/ubaku/</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://ubaku.jp/consulting/</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://ubaku.jp/privacy/</loc><lastmod>2026-10-31</lastmod></url>
 </urlset>

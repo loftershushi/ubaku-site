@@ -137,3 +137,42 @@
 .lt-error{color:#B4553A}   /* 送れなかったときの文（Yasai の赤土に近い色） */
 .lt-ts:empty{display:none}
 .lt-ts iframe{max-width:100%}
+
+/* ---------- 真ん中に自動で出る大きな窓（トップだけ・2026-10-31） ----------
+   右下の札と同じ形（白い面の上辺が大雪山の輪郭・青い線）を大きくしたもの。写真は入れない。
+   「たたむ」で右下の札へ縮みながら戻る（動きは letter.js） */
+.lt-modal{position:fixed;inset:0;z-index:70;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;visibility:hidden;pointer-events:none}
+.lt-modal.is-open{visibility:visible;pointer-events:auto}
+.lt-modal-veil{position:absolute;inset:0;background:rgba(43,36,28,.28);opacity:0;transition:opacity .6s ease}
+.lt-modal.is-open .lt-modal-veil{opacity:1}
+.lt-modal.is-folding .lt-modal-veil{opacity:0}
+.lt-modal-card{position:relative;width:min(520px,100%);filter:drop-shadow(0 24px 48px rgba(43,36,28,.22));transform-origin:center;
+  opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.lt-modal.is-open .lt-modal-card{opacity:1;transform:none}
+.lt-modal.is-open .lt-top-line{stroke-dashoffset:0}   /* 窓が出たら、上辺の稜線を左から描く */
+.lt-modal .lt-top-line{stroke-width:2.4}
+/* たたむとき：右下の札の場所へ、縮みながら動いて消える（行き先は letter.js が style.transform に入れる） */
+.lt-modal.is-folding .lt-modal-card{opacity:0;transition:opacity .45s ease .15s,transform .6s cubic-bezier(.6,0,.3,1)}
+.lt-modal-body{display:flex;flex-direction:column;gap:14px;background:var(--cream);padding:4px 44px 36px}
+.lt-modal-body .lt-logo{--lw:96px}
+.lt-kicker-ja2{font-size:12px;letter-spacing:.16em;color:var(--sub)}
+.lt-modal-body .lt-catch{font-size:clamp(22px,2.2vw,28px)}
+.lt-modal-body .lt-lead{font-size:13.5px;line-height:2}
+.lt-modal-body .lt-form{margin-top:6px}
+/* たたむボタン（ロゴの右。文字＋下向きの山形） */
+.lt-modal-fold{display:inline-flex;align-items:center;gap:8px;margin-right:-10px;
+  font:inherit;font-size:12px;letter-spacing:.14em;color:var(--sub);background:none;border:0;padding:8px 10px;cursor:pointer;transition:color .25s ease}
+.lt-modal-fold-ic{width:8px;height:8px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .3s ease}
+.lt-modal-fold:hover{color:var(--green)}
+.lt-modal-fold:hover .lt-modal-fold-ic{transform:translateY(1px) rotate(45deg)}
+@media (max-width: 760px){
+  .lt-modal{place-items:end center;padding:12px}
+  .lt-modal-card{max-height:calc(100vh - 24px);overflow:auto}
+  .lt-modal-body{padding:2px 22px 24px;gap:12px}
+  .lt-modal-body .lt-logo{--lw:76px}
+  .lt-modal-body .lt-catch{font-size:19px}
+  .lt-modal-body .lt-lead{font-size:13px;line-height:1.9}
+}
+@media (prefers-reduced-motion: reduce){
+  .lt-modal-veil,.lt-modal-card{transition:none}
+}

@@ -1,0 +1,283 @@
+/* =========================================================
+   Works（UBAKU Design の実績）の一覧と事例ページ（2026-10-31 試作）
+   ・/design/works/            … 一覧（大きな事例2つ＋準備中の3つ）
+   ・/design/works/ubaku-villa/ … 事例ページ（表紙 → 概要 → 問い → 物語 → つくったもの → 学び → クレジット）
+   色・フォントは style.css・sub.css の変数をそのまま使う（ここで色を直接書くのは準備中の札の色 --c だけ）
+   ========================================================= */
+
+/* ---------- 表紙（文字） ---------- */
+.wk-hero{padding-bottom:0}
+.wk-hero-copy{padding-top:72px;display:flex;flex-direction:column;gap:18px}
+.wk-crumb{font-family:var(--f-en);font-size:11px;letter-spacing:.2em;color:var(--sub);display:flex;gap:10px;align-items:center;text-transform:uppercase}
+.wk-crumb a{border-bottom:1px solid var(--rule-short)}
+.wk-crumb a:hover{color:var(--accent-hl)}
+.wk-title{font-family:var(--f-title);font-weight:200;font-size:clamp(64px,10vw,150px);letter-spacing:.04em;line-height:.95;color:var(--ink);margin:0}
+.wk-lead{font-family:var(--f-heading);font-size:clamp(16px,1.5vw,19px);line-height:1.9;letter-spacing:.08em;color:var(--muted)}
+.wk-count{display:flex;gap:40px;list-style:none;margin:8px 0 0;padding:0}
+.wk-count li{display:flex;align-items:baseline;gap:10px;font-family:var(--f-en);font-size:11px;letter-spacing:.2em;color:var(--sub);text-transform:uppercase}
+.wk-count b{font-family:var(--f-title);font-weight:200;font-size:44px;letter-spacing:0;color:var(--accent-hl)}
+
+/* 事例の名前（UBAKU Villa＋宇莫別荘） */
+.wk-name{font-family:var(--f-biz,var(--f-title));font-weight:200;font-size:clamp(34px,3.6vw,52px);letter-spacing:.04em;line-height:1.1;color:var(--ink);margin:0}
+.wk-name span{font-family:var(--f-serif-jp);font-size:.5em;letter-spacing:.2em;margin-left:.4em;color:var(--sub)}
+.wk-name--big{font-size:clamp(48px,7vw,110px)}
+.wk-name--big span{display:block;margin:.5em 0 0;font-size:.28em}
+
+/* 表紙の写真（上端だけゆるい丘の形に切る） */
+.wk-cover{margin:56px calc(var(--hero-bleed,40px) * -1) 0;aspect-ratio:2.4 / 1;overflow:hidden;
+  border-radius:50% 50% 0 0 / 70px 70px 0 0}
+.wk-cover img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- 一覧：大きな事例（写真7：文字5。2つ目は左右を入れ替える） ---------- */
+.wk-list{display:flex;flex-direction:column;gap:clamp(80px,9vw,140px);padding-top:var(--sec-y);padding-bottom:var(--sec-y)}
+.wk-feature{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,4.5vw,72px);align-items:center}
+.wk-feature--rev{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.wk-feature--rev .wk-feature-photo{order:2}
+.wk-feature-photo{display:block;aspect-ratio:4 / 3;overflow:hidden}
+.wk-feature-photo img{width:100%;height:100%;object-fit:cover}
+.wk-feature-photo--shot{background:var(--kraft);padding:clamp(16px,2.4vw,36px)}
+.wk-feature-photo--shot img{object-fit:cover;object-position:top;box-shadow:0 10px 30px rgba(43,36,28,.12)}
+.wk-feature-text{display:flex;flex-direction:column;gap:16px}
+.wk-catch{font-family:var(--f-heading);font-size:18px;letter-spacing:.08em;color:var(--ink)}
+.wk-feature-text .more{align-self:flex-start;margin-top:6px}
+
+/* ---------- 一覧：準備中の3つ（色の面に名前・札） ---------- */
+.wk-next{padding-bottom:var(--sec-y)}
+.wk-soon{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.wk-soon-card{display:flex;flex-direction:column;gap:10px}
+.wk-soon-face{aspect-ratio:4 / 3;display:grid;place-items:center;margin-bottom:6px;
+  background:color-mix(in srgb,var(--c) 10%,#fff);border-top:3px solid var(--c)}
+.wk-soon-name{font-family:var(--f-title);font-weight:200;font-size:clamp(20px,2vw,28px);letter-spacing:.08em;color:var(--c)}
+.wk-soon-title{font-family:var(--f-heading);font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.wk-soon-card .label{color:var(--c)}
+.wk-soon-card .badge{align-self:flex-start}
+
+/* ---------- 事例ページ：概要の表 ---------- */
+.wk-meta{padding-top:56px}
+.wk-meta dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin:0;border-top:1px solid var(--rule-long);padding-top:24px}
+.wk-meta dt,.wk-credit dt{font-family:var(--f-en);font-size:11px;letter-spacing:.2em;color:var(--accent-hl);text-transform:uppercase;margin-bottom:8px}
+.wk-meta dd{margin:0;font-size:14px;line-height:1.9;color:var(--ink)}
+
+/* 見出し（左）＋ 本文（右）の2列 */
+.wk-overview,.wk-learning,.wk-credit{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px;padding-top:var(--sec-y)}
+.wk-h{font-family:var(--f-title);font-weight:200;font-size:clamp(28px,3vw,40px);letter-spacing:.05em;color:var(--accent-hl);margin:0;line-height:1}
+.wk-col{display:flex;flex-direction:column;gap:24px}
+.wk-col .body{font-size:15px;line-height:2.2}
+.wk-facts{display:flex;gap:40px;list-style:none;margin:0;padding:0}
+.wk-facts li{font-size:13px;letter-spacing:.08em;color:var(--sub)}
+.wk-facts b{font-family:var(--f-title);font-weight:200;font-size:44px;color:var(--ink);margin-right:4px}
+
+/* ---------- 問い（大きく1行） ---------- */
+.wk-question{padding-top:var(--sec-y);text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
+.wk-question p{font-family:var(--f-heading);font-size:clamp(22px,2.8vw,38px);line-height:1.7;letter-spacing:.08em;color:var(--ink);max-width:22em;text-wrap:balance}
+
+/* ---------- 物語（番号＋見出しは左、文と写真は右） ---------- */
+.wk-story{padding-top:var(--sec-y);display:flex;flex-direction:column;gap:clamp(64px,7vw,110px)}
+.wk-chapter{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px;align-items:start}
+.wk-chapter-head{position:sticky;top:96px;display:flex;flex-direction:column;gap:8px}
+.wk-no{font-family:var(--f-title);font-weight:200;font-size:64px;line-height:1;color:var(--accent-hl)}
+.wk-chapter-head h3{font-family:var(--f-heading);font-weight:400;font-size:18px;letter-spacing:.08em;color:var(--ink);margin:0}
+.wk-chapter-body{display:flex;flex-direction:column;gap:28px}
+.wk-chapter-body .body{font-size:15px;line-height:2.2}
+.wk-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.wk-pair figure,.wk-wide{margin:0;overflow:hidden;padding:0}
+.wk-pair figure{aspect-ratio:3 / 2}   /* .photo の写真は枠いっぱいに敷くので、枠の形をここで決める */
+.wk-wide{aspect-ratio:16 / 9}
+
+/* ---------- つくったもの（Space・Brand は Design のページと同じ部品） ---------- */
+.wk-output{padding-top:var(--sec-y)}
+.wk-output .brand{display:block;border-top:0;padding-top:0}   /* 見出しの列がないので、図を横いっぱいに */
+
+/* ---------- クレジット ---------- */
+.wk-credit dl{margin:0;display:grid;gap:18px}
+.wk-credit dl div{display:grid;grid-template-columns:14em minmax(0,1fr);gap:16px;padding-bottom:14px;border-bottom:1px solid var(--rule-short)}
+.wk-credit dt{margin:0;padding-top:3px}
+.wk-credit dd{margin:0;font-size:14px;color:var(--ink)}
+.wk-credit .more{align-self:flex-start}
+
+/* ---------- 次の事例（大きな名前の帯） ---------- */
+.wk-nextcase{padding-top:var(--sec-y);padding-bottom:var(--sec-y)}
+.wk-nextcase-link{display:flex;flex-direction:column;align-items:center;gap:14px;padding:clamp(48px,6vw,88px) 24px;background:var(--kraft);text-align:center;transition:background-color .4s ease}
+.wk-nextcase-link .wk-name{font-size:clamp(44px,6vw,88px)}
+.wk-nextcase-sub{font-family:var(--f-en);font-size:12px;letter-spacing:.2em;color:var(--sub)}
+.wk-nextcase-link:hover{background:color-mix(in srgb,var(--accent-hl) 10%,var(--kraft))}
+
+/* ---------- 下のご相談の案内 ---------- */
+.wk-btn{display:inline-flex;align-self:flex-start;margin-top:18px;padding:13px 26px;font-size:13px;letter-spacing:.16em;color:var(--green);background:var(--on-green);transition:transform .35s ease}
+.wk-btn:hover{transform:translateY(-2px)}
+.wk-contact .contact-lead{display:flex;flex-direction:column;max-width:720px}
+.wk-contact .contact-lead-title{white-space:normal;word-break:keep-all}
+
+/* =========================================================
+   2026-10-31 作り直し（KESIKI を見て：写真が主役・色の面でメリハリ・文字の強弱・浮く目次・UBAKU ならではの見比べ）
+   ========================================================= */
+/* 本文を少し濃く（細い文字・薄い色ばかりで、ぼんやり見えていたため） */
+.page-works .body{color:var(--ink)}
+
+/* ① 表紙：写真を画面いっぱい（左右も端まで）。上端だけゆるい丘の形 */
+.wk-cover--full{margin:28px calc(50% - 50vw) 0;aspect-ratio:auto;height:max(420px,min(calc(100svh - 150px),62vw));border-radius:50% 50% 0 0 / 80px 80px 0 0}   /* 縦に長すぎる画面では、写真が縦長になりすぎないよう 62vw までにする */
+.wk-hero-copy--case{padding-top:40px;gap:14px}
+.wk-titlerow{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;padding-bottom:28px;border-bottom:1px solid var(--rule-long)}
+.wk-name--case{font-size:clamp(36px,4.4vw,64px)}
+.wk-hero-copy--case .wk-lead{font-size:15px;color:var(--ink)}
+
+/* ③ 仕事の名前は緑の札（文字に強弱をつける） */
+.wk-meta dl{grid-template-columns:repeat(4,minmax(0,1fr));border-top:0;padding-top:0}
+.wk-meta-wide{grid-column:span 1}
+.wk-chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.wk-chips li{font-size:12px;letter-spacing:.06em;line-height:1;color:var(--cream);background:var(--green);padding:7px 10px}
+
+/* ② Brand：ブランドの緑の面（端から端まで） */
+.wk-band{margin-top:var(--sec-y);padding:var(--sec-y) 0;background:var(--green);color:var(--on-green)}
+.wk-band .works-sub{border-bottom-color:rgba(241,235,223,.22)}
+.wk-band .works-sub-en{color:var(--on-green)}
+.wk-band .works-sub-ja{color:var(--on-green-sub)}
+.wk-band .brand{display:block;margin-bottom:0}
+.wk-band .vi figcaption{color:var(--on-green-sub)}
+.wk-band .vi-face{box-shadow:none}
+/* ノートパソコンの枠（中のサイトの画面は、ゆっくり上から下へ動いて戻る） */
+.wk-device{margin:0 auto clamp(56px,6vw,96px);width:min(920px,100%)}
+.wk-device-screen{position:relative;aspect-ratio:16 / 10;overflow:hidden;background:#111;border:10px solid #1b1b1b;border-bottom-width:14px;border-radius:14px 14px 0 0}
+.wk-device-screen img{position:absolute;left:0;top:0;width:100%;height:auto;animation:wk-scroll 18s ease-in-out infinite alternate}
+@keyframes wk-scroll{0%,12%{transform:translateY(0)}88%,100%{transform:translateY(-50%)}}
+.wk-device-base{height:14px;margin:0 -6%;background:linear-gradient(#d9d9d6,#a9a9a5);border-radius:0 0 14px 14px}
+.wk-device figcaption{margin-top:16px;text-align:center;font-family:var(--f-en);font-size:11px;letter-spacing:.2em;color:var(--on-green-sub)}
+
+/* ⑤ ビフォー・アフター：つまみを左右に動かして見比べる */
+.ba-compare{position:relative;overflow:hidden;--pos:50%;background:var(--kraft);user-select:none}
+.ba-compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-c-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba-c-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:var(--cream);pointer-events:none}
+.ba-c-handle i{position:absolute;top:50%;left:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:var(--cream);box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.ba-c-handle i::before,.ba-c-handle i::after{content:"";position:absolute;top:50%;width:7px;height:7px;border-left:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.ba-c-handle i::before{left:11px;transform:translateY(-50%) rotate(45deg)}
+.ba-c-handle i::after{right:11px;transform:translateY(-50%) rotate(-135deg)}
+.ba-c-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none}
+.ba-c-tag{position:absolute;top:12px;font-family:var(--f-en);font-size:10px;letter-spacing:.2em;color:var(--cream);background:rgba(43,36,28,.55);padding:5px 9px;pointer-events:none}
+.ba-c-tag--b{left:12px}
+.ba-c-tag--a{right:12px;background:var(--accent-hl)}
+.ba-c-range:focus-visible ~ .ba-c-handle i{outline:2px solid var(--accent-hl);outline-offset:2px}
+
+/* ④ 下に浮く小さな目次 */
+.wk-dock{position:fixed;left:50%;bottom:20px;z-index:55;display:flex;gap:2px;padding:4px;background:var(--ink);border-radius:999px;
+  transform:translate(-50%,20px);opacity:0;pointer-events:none;transition:opacity .4s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+.wk-dock.is-shown{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.wk-dock a{font-family:var(--f-en);font-size:11px;letter-spacing:.14em;color:var(--on-green-sub);padding:8px 14px;border-radius:999px;transition:background-color .3s ease,color .3s ease}
+.wk-dock a:hover{color:var(--cream)}
+.wk-dock a.is-now{background:var(--cream);color:var(--ink)}
+
+@media (max-width: 900px){
+  .wk-meta dl{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width: 640px){
+  .wk-cover--full{margin:20px calc(50% - 50vw) 0;height:min(78svh,560px);border-radius:50% 50% 0 0 / 40px 40px 0 0}
+  .wk-titlerow{gap:12px}
+  .wk-dock{left:12px;bottom:12px;max-width:calc(100vw - 80px);overflow-x:auto;transform:translateY(20px)}   /* 右下の「一番上へ」の矢印とかぶらないよう、左に寄せる */
+  .wk-dock.is-shown{transform:none}
+  .page-works .lt-fab{display:none}   /* スマホの事例ページでは、目次と重なるので UBAKU Letter の札は出さない */
+  .wk-dock a{padding:7px 10px;font-size:10px;letter-spacing:.08em}
+  .wk-device-screen{border-width:6px;border-bottom-width:9px;border-radius:9px 9px 0 0}
+  .wk-device-base{height:9px}
+}
+@media (prefers-reduced-motion: reduce){
+  .wk-device-screen img{animation:none}
+}
+
+/* ---------- 試作だけの印（【仮】の文。公開前に消す） ---------- */
+.wk-draft{font-size:11px;letter-spacing:.06em;color:#B4553A}
+.wk-draft-box{border:1px dashed #B4553A;padding:20px 24px;color:var(--sub)}
+
+/* ---------- タブレット・スマホ ---------- */
+@media (max-width: 900px){
+  .wk-feature,.wk-feature--rev{grid-template-columns:minmax(0,1fr)}
+  .wk-feature--rev .wk-feature-photo{order:0}
+  .wk-soon{grid-template-columns:minmax(0,1fr);gap:40px}
+  .wk-soon-face{aspect-ratio:16 / 7}
+  .wk-meta dl{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
+  .wk-overview,.wk-learning,.wk-credit,.wk-chapter{grid-template-columns:minmax(0,1fr);gap:20px}
+  .wk-chapter-head{position:static;flex-direction:row;align-items:baseline;gap:14px}
+  .wk-no{font-size:44px}
+}
+@media (max-width: 640px){
+  .wk-hero-copy{padding-top:48px;gap:14px}
+  .wk-count{gap:28px}
+  .wk-count b{font-size:36px}
+  .wk-cover{margin:36px calc(50% - 50vw) 0;aspect-ratio:4 / 5;border-radius:50% 50% 0 0 / 36px 36px 0 0}
+  .wk-pair{grid-template-columns:minmax(0,1fr)}
+  .wk-facts{gap:24px}
+  .wk-facts b{font-size:36px}
+  .wk-credit dl div{grid-template-columns:minmax(0,1fr);gap:4px}
+}
+
+/* ビフォー・アフターを見比べの形にしたので、1組が写真1枚分になった。
+   横長は2組ずつ、縦長は4組ずつ並べて、ページが長くなりすぎないようにする（2026-10-31） */
+.wk-output .ba-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 32px}
+.wk-output .ba-row{grid-column:1 / -1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.wk-output .ba{margin:0}
+@media (max-width: 900px){
+  .wk-output .ba-list{grid-template-columns:minmax(0,1fr)}
+  .wk-output .ba-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+}
+
+/* つまみを動かせることを伝える（2026-10-31）：見出しの下の一文と、最初の1組の吹き出し */
+.wk-hint{display:flex;align-items:center;gap:12px;margin:-16px 0 32px;font-size:13px;letter-spacing:.04em;color:var(--muted)}
+.wk-hint span{font-family:var(--f-en);font-size:12px;letter-spacing:.1em;color:var(--cream);background:var(--accent-hl);padding:4px 10px;border-radius:999px}
+.ba-c-bubble{position:absolute;left:var(--pos);top:calc(50% + 34px);transform:translateX(-50%);white-space:nowrap;pointer-events:none;
+  font-size:11px;letter-spacing:.08em;color:var(--ink);background:var(--cream);padding:6px 12px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.16);transition:opacity .4s ease}
+.ba-c-bubble::before{content:"";position:absolute;left:50%;top:-5px;width:10px;height:10px;margin-left:-5px;background:var(--cream);transform:rotate(45deg)}
+.ba-compare.is-touched .ba-c-bubble{opacity:0}
+
+/* 学び：短い言葉を大きく、そのあとに文 */
+.wk-learning-catch{font-family:var(--f-heading);font-size:clamp(20px,2.2vw,28px);line-height:1.7;letter-spacing:.08em;color:var(--ink)}
+
+/* ---------- UBAKU の事例ページ（2026-10-31） ---------- */
+/* 表紙の写真の真ん中に、白い UBAKŪ のロゴ */
+.wk-cover{position:relative}
+.wk-cover .wk-cover-mark{position:absolute;left:50%;top:32%;width:min(42vw,560px);transform:translate(-50%,-50%);--logo-color:#fff;--logo-bar:#23A0DA;filter:drop-shadow(0 2px 16px rgba(0,0,0,.18))}
+/* 物語の中の「事業ごとの色」の図 */
+.wk-system{grid-template-columns:minmax(0,1fr);margin:0}
+.wk-system .vi{grid-column:auto}
+/* パソコン（ubaku.jp）とスマホ（UBAKU Letter）を並べる */
+.wk-devices{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:clamp(24px,4vw,64px);margin:0 0 clamp(56px,6vw,96px)}
+.wk-devices .wk-device{margin:0;width:100%}
+.wk-device--still .wk-device-screen img{animation:none;height:100%;object-fit:cover;object-position:top}
+.wk-phone{margin:0;width:clamp(150px,17vw,240px)}
+.wk-phone-screen{aspect-ratio:9 / 19;overflow:hidden;border:8px solid #1b1b1b;border-radius:30px;background:#fff}
+.wk-phone-screen img{width:100%;height:auto;display:block;animation:wk-phone-scroll 16s ease-in-out infinite alternate}
+@keyframes wk-phone-scroll{0%,12%{transform:translateY(0)}88%,100%{transform:translateY(calc(-100% + 100cqh))}}
+.wk-phone-screen{container-type:size}
+.wk-phone figcaption{margin-top:16px;text-align:center;font-family:var(--f-en);font-size:11px;letter-spacing:.2em;color:var(--on-green-sub)}
+@media (max-width: 640px){
+  .wk-cover .wk-cover-mark{width:68vw;top:28%}
+  .wk-devices{grid-template-columns:minmax(0,1fr)}
+  .wk-phone{justify-self:center;width:58vw}
+}
+@media (prefers-reduced-motion: reduce){
+  .wk-phone-screen img{animation:none}
+}
+
+/* 一覧：準備中の3つは淡いグレーの面に（2026-10-31。緑にすると下の Contact の緑と続いてしまうので、白 → グレー → 緑の順にする） */
+.wk-next.wk-band{margin-top:0;background:var(--kraft);color:inherit}
+.wk-next.wk-band .works-sub{border-bottom-color:var(--rule-short)}
+.wk-next.wk-band .works-sub-en{color:var(--accent-hl)}
+.wk-next.wk-band .works-sub-ja{color:var(--muted)}
+.wk-next .wk-contact-gap{display:none}
+
+/* 宇莫別荘の表紙（カーテンと椅子の写真）：縦長のスマホでは、椅子が切れないよう写真の右寄りを見せる（2026-10-31） */
+@media (max-width: 760px) {
+  .wk-cover--villa img { object-position: 78% 50%; }
+}
+
+/* Works 一覧（2026-10-31 mashuさん）
+   ・UBAKU の画面写真：枠の形に合わせて左右が切れ、ロゴの U が見えなかった → 画面の写真は切らずに全部見せ、枠の上下に収める
+   ・宇莫別荘の写真：上端をゆるい丘のカーブに（隣の ubaku.jp の画面の写真の曲線とそろえる） */
+.wk-feature-photo--shot{display:flex;align-items:center;justify-content:center}
+.wk-feature-photo--shot img{position:static;height:auto;object-fit:contain}   /* .photo img は上に重ねる置き方なので、ここだけ普通の置き方に戻して上下の真ん中へ */
+.wk-feature-photo--hill{border-radius:50% 50% 0 0 / 44px 44px 0 0}
+@media (max-width: 760px) {
+  .wk-feature-photo--hill{border-radius:50% 50% 0 0 / 24px 24px 0 0}
+}
+
+/* Design のページの Works 欄に置いた事例カード（2026-10-31）：見出しのすぐ下から始め、下は南邸の一文へつなぐ */
+.wk-list--in-design{padding-top:clamp(40px,5vw,72px);padding-bottom:0}
+.wk-all{margin-top:clamp(32px,4vw,56px)}
