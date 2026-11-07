@@ -608,6 +608,8 @@ footer .footer-logo::before,footer .footer-logo::after{-webkit-mask-position:lef
   .villa .photo{min-height:380px}
   .media-photo{min-height:300px}
   .villa,.media{gap:32px}
+  .villa{grid-template-columns:minmax(0,1fr)}   /* 縦並びのときは1列に（12列のままだと間の余白ぶん右へはみ出す） */
+  .villa .photo,.villa-text{grid-column:auto}
   .form{grid-template-columns:minmax(0,1fr)}
 }
 
@@ -793,19 +795,35 @@ h1,h2,h3,h4,.catch,.concept-catch,.work-catch,.contact-lead-title,.sec-head .asi
 /* =========================================================
    英語版（/en/）だけの指定。英字は Jost、字間は日本語より詰める
    ========================================================= */
-html[lang="en"] body{font-family:var(--f-title);font-weight:300}
+html[lang="en"]{--f-heading:var(--f-title);--f-body:var(--f-title);--f-serif-jp:var(--f-title)}   /* 見出しも本文も英字の書体に。宇莫別荘などの漢字は自動で日本語の書体になる */
+html[lang="en"] body{font-family:var(--f-title),'Noto Sans JP',sans-serif;font-weight:300}
+html[lang="en"] h1:not(.wk-name),html[lang="en"] h3,html[lang="en"] summary,html[lang="en"] .hero-lead,html[lang="en"] .sec-lead,html[lang="en"] .wk-catch,html[lang="en"] .wk-lead,html[lang="en"] .wk-learning-catch,html[lang="en"] .wk-question p,html[lang="en"] .reach-cap,html[lang="en"] .flow-label,html[lang="en"] .menu-cta{letter-spacing:.02em}
 html[lang="en"] .hero-copy h1,html[lang="en"] .concept-catch,html[lang="en"] .catch,html[lang="en"] .work-catch,html[lang="en"] .value h3,html[lang="en"] .ap-tag,html[lang="en"] .ap-t,html[lang="en"] .contact-lead-title,html[lang="en"] .sec-head .aside{font-family:var(--f-title);font-weight:300;letter-spacing:.02em}
 html[lang="en"] .body,html[lang="en"] .hero-copy p,html[lang="en"] .work-item p,html[lang="en"] .biz-extra,html[lang="en"] .ap-lead,html[lang="en"] .ap-b,html[lang="en"] .contact-lead p,html[lang="en"] .numbers-grid p,html[lang="en"] .numbers-note{letter-spacing:.015em;line-height:1.7}
-html[lang="en"] .body,html[lang="en"] .work-item p{font-size:15px}
+/* Jost は日本語より小さく細く見えるので、読む文字は少し大きくする */
+html[lang="en"] .body,html[lang="en"] .work-item p,html[lang="en"] .biz-extra,html[lang="en"] .contact-lead p:not(.contact-lead-title){font-size:16px}
+html[lang="en"] .catch,html[lang="en"] .work-catch{font-size:20px;line-height:1.4}
+html[lang="en"] .label,html[lang="en"] .member .label,html[lang="en"] .more,html[lang="en"] .field label,html[lang="en"] .agree{font-size:14px}
+html[lang="en"] .hero-copy p,html[lang="en"] .hero-lead{font-size:16px}
+html[lang="en"] .ap-b{font-size:17px}
+html[lang="en"] .req{font-size:12px}
+html[lang="en"] .policy-item p,html[lang="en"] .policy-item li,html[lang="en"] .sub-lead,html[lang="en"] .card .body,html[lang="en"] .faq p,html[lang="en"] #services p{font-size:16px;line-height:1.7;letter-spacing:.015em}
+html[lang="en"] .body,html[lang="en"] .work-item p,html[lang="en"] .biz-extra,html[lang="en"] .ap-lead,html[lang="en"] .ap-b,html[lang="en"] .contact-lead p{text-wrap:pretty}   /* 最後の行が1語だけにならないように */
 html[lang="en"] .sec-head .aside{font-size:15px}
 html[lang="en"] .ap-tag{font-size:min(3.8vw,56px,8vh);line-height:1.2}
-html[lang="en"] .ap-en{font-family:var(--f-heading);font-style:normal;letter-spacing:.14em}
+html[lang="en"] .ap-en{font-family:'Murecho','Noto Sans JP',sans-serif;font-style:normal;letter-spacing:.14em}
 html[lang="en"] .ap-t{font-size:clamp(30px,3vw,42px);letter-spacing:.01em}
 html[lang="en"] .lbl-jp{font-family:var(--f-title)}
 html[lang="en"] .num small{letter-spacing:.02em}
+html[lang="en"] footer > div:first-child > span:first-of-type{white-space:normal}
 .lang-switch{white-space:nowrap}   /* JA / EN の切り替え */
 .lang-switch [aria-current]{color:var(--accent-hl)}
+/* スマホのメニューでは、JA / EN を1行に保つ（ほかの項目のように縦に割らない） */
+@media (max-width:640px){
+  .nav.is-open ul .lang-switch a,.topbar-nav .lang-switch a{display:inline-block;padding:12px 14px 12px 0}
+}
 @media (max-width: 760px){
   html[lang="en"] .ap-tag{font-size:min(7.2vw,6vh)}
   html[lang="en"] .ap-t{font-size:28px}
+  html[lang="en"] .more,html[lang="en"] .note-links .more{white-space:normal}   /* 英語のリンクは長いので、スマホでは折り返す */
 }

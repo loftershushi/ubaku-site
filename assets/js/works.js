@@ -7,6 +7,7 @@
    ========================================================= */
 (function () {
   'use strict';
+  var EN = document.documentElement.lang === 'en';   // 英語版のページかどうか
 
   // ---------- ビフォー・アフターを見比べる形に ----------
   var compares = [];
@@ -25,7 +26,7 @@
       '<div class="ba-c-before"><img alt=""></div>' +
       '<span class="ba-c-tag ba-c-tag--b">Before</span><span class="ba-c-tag ba-c-tag--a">After</span>' +
       '<span class="ba-c-handle" aria-hidden="true"><i></i></span>' +
-      '<input class="ba-c-range" type="range" min="0" max="100" value="50" aria-label="改修前と改修後を見比べる（左右に動かす）">';
+      '<input class="ba-c-range" type="range" min="0" max="100" value="50" aria-label="' + (EN ? 'Compare before and after (drag left and right)' : '改修前と改修後を見比べる（左右に動かす）') + '">';
     var a = box.querySelector('.ba-c-after');
     var b = box.querySelector('.ba-c-before img');
     a.src = after.src; a.alt = after.alt; a.loading = 'lazy';
@@ -43,7 +44,7 @@
   // ・画面に入ったとき、つまみが一度だけ左右に揺れてから真ん中に戻る
   // ・最初の1組だけ、つまみの横に「動かして比べる」の吹き出しを出す（触ったら消える）
   if (compares.length) {
-    compares[0].insertAdjacentHTML('beforeend', '<span class="ba-c-bubble" aria-hidden="true">動かして比べる</span>');
+    compares[0].insertAdjacentHTML('beforeend', '<span class="ba-c-bubble" aria-hidden="true">' + (EN ? 'Drag to compare' : '動かして比べる') + '</span>');
     var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var seen = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {

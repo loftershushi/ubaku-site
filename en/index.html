@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SPJCZM68CH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SPJCZM68CH');
+</script>
+<script>/* オープニングを出すかどうかを、表示の前に決める（ページを開くたび毎回。?nointro のときと「動きを減らす」設定の人には出さない） */try{if(location.search.indexOf("nointro")<0&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("is-opening")}}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UBAKU | Regional Producers in Biei and Higashikawa, Hokkaido</title>
+<meta name="description" content="Moved by This Place. Moving This Place Forward. UBAKU is a team of regional producers in Biei and Higashikawa, Hokkaido. We run the private villa UBAKU Villa 宇莫別荘, offer renovation design and branding, consult on lodging and real estate, and welcome conversations about moving here.">
+<link rel="canonical" href="https://ubaku.jp/en/">
+<link rel="alternate" hreflang="ja" href="https://ubaku.jp/">
+<link rel="alternate" hreflang="en" href="https://ubaku.jp/en/">
+<link rel="alternate" hreflang="x-default" href="https://ubaku.jp/">
+
+<!-- SNSでシェアされたときの表示（ogp.jpg は 1200×630 で用意する） -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="UBAKU">
+<meta property="og:title" content="UBAKU | Regional Producers in Biei and Higashikawa, Hokkaido">
+<meta property="og:description" content="Moved by This Place. Moving This Place Forward. UBAKU is a team of regional producers in Biei and Higashikawa, Hokkaido. We run the private villa UBAKU Villa 宇莫別荘, offer renovation design and branding, consult on lodging and real estate, and welcome conversations about moving here.">
+<meta property="og:url" content="https://ubaku.jp/en/">
+<meta property="og:image" content="https://ubaku.jp/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- ブラウザのタブ・スマホのホーム画面のアイコン（ロゴの最後の文字「Ū」。黒い U に東川町の青の横線） -->
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../assets/img/icon-512.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+<!-- フォント（Google Fonts） -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:ital,wght@0,200;0,300;0,400;1,300&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
+
+<!-- デザイン（色・フォント・余白はすべてこのファイルで管理） -->
+<link rel="stylesheet" href="../assets/css/style.css?v=202611072024">
+<!-- UBAKU Letter（メルマガ）は日本語なので、英語版には出さない -->
+
+<!-- Googleに会社情報を伝えるデータ（構造化データ）
+     ロゴ画像と note のURLが決まったら "logo" と sameAs に追加する -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "UBAKU",
+  "url": "https://ubaku.jp/en/",
+  "logo": "https://ubaku.jp/assets/img/icon-512.png",
+  "description": "Moved by This Place. Moving This Place Forward. A team of regional producers based in Biei and Higashikawa, working in the towns around the Daisetsuzan mountains in Hokkaido.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "Hokkaido",
+    "postalCode": "071-0212",
+    "addressLocality": "Biei-cho, Kamikawa-gun",
+    "streetAddress": "4-10-8-103 Asahimachi"
+  },
+  "sameAs": [
+    "https://www.instagram.com/ubaku_jp/",
+    "https://note.com/loftershushi",
+    "https://note.com/ubaku_jp",
+    "https://note.com/ubakuvilla",
+    "https://ubakuvilla.com"
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ======================= オープニング（大雪山の稜線） =======================
+     ページを開いたときに一度だけ流れる（同じタブで2回目以降・動きを減らす設定では出ない）
+     数字が000→100と進み、稜線が描かれ、「Find your place.」「Live your time.」の2行が1文字ずつ浮かび上がり、最後に幕のように上がる
+     JSが動かないときは hidden のまま（表示されない） -->
+<div class="opening" id="opening" hidden aria-hidden="true">
+  <!-- 右上：大雪山のふもと（東川町）のいまの天気。main.js が Open-Meteo から読んで入れる。読めなければ何も出さない（2026-10-31。旧：左上のロゴ・右上の経度緯度） -->
+  <span class="op-coord op-weather" aria-hidden="true"></span>
+  <!-- 英文は1行・すべて斜体。動詞だけが1文字ずつ下から入って上へ抜け、Find → Build → Live と入れ替わる（2026-10-17 試作 B に決定）。
+       .op-size は一番長い「Build」の幅をとるための見えない文字（後ろの your place. が動かないように） -->
+  <p class="op-big"><span class="op-verb"><span class="op-size">Build</span><i>Find</i><i>Build</i><i>Live</i></span><span class="op-rest">your place.</span></p>
+  <svg class="op-ridge" viewBox="0 0 1000 120">
+    <defs>
+      <linearGradient id="op-mt" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="700">
+        <stop class="op-stop1" offset="0"/><stop class="op-stop2" offset=".55"/><stop class="op-stop3" offset="1"/>
+      </linearGradient>
+    </defs>
+    <path class="op-shade" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4 L1000 4000 L0 4000 Z"/>
+    <path class="op-line" pathLength="1" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4"/>
+  </svg>
+  <span class="op-label"><span class="op-row"><b>Asahidake</b><small>2,291m</small></span><i></i></span>
+  <span class="op-count">000</span>
+</div>
+
+<!-- ======================= 固定メニュー（細い帯） =======================
+     写真のあたりまで下にスクロールすると上に出る。下に読み進めると隠れ、上に戻すとまた出る（動きは main.js）
+     スマホは右側が「Menu」ボタンになり、押すと一覧が開く -->
+<div class="topbar" id="topbar">
+  <div class="topbar-inner wrap">
+    <a class="topbar-logo wordmark" href="#" aria-label="UBAKU (back to top)"></a>
+    <button type="button" class="topbar-menu" aria-expanded="false" aria-controls="topbar-list">Menu</button>
+    <nav class="topbar-nav" aria-label="Menu">
+      <ul id="topbar-list">
+        <li><a href="#values">Concept</a></li>
+        <li><a href="#work">What We Do</a></li>
+        <li><a href="#approach">Our Approach</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#journal">Journal</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="lang-switch"><a href="../" lang="ja" hreflang="ja">JA</a><span aria-hidden="true"> / </span><span aria-current="true">EN</span></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- ======================= ① ヒーロー ======================= -->
+<header class="hero wrap">
+  <nav class="nav intro" style="--d:0s" aria-label="Main menu">
+    <span class="nav-place">Biei / Higashikawa, Hokkaido</span>
+    <ul>
+      <li><a href="#values">Concept</a></li>
+      <li><a href="#work">What We Do</a></li>
+      <li><a href="#approach">Our Approach</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#journal">Journal</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="lang-switch"><a href="../" lang="ja" hreflang="ja">JA</a><span aria-hidden="true"> / </span><span aria-current="true">EN</span></li>
+    </ul>
+  </nav>
+
+  <div class="hero-main">
+    <a class="hero-mark wordmark intro" href="#" style="--d:.15s" aria-label="UBAKU (back to top)"></a>
+    <div class="hero-copy intro" style="--d:.5s">
+      <!-- h1はこの1つだけ（文言は固定） -->
+      <h1>At the foot of Daisetsuzan. <br class="sp-br"><em class="hl">Find. Stay. Return. Live.</em></h1>
+      <p><span class="phrase">Moved by This Place. Moving This Place Forward.</span> <span class="phrase">Regional producers in Biei and Higashikawa, Hokkaido</span></p>
+    </div>
+  </div>
+
+  <!-- スライドの切り替えボタン（スライド2・3の文言は見出しにしない） -->
+  <div class="slide-tabs intro" style="--d:1.6s" role="tablist" aria-label="Switch hero photo">
+    <button type="button" role="tab" id="tab-0" aria-controls="slide-0" aria-selected="true"><span class="tab-long">01　First snow on Daisetsuzan National Park</span><span class="tab-short">01 Peaks</span></button>
+    <button type="button" role="tab" id="tab-1" aria-controls="slide-1" aria-selected="false" tabindex="-1"><span class="tab-long">02　The forest from a window of UBAKU Villa 宇莫別荘</span><span class="tab-short">02 Forest</span></button>
+    <button type="button" role="tab" id="tab-2" aria-controls="slide-2" aria-selected="false" tabindex="-1"><span class="tab-long">03　Spring on the hills of Biei</span><span class="tab-short">03 Hills</span></button>
+  </div>
+
+  <!-- パノラマ写真（上端を丘の稜線の形で切り抜く）
+       写真は 素材 フォルダの元写真から tools/make_images.py で作る（画面の幅に合わせて3種類。ブラウザがちょうどよい1枚を選ぶ）
+       1枚目だけ loading="lazy" を付けない -->
+  <div class="panorama intro" style="--d:1s">
+    <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 54 C 320 92, 620 90, 880 62 C 1080 40, 1280 42, 1440 64 L1440 0 Z"/></svg>
+    <!-- 写真の sizes（2026-10-26）：枠いっぱいに切り抜いて表示するので、実際に表示される幅は「画面の幅」より広い。
+         スマホ（正方形の枠）は「画面の幅×写真の横長の比率」、PCは「枠の高さ×比率」と「枠の幅」の大きいほう。これでブラウザが十分な大きさの画像を選ぶ -->
+    <div class="slide photo is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0"><img src="../assets/img/hero-01-2400.webp" srcset="../assets/img/hero-01-1600.webp 1600w, ../assets/img/hero-01-2400.webp 2400w, ../assets/img/hero-01-3200.webp 3200w, ../assets/img/hero-01-4000.webp 4000w" sizes="(max-width: 640px) 254vw, max(calc(100vw - 80px), calc((100vh - 220px) * 2.54))" alt="Daisetsuzan National Park under first snow, with the hills of Biei" width="3200" height="1198" fetchpriority="high"></div>
+    <div class="slide photo ph2" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true"><img src="../assets/img/hero-02-2400.webp" srcset="../assets/img/hero-02-1600.webp 1600w, ../assets/img/hero-02-2400.webp 2400w, ../assets/img/hero-02-3200.webp 3200w" sizes="(max-width: 640px) 284vw, max(calc(100vw - 80px), calc((100vh - 220px) * 2.84))" alt="The forest seen from a window of UBAKU Villa 宇莫別荘" width="3200" height="1128" loading="lazy"></div>
+    <div class="slide photo ph3" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true"><img src="../assets/img/hero-03-2400.webp" srcset="../assets/img/hero-03-1600.webp 1600w, ../assets/img/hero-03-2400.webp 2400w, ../assets/img/hero-03-3200.webp 3200w" sizes="(max-width: 640px) 280vw, max(calc(100vw - 80px), calc((100vh - 220px) * 2.8))" alt="A single tree on the hills of Biei in spring" width="3200" height="1143" loading="lazy"></div>
+  </div>
+</header>
+
+<main>
+
+<!-- ======================= ② Concept ＋ Values（横並び：左＝Concept図、右＝Values） =======================
+     3つの円が、上（ひと）→ 右下（場所）→ 左下（土地）→ 上 … とぐるりと順に重なる
+     白線は「上に重なっている円のふちのすぐ外側」にだけ引く（半径219＝215＋線の太さの半分） -->
+<section id="values" class="values wrap">
+  <div class="cv-grid">
+    <div class="cv-concept">
+      <div class="sec-head">
+        <h2 class="display">Concept</h2>
+        <span class="aside">What guides UBAKU</span>
+      </div>
+      <div class="concept">
+        <p class="concept-catch"><em class="hl">Connecting</em> people,<br>land, and place.</p>
+        <div class="tomoe">
+          <svg viewBox="110 20 680 700" role="img" aria-labelledby="tomoe-title">
+            <title id="tomoe-title">Three overlapping circles for people, land, and place, with UBAKU at the center</title>
+            <defs>
+              <clipPath id="clip-top"><circle cx="450" cy="255" r="215"/></clipPath>
+              <clipPath id="clip-br"><circle cx="565" cy="455" r="215"/></clipPath>
+              <clipPath id="clip-bl"><circle cx="335" cy="455" r="215"/></clipPath>
+            </defs>
+            <g class="shapes">
+              <!-- ① 色の面 -->
+              <circle class="fill-top" cx="450" cy="255" r="215"/>
+              <circle class="fill-br" cx="565" cy="455" r="215"/>
+              <circle class="fill-bl" cx="335" cy="455" r="215"/>
+              <g clip-path="url(#clip-bl)"><circle class="fill-br" cx="565" cy="455" r="215"/></g>
+              <g clip-path="url(#clip-br)"><circle class="fill-top" cx="450" cy="255" r="215"/></g>
+              <!-- ② 白線（上に重なっている円のふちだけ） -->
+              <g clip-path="url(#clip-br)"><circle class="gap" cx="450" cy="255" r="219"/></g>
+              <g clip-path="url(#clip-bl)"><circle class="gap" cx="565" cy="455" r="219"/></g>
+              <g clip-path="url(#clip-top)"><circle class="gap" cx="335" cy="455" r="219"/></g>
+              <!-- ③ 3つが重なる真ん中は地色で抜く -->
+              <g clip-path="url(#clip-top)"><g clip-path="url(#clip-br)"><g clip-path="url(#clip-bl)">
+                <rect class="fill-center" x="100" y="0" width="700" height="760"/>
+              </g></g></g>
+            </g>
+            <g class="lbl lbl-top"><text class="lbl-jp" x="450" y="196">People</text></g>
+            <g class="lbl lbl-bl"><text class="lbl-jp" x="268" y="506">Land</text></g>
+            <g class="lbl lbl-br"><text class="lbl-jp" x="632" y="506">Place</text></g>
+            <g class="lbl lbl-center"><text class="lbl-en" x="450" y="374">Connect</text><svg class="lbl-logo" x="372" y="391" width="156" height="28.4" viewBox="36 170 330 60" role="img" aria-label="UBAKU"><g class="logo-letters"><path d="M69.34,193.83c-0.04-2.78-0.14-4.7-0.29-5.75c0.43,0.07,0.83,0.14,1.22,0.19c0.39,0.05,0.78,0.08,1.16,0.08 c0.5,0,1.09-0.09,1.75-0.27c-0.12,1.27-0.23,2.78-0.35,4.53c-0.12,1.75-0.21,3.63-0.29,5.64c-0.08,2.01-0.16,4.07-0.23,6.18 c-0.08,2.12-0.14,4.17-0.17,6.15c-0.04,2.42-0.44,4.59-1.19,6.51c-0.76,1.92-1.83,3.54-3.23,4.88c-1.4,1.34-3.11,2.35-5.15,3.04 s-4.37,1.03-7.01,1.03c-5.82,0-10.05-1.23-12.68-3.69c-2.64-2.46-3.96-6.34-3.96-11.66c0-1.7,0.05-3.21,0.15-4.53 c0.1-1.32,0.15-2.67,0.15-4.04c0-3.04-0.04-5.73-0.12-8.08c-0.08-2.35-0.16-4.34-0.23-5.97c0.47,0.07,0.97,0.14,1.51,0.19 c0.54,0.05,1.05,0.08,1.51,0.08c0.43,0,0.84-0.03,1.25-0.08c0.41-0.05,0.82-0.12,1.25-0.19c-0.08,0.8-0.16,1.83-0.23,3.12 c-0.08,1.28-0.16,2.74-0.23,4.37c-0.08,1.63-0.14,3.38-0.17,5.26c-0.04,1.88-0.06,3.83-0.06,5.86c0,1.23,0.02,2.5,0.06,3.82 c0.04,1.32,0.17,2.6,0.41,3.85c0.23,1.25,0.61,2.44,1.13,3.58c0.52,1.14,1.27,2.13,2.24,2.98c0.97,0.85,2.19,1.52,3.67,2.01 c1.47,0.49,3.3,0.73,5.47,0.73c2.13,0,3.93-0.29,5.38-0.87c1.45-0.58,2.65-1.34,3.58-2.28c0.93-0.94,1.66-2.02,2.18-3.25 c0.52-1.23,0.9-2.51,1.13-3.85c0.23-1.34,0.37-2.68,0.41-4.01c0.04-1.34,0.06-2.57,0.06-3.69 C69.4,200.57,69.38,196.61,69.34,193.83z"/><path d="M117.94,195.02c-0.1-2.31-0.2-4.63-0.32-6.94c1.01,0.07,2.04,0.14,3.08,0.19c1.05,0.05,2.07,0.08,3.08,0.08 c1.01,0,2.04-0.04,3.08-0.14c1.05-0.09,2.07-0.14,3.08-0.14c1.67,0,3.24,0.12,4.71,0.35c1.47,0.24,2.77,0.65,3.9,1.25 c1.12,0.6,2.02,1.4,2.68,2.41c0.66,1.01,0.99,2.28,0.99,3.8c0,2.68-0.9,4.77-2.71,6.29c-1.8,1.52-4.16,2.59-7.07,3.2v0.11 c3.45,0.15,6.18,0.92,8.17,2.33c2,1.41,3,3.67,3,6.78c0,2.03-0.45,3.72-1.34,5.1c-0.89,1.37-2.06,2.49-3.49,3.34 c-1.44,0.85-3.02,1.45-4.74,1.79c-1.73,0.34-3.44,0.51-5.15,0.51c-0.93,0-1.87-0.02-2.82-0.05c-0.95-0.04-1.89-0.05-2.82-0.05 c-0.93,0-1.87,0-2.82,0c-0.95,0-1.89,0.04-2.82,0.11c0.12-2.31,0.22-4.62,0.32-6.91c0.1-2.3,0.15-4.64,0.15-7.02v-9.33 C118.09,199.69,118.04,197.34,117.94,195.02z M130.04,204.35c1.34-0.25,2.53-0.68,3.58-1.28c1.05-0.6,1.89-1.39,2.53-2.39 c0.64-0.99,0.96-2.25,0.96-3.77c0-1.48-0.29-2.67-0.87-3.55c-0.58-0.89-1.32-1.57-2.21-2.06c-0.89-0.49-1.9-0.81-3.03-0.98 c-1.13-0.16-2.25-0.24-3.37-0.24c-1.01,0-1.86,0.03-2.56,0.08c-0.7,0.05-1.32,0.12-1.86,0.19c-0.08,1.73-0.16,3.45-0.23,5.15 c-0.08,1.7-0.12,3.42-0.12,5.15v4.07H126C127.36,204.73,128.71,204.6,130.04,204.35z M122.98,217.75c0.08,1.81,0.15,3.63,0.23,5.48 c0.74,0.07,1.61,0.14,2.62,0.19c1.01,0.05,2.04,0.08,3.08,0.08c1.24,0,2.43-0.2,3.58-0.6c1.14-0.4,2.14-0.98,3-1.76 c0.85-0.78,1.53-1.74,2.04-2.87c0.5-1.14,0.76-2.43,0.76-3.88c0-1.55-0.3-2.83-0.9-3.82c-0.6-0.99-1.46-1.77-2.59-2.33 c-1.13-0.56-2.47-0.95-4.04-1.17s-3.33-0.33-5.26-0.33h-2.62v5.53C122.86,214.11,122.9,215.94,122.98,217.75z"/><path d="M217.34,225.34c-0.54-0.07-1.06-0.11-1.54-0.11c-0.49,0-1,0-1.54,0c-0.54,0-1.06,0-1.54,0 c-0.49,0-1,0.04-1.54,0.11c-0.27-0.83-0.64-1.83-1.11-3.01c-0.46-1.17-0.98-2.4-1.54-3.69c-0.56-1.28-1.13-2.58-1.72-3.9 c-0.58-1.32-1.13-2.58-1.63-3.77c-1.24-0.03-2.5-0.06-3.78-0.08c-1.28-0.02-2.56-0.03-3.84-0.03c-1.2,0-2.39,0.01-3.55,0.03 c-1.16,0.02-2.35,0.05-3.55,0.08c-1.24,2.82-2.37,5.5-3.37,8.05c-1.01,2.55-1.77,4.65-2.27,6.32c-0.66-0.07-1.38-0.11-2.15-0.11 c-0.78,0-1.49,0.04-2.15,0.11c3.14-6.33,6.21-12.62,9.19-18.87c2.99-6.25,5.99-12.62,9.02-19.09h1.11c0.93,2.1,1.94,4.37,3.03,6.81 c1.08,2.44,2.19,4.91,3.32,7.4c1.12,2.49,2.25,4.97,3.37,7.43c1.12,2.46,2.18,4.75,3.17,6.86c0.99,2.11,1.88,4,2.68,5.67 C216.18,223.2,216.83,224.47,217.34,225.34z M191.57,208.47c1.01,0,2.06,0.02,3.14,0.05c1.09,0.04,2.13,0.05,3.14,0.05 c1.09,0,2.17-0.01,3.26-0.03c1.09-0.02,2.17-0.04,3.26-0.08l-6.46-13.77L191.57,208.47z"/><path d="M257.62,218.5c0.1-2.31,0.15-4.66,0.15-7.05v-9.33c0-2.39-0.05-4.73-0.15-7.02c-0.1-2.3-0.2-4.64-0.32-7.02 c0.5,0.07,0.99,0.14,1.45,0.19c0.46,0.05,0.93,0.08,1.4,0.08c0.46,0,0.93-0.03,1.4-0.08c0.47-0.05,0.95-0.12,1.46-0.19 c-0.12,2.39-0.22,4.73-0.32,7.02c-0.1,2.3-0.15,4.64-0.15,7.02v2.98c0,0.29,0.12,0.43,0.35,0.43c0.15,0,0.43-0.16,0.81-0.49 c1.36-1.08,2.78-2.31,4.28-3.69c1.49-1.37,3-2.8,4.51-4.28c1.51-1.48,3.01-2.99,4.48-4.53c1.47-1.54,2.89-3.03,4.25-4.47 c0.43,0.07,0.83,0.14,1.22,0.19c0.39,0.05,0.78,0.08,1.16,0.08c0.46,0,0.93-0.03,1.4-0.08c0.46-0.05,0.93-0.12,1.4-0.19 c-1.36,1.08-2.89,2.37-4.6,3.85c-1.71,1.48-3.42,3-5.15,4.56c-1.73,1.55-3.37,3.08-4.95,4.58c-1.57,1.5-2.88,2.81-3.93,3.93 c3.14,3.29,6.31,6.64,9.51,10.06c3.2,3.42,6.45,6.84,9.74,10.28c-0.58-0.07-1.16-0.11-1.75-0.11c-0.58,0-1.16,0-1.75,0 c-0.54,0-1.08,0-1.6,0s-1.06,0.04-1.6,0.11c-1.4-1.48-2.94-3.18-4.62-5.1c-1.69-1.92-3.34-3.77-4.95-5.56 c-1.61-1.79-3.06-3.4-4.36-4.83c-1.3-1.43-2.26-2.43-2.88-3.01c-0.31-0.29-0.54-0.43-0.7-0.43c-0.2,0-0.29,0.11-0.29,0.33v4.72 c0,2.39,0.05,4.74,0.15,7.05c0.1,2.31,0.2,4.59,0.32,6.83c-0.89-0.07-1.84-0.11-2.85-0.11c-1.01,0-1.96,0.04-2.85,0.11 C257.42,223.1,257.53,220.82,257.62,218.5z"/><path d="M357.31,193.83c-0.04-2.78-0.14-4.7-0.29-5.75c0.43,0.07,0.83,0.14,1.22,0.19c0.39,0.05,0.78,0.08,1.16,0.08 c0.5,0,1.08-0.09,1.74-0.27c-0.12,1.27-0.23,2.78-0.35,4.53c-0.12,1.75-0.21,3.63-0.29,5.64c-0.08,2.01-0.16,4.07-0.23,6.18 c-0.08,2.12-0.14,4.17-0.17,6.15c-0.04,2.42-0.44,4.59-1.19,6.51c-0.76,1.92-1.83,3.54-3.23,4.88c-1.4,1.34-3.11,2.35-5.15,3.04 s-4.37,1.03-7.01,1.03c-5.82,0-10.04-1.23-12.68-3.69c-2.64-2.46-3.96-6.34-3.96-11.66c0-1.7,0.05-3.21,0.15-4.53 c0.1-1.32,0.15-2.67,0.15-4.04c0-3.04-0.04-5.73-0.12-8.08c-0.08-2.35-0.15-4.34-0.23-5.97c0.46,0.07,0.97,0.14,1.51,0.19 c0.54,0.05,1.05,0.08,1.51,0.08c0.43,0,0.84-0.03,1.25-0.08c0.41-0.05,0.82-0.12,1.25-0.19c-0.08,0.8-0.15,1.83-0.23,3.12 c-0.08,1.28-0.16,2.74-0.23,4.37c-0.08,1.63-0.14,3.38-0.17,5.26c-0.04,1.88-0.06,3.83-0.06,5.86c0,1.23,0.02,2.5,0.06,3.82 c0.04,1.32,0.17,2.6,0.41,3.85c0.23,1.25,0.61,2.44,1.13,3.58c0.52,1.14,1.27,2.13,2.24,2.98c0.97,0.85,2.19,1.52,3.66,2.01 c1.47,0.49,3.3,0.73,5.47,0.73c2.13,0,3.93-0.29,5.38-0.87c1.45-0.58,2.65-1.34,3.58-2.28c0.93-0.94,1.66-2.02,2.18-3.25 c0.52-1.23,0.9-2.51,1.13-3.85c0.23-1.34,0.37-2.68,0.41-4.01c0.04-1.34,0.06-2.57,0.06-3.69 C357.36,200.57,357.34,196.61,357.31,193.83z"/></g><rect class="logo-bar" x="327.23" y="173.96" width="33.51" height="4.72"/></svg></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="cv-values">
+      <div class="sec-head">
+        <h2 class="display">Values</h2>
+        <span class="aside">What matters to us</span>
+      </div>
+      <div class="values-grid">
+        <div class="value">
+          <p class="value-head"><span class="en label">01</span></p>
+          <h3>Editing the Local.</h3>
+          <p class="body">Fields, empty houses, the skills of local people. We take what is already here and connect it in new ways.</p>
+        </div>
+        <div class="value">
+          <p class="value-head"><span class="en label">02</span></p>
+          <h3>Life, with Margin.</h3>
+          <p class="body">No overfilling, no rushing. We make room for the rhythm of this land.</p>
+        </div>
+        <div class="value">
+          <p class="value-head"><span class="en label">03</span></p>
+          <h3>Right Beside You.</h3>
+          <p class="body">Moving here, opening a business, building a life that lasts. We think it through with you and support you along the way.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ③ What We Do（深緑・上端に稜線） ======================= -->
+<section id="work" class="dark">
+  <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 50 C 220 100, 420 100, 640 60 S 1000 10, 1200 50 S 1380 80, 1440 60 L1440 0 Z"/></svg>
+  <div class="work wrap">
+    <div class="sec-head">
+      <h2 class="display">What We Do</h2>
+      <span class="aside">Six activities</span>
+    </div>
+
+    <!-- 01〜03：動いている事業（写真つき・3つ並び。2026-10-16 に Business のセクションをここへまとめた）
+         3つとも「写真 → 札 → 事業名 → キャッチ → 本文 → 下に1行 → リンク」の同じ形。本文の文字数はおよそそろえる -->
+    <div class="biz3">
+      <article id="villa">
+        <div class="photo zoom"><img src="../assets/img/villa.webp" alt="The wooden sign at the entrance of UBAKU Villa 宇莫別荘" width="2000" height="1333" loading="lazy"></div>
+        <div class="biz-body lift-card">   <!-- マウスを乗せると、この文字の部分だけが少し浮く -->
+          <span class="label">Stay</span>
+          <h3 class="biz-name">UBAKU Villa <span class="biz-name-jp">宇莫別荘</span></h3>
+          <p class="catch">A private villa with room to breathe.</p>
+          <p class="body">One group a day in Naka-Ubakubetsu, Biei. A former farmhouse built in 1968 and passed down for over half a century, fully renovated and opened in January 2026. Up to 10 guests have the whole house on a site of about 1,800 m². About 18 minutes by car from Asahikawa Airport, about 10 minutes by car from Biei Station.</p>
+          <p class="biz-extra"><span>UBAKU Villa 南邸 | Coming soon</span>A second villa, a 10-minute walk from Biei Station, is in preparation.</p>
+                    <a class="more" href="https://ubakuvilla.com" target="_blank" rel="noopener">Visit the UBAKU Villa 宇莫別荘 website</a>
+        </div>
+      </article>
+
+      <article id="design">
+        <div class="photo zoom"><img src="../assets/img/design.webp" alt="Flowers and a wooden card stand" width="2000" height="1333" loading="lazy"></div>
+        <div class="biz-body lift-card">   <!-- マウスを乗せると、この文字の部分だけが少し浮く -->
+          <span class="label">Design</span>
+          <h3 class="biz-name">UBAKU Design</h3>
+          <p class="catch">Buildings and brands, true to their place.</p>
+          <p class="body">Design supervision for renovating older buildings, and branding (visual design and web design) for lodgings and shops. We build on the strengths of each building and the story of its land, and work with you from the first concept to the finished result, keeping everything in one consistent world.</p>
+          <p class="biz-extra">We also take on renovations of homes, shops, and offices, and branding for shops and companies.</p>
+          <a class="more" href="design/">See our renovation and brand work</a>
+        </div>
+      </article>
+
+      <article id="consulting">
+        <div class="photo zoom"><img src="../assets/img/consulting.webp" alt="A book on Aalto on a round wooden table" width="2000" height="1333" loading="lazy"></div>
+        <div class="biz-body lift-card">   <!-- マウスを乗せると、この文字の部分だけが少し浮く -->
+          <span class="label">Consult</span>
+          <h3 class="biz-name">UBAKU Consulting</h3>
+          <p class="catch">Lodging and real estate, built to work.</p>
+          <p class="body">From opening and running a lodging business to real estate development, investment property, and new business launches. We pair a sharp eye for the numbers from urban income property with a ground-level sense from opening a villa in rural Japan. Available across Japan, not only in Hokkaido.</p>
+          <p class="biz-extra">Our support methods are developed and tested in UBAKU Lab, the small lab within our team.</p>
+          <a class="more" href="consulting/">Learn more about consulting</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- 04〜06：これからの仕事（上に横長の大雪山の写真1枚＋3つ並び） -->
+    <div class="photo work-wide" id="work-wide"><img src="../assets/img/media.webp" alt="Snow-covered Daisetsuzan with the hills and fields of Biei" width="2000" height="1107" loading="lazy"></div>
+    <div class="work-grid">
+      <div class="work-item">
+        <!-- 04〜06：これからの領域。名前の決まっていないブランド・拠点は書かない（2026-10-31 改善方針 Ver.2） -->
+        <span class="label">Market</span>
+        <h3 class="work-catch">Sharing the gifts of the northern land.</h3>
+        <p>Vegetables from the fields of Biei and Higashikawa, taken beyond these towns together with their growers.</p>
+        <span class="en badge">Coming soon</span>
+      </div>
+      <div class="work-item">
+        <span class="label">Media</span>
+        <h3 class="work-catch">Stories from the foot of the mountains.</h3>
+        <p>The people of Biei and Higashikawa, and the everyday life of this land.</p>
+        <span class="en badge">Coming soon</span>
+      </div>
+      <div class="work-item">
+        <span class="label">Place</span>
+        <h3 class="work-catch">New possibilities from places that already exist.</h3>
+        <p>Making use of empty houses and existing buildings, we imagine places where something new can begin.</p>
+        <span class="en badge">Coming soon</span>
+      </div>
+    </div>
+    <!-- 移住・二拠点のご相談の入口（2026-10-31。Live｜住む の欄をなくしたかわりに、6つの活動の下に吹き出しで。押すと Contact へ） -->
+    <a class="live-bubble js-reveal" href="#contact"><span class="en live-bubble-en">Live</span><span class="live-bubble-ja">Thinking of moving here, or living between two places? Talk to us.</span><span class="en live-bubble-go">Contact →</span></a>
+  </div>
+</section>
+
+<!-- ======================= Our Approach（雪の写真の上で、スクロールに合わせて大雪山の稜線が描かれる。2026-11-07） =======================
+     稜線の線はイントロと同じデータ。線が 01→02→03 を通るたびに右の文が切り替わる（動きは main.js の「Our Approach」） -->
+<section id="approach" class="ap-sec" aria-label="Our Approach">
+  <div class="ap-stage">
+    <div class="ap-snow"></div>
+    <!-- 上端の丘の輪郭（丘より上＝前の What We Do の淡いグレー） -->
+    <svg class="ap-hill" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 88 C 280 88, 460 10, 760 14 S 1200 92, 1440 52 L1440 0 Z"/></svg>
+    <div class="ap-in wrap">
+      <div class="sec-head">
+        <h2 class="display">Our Approach</h2>
+        <span class="aside">How we stand with this place</span>
+      </div>
+      <div class="ap-grid">
+        <div class="ap-title">
+          <p class="ap-tag"><span class="phrase"><em>Moved</em> by This Place.</span><br><span class="phrase"><em>Moving</em> This Place Forward.</span></p>
+          <p class="ap-en" lang="ja">まちを想い、まちを動かす</p>
+        </div>
+        <div class="ap-panels">
+          <div class="ap-panel is-on"><p class="ap-lead">Biei and Higashikawa sit at the foot of the Daisetsuzan mountains in central Hokkaido. We want them to become richer, more attractive places. We are both players, running our own businesses here, and producers, creating new projects with local people and those who want to try something here.</p></div>
+          <div class="ap-panel"><p class="ap-no">01</p><h3 class="ap-t">Build Our Own.</h3><p class="ap-b">We open a villa and work the fields. With a real stake in this land, we build and grow our own businesses. That practice is also the base for what we build with others.</p></div>
+          <div class="ap-panel"><p class="ap-no">02</p><h3 class="ap-t">Build Together.</h3><p class="ap-b">Through planning, design, and support for opening and running a business, we work right beside people trying something new. We combine what is already here with fresh perspectives to shape new businesses.</p></div>
+          <div class="ap-panel"><p class="ap-no">03</p><h3 class="ap-t">Connect.</h3><p class="ap-b">More people who visit, try something new, and take part. More joy in living here, more choices for work. One visit becomes a lasting connection.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="ap-ridge">
+      <svg viewBox="0 0 1000 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="ap-mt" gradientUnits="userSpaceOnUse" x1="0" y1="20" x2="0" y2="215"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".26"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+          <clipPath id="ap-draw"><rect class="ap-rect" x="-10" y="-20" width="0" height="160"/></clipPath>
+        </defs>
+        <path class="ap-fill" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4 L1000 215 L0 215 Z"/>
+        <path class="ap-ghost" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4"/>
+        <g clip-path="url(#ap-draw)"><path class="ap-line" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4"/></g>
+      </svg>
+      <span class="ap-mk"><i></i><b>01</b></span><span class="ap-mk"><i></i><b>02</b></span><span class="ap-mk"><i></i><b>03</b></span>
+      <span class="ap-dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ⑤ Numbers（クラフト色・上端に丘の輪郭） ======================= -->
+<section class="numbers">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="display">Numbers</h2>
+      <span class="aside">UBAKU by the numbers</span>
+    </div>
+    <p class="numbers-note">From our first business, <span class="phrase">UBAKU Villa 宇莫別荘.</span></p>   <!-- 数字が UBAKU 全体の実績と読まれないように（2026-10-31） -->
+    <ul class="numbers-grid">
+      <!-- 数字は画面に入ると 0 から速く回って、最後に今の値で止まる（東川ヴィレッジと同じ。回るのは .cnt の数字だけで、単位は小さな文字 small。動きは main.js） -->
+      <li><span class="num"><span class="cnt" data-to="2026">2026</span><small>.01</small></span><p>UBAKU Villa 宇莫別荘 opens</p></li>
+      <li><span class="num"><span class="cnt" data-to="1">1</span><small> group a day</small></span><p>The whole house, for up to 10 guests</p></li>
+      <li><span class="num"><span class="cnt" data-to="80">80</span><small>%+</small></span><p>Share of guests from overseas (as of October 2026)</p></li>
+      <li><span class="num"><span class="cnt" data-to="9">9</span>.7<small>/10</small></span><p>Booking.com review score (as of October 2026)</p></li>
+      <li><span class="num"><span class="cnt" data-to="2">2</span><small>nd villa</small></span><p>UBAKU Villa 南邸, in preparation</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======================= ⑥ Team ======================= -->
+<section id="team" class="team wrap">
+  <div class="sec-head">
+    <h2 class="display">Team</h2>
+    <span class="aside">From across the sea, from a southern island, from this town.</span>
+  </div>
+  <div class="team-grid">
+    <div class="member">
+      <div class="photo ph3"><img src="../assets/img/mashu.webp" alt="Mashu" width="1538" height="1538" loading="lazy"></div>
+      <span class="label">Producer</span>
+      <h3>Mashu</h3>
+      <p class="body fold-clamp" id="fold-member-1">A short study program at the Higashikawa Japanese Language School led to a move to Japan. Now works at a real estate development company in Tokyo while building independent projects in Biei and Higashikawa: creating stays, delivering vegetables, and sketching out new ways for the region to work.</p>
+      <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-member-1">Read more</button>
+    </div>
+    <div class="member">
+      <div class="photo"><img src="../assets/img/yamato.webp" alt="Yamato" width="2000" height="2000" loading="lazy"></div>
+      <span class="label">Field Director</span>
+      <h3>Yamato</h3>
+      <p class="body fold-clamp" id="fold-member-2">A former elementary school teacher who made the leap from Okinawa to Hokkaido. Now works the fields with farmers in Biei, connecting soil and people and bringing more people into the life of this town.</p>
+      <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-member-2">Read more</button>
+    </div>
+    <div class="member">
+      <div class="photo ph2"><img src="../assets/img/yushin.webp" alt="Yushin" width="2000" height="2000" loading="lazy"></div>
+      <span class="label">Connector</span>
+      <h3>Yushin</h3>
+      <p class="body fold-clamp" id="fold-member-3">Born in Biei. After training at Eiheiji, a head temple of the Soto Zen school, now serves as a monk in Asahikawa. Connects the vegetables of Biei, and the people behind them, with the world beyond the town.</p>
+      <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-member-3">Read more</button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ⑦ Journal =======================
+     3つのnoteの記事（2026年分）が、2段で互い違いに流れる
+     記事一覧は assets/js/notes.js（tools/make_notes.py で自動作成）から読み込む -->
+<section id="journal" class="journal">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="display">Journal</h2>
+      <span class="aside">Notes from the foot of Daisetsuzan (in Japanese)</span>
+    </div>
+  </div>
+  <div class="journal-flow" id="journal-flow">
+    <div class="flow-row"><div class="flow-track"></div></div>
+    <div class="flow-row reverse"><div class="flow-track"></div></div>
+  </div>
+  <div class="wrap">
+    <div class="note-links">
+      <a class="more" href="https://note.com/loftershushi" target="_blank" rel="noopener">Mashu on note</a>
+      <a class="more" href="https://note.com/ubaku_jp" target="_blank" rel="noopener">UBAKU on note</a>
+      <a class="more" href="https://note.com/ubakuvilla" target="_blank" rel="noopener">UBAKU Villa on note</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ======================= ⑨ Contact（深緑・上端に稜線） ======================= -->
+<section id="contact" class="dark">
+  <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 70 C 200 20, 420 20, 620 60 S 980 100, 1180 62 S 1360 42, 1440 48 L1440 0 Z"/></svg>
+  <div class="contact wrap">
+    <div class="sec-head">
+      <h2 class="display">Contact</h2>
+      <span class="aside">Get in touch</span>
+    </div>
+    <div class="contact-lead">
+      <p class="contact-lead-title">Whatever it is, <em class="hl">feel free to ask.</em></p>
+      <p>Staying with us, moving here, living between two places, real estate, vegetables. Even an idea that has not taken shape yet is welcome. We reply to English inquiries by email, and we look forward to hearing from you.</p>
+    </div>
+    <!-- お問い合わせフォーム（Web3Forms → UBAKU のメール。自動返信はなし）
+         アクセスキー（Web3Forms の管理画面で info のアカウントに登録済み）
+         スパム対策：ロボット判定（hCaptcha）＋人には見えない罠の欄（botcheck） -->
+    <form class="form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="b46b2166-b396-4841-bbcf-230af2f710f4">
+      <input type="hidden" name="subject" value="【ubaku.jp】お問い合わせ（英語版）">
+      <input type="hidden" name="from_name" value="ubaku.jp お問い合わせフォーム">
+      <div class="field">
+        <label for="f-name">Name<span class="req">Required</span></label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="f-email">Email<span class="req">Required</span></label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="f-type">Type of inquiry<span class="req">Required</span></label>
+        <select id="f-type" name="type" required>
+          <option value="">Please select</option>
+          <option>Staying at UBAKU Villa 宇莫別荘</option>
+          <option>Moving here / living between two places</option>
+          <option>Real estate / business planning</option>
+          <option>Opening or running a lodging business</option>
+          <option>Renovation design</option>
+          <option>Branding (visual and web design)</option>
+          <option>Vegetables / food</option>
+          <option>Press / media / collaboration</option>
+          <option>Request materials</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field field--wide">
+        <label for="f-message">Message<span class="req">Required</span></label>
+        <textarea id="f-message" name="message" rows="6" required></textarea>
+      </div>
+      <!-- スパム対策（人には見えない欄。ロボットがここに印を付けると送信されない） -->
+      <input type="checkbox" name="botcheck" class="gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <!-- プライバシーポリシーへの同意（必須） -->
+      <label class="agree field--wide"><input type="checkbox" name="agree" value="Agree" required><span>I have read the <a href="privacy/" target="_blank" rel="noopener">Privacy Policy</a> and agree to the handling of my personal information.</span></label>
+      <!-- ロボット判定（hCaptcha） -->
+      <div class="field--wide h-captcha" data-captcha="true" data-hl="en"></div>
+      <div class="form-foot">
+        <button type="submit" class="submit">Send</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <!-- ======================= ⑩ フッター ======================= -->
+    <footer>
+      <div>
+        <a class="footer-logo wordmark" href="#" aria-label="UBAKU (back to top)"></a>
+        <span><span class="phrase">Moved by This Place. Moving This Place Forward.</span> <span class="phrase">Regional producers in Biei and Higashikawa, Hokkaido</span></span><br>
+        <span>4-10-8-103 Asahimachi, Biei-cho, Kamikawa-gun, Hokkaido 071-0212, Japan</span>
+      </div>
+      <div class="footer-right">
+        <ul class="links-row">
+          <li class="sns"><!-- メール・SNS はアイコンで（2026-10-17）。メールはアドレスを書かず、押したときに main.js がメールを開く（迷惑メール防止）。note は UBAKU の公式 note へ（3つの note は Journal で案内） --><a class="sns-icon js-mail-btn" data-user="info" data-domain="ubaku.jp" href="#contact" aria-label="Email us"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.8 6.6 12 12.6l8.2-6"/></svg></a><a class="sns-icon" href="https://www.instagram.com/ubaku_jp/" target="_blank" rel="noopener" aria-label="Instagram (@ubaku_jp)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle class="dot" cx="17.3" cy="6.7" r="1"/></svg></a><a class="sns-icon sns-icon--note" href="https://note.com/ubaku_jp" target="_blank" rel="noopener" aria-label="UBAKU on note"><svg viewBox="64 56 486 112" aria-hidden="true"><path class="fill" d="M129.6 69.1C111.6 68.6 86.4 69.6 68.1 69.6V163.2H94.3V92.4C94.3 92.4 117.6 91.6 126 92.6C133.9 93.5 136.8 98.4 137.1 108.6C137.3 120.2 137.1 126.3 137.1 163.2H163.3C163.3 163.2 163.6 121 163.3 106.3C162.9 80.2 153.8 69.7 129.6 69.1Z"/><path class="fill" d="M250.8 68.8C224.9 68.8 203.8 90 203.8 116.1C203.8 142.2 224.9 163.4 250.8 163.4C276.7 163.4 297.8 142.2 297.8 116.1C297.8 90 276.7 68.8 250.8 68.8ZM250.8 140.8C237.2 140.8 226.2 129.7 226.2 116C226.2 102.3 237.2 91.2 250.8 91.2C264.4 91.2 275.4 102.3 275.4 116C275.4 129.8 264.4 140.8 250.8 140.8Z"/><path class="fill" d="M545.4 116.1C545.4 90 524.3 68.8 498.4 68.8C472.5 68.8 451.4 90 451.4 116.1C451.4 131.4 458.4 144.5 469.3 153.2C476.9 159.2 487.5 163.4 501.7 163.4C508.6 163.4 526.5 161.5 539.4 147.2L528.8 133C524.3 137 513 142.6 504 142.6C492.6 142.6 485.7 140.4 480.7 135.7C477.6 132.9 475.4 128.6 474.4 123.3H544.7C545.1 120.9 545.4 118.6 545.4 116.1ZM474.6 107.5C477.2 96.4 485 88.2 498.3 88.2C512.2 88.2 519.5 97 521.9 107.5H474.6Z"/><path class="fill" d="M386.8 60.1H362.3V86.4H337.1V109.4H362.3V136.7H386.8V109.4H412V86.4H386.8V60.1Z"/></svg></a></li>
+        </ul>
+        <ul class="footer-family" aria-label="UBAKU sites"><li><a href="./">UBAKU</a></li><li><a href="https://ubakuvilla.com" target="_blank" rel="noopener">UBAKU Villa</a></li><li><a href="design/">UBAKU Design</a></li><li><a href="consulting/">UBAKU Consulting</a></li></ul>
+        <span><a class="footer-privacy" href="privacy/">Privacy Policy</a>　<span class="en">© 2026 UBAKU</span></span>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<script src="../assets/js/notes.js?v=202611072024"></script>
+<script src="../assets/js/main.js?v=202611072024"></script>
+
+<!-- ページの一番上へ戻るボタン（矢印だけ。スクロールすると右下の UBAKU Letter の札の上に出る。2026-10-25） -->
+<a class="to-top" href="#" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></a>
+</body>
+</html>
