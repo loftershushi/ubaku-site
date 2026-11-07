@@ -39,8 +39,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:ital,wght@0,200;0,300;0,400;1,300&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
 
 <!-- デザイン（色・フォント・余白はすべてこのファイルで管理） -->
-<link rel="stylesheet" href="assets/css/style.css?v=202611071611">
-<link rel="stylesheet" href="assets/css/letter.css?v=202611071611">   <!-- UBAKU Letter（メルマガ）の購読：右下の札・窓・Journal のあとの購読欄 -->
+<link rel="stylesheet" href="assets/css/style.css?v=202611071859">
+<link rel="stylesheet" href="assets/css/letter.css?v=202611071859">   <!-- UBAKU Letter（メルマガ）の購読：右下の札・窓・Journal のあとの購読欄 -->
 
 <!-- Googleに会社情報を伝えるデータ（構造化データ）
      ロゴ画像と note のURLが決まったら "logo" と sameAs に追加する -->
@@ -104,8 +104,9 @@
     <button type="button" class="topbar-menu" aria-expanded="false" aria-controls="topbar-list">Menu</button>
     <nav class="topbar-nav" aria-label="メニュー">
       <ul id="topbar-list">
-        <li><a href="#values">Values</a></li>
+        <li><a href="#values">Concept</a></li>
         <li><a href="#work">What We Do</a></li>
+        <li><a href="#approach">Our Approach</a></li>
         <li><a href="#team">Team</a></li>
         <li><a href="#journal">Journal</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -119,8 +120,9 @@
   <nav class="nav intro" style="--d:0s" aria-label="メインメニュー">
     <span class="nav-place">Biei / Higashikawa, Hokkaido</span>
     <ul>
-      <li><a href="#values">Values</a></li>
+      <li><a href="#values">Concept</a></li>
       <li><a href="#work">What We Do</a></li>
+      <li><a href="#approach">Our Approach</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#journal">Journal</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -305,10 +307,49 @@
   </div>
 </section>
 
+<!-- ======================= Our Approach（雪の写真の上で、スクロールに合わせて大雪山の稜線が描かれる。2026-11-07） =======================
+     稜線の線はイントロと同じデータ。線が 01→02→03 を通るたびに右の文が切り替わる（動きは main.js の「Our Approach」） -->
+<section id="approach" class="ap-sec" aria-label="Our Approach">
+  <div class="ap-stage">
+    <div class="ap-snow"></div>
+    <!-- 上端の丘の輪郭（丘より上＝前の What We Do の淡いグレー） -->
+    <svg class="ap-hill" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 88 C 280 88, 460 10, 760 14 S 1200 92, 1440 52 L1440 0 Z"/></svg>
+    <div class="ap-in wrap">
+      <div class="sec-head">
+        <h2 class="display">Our Approach</h2>
+        <span class="aside">まちへの向き合い方</span>
+      </div>
+      <div class="ap-grid">
+        <div class="ap-title">
+          <p class="ap-tag"><span class="phrase">まちを<em>想い</em>、</span><br><span class="phrase">まちを<em>動かす</em>。</span></p>
+          <p class="ap-en" lang="en">Moved by This Place. Moving This Place Forward.</p>
+        </div>
+        <div class="ap-panels">
+          <div class="ap-panel is-on"><p class="ap-lead">美瑛・東川町を、より豊かで、魅力ある土地へ。私たちは自ら事業を営むプレーヤーであり、地域の人や、ここで挑戦したい人とともに、新しい取り組みを生み出すプロデューサーでもあります。</p></div>
+          <div class="ap-panel"><p class="ap-no">01</p><h3 class="ap-t">自ら営む。</h3><p class="ap-b">宿を開き、畑に立つ。私たち自身がこの土地の当事者として、事業をつくり、育てる。その実践が、ともにつくる力の土台にもなる。</p></div>
+          <div class="ap-panel"><p class="ap-no">02</p><h3 class="ap-t">ともにつくる。</h3><p class="ap-b">企画やデザイン、開業・運営の支援で、誰かの挑戦に伴走する。地域にすでにあるものと、新しい視点を組み合わせ、新たな事業を<span class="phrase">かたちにする。</span></p></div>
+          <div class="ap-panel"><p class="ap-no">03</p><h3 class="ap-t">つないでいく。</h3><p class="ap-b">訪れる人、挑戦する人、関わる人を増やし、ここで暮らす楽しみと、働く選択肢を広げる。一度の訪問を、続いていく関係へ。</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="ap-ridge">
+      <svg viewBox="0 0 1000 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="ap-mt" gradientUnits="userSpaceOnUse" x1="0" y1="20" x2="0" y2="215"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".26"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+          <clipPath id="ap-draw"><rect class="ap-rect" x="-10" y="-20" width="0" height="160"/></clipPath>
+        </defs>
+        <path class="ap-fill" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4 L1000 215 L0 215 Z"/>
+        <path class="ap-ghost" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4"/>
+        <g clip-path="url(#ap-draw)"><path class="ap-line" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4"/></g>
+      </svg>
+      <span class="ap-mk"><i></i><b>01</b></span><span class="ap-mk"><i></i><b>02</b></span><span class="ap-mk"><i></i><b>03</b></span>
+      <span class="ap-dot"></span>
+    </div>
+  </div>
+</section>
+
 <!-- ======================= ⑤ Numbers（クラフト色・上端に丘の輪郭） ======================= -->
 <section class="numbers">
-  <!-- 上端の丘の輪郭（丘より上＝前の What We Do の淡いグレー。その下が白の Numbers。2026-10-16） -->
-  <svg class="hill" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path class="hill-fill" d="M0 0 L0 88 C 280 88, 460 10, 760 14 S 1200 92, 1440 52 L1440 0 Z"/></svg>
   <div class="wrap">
     <div class="sec-head">
       <h2 class="display">Numbers</h2>
@@ -460,9 +501,9 @@
 </section>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="assets/js/notes.js?v=202611071611"></script>
-<script src="assets/js/main.js?v=202611071611"></script>
-<script src="assets/js/letter.js?v=202611071611" data-auto="on"></script>   <!-- data-auto="on"：開いて少したったら真ん中に大きな購読の窓を出す（トップだけ。2026-10-31） -->
+<script src="assets/js/notes.js?v=202611071859"></script>
+<script src="assets/js/main.js?v=202611071859"></script>
+<script src="assets/js/letter.js?v=202611071859" data-auto="on"></script>   <!-- data-auto="on"：開いて少したったら真ん中に大きな購読の窓を出す（トップだけ。2026-10-31） -->
 
 <!-- ページの一番上へ戻るボタン（矢印だけ。スクロールすると右下の UBAKU Letter の札の上に出る。2026-10-25） -->
 <a class="to-top" href="#" aria-label="ページの一番上へ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></a>

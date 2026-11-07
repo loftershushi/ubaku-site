@@ -170,6 +170,9 @@ function initToTop() {
     var fab = document.querySelector('.lt-fab');
     var h = (fab && fab.classList.contains('is-shown')) ? fab.offsetHeight : 0;
     document.documentElement.style.setProperty('--lt-fab-h', h + 'px');
+    /* ページの一番下まで来て、札が出ていないときは、矢印を下げる */
+    var left = document.documentElement.scrollHeight - window.innerHeight - window.scrollY;
+    btn.classList.toggle('is-end', left < 40 && h === 0);
   }
   window.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', update);
@@ -648,4 +651,49 @@ document.querySelectorAll('.js-mail').forEach(function (a) {
   fit();
   window.addEventListener('resize', fit);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { lastW = 0; fit(); });
+})();
+
+/* ---------- Our Approach：スクロールの進み具合で稜線を描き、印を通るたびに文を切り替える ---------- */
+(function () {
+  var sec = document.querySelector('.ap-stage') && document.getElementById('approach');   // Design・Consulting にも同じ id があるので、部品があるページだけ動かす
+  if (!sec) return;
+  var path = sec.querySelector('.ap-ghost'), rect = sec.querySelector('.ap-rect'), dot = sec.querySelector('.ap-dot');
+  var panels = sec.querySelectorAll('.ap-panel'), marks = sec.querySelectorAll('.ap-mk');
+  var total = path.getTotalLength(), pts = [];
+  for (var i = 0; i <= 800; i++) pts.push(path.getPointAtLength(total * i / 800));
+  function yAt(x) { for (var i = 0; i < pts.length; i++) if (pts[i].x >= x) return pts[i].y; return pts[pts.length - 1].y; }
+  /* 01 はふもとの肩、02 は峰と旭岳の間の谷、03 はいちばん高い旭岳（2026-11-07 02 を峰から谷へ） */
+  var peaks = [140, 379, 572].map(function (x) { return { x: x, y: yAt(x) }; });
+  marks.forEach(function (m, i) { m.style.left = peaks[i].x / 10 + '%'; m.style.top = peaks[i].y / 120 * 100 + '%'; });
+  var last = peaks[2].x;
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var words = sec.querySelectorAll('.ap-tag em');
+  var BLUE = [92, 196, 240];   /* 白からこの青へ変える（CSS の --ap-blue と同じ色） */
+  /* a〜b の間で 0→1 に進む値 */
+  function part(t, a, b) { return Math.min(1, Math.max(0, (t - a) / (b - a))); }
+  function tint(el, k) {
+    el.style.color = 'rgb(' + BLUE.map(function (c) { return Math.round(255 + (c - 255) * k); }).join(',') + ')';
+  }
+  if (!calm) sec.classList.add('ap-js');
+  function update() {
+    var r = sec.getBoundingClientRect();
+    /* セクションが画面の6割まで来たら、見出しと文を出す */
+    if (r.top < window.innerHeight * .6) sec.classList.add('is-in');
+    var t = calm ? 1 : Math.min(1, Math.max(0, -r.top / (r.height - window.innerHeight)));
+    /* はじめの少しはリードを読む時間。山頂まで登ったら、線は画面の先へ抜ける */
+    var x = t < .08 ? t / .08 * 60 : t < .8 ? 60 + (t - .08) / .72 * (last + 20 - 60) : last + 20 + (t - .8) / .2 * (1000 - last - 20);
+    rect.setAttribute('width', x + 10);
+    dot.style.left = x / 10 + '%'; dot.style.top = yAt(x) / 120 * 100 + '%';
+    dot.style.opacity = t > .985 ? 0 : 1;
+    /* 「想い」が先に、「動かす」があとから、白から青へ */
+    tint(words[0], part(t, .08, .4));
+    tint(words[1], part(t, .4, .76));
+    var step = 0;
+    peaks.forEach(function (p, i) { if (x >= p.x) step = i + 1; });
+    panels.forEach(function (el, i) { el.classList.toggle('is-on', i === step); });
+    marks.forEach(function (m, i) { m.classList.toggle('is-on', i + 1 === step); });
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
 })();
