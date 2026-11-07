@@ -478,6 +478,10 @@ html{overflow-x:clip}   /* ヒーロー写真を左右にはみ出させても�
 .field select option{color:var(--ink);background:var(--cream)}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent-sand)}
 .gotcha{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+/* プライバシーポリシーへの同意（緑の面の上） */
+.agree{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.7;color:var(--on-green);cursor:pointer}
+.agree input{flex:none;width:18px;height:18px;margin:3px 0 0;accent-color:var(--accent-sand)}
+.agree a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .form-foot{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px}
 .submit{font:inherit;font-size:14px;letter-spacing:.16em;color:var(--green);background:var(--on-green);border:0;padding:14px 48px;cursor:pointer}
 .submit:hover{background:var(--accent-sand)}

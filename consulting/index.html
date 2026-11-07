@@ -36,9 +36,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
 
 <!-- デザイン：トップページと共通の style.css ＋ 下層ページ用の sub.css ＋ UBAKU Letter の札 -->
-<link rel="stylesheet" href="../assets/css/style.css?v=202611031235">
-<link rel="stylesheet" href="../assets/css/sub.css?v=202611031235">
-<link rel="stylesheet" href="../assets/css/letter.css?v=202611031235">
+<link rel="stylesheet" href="../assets/css/style.css?v=202611071611">
+<link rel="stylesheet" href="../assets/css/sub.css?v=202611071611">
+<link rel="stylesheet" href="../assets/css/letter.css?v=202611071611">
 
 <!-- Googleにページの内容を伝えるデータ（このページで受けている仕事） -->
 <script type="application/ld+json">
@@ -345,7 +345,7 @@
 <!-- ======================= ⑩ Contact（深い色・上端に稜線） =======================
      フォームはトップページと同じ Web3Forms。種別は企業向けの「不動産・事業企画」を一番上に -->
 <section id="contact" class="dark">
-  <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 70 C 200 20, 420 20, 620 60 S 980 110, 1180 50 S 1380 30, 1440 45 L1440 0 Z"/></svg>
+  <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 70 C 200 20, 420 20, 620 60 S 980 100, 1180 62 S 1360 42, 1440 48 L1440 0 Z"/></svg>
   <div class="contact wrap">
     <div class="sec-head">
       <h2 class="display">Contact</h2>
@@ -389,6 +389,8 @@
       </div>
       <!-- スパム対策（人には見えない欄） -->
       <input type="checkbox" name="botcheck" class="gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <!-- プライバシーポリシーへの同意（必須） -->
+      <label class="agree field--wide"><input type="checkbox" name="agree" value="同意する" required><span><a href="../privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>を確認し、個人情報のお取り扱いに同意する</span></label>
       <!-- ロボット判定（hCaptcha） -->
       <div class="field--wide h-captcha" data-captcha="true"></div>
       <div class="form-foot">
@@ -416,9 +418,9 @@
 </section>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="../assets/js/main.js?v=202611031235"></script>
+<script src="../assets/js/main.js?v=202611071611"></script>
 <!-- UBAKU Letter：右下の札だけ（data-band="off" でページの中の購読欄は入れない） -->
-<script src="../assets/js/letter.js?v=202611031235" data-privacy="../privacy/" data-band="off"></script>
+<script src="../assets/js/letter.js?v=202611071611" data-privacy="../privacy/" data-band="off"></script>
 
 <!-- ページの一番上へ戻るボタン（矢印だけ。スクロールすると右下の UBAKU Letter の札の上に出る。2026-10-25） -->
 <a class="to-top" href="#" aria-label="ページの一番上へ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></a>

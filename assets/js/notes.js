@@ -1,6 +1,13 @@
 /* noteの記事一覧（tools/make_notes.py で自動作成。手で直さない） */
 window.UBAKU_NOTES = [
   {
+    "title": "一棟貸しの宿から、まちへ。北海道美瑛・東川町で「UBAKU」が始まりました",
+    "url": "https://note.com/ubaku_jp/n/n0f58065b69e3",
+    "date": "2026.11.06",
+    "source": "UBAKU",
+    "image": "https://assets.st-note.com/production/uploads/images/332275933/rectangle_large_type_2_499fbe71719509db4dec1393eab3f5e1.jpeg?width=600"
+  },
+  {
     "title": "『旅する蝶』と、旅する僕",
     "url": "https://note.com/loftershushi/n/ne84485a449b4",
     "date": "2026.10.25",
