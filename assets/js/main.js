@@ -465,10 +465,13 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
   // ロゴ：ページの一番上へ（下層ページでは href="../" なので、そのままトップページへ移る）
-  bar.querySelector('.topbar-logo').addEventListener('click', function (e) {
-    if (this.getAttribute('href') !== '#') return;
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  /* トップの大きなロゴ・フッターのロゴも同じ（トップではオープニングを繰り返さず、一番上へ戻るだけ） */
+  document.querySelectorAll('.topbar-logo, .hero-mark, .footer-logo').forEach(function (logo) {
+    logo.addEventListener('click', function (e) {
+      if (this.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   });
 })();
 
@@ -550,7 +553,7 @@ document.querySelectorAll('.fold-btn').forEach(function (btn) {
   btn.addEventListener('click', function () {
     var open = target.classList.toggle('is-open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    btn.textContent = open ? '閉じる' : '続きを読む';
+    btn.textContent = document.documentElement.lang === 'en' ? (open ? 'Close' : 'Read more') : (open ? '閉じる' : '続きを読む');
   });
   // Team の紹介文：3行に収まっているときは、ボタンを出さない
   if (target.classList.contains('fold-clamp')) {
@@ -590,11 +593,12 @@ document.querySelectorAll('.js-mail').forEach(function (a) {
     e.preventDefault();
     var button = form.querySelector('.submit');
     button.disabled = true;
-    status.textContent = '送信しています…';
+    var EN = document.documentElement.lang === 'en';   // 英語版のページかどうか
+    status.textContent = EN ? 'Sending…' : '送信しています…';
 
     // 件名に種別を入れる（メールソフトで振り分けやすくするため）
     var data = new FormData(form);
-    data.set('subject', '【ubaku.jp】お問い合わせ（' + (data.get('type') || 'その他') + '）');
+    data.set('subject', '【ubaku.jp】お問い合わせ' + (EN ? '・英語版' : '') + '（' + (data.get('type') || 'その他') + '）');
 
     // Web3Formsに送る（JSONで結果を受け取る）
     fetch(form.action, {
@@ -608,10 +612,10 @@ document.querySelectorAll('.js-mail').forEach(function (a) {
     }).then(function () {
       form.reset();
       if (window.hcaptcha) { try { window.hcaptcha.reset(); } catch (err) {} }
-      status.textContent = '送信しました。お問い合わせありがとうございます。内容を確認のうえ、5営業日以内にご入力のメールアドレスへご連絡します。';   // 自動返信はないので、いつ返事が来るかをここで伝える（2026-10-26）
+      status.textContent = EN ? 'Thank you. Your message has been sent. We will reply to your email address within 5 business days.' : '送信しました。お問い合わせありがとうございます。内容を確認のうえ、5営業日以内にご入力のメールアドレスへご連絡します。';   // 自動返信はないので、いつ返事が来るかをここで伝える（2026-10-26）
     }).catch(function () {
       // メールアドレスは、ロボットに拾われないよう分けて書いておき、ここで組み立てる
-      status.textContent = '送信できませんでした。お手数ですが ' + 'info' + '@' + 'ubaku.jp' + ' へ直接メールでお送りください。';
+      status.textContent = EN ? 'Your message could not be sent. Please email us directly at ' + 'info' + '@' + 'ubaku.jp' + '.' : '送信できませんでした。お手数ですが ' + 'info' + '@' + 'ubaku.jp' + ' へ直接メールでお送りください。';
     }).then(function () {
       button.disabled = false;
     });

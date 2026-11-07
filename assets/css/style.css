@@ -789,3 +789,23 @@ h1,h2,h3,h4,.catch,.concept-catch,.work-catch,.contact-lead-title,.sec-head .asi
 .live-bubble-en{font-size:11px;letter-spacing:.2em;color:var(--green)}
 .live-bubble-go{font-size:12px;letter-spacing:.12em;color:var(--green);border-bottom:1px solid currentColor;padding-bottom:1px}
 @media (max-width:640px){.live-bubble{border-radius:20px;padding:14px 20px;font-size:13px}}
+
+/* =========================================================
+   英語版（/en/）だけの指定。英字は Jost、字間は日本語より詰める
+   ========================================================= */
+html[lang="en"] body{font-family:var(--f-title);font-weight:300}
+html[lang="en"] .hero-copy h1,html[lang="en"] .concept-catch,html[lang="en"] .catch,html[lang="en"] .work-catch,html[lang="en"] .value h3,html[lang="en"] .ap-tag,html[lang="en"] .ap-t,html[lang="en"] .contact-lead-title,html[lang="en"] .sec-head .aside{font-family:var(--f-title);font-weight:300;letter-spacing:.02em}
+html[lang="en"] .body,html[lang="en"] .hero-copy p,html[lang="en"] .work-item p,html[lang="en"] .biz-extra,html[lang="en"] .ap-lead,html[lang="en"] .ap-b,html[lang="en"] .contact-lead p,html[lang="en"] .numbers-grid p,html[lang="en"] .numbers-note{letter-spacing:.015em;line-height:1.7}
+html[lang="en"] .body,html[lang="en"] .work-item p{font-size:15px}
+html[lang="en"] .sec-head .aside{font-size:15px}
+html[lang="en"] .ap-tag{font-size:min(3.8vw,56px,8vh);line-height:1.2}
+html[lang="en"] .ap-en{font-family:var(--f-heading);font-style:normal;letter-spacing:.14em}
+html[lang="en"] .ap-t{font-size:clamp(30px,3vw,42px);letter-spacing:.01em}
+html[lang="en"] .lbl-jp{font-family:var(--f-title)}
+html[lang="en"] .num small{letter-spacing:.02em}
+.lang-switch{white-space:nowrap}   /* JA / EN の切り替え */
+.lang-switch [aria-current]{color:var(--accent-hl)}
+@media (max-width: 760px){
+  html[lang="en"] .ap-tag{font-size:min(7.2vw,6vh)}
+  html[lang="en"] .ap-t{font-size:28px}
+}
