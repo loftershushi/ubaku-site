@@ -687,3 +687,4 @@
   .hero .nav .nav-brand{flex:1 1 0;min-width:0}
   .hero .nav .nav-menu{flex:none;margin-left:12px}
 }
+html[lang="en"] .nav-tagline{text-wrap:balance}   /* 最後の行に Hokkaido だけ残らないように */

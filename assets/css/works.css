@@ -177,7 +177,7 @@
   .page-works .lt-fab{display:none}   /* スマホの事例ページでは、目次と重なるので UBAKU Letter の札は出さない */
   .wk-dock a{padding:7px 10px;font-size:10px;letter-spacing:.08em}
   .wk-device-screen{border-width:6px;border-bottom-width:9px;border-radius:9px 9px 0 0}
-  .wk-device-base{height:9px}
+  .wk-device-base{height:9px;margin:0 -4%}   /* 幅430pxで右へ2pxはみ出していたので控えめに */
 }
 @media (prefers-reduced-motion: reduce){
   .wk-device-screen img{animation:none}

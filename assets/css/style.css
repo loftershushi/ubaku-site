@@ -820,10 +820,21 @@ html[lang="en"] footer > div:first-child > span:first-of-type{white-space:normal
 .lang-switch [aria-current]{color:var(--accent-hl)}
 /* スマホのメニューでは、JA / EN を1行に保つ（ほかの項目のように縦に割らない） */
 @media (max-width:640px){
-  .nav.is-open ul .lang-switch a,.topbar-nav .lang-switch a{display:inline-block;padding:12px 14px 12px 0}
+  .nav.is-open ul .lang-switch a,.topbar-nav .lang-switch a{display:inline-block;padding:12px 0}
 }
 @media (max-width: 760px){
   html[lang="en"] .ap-tag{font-size:min(7.2vw,6vh)}
   html[lang="en"] .ap-t{font-size:28px}
   html[lang="en"] .more,html[lang="en"] .note-links .more{white-space:normal}   /* 英語のリンクは長いので、スマホでは折り返す */
+}
+
+/* スマホ点検の直し（2026-11-07） */
+.u-macron{font-family:'Noto Sans JP',sans-serif}   /* Jost の Ū は横線が右へずれるので、この1文字だけ別のフォント */
+.policy-item .more,.more.cross-inline{display:inline;padding:0 0 1px;white-space:normal}   /* 文の途中のリンクで行間が開かないように */
+@media (max-width: 640px){
+  html[lang="en"] .note-links{flex-direction:column;align-items:flex-start;gap:8px}   /* 英語のリンクは長いので縦に */
+  html[lang="en"] .note-links .more{white-space:nowrap}
+}
+@media (max-width: 340px){
+  .note-links{flex-wrap:wrap}   /* 幅320pxで右へ6pxはみ出していたので折り返す */
 }
