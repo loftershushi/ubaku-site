@@ -176,6 +176,15 @@
     tick();
   });
 
+  /* ---------- よくある質問：最初の4つだけ見せ、残りは「ほかの質問を見る」で開く（2026-11-08 C20） ---------- */
+  var faq = document.querySelector('.faq'), faqBtn = document.querySelector('.faq-more');
+  if (faq && faqBtn && faq.querySelectorAll('details').length > 4) {
+    faq.classList.add('is-folded');
+    faqBtn.hidden = false;
+    faqBtn.textContent = 'ほかの質問を見る（' + (faq.querySelectorAll('details').length - 4) + '件）';
+    faqBtn.addEventListener('click', function () { faq.classList.remove('is-folded'); faqBtn.hidden = true; });
+  }
+
   /* ---------- 季節のこよみ：今の月に印 ---------- */
   // 見ている日の「年-月」と同じ月に印を付ける（月が変わると自動で印も動く）
   var d0 = new Date(), ym = d0.getFullYear() + '-' + ('0' + (d0.getMonth() + 1)).slice(-2);

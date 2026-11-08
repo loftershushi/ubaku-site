@@ -736,3 +736,50 @@ html{scroll-padding-top:calc(var(--header-h) + 16px)}   /* ページ内リンク
 @media (max-width:900px){ .member{grid-template-columns:minmax(0,1fr)} }
 /* こよみ：スマホでは「2026年」が2行に割れるので、小さく・詰めて1行に */
 @media (max-width:760px){ .koyomi-grid .yr{font-size:9.5px;letter-spacing:0;padding-left:3px;white-space:nowrap} }
+
+/* ===== C20（2026-11-08）：スマホを短く・スマホにも左の帯 ===== */
+/* FAQ：最初の4つだけ。残りは「ほかの質問を見る」で開く（JS が .is-folded を付けたときだけ隠す） */
+.faq.is-folded details:nth-of-type(n+5){display:none}
+.faq.is-folded details:nth-of-type(4){border-bottom:1px solid var(--line)}
+.faq-more{display:block;margin:24px auto 0;padding:10px 26px;border:1px solid var(--red);border-radius:2px;background:none;color:var(--red-ink);font:inherit;font-size:13px;letter-spacing:.1em;cursor:pointer;transition:background-color .3s,color .3s}
+.faq-more::after{content:" ＋"}
+@media (hover:hover){ .faq-more:hover{background:var(--red);color:#fff} }
+.faq-more[hidden]{display:none}
+
+@media (max-width:760px){
+  /* 商品：スマホは3つを横に並べ、指でめくる（縦に6つ並ぶと長すぎるため） */
+  .items{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--pad-x) * -1);padding:0 var(--pad-x) 6px;scroll-padding:0 var(--pad-x);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .items::-webkit-scrollbar{display:none}
+  .item{flex:0 0 74%;scroll-snap-align:start}
+  .item-body{gap:4px;padding-top:12px;margin-top:10px}
+  .item-name{font-size:15px}
+  .item-name .kg{font-size:19px}
+  .item-copy{font-size:12px;line-height:1.7}
+  .item-go{margin-top:8px;padding:6px 14px;font-size:12px}
+  .items::after{content:"";flex:0 0 1px}   /* 最後のカードの右にも余白 */
+  .veg-group .items + .swipe-hint,.swipe-hint{display:block}
+  /* 卸の 01〜03：間隔と余白を詰める */
+  .ws-list{gap:10px;margin:28px 0}
+  .ws-list li{padding:16px 18px 18px}
+  .ws-list h3{font-size:15.5px;margin:2px 0 6px}
+  .ws-list p{font-size:13px;line-height:1.85}
+  /* 左の帯：スマホにも出す（細く・小さく）。ヘッダーの小さな札はやめる */
+  .side-band{display:flex;gap:10px;padding:14px 5px 6px;font-size:10px;letter-spacing:.14em;border-radius:0 5px 5px 0;top:auto;bottom:96px;margin:0}
+  .side-band > span:first-child{display:none}
+  .side-band b{font-size:12.5px;letter-spacing:.2em}
+  .sb-early{padding:8px 3px;font-size:10px;letter-spacing:.14em}
+  .rsv-tag{display:none !important}
+}
+.swipe-hint{display:none;margin:10px 0 0;font-size:11px;letter-spacing:.1em;color:var(--sub);text-align:right}
+@media (max-width:760px){
+  /* 左の帯（スマホ）：本文に重なりにくいよう、短くして左下へ */
+  .side-band{bottom:18px;gap:7px;padding:10px 4px 4px}
+  .side-band b{font-size:11.5px;letter-spacing:.16em}
+  .sb-early{padding:6px 2px;font-size:9.5px;letter-spacing:.1em}
+  /* Yamato のひとこと（スマホ）：強調の一文が2行に割れないよう、少し小さく */
+  .member .say{font-size:14.5px;padding:18px 18px 16px;line-height:1.8}
+  .member .say em{font-size:1.06em;letter-spacing:.02em}
+  .member-role{display:block}
+}
+/* イントロの2枚目のロゴ：スマホは真ん中ではなく、上から1/3の高さに（2026-11-08 mashuさん） */
+@media (max-width:760px){ .op-logo{top:33.3%} }
