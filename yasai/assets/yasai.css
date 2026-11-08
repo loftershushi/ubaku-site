@@ -747,17 +747,6 @@ html{scroll-padding-top:calc(var(--header-h) + 16px)}   /* ページ内リンク
 .faq-more[hidden]{display:none}
 
 @media (max-width:760px){
-  /* 商品：スマホは3つを横に並べ、指でめくる（縦に6つ並ぶと長すぎるため） */
-  .items{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--pad-x) * -1);padding:0 var(--pad-x) 6px;scroll-padding:0 var(--pad-x);scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .items::-webkit-scrollbar{display:none}
-  .item{flex:0 0 74%;scroll-snap-align:start}
-  .item-body{gap:4px;padding-top:12px;margin-top:10px}
-  .item-name{font-size:15px}
-  .item-name .kg{font-size:19px}
-  .item-copy{font-size:12px;line-height:1.7}
-  .item-go{margin-top:8px;padding:6px 14px;font-size:12px}
-  .items::after{content:"";flex:0 0 1px}   /* 最後のカードの右にも余白 */
-  .veg-group .items + .swipe-hint,.swipe-hint{display:block}
   /* 卸の 01〜03：間隔と余白を詰める */
   .ws-list{gap:10px;margin:28px 0}
   .ws-list li{padding:16px 18px 18px}
@@ -770,7 +759,6 @@ html{scroll-padding-top:calc(var(--header-h) + 16px)}   /* ページ内リンク
   .sb-early{padding:8px 3px;font-size:10px;letter-spacing:.14em}
   .rsv-tag{display:none !important}
 }
-.swipe-hint{display:none;margin:10px 0 0;font-size:11px;letter-spacing:.1em;color:var(--sub);text-align:right}
 @media (max-width:760px){
   /* 左の帯（スマホ）：本文に重なりにくいよう、短くして左下へ */
   .side-band{bottom:18px;gap:7px;padding:10px 4px 4px}
@@ -783,3 +771,34 @@ html{scroll-padding-top:calc(var(--header-h) + 16px)}   /* ページ内リンク
 }
 /* イントロの2枚目のロゴ：スマホは真ん中ではなく、上から1/3の高さに（2026-11-08 mashuさん） */
 @media (max-width:760px){ .op-logo{top:33.3%} }
+/* ===== C21（2026-11-08）：スマホの左の帯は、画面を動かしているあいだは左へ隠れ、止まると出てくる。位置は PC と同じ縦の真ん中 ===== */
+@media (max-width:760px){
+  .side-band{top:0;bottom:0;margin:auto 0;animation:none;transition:transform .45s var(--ease)}   /* 出入りは JS の is-away で（animation が残ると transform が効かないため） */
+  .side-band.is-away{transform:translateX(-110%)}
+}
+
+/* ===== C22（2026-11-08 mashuさん「商品は縦並び。隙間を適切に縮めて。全体」）：スマホの余白を全体に詰める ===== */
+@media (max-width:760px){
+  :root{--sec-y:56px}
+  .bleed .wrap{padding-top:76px;padding-bottom:76px}
+  .ws .wrap{padding-top:68px;padding-bottom:68px}
+  .points{margin-top:36px;gap:28px}
+  .story-points{padding:36px 0 var(--sec-y)}
+  .tl{margin-top:32px}
+  .reserve-points{margin:28px auto 24px}
+  .hamidashi-note{margin-top:32px;padding:22px 18px}
+  .monthly{margin:24px 0;padding:20px 18px;gap:16px}
+  .veg-group + .veg-group{margin-top:44px}
+  .veg-head{margin-bottom:16px}
+  .items{gap:28px}
+  .item .ph{aspect-ratio:16 / 9}   /* 写真を少し横長にして、縦を短く */
+  .item-body{padding-top:12px;margin-top:10px;gap:4px}
+  .item-go{margin-top:8px}
+  .price-note{margin-top:20px}
+  .before{margin-top:40px}
+  .koyomi{margin-top:44px}
+  .member{margin-top:44px;padding-top:32px;gap:18px}
+  .flow{margin-top:44px}
+  .faq .title-ja{margin-bottom:16px}
+  .faq summary{padding:15px 0}
+}

@@ -213,6 +213,18 @@
     toTop.classList.toggle('is-low', atEnd);
   }
   window.addEventListener('scroll', updateFab, { passive: true });
+
+  /* ---------- 左の帯（スマホ）：画面を動かしているあいだは隠れ、止まって0.6秒たつと出てくる（2026-11-08 C21） ---------- */
+  var band = document.querySelector('.side-band'), bandTimer, phone = window.matchMedia('(max-width:760px)');
+  if (band) {
+    if (phone.matches) { band.classList.add('is-away'); setTimeout(function () { band.classList.remove('is-away'); }, 1200); }   // 開いたときは左から出てくる
+    window.addEventListener('scroll', function () {
+      if (!phone.matches) return;
+      band.classList.add('is-away');
+      clearTimeout(bandTimer);
+      bandTimer = setTimeout(function () { band.classList.remove('is-away'); }, 600);
+    }, { passive: true });
+  }
   updateFab();
   toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
 })();
