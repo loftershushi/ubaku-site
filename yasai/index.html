@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- UBAKU Yasai の見本（仮公開用 ubaku-site/yasai。本番は BASE の yasai.ubaku.jp なので、このページは本番公開しない）
+     C8（2026-11-08）：ubakuvilla.com（11/7 公開）の作りを参考に全体を組み直した。
+       ・イントロ「はみだしの円」→ 画面いっぱいの写真3枚 → 紹介 → Reserve（予約販売の流れ。2026-11-08 追加）→（曲線）→ Story → 全面の写真 → Vegetables（価格・季節のこよみ）
+         → Wholesale（卸を強調）→ Farmers（島田さん・朗根内地区）→ ご予約の前に・よくある質問 → 最後の帯 →（曲線）→ フッター（運営 UBAKU）
+       ・写真は mashuさんが選んだ img/使ってほしい写真 から make_site_images.py で作る
+       ・見た目は assets/yasai.css、動きは assets/yasai.js
+     C7 以前の経緯は 01_美瑛の野菜（旧Yasai）/03_自社サイト（BASE・yasai.ubaku.jp）/CLAUDE.md -->
+<title>UBAKU Yasai｜北海道美瑛のはみだしトマト・アスパラを産地直送</title>
+<!-- 検索結果に出る説明文（135文字まで）。BASE ではショップ設定の「ショップ説明」に同じ文を入れる -->
+<meta name="description" content="2027年のお届け分、ご予約受付中。形やサイズが少しちがうだけで店頭に並ばない北海道美瑛のアスパラ（5〜6月）とトマト（6〜10月）を、農家さんから産地直送。価格は税込・送料込み。飲食店・お店への卸もご相談ください。">
+<link rel="canonical" href="https://yasai.ubaku.jp/">
+<meta name="theme-color" content="#B4553A">
+<!-- SNS でシェアしたときの表示（OGP）。画像は 1200×630 の ogp.jpg。URL は本番の yasai.ubaku.jp で書いてある -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="UBAKU Yasai">
+<meta property="og:title" content="UBAKU Yasai｜はみだしても、北海道美瑛の味。">
+<meta property="og:description" content="2027年のお届け分、ご予約受付中。形やサイズが少しちがうだけの北海道美瑛のアスパラとトマトを、農家さんから産地直送。飲食店・お店への卸もご相談ください。">
+<meta property="og:url" content="https://yasai.ubaku.jp/">
+<meta property="og:image" content="https://yasai.ubaku.jp/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="木のテーブルにのせた美瑛のトマトとかぼちゃ">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OnlineStore",
+  "name": "UBAKU Yasai",
+  "url": "https://yasai.ubaku.jp/",
+  "logo": "https://yasai.ubaku.jp/icon-512.png",
+  "image": "https://yasai.ubaku.jp/ogp.jpg",
+  "description": "北海道美瑛のはみだしトマト・アスパラを、農家さんから産地直送でお届けするネットショップ。飲食店・お店への卸も受け付けています。",
+  "areaServed": "JP",
+  "parentOrganization": {"@type": "Organization", "name": "UBAKU", "url": "https://ubaku.jp/"}
+}
+</script>
+<!-- サイトのアイコン（Ū の横線が赤土の Yasai 用） -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=Murecho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="assets/yasai.css?v=202611081423">
+
+<link rel="preload" as="image" href="img/intro.webp">
+</head>
+<body>
+
+<a class="sr-only" href="#main">本文へ移動</a>
+<!-- ご予約受付中の札：左の端に立つ縦の帯（のぼりのように。2026-11-08 mashuさん C案に決定）。押すと商品の一覧へ。スマホはヘッダーの小さな札 -->
+<a class="side-band" href="#items" aria-label="2027年のお届け分 ご予約受付中。年内は早割"><span>2027年のお届け分</span><b>ご予約受付中</b><span class="sb-early">年内は早割</span></a>
+<header class="site-header">
+  <a class="brand" href="#top" aria-label="UBAKU Yasai トップへ"><span class="wordmark"></span><span class="brand-sub">YASAI</span></a>
+  <a class="rsv-tag" href="#items"><span class="rt-dot" aria-hidden="true"></span><b>2027年分 ご予約受付中</b><span class="rt-early">年内早割</span></a>
+  <nav class="global-nav" aria-label="メインメニュー">
+    <a class="u-link pc" href="#reserve">Reserve</a>
+    <a class="u-link pc" href="#vegetables">Vegetables</a>
+    <a class="u-link pc" href="#wholesale">Wholesale</a>
+    <a class="u-link pc" href="#farmers">Farmers</a>
+    <a class="u-link pc" href="#delivery">Delivery</a>
+    <a class="shop-btn" href="#items"><span class="ja">野菜を選んで予約する</span></a>
+    <button class="menu-btn" type="button" aria-label="メニューを開く" aria-controls="drawer" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-label="メニュー">
+    <button class="drawer-close" type="button" aria-label="メニューを閉じる">×</button>
+    <ul class="drawer-nav">
+      <li><a href="#reserve">Reserve<small>ご予約のこと</small></a></li>
+      <li><a href="#story">Story<small>はみだしのこと</small></a></li>
+      <li><a href="#vegetables">Vegetables<small>美瑛の野菜</small></a></li>
+      <li><a href="#wholesale">Wholesale<small>卸のご相談</small></a></li>
+      <li><a href="#farmers">Farmers<small>畑から</small></a></li>
+      <li><a href="#delivery">Delivery<small>お届けについて</small></a></li>
+    </ul>
+    <a class="btn" href="#items">野菜を選んで予約する</a>
+    <a class="btn btn--light" href="#wholesale">飲食店・お店の方へ</a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ① トップ：画面いっぱいの写真3枚（mashuさん指定 hero-1〜3）。下に曲線は入れない -->
+<section class="hero" id="top" aria-label="UBAKU Yasai">
+  <!-- 1枚目は丘（2026-11-08 mashuさん）。写真を上へずらし、畑が文字の上に見えるように（CSS の .slide--hill） -->
+  <div class="slide slide--hill is-active"><img src="img/hero-2.webp" alt="山並みを望む美瑛の丘の畑" fetchpriority="high"></div>
+  <div class="slide"><img src="img/hero-1.webp" alt="木のテーブルいっぱいに並べた美瑛のトマト" loading="lazy"></div>
+  <div class="slide"><img src="img/hero-3.webp" alt="秋の草の上にのせた3つのトマト" loading="lazy"></div>
+  <div class="hero-copy">
+    <h1>はみだしても、<span class="nw">北海道美瑛の味。</span></h1>
+    <p>北海道美瑛の産地直送　<span class="nw">アスパラ・トマト</span></p>
+    <div class="hero-btns">
+      <a class="btn" href="#items">野菜を選んで予約する</a>
+      <a class="btn btn--light" href="#wholesale">飲食店・お店の方へ</a>
+    </div>
+  </div>
+  <div class="hero-dots" aria-label="写真の切り替え"></div>
+  <span class="scroll-sign" aria-hidden="true"></span>
+</section>
+
+<!-- ② はじめの紹介 -->
+<section class="intro">
+  <div class="wrap reveal">
+    <p class="catch">形やサイズが、少しちがうだけ。<br>味は、美瑛の畑そのままです。</p>
+    <p>UBAKU Yasai は、北海道美瑛のはみだし野菜のお店です。少し曲がっている、大きすぎる、小さすぎる。それだけでお店に並ばないトマトとアスパラを、農家さんから受け取り、産地直送でお届けします。ご家庭へも、飲食店・お店へも。</p>
+    <p class="en" lang="en">Imperfect in shape, true in taste. Straight from the farms of Biei, Hokkaido.</p>
+  </div>
+</section>
+
+<!-- ②' Reserve：予約販売の流れ（2026-11-08 mashuさん「いまは売るものがない。予約販売中を強調したい」）
+     ・ubakuvilla.com にはない、Yasai だけの部品。線が左から引かれ、いま → 春 → 夏 の順に点がともる
+     ・早割の中身と締め切りは未決なので [ ] のまま -->
+<section class="reserve" id="reserve">
+  <!-- 2026-11-08 紹介（白）の下に、生成りの面で「いま受付中のこと」として続ける。下は写真の曲線へ -->
+  <div class="wrap">
+    <div class="reserve-head reveal">
+      <h2 class="title">RESERVE</h2>
+      <span class="title-ja">ご予約受付中</span>
+      <p class="catch">来年の春と夏を、<br>いまのうちに。</p>
+      <p>美瑛のアスパラとトマトは、畑で育つのを待つ野菜です。いまは2027年のお届け分をご予約いただけます。予約しておけば、あとは季節を待つだけ。いちばんおいしい時期に、畑からまっすぐお届けします。</p>
+    </div>
+    <ol class="tl" aria-label="ご予約からお届けまで">
+      <li class="tl-now">
+        <span class="tl-when">NOW</span>
+        <b>ご予約受付中</b>
+        <p>年内のご予約は早割<br><span class="tl-sub">通常の価格から100円引き[仮]</span></p>
+      </li>
+      <li>
+        <span class="tl-when">2027年5〜6月</span>
+        <b><span class="dot" style="background:var(--spring)"></span>アスパラ</b>
+        <p>雪どけのあとの、最初の緑</p>
+      </li>
+      <li>
+        <span class="tl-when">2027年6〜10月</span>
+        <b><span class="dot" style="background:var(--summer)"></span>トマト</b>
+        <p>夏から秋の、美瑛の赤</p>
+      </li>
+    </ol>
+    <ul class="reserve-points reveal">
+      <li><b>税込・送料込み</b>表示の価格だけで届きます</li>
+      <li><b>お支払いは発送のとき</b>ご予約のときはカードの登録だけ</li>
+      <li><b>お届け前にお知らせ</b>天候で前後するときも事前にご連絡</li>
+    </ul>
+    <div class="center reveal"><a class="btn" href="#items">野菜を選んで予約する</a></div>
+  </div>
+</section>
+<!-- ③ Story（2026-11-08 FROM THE FIELD と合体・案A）：両手のトマトの全面の写真に言葉 → 下の生成りに3つの特長 -->
+<section class="story-a">
+  <div class="bleed" id="story">
+    <!-- 写真の上端の曲線（曲線より上を Reserve と同じ生成りで塗り、赤土の線を引く。2026-11-08 写真の上のすき間をなくした） -->
+    <div class="hill hill--top" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0 0 L1440 0 L1440 40 C 980 0, 380 8, 0 54 Z" style="fill:var(--cream)"/><g class="ln-wrap"><path class="ln" d="M0 54 C 380 8, 980 0, 1440 40"/></g></svg></div>
+    <div class="bleed-photo" aria-hidden="true"><img src="img/hands.webp" alt="" loading="lazy"></div>
+    <div class="wrap">
+      <div class="bleed-text reveal">
+        <h2 class="title">STORY</h2>
+        <span class="title-ja">はみだしのこと</span>
+        <p class="catch">はみだしても、<br>北海道美瑛の味。</p>
+        <p class="sub">おいしいのに、お店に並ばない野菜があります。</p>
+        <p>ちょっと曲がっている。大きすぎる。小さすぎる。少しキズがある。それだけで出荷できない野菜が、美瑛の畑には毎年たくさん残ります。</p>
+        <p>形とサイズで選ばれなかっただけで、味は選ばれた野菜とおなじ。農家さんが手をかけて育てた野菜を、もったいないで終わらせたくない。だから私たちは、畑から直接受け取って、あなたの台所と、お店の厨房へまっすぐ届けます。</p>
+      </div>
+    </div>
+  </div>
+  <div class="story-points">
+    <div class="wrap">
+    <ol class="points">
+      <li><svg class="pt-icon" viewBox="0 0 64 64" aria-hidden="true"><circle pathLength="1" cx="30" cy="34" r="20"/><path pathLength="1" d="M36 18 C 46 16, 54 26, 52 38 C 50 48, 40 54, 32 52"/><path pathLength="1" d="M30 14 V8 M24 12 L30 14 L36 11"/></svg><span class="no">01</span><h3>形がちがうだけ</h3><p>曲がり、大きさのばらつき、小さなキズ。はみだしは、そのまま野菜の個性です。味は、同じ畑で育った野菜と変わりません。</p></li>
+      <li><svg class="pt-icon" viewBox="0 0 64 64" aria-hidden="true"><path pathLength="1" d="M3 50 C 16 42, 30 41, 42 45 S 56 49, 61 45"/><path pathLength="1" d="M18 44 V30 M18 30 C 12 28, 10 22, 12 18 C 16 20, 18 24, 18 30 C 18 24, 22 20, 26 20 C 26 26, 22 29, 18 30"/><path pathLength="1" d="M40 30 H58 M52 24 L58 30 L52 36"/></svg><span class="no">02</span><h3>畑から、まっすぐ</h3><p>農家さんから直接受け取り、北海道美瑛から産地直送でお届けします。どの畑で、誰が育てたかが見える野菜です。</p></li>
+      <li><svg class="pt-icon" viewBox="0 0 64 64" aria-hidden="true"><path pathLength="1" d="M6 30 L20 18 L34 30 V52 H6 Z"/><path pathLength="1" d="M34 52 H60 V30 L47 20 L34 30"/><path pathLength="1" d="M42 52 V40 H52 V52"/><path pathLength="1" d="M15 52 V40 H25 V52"/></svg><span class="no">03</span><h3>家庭にも、お店にも</h3><p>ご家庭で使いやすい量の箱から、飲食店・お店への卸まで。量と頻度に合わせてご相談ください。</p></li>
+    </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ Vegetables：価格は 2026-10-19（トマト）・2026-11-08（アスパラ）mashuさん決定 -->
+<section class="sec" id="vegetables">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2 class="title">VEGETABLES</h2>
+      <span class="title-ja">美瑛の野菜</span>
+      <p>ご家庭で使いやすい量から、たっぷりの量まで。アスパラもトマトも、3つの量からお選びいただけます。いまは2027年のお届け分のご予約です。価格はすべて税込・送料込みです。</p>
+      <!-- 早割の金額は仮（mashuさんの例「全部マイナス100円」）。決まったら6つの価格と札を直す -->
+      <p class="early"><span class="tag">年内早割</span>　12月31日までのご予約は、どの商品も通常の価格から<b>100円引き</b>[仮]。</p>
+    </div>
+
+
+    <!-- はみだし野菜の専門店としての約束（2026-11-08 mashuさん「強調したい」→ 商品の前へ移した。BASE の確認画面にも同じ文を書く） -->
+    <div class="hamidashi-note hamidashi-note--top reveal">
+      <p class="hn-lead">UBAKU Yasai は、<span class="nw">はみだし野菜の専門店です。</span></p>
+      <ul class="hn-list" aria-label="返品・交換の対象にならないもの"><li>サイズが小さい・大きい</li><li>小さなキズがある</li><li>曲がっている</li><li>形がふぞろい</li></ul>
+      <p>これらは、はみだし野菜の個性です。<b>これを理由にした返品・交換はお受けしていません。</b><br class="pc-br">あらかじめご了承のうえ、ご予約ください。</p>
+    </div>
+
+    <!-- 並びはお届けの順（春のアスパラ → 夏のトマト）。2026-11-08 予約販売に合わせて入れかえた -->
+    <!-- アスパラ（5〜6月・予約）。id="items"＝予約ボタンの飛び先（2026-11-08 mashuさん「直接、野菜の商品へ」） -->
+    <div class="veg-group" id="items">
+      <div class="veg-head reveal">
+        <span class="dot" style="background:var(--spring)"></span><h3>はみだし美瑛アスパラ</h3><span class="veg-en">Asparagus</span>
+        <span class="tag">予約受付中</span>
+        <span class="veg-when">お届け <b>2027年5〜6月</b></span>
+        <p>雪どけのあとの、最初の緑。春のお届けを、いまご予約いただけます。</p>
+      </div>
+      <div class="items">
+        <a class="item reveal" href="#shop">
+          <div class="ph zoom unveil"><span class="early-tag">早割<b>−100円</b></span><img src="img/asparagus-500g.webp" alt="ざるにのせたアスパラ" loading="lazy" width="1200" height="800"><span class="ph-note">写真はイメージです</span></div>
+          <div class="item-body">
+            <span class="item-name"><span>アスパラ <span class="kg">500g</span></span><span class="price"><s class="price-was">899<small>円</small></s><span class="price-early">799<small>円</small></span></span></span>
+            <span class="item-copy">まずはお試しに。</span>
+            <span class="item-go">予約する</span>
+          </div>
+        </a>
+        <a class="item reveal" href="#shop" style="transition-delay:.12s">
+          <div class="ph zoom unveil" style="--d:.12s"><span class="early-tag">早割<b>−100円</b></span><img src="img/asparagus-1kg.webp" alt="木のかごに入れたアスパラ" loading="lazy" width="678" height="452"><span class="ph-note">写真はイメージです</span></div>
+          <div class="item-body">
+            <span class="item-name"><span>アスパラ <span class="kg">1kg</span></span><span class="price"><s class="price-was">1,599<small>円</small></s><span class="price-early">1,499<small>円</small></span></span></span>
+            <span class="item-copy">家族でたっぷり。</span>
+            <span class="item-go">予約する</span>
+          </div>
+        </a>
+        <a class="item reveal" href="#shop" style="transition-delay:.24s">
+          <div class="ph zoom unveil" style="--d:.24s"><span class="early-tag">早割<b>−100円</b></span><img src="img/asparagus-2kg.webp" alt="かごいっぱいのアスパラ" loading="lazy" width="1200" height="800"><span class="ph-note">写真はイメージです</span></div>
+          <div class="item-body">
+            <span class="item-name"><span>アスパラ <span class="kg">2kg</span></span><span class="price"><s class="price-was">2,799<small>円</small></s><span class="price-early">2,699<small>円</small></span></span></span>
+            <span class="item-copy">春のごちそうを、おすそわけにも。</span>
+            <span class="item-go">予約する</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- トマト（6〜10月・予約） -->
+    <div class="veg-group">
+      <div class="veg-head reveal">
+        <span class="dot" style="background:var(--summer)"></span><h3>はみだし美瑛トマト</h3><span class="veg-en">Tomato</span>
+        <span class="tag">予約受付中</span>
+        <span class="veg-when">お届け <b>2027年6〜10月</b></span>
+        <p>ちょっと割れても、ちゃんと赤い。夏から秋の、美瑛のトマトです。</p>
+      </div>
+      <div class="items">
+        <!-- 商品のリンクは BASE の商品ページができたら差し替える -->
+        <a class="item reveal" href="#shop">
+          <div class="ph zoom unveil"><span class="early-tag">早割<b>−100円</b></span><img src="img/tomato-4kg.webp" alt="美瑛の丘を背に、木の台にのせたトマト" loading="lazy" width="1200" height="800"><span class="ph-note">写真はイメージです</span></div>
+          <div class="item-body">
+            <span class="item-name"><span>トマト <span class="kg">4kg</span></span><span class="price"><s class="price-was">3,099<small>円</small></s><span class="price-early">2,999<small>円</small></span></span></span>
+            <span class="item-copy">まずはご家庭で。サラダに、そのままに。</span>
+            <span class="item-go">予約する</span>
+          </div>
+        </a>
+        <a class="item reveal" href="#shop" style="transition-delay:.12s">
+          <div class="ph zoom unveil" style="--d:.12s"><span class="early-tag">早割<b>−100円</b></span><img src="img/tomato-5kg.webp" alt="木のテーブルいっぱいのトマト" loading="lazy" width="1200" height="800"><span class="ph-note">写真はイメージです</span></div>
+          <div class="item-body">
+            <span class="item-name"><span>トマト <span class="kg">5kg</span></span><span class="price"><s class="price-was">3,299<small>円</small></s><span class="price-early">3,199<small>円</small></span></span></span>
+            <span class="item-copy">煮込みにも、ソースにも。</span>
+            <span class="item-go">予約する</span>
+          </div>
+        </a>
+        <a class="item reveal" href="#shop" style="transition-delay:.24s">
+          <div class="ph zoom unveil" style="--d:.24s"><span class="early-tag">早割<b>−100円</b></span><img src="img/tomato-6kg.webp" alt="山のように重なったトマト" loading="lazy" width="1200" height="800"><span class="ph-note">写真はイメージです</span></div>
+          <div class="item-body">
+            <span class="item-name"><span>トマト <span class="kg">6kg</span></span><span class="price"><s class="price-was">3,499<small>円</small></s><span class="price-early">3,399<small>円</small></span></span></span>
+            <span class="item-copy">たっぷり使いたい方に。おすそわけにも。</span>
+            <span class="item-go">予約する</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 税込・送料込みは 2026-11-08 mashuさん決定 -->
+    <!-- 旬便の欄は 2026-11-08 いったん外した（mashuさん）。BASE の定期便は予約と一緒に使えないため、収穫が始まるころに定期便として追加する。
+         外す前のレイアウトは _history/C14_旬便あり_2026-11-08/index.html（CSS の .shun-card などは残してある） -->
+
+    <p class="price-note">※ 価格はすべて税込・送料込みです。沖縄県・離島へのお届けはしていません。<br>※ 天候や育ちぐあいで予定の時期に出荷できないときは、時期をずらしてお届けします。それも難しいときは返金します。</p>
+
+    <!-- 月ごとの予約の案内（2026-11-08 mashuさん：11月からは月ごとの単品の予約で売る。届く月がちがう予約は BASE で1回のお会計にまとめられない） -->
+    <div class="monthly reveal">
+      <div class="mo-lead">
+        <span class="mo-en">Monthly</span>
+        <h3>届けてほしい月ごとに、<br class="pc-br">何か月分でもご予約いただけます。</h3>
+        <p>お届けの月をお選びください（日にちはおまかせください）。春のアスパラも、夏のトマトも、好きな月の分をいくつでも。お支払いは、それぞれ発送のときです。</p>
+      </div>
+      <ol class="mo-ex" aria-label="ご予約の例">
+        <li><span class="mo-m">5月</span><span class="dot" style="background:var(--spring)"></span>アスパラ 2kg</li>
+        <li><span class="mo-m">7月</span><span class="dot" style="background:var(--summer)"></span>トマト 4kg</li>
+        <li><span class="mo-m">9月</span><span class="dot" style="background:var(--summer)"></span>トマト 4kg</li>
+        <li class="mo-note">※ お届けの月ごとに、別々のお会計になります（同じ月の商品は、まとめてお会計できます）。</li>
+      </ol>
+    </div>
+
+    <!-- ご予約の前に（2026-11-08 生成りの欄から移した。見出しのない 01〜03 で分かりにくかったため） -->
+    <div class="before reveal" id="delivery">
+      <h3>ご予約の前に</h3>
+      <ul class="deliv">
+        <li><span class="no">01</span><h4>お支払いは発送のとき</h4><p>ご予約のときにクレジットカードを登録・確認し、引き落としは発送のときです。届く月ごとに、その月の発送のときにお支払いいただきます。</p></li>
+        <li><span class="no">02</span><h4>発送の前にお知らせ</h4><p>お届けの時期にあわせて美瑛から発送し、発送の前にお知らせします。天候で時期が前後するときも、事前にご連絡します。</p></li>
+        <li><span class="no">03</span><h4>届いたときに傷んでいたら</h4><p>輸送中の潰れや傷みがあったときは、届いた日に写真を添えてご連絡ください。返金で対応します。</p></li>
+      </ul>
+    </div>
+
+    <!-- こよみ（2026-11-08 C10 作り直し）：左から右へ時間の順。いまの月（11月）から、最後のお届け（2027年10月）まで。
+         「いま」の印は、見ている日の月に自動で動く（yasai.js）。2027年11月より後に見ると印は出ない -->
+    <div class="koyomi reveal">
+      <h3>ご予約から、お届けまで</h3>
+      <div class="koyomi-grid" role="table" aria-label="月ごとのご予約とお届けの時期">
+        <span></span><span class="yr" style="grid-column:2 / 4">2026年</span><span class="yr" style="grid-column:4 / 14">2027年</span>
+        <span></span>
+        <span class="m" data-ym="2026-11">11</span><span class="m" data-ym="2026-12">12</span><span class="m" data-ym="2027-01">1</span><span class="m" data-ym="2027-02">2</span><span class="m" data-ym="2027-03">3</span><span class="m" data-ym="2027-04">4</span><span class="m" data-ym="2027-05">5</span><span class="m" data-ym="2027-06">6</span><span class="m" data-ym="2027-07">7</span><span class="m" data-ym="2027-08">8</span><span class="m" data-ym="2027-09">9</span><span class="m" data-ym="2027-10">10</span>
+        <!-- ご予約の段：11〜12月は早割。1月からは点線（締め切りは「お届けの直前まで」） -->
+        <span class="nm"><span class="dot" style="background:var(--red)"></span>ご予約</span>
+        <span class="koyomi-bar koyomi-bar--early" style="grid-column:2 / 4;background:var(--early)" aria-label="2026年11〜12月 早割"><em>年内早割</em></span>
+        <span class="koyomi-bar koyomi-bar--line" style="grid-column:4 / 9" aria-label="2027年1〜5月 ご予約受付（お届けの直前まで）"></span>
+        <span class="nm"><span class="dot" style="background:var(--spring)"></span>アスパラ</span>
+        <span class="koyomi-bar" style="grid-column:8 / 10;background:var(--spring)" aria-label="2027年5〜6月 お届け"></span>
+        <span class="nm"><span class="dot" style="background:var(--summer)"></span>トマト</span>
+        <span class="koyomi-bar" style="grid-column:9 / 14;background:var(--summer);--d:.25s" aria-label="2027年6〜10月 お届け"></span>
+      </div>
+      <p class="koyomi-note">いまのご予約は、2027年のお届け分です。天候によって、お届けの時期が前後することがあります。ご予約は、お届けの直前まで受け付けます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ Wholesale：卸のご相談（mashuさん「お店の卸も強調したい」）。写真に重ねた大きな帯 -->
+<section class="ws" id="wholesale">
+  <div class="ws-photo unveil" aria-hidden="true"><img src="img/wholesale.webp" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="title">WHOLESALE</h2>
+      <span class="title-ja">飲食店・お店のみなさまへ</span>
+      <p class="catch">美瑛の畑から、<br>お店の厨房へ。</p>
+      <ul class="ws-for" aria-label="こんな方へ"><li>飲食店</li><li>宿・ホテル</li><li>青果店・マルシェ</li><li>加工・お惣菜</li></ul>
+      <p class="ws-lead">形がそろわないぶん、使い方しだいで力を発揮する野菜です。美瑛のトマトとアスパラを、お店の量と頻度に合わせてお届けします。メニューに「北海道美瑛産」と書ける野菜を、産地から直接。</p>
+    </div>
+    <ul class="ws-list">
+      <li class="reveal"><span class="no">01</span><h3>量と頻度に合わせて</h3><p>まとまった量を、決まった間隔で。ご希望をうかがって、出荷の量と時期をご相談します。</p></li>
+      <li class="reveal" style="transition-delay:.12s"><span class="no">02</span><h3>加工・業務用に</h3><p>形やサイズを問わない使い方なら、はみだし野菜がいちばん生きます。煮込み、ソース、スープに。</p></li>
+      <li class="reveal" style="transition-delay:.24s"><span class="no">03</span><h3>産地と農家さんが見える</h3><p>美瑛のどの地区で、どんな農家さんが育てたかをお伝えできます。お店の紹介にもお使いください。</p></li>
+    </ul>
+    <div class="ws-cta reveal">
+      <a class="btn" href="https://ubaku.jp/#contact" target="_blank" rel="noopener">卸のご相談<small>WHOLESALE</small></a>
+      <p>ubaku.jp のお問い合わせから、種別「野菜・食」でお送りください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ Farmers：緑の帯（農家さんの言葉は 2026-11-08 mashuさんから） -->
+<section class="sec farm" id="farmers">
+  <div class="wrap">
+    <div class="farm-grid">
+      <div class="farm-photos">
+        <div class="big unveil"><img src="img/farmer-1.webp" alt="トマトのハウスを歩く農家の島田さん" loading="lazy" width="1800" height="1200"></div>
+        <div class="small unveil" style="--d:.3s"><img src="img/farmer-2.webp" alt="トマトの手入れをする島田さん" loading="lazy" width="1200" height="800"></div>
+      </div>
+      <div class="farm-text reveal">
+        <h2 class="title">FARMERS</h2>
+        <span class="title-ja">畑からのひとこと</span>
+        <p class="quote"><svg class="quote-mark" viewBox="0 0 40 30" aria-hidden="true"><path d="M2 30V18C2 9 7 3 15 1l1.5 3C12 6 9.5 9.5 9.5 14H16v16zM24 30V18c0-9 5-15 13-17l1.5 3C34 6 31.5 9.5 31.5 14H38v16z"/></svg><span class="phrase">サイズが小さいとか、</span><span class="phrase">少し傷があるとかの理由で</span><span class="phrase">捨てられるのが悔しかった。</span><span class="phrase">同じくおいしいのに。</span></p>
+        <p class="farm-name"><b>島田さん</b>北海道美瑛町　朗根内地区</p>
+      </div>
+    </div>
+    <!-- 畑に立つ UBAKU のメンバー（紹介文は ubaku.jp の Team と同じ） -->
+    <div class="member reveal">
+      <div class="ph unveil"><img src="img/yamato.webp" alt="トマトのハウスに立つ UBAKU の Yamato" loading="lazy" width="1200" height="800"></div>
+      <div>
+        <span class="member-role">Field Director｜耕す人</span>
+        <h3>Yamato<small style="font-size:12px;letter-spacing:.14em;margin-left:12px;color:var(--on-green-sub)">UBAKU</small></h3>
+        <p>沖縄から北海道へ飛び込んだ元小学校教員。いまは美瑛の農家さんとともに畑に立ち、土と人をつなぎながら、この町に関わる人を増やしている。</p>
+        <!-- Yamato のひとこと（吹き出し）。文は案：mashuさんの趣旨「お手頃な値段で、美瑛のおいしい野菜を全国に全力で届けたい・必要とする人がたくさんいる・この事業をやる意味」から -->
+        <p class="say"><span class="say-who">Yamato のひとこと</span><span class="phrase">北海道美瑛の、</span><span class="phrase">こんなにおいしい野菜を、</span><span class="phrase">手に取りやすい値段で、</span><br><em><span class="phrase">全国のみなさんに、</span><span class="phrase">全力で届けたい。</span></em><br><span class="say-sub"><span class="phrase">本当に必要としてくれる人が、</span><span class="phrase">たくさんいると思うんです。</span><br><span class="phrase">それが、僕が UBAKU で</span><span class="phrase">この仕事をやる意味です。</span></span></p>
+      </div>
+    </div>
+  </div>
+  <!-- 畑のようす：止まらずゆっくり流れる（マウスを乗せると止まる） -->
+  <div class="flow reveal" data-flow>
+    <ul class="flow-track">
+      <!-- 並び（2026-11-08 C18）：はみだし野菜らしい写真を足して14枚（story-1〜4・field-9＝追加.jpg・field-10＝追加2.jpg。mashuさん）。
+           商品と同じ写真（field-3・field-8）は使わない。かぼちゃ（4・pumpkin-1・pumpkin-2・7）は隣り合わない、枝の写真（story-2・3・4・field-2・10）も続けない、木のベンチ（4・6・7）は離す -->
+      <li><img src="img/field-4.webp" alt="木のテーブルにのせたかぼちゃとトマト" loading="lazy" width="1200" height="800"></li>
+      <li><img src="img/story-1.webp" alt="色も形もそろわない、山盛りのトマト" loading="lazy" width="1600" height="1067"></li>
+      <li><img src="img/story-2.webp" alt="枝についたままの青いトマトを手袋で支える" loading="lazy" width="1600" height="1067"></li>
+      <li><img src="img/field-pumpkin-1.webp" alt="農家さんが手にのせた緑のかぼちゃ" loading="lazy" width="1200" height="800"></li>
+      <li><img src="img/field-6.webp" alt="木のテーブルに丸く並べたトマト" loading="lazy" width="1200" height="800"></li>
+      <li><img src="img/story-3.webp" alt="枝の小さなトマトに手をのばす" loading="lazy" width="1600" height="1067"></li>
+      <li><img src="img/field-pumpkin-2.webp" alt="丘の牧草地で、台の上に重ねたかぼちゃ" loading="lazy" width="1200" height="800"></li>
+      <li><img src="img/field-1.webp" alt="両手にのせた黄色いトマト" loading="lazy" width="1200" height="800"></li>
+      <li><img src="img/field-2.webp" alt="枝のトマトに手をのばす" loading="lazy" width="1200" height="800"></li>
+      <li><img src="img/field-7.webp" alt="丘を背に、木の台にのせたかぼちゃとトマト" loading="lazy" width="1200" height="800"></li>
+      <li><img src="img/field-5.webp" alt="草の上のトマト" loading="lazy" width="1200" height="800"></li>
+      <li><img src="img/story-4.webp" alt="枝に一つだけ実った、形のふぞろいなトマト" loading="lazy" width="1600" height="1067"></li>
+      <li><img src="img/field-9.webp" alt="台の上の、ひびの入ったトマト" loading="lazy" width="1200" height="800"></li>
+      <li><img src="img/field-10.webp" alt="枝で育つ、まだ青いトマト" loading="lazy" width="1200" height="800"></li>
+    </ul>
+  </div>
+  <p class="flow-cap">2026年10月、美瑛の畑で</p>
+</section>
+
+<!-- ⑧ よくある質問（生成り）。旬便・ご予約の前に は 2026-11-08 に Vegetables の中へ移した。決まっていないことは [ ] のまま -->
+<section class="sec cream" id="delivery-faq">
+  <div class="wrap">
+    <div class="faq reveal" id="faq">
+      <h2 class="title">FAQ</h2>
+      <span class="title-ja">よくある質問</span>
+      <details><summary><span>形やキズを理由に、返品できますか？</span></summary><p>できません。UBAKU Yasai は、はみだし野菜の専門店です。サイズが小さい・小さなキズがある・曲がっている・形がふぞろい、といった理由での返品・交換はお受けしていません。輸送中の潰れや傷みは、届いた日に写真を添えてご連絡ください。返金で対応します。</p></details>
+      <details><summary><span>規格外の野菜は、味がちがいますか？</span></summary><p>ちがいません。形や大きさで出荷できなかっただけで、同じ畑で同じように育った野菜です。</p></details>
+      <details><summary><span>いま注文すると、いつ届きますか？</span></summary><p>いまは2027年のお届け分のご予約です。アスパラは2027年5〜6月、トマトは6〜10月にお届けします。天候によって前後することがあり、発送の前にお知らせします。</p></details>
+      <details><summary><span>早割はいつまでですか？</span></summary><p>2026年12月31日までのご予約が早割です。どの商品も、通常の価格から100円引きになります。</p></details>
+      <details><summary><span>お支払いはいつですか？</span></summary><p>クレジットカードでのお支払いです。ご予約のときにカードを登録・確認し、引き落としは発送のときです。いくつかの月をご予約いただいたときは、それぞれの月の発送のときにお支払いいただきます。</p></details>
+      <details><summary><span>飲食店・お店で使いたいのですが。</span></summary><p>卸のご相談を承っています。ubaku.jp のお問い合わせから、種別「野菜・食」で、お店の名前・使いたい野菜・量と頻度をお送りください。</p></details>
+      <details><summary><span>予約をキャンセルできますか？</span></summary><p>お届けの月の前の月の末日までキャンセルできます。たとえば5月にお届けのアスパラは、4月30日までです。</p></details>
+      <details><summary><span>届く日にちは選べますか？</span></summary><p>お届けの月はご予約のときにお選びいただけます。日にちは、その月のいちばんおいしい時期に合わせてこちらで決め、発送の前にお知らせします。</p></details>
+      <details><summary><span>沖縄や離島にも届けられますか？</span></summary><p>申し訳ありませんが、沖縄県・離島へのお届けはしていません。</p></details>
+      <details><summary><span>いくつかの月の分を、まとめて予約できますか？</span></summary><p>できます。届けてほしい月の分を、何か月分でもご予約いただけます。お届けの月ごとに別々のお会計になり、お支払いはそれぞれ発送のときです（同じ月の商品は、まとめてお会計できます）。</p></details>
+      <details><summary><span>天候で野菜が育たなかったら、どうなりますか？</span></summary><p>天候や育ちぐあいで予定の時期に出荷できないときは、時期をずらしてお届けします。それも難しいときは返金します。</p></details>
+      <details><summary><span>送料はいくらですか？</span></summary><p>表示の価格は、すべて税込・送料込みです（沖縄県・離島へのお届けはしていません）。</p></details>
+      <details><summary><span>贈り物にできますか？</span></summary><p>お届け先を指定してご予約いただけます。のし・ギフト包装・メッセージカードには対応していません。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ 最後の帯（美瑛の丘のパノラマ）。下に2つめの曲線 → フッター -->
+<section class="cta">
+  <div class="wrap reveal">
+    <p class="cta-lead">美瑛の畑から、<span class="nw">まっすぐあなたの台所へ。</span></p>
+    <p class="cta-sub">2027年のお届け分、<span class="nw">ご予約受付中です。</span></p>
+    <div class="cta-btns">
+      <a class="btn" href="#items">野菜を選んで予約する</a>
+      <a class="btn btn--light" href="#wholesale">卸のご相談</a>
+    </div>
+  </div>
+  <div class="hill" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path class="fill" d="M0 80 L0 46 C 420 0, 1060 6, 1440 50 L1440 80 Z"/><g class="ln-wrap"><path class="ln" d="M0 46 C 420 0, 1060 6, 1440 50"/></g></svg></div>
+</section>
+
+</main>
+
+<!-- フッター（ubakuvilla.com と同じ形。下の一段深い面は「運営 UBAKU」で、ubakuvilla.com とそろえてある） -->
+<footer class="site-footer">
+  <div class="wrap footer-main">
+    <div class="footer-home">
+      <a class="brand" href="#top" aria-label="UBAKU Yasai トップへ"><span class="wordmark"></span><span class="brand-sub">YASAI</span></a>
+      <p class="footer-catch">北海道美瑛の、はみだし野菜の産地直送</p>
+    </div>
+    <nav class="footer-nav" aria-label="サイトの案内">
+      <ul><li><a class="u-link" href="#reserve">Reserve</a></li><li><a class="u-link" href="#story">Story</a></li><li><a class="u-link" href="#vegetables">Vegetables</a></li><li><a class="u-link" href="#wholesale">Wholesale</a></li></ul>
+      <ul><li><a class="u-link" href="#farmers">Farmers</a></li><li><a class="u-link" href="#faq">FAQ</a></li></ul>
+    </nav>
+    <div class="footer-info">
+      <div>
+        <h2>Contact</h2>
+        <ul><li><a class="u-link" href="https://ubaku.jp/#contact" target="_blank" rel="noopener">お問い合わせ・卸のご相談</a></li></ul>
+      </div>
+      <div>
+        <h2>Information</h2>
+        <ul><li><a class="u-link" href="#tokusho">特定商取引法に基づく表記</a></li><li><a class="u-link" href="#privacy">プライバシーポリシー</a></li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-op">
+    <div class="wrap">
+      <a class="footer-op-brand" href="https://ubaku.jp" aria-label="運営：UBAKU"><small>運営</small><span class="wordmark" role="img" aria-label="UBAKU"></span></a>
+      <p class="footer-op-text"><span>「まちを想い、まちを動かす」</span><span>北海道美瑛・東川町の地域プロデュースチーム</span></p>
+      <div class="footer-op-end">
+        <ul class="footer-family" aria-label="UBAKU のサイト"><li><a href="https://ubaku.jp">UBAKU</a></li><li><a href="https://ubakuvilla.com">UBAKU Villa</a></li><li><a href="https://ubaku.jp/design/">UBAKU Design</a></li><li><a href="https://ubaku.jp/consulting/">UBAKU Consulting</a></li><li><a href="#top" aria-current="page">UBAKU Yasai</a></li></ul>
+        <span class="footer-copy">© 2026 UBAKU</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- 右下の印：卸のご相談の1つだけ（2026-11-08 mashuさん「1個だけでいい」）。最後の帯とフッター・卸の帯では隠れる -->
+<div class="fab">
+  <a class="seal seal-ws" href="#wholesale">
+    <svg viewBox="0 0 108 108" aria-hidden="true"><defs><path id="ring-ws" d="M54 54 m-41 0 a41 41 0 1 1 82 0 a41 41 0 1 1 -82 0"/></defs><text><textPath href="#ring-ws" textLength="252">WHOLESALE · FOR RESTAURANTS &amp; SHOPS · BIEI ·</textPath></text></svg>
+    <b>卸の<br>ご相談</b>
+  </a>
+</div>
+<button class="to-top" type="button" aria-label="一番上へ戻る"><svg viewBox="0 0 24 24"><path d="M6 14l6-6 6 6"/></svg></button>
+
+<script src="assets/yasai.js?v=202611081423"></script>
+</body>
+</html>
