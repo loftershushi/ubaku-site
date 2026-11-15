@@ -177,7 +177,10 @@
     data.append('html_type', 'simple');
 
     buttons.forEach(function (b) { b.disabled = true; });
-    function done() { form.classList.replace('is-step2', 'is-step3'); notify(email, interests); remember('done'); }
+    function done() {
+      form.classList.replace('is-step2', 'is-step3'); notify(email, interests); remember('done');
+      if (typeof window.gtag === 'function') { try { window.gtag('event', 'sign_up', { method: 'letter' }); } catch (e) {} }   // UBAKU Letter の登録（2026-11-15）
+    }
     function fail() {
       buttons.forEach(function (b) { b.disabled = false; });
       var note = form.querySelector('.lt-error') || form.querySelector('[data-step="2"]').appendChild(document.createElement('p'));

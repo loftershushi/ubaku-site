@@ -29,5 +29,8 @@
   var staysJapanese = Array.prototype.some.call(langs, function (l) { return /^(ja|zh)\b/i.test(l); });
   if (staysJapanese) { return; }
 
+  // 移す前に、元の参照元（Google 検索など）を覚えておく。移った先のページの GA4 が受け取る（2026-11-15）
+  // （覚えないと、移った先では「自分のサイトから来た」に見え、海外の人の流入元が消えるため）
+  try { var ref = document.referrer; if (ref && ref.indexOf(location.host) < 0) { sessionStorage.setItem('ubaku-ref', ref); } } catch (e) { /* 覚えられなくても移動はする */ }
   location.replace('/en' + location.pathname + location.search + location.hash);
 })();

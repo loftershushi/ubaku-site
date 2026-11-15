@@ -572,9 +572,12 @@ document.querySelectorAll('.fold-btn').forEach(function (btn) {
 // （アドレスを集めて回るロボットは、ページの文字をそのまま読むため）
 // メールのボタン（2026-10-17）：アドレスはページのどこにも書かず、押したときだけ組み立ててメールを開く
 // （ページを読み取ってアドレスを集めるロボットに見つからないように）。メールが開けない環境では href のお問い合わせへ
+// GA4 に「成果」を知らせる（2026-11-15）。GA4 が読み込めていないときは何もしない
+function sendGA(name, params) { if (typeof window.gtag === 'function') { try { window.gtag('event', name, params || {}); } catch (e) {} } }
 document.querySelectorAll('.js-mail-btn').forEach(function (a) {
   a.addEventListener('click', function (e) {
     e.preventDefault();
+    sendGA('email_click', { place: 'button' });   // メールのボタンを押した
     window.location.href = 'mailto:' + a.dataset.user + '@' + a.dataset.domain;
   });
 });
@@ -582,6 +585,7 @@ document.querySelectorAll('.js-mail').forEach(function (a) {
   var addr = a.dataset.user + '@' + a.dataset.domain;
   a.href = 'mailto:' + addr;
   a.textContent = addr;
+  a.addEventListener('click', function () { sendGA('email_click', { place: 'link' }); });   // メールアドレスを押した
 });
 
 (function () {
@@ -610,6 +614,7 @@ document.querySelectorAll('.js-mail').forEach(function (a) {
         if (!res.ok || !json.success) throw new Error(json.message || 'send failed');
       });
     }).then(function () {
+      sendGA('generate_lead', { form: 'contact', lang: EN ? 'en' : 'ja' });   // 問い合わせの送信に成功した
       form.reset();
       if (window.hcaptcha) { try { window.hcaptcha.reset(); } catch (err) {} }
       status.textContent = EN ? 'Thank you. Your message has been sent. We will reply to your email address within 5 business days.' : '送信しました。お問い合わせありがとうございます。内容を確認のうえ、5営業日以内にご入力のメールアドレスへご連絡します。';   // 自動返信はないので、いつ返事が来るかをここで伝える（2026-10-26）
