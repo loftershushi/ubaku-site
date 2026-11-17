@@ -1,6 +1,13 @@
 /* noteの記事一覧（tools/make_notes.py で自動作成。手で直さない） */
 window.UBAKU_NOTES = [
   {
+    "title": "会社を辞めなくても、やりたいことは始められた。北海道で宿を開いて10ヶ月",
+    "url": "https://note.com/loftershushi/n/n7541bba6ed32",
+    "date": "2026.11.17",
+    "source": "mashu",
+    "image": "https://assets.st-note.com/production/uploads/images/337352373/rectangle_large_type_2_eaee058fabceac1cc2beea231583b2bf.jpeg?width=600"
+  },
+  {
     "title": "一棟貸しの宿から、まちへ。北海道美瑛・東川町で「UBAKU」が始まりました",
     "url": "https://note.com/ubaku_jp/n/n0f58065b69e3",
     "date": "2026.11.06",
@@ -89,7 +96,7 @@ window.UBAKU_NOTES = [
     "url": "https://note.com/loftershushi/n/n6b9e7023766f",
     "date": "2026.08.09",
     "source": "mashu",
-    "image": "https://assets.st-note.com/production/uploads/images/301784924/rectangle_large_type_2_9fe0c737cd9b0f628ce50ab25b5ffef0.jpeg?width=600"
+    "image": "https://assets.st-note.com/production/uploads/images/336987901/rectangle_large_type_2_c255c580de7298bbedb24124b1ff7773.jpeg?width=600"
   },
   {
     "title": "あの日の取材が、HBC北海道放送で放送された",
