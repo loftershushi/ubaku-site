@@ -1,6 +1,27 @@
 /* noteの記事一覧（tools/make_notes.py で自動作成。手で直さない） */
 window.UBAKU_NOTES = [
   {
+    "title": "北海道住宅産業新聞（1面）・北海道建設新聞で紹介されました｜美瑛の空き家を一棟貸しの宿に。1968年築の元農家住宅を再生した UBAKU Villa 宇莫別荘",
+    "url": "https://note.com/ubakuvilla/n/n2bfd29175bdf",
+    "date": "2026.11.22",
+    "source": "UBAKU Villa 宇莫別荘",
+    "image": "https://assets.st-note.com/production/uploads/images/339172346/rectangle_large_type_2_e35de326e0267151e6da34632276884b.jpeg?width=600"
+  },
+  {
+    "title": "北海道・美瑛の星の見える宿｜宇莫別川の音と天の川、一棟貸しの宿 UBAKU Villa 宇莫別荘の夜",
+    "url": "https://note.com/ubakuvilla/n/n0a7ddcf231ed",
+    "date": "2026.11.21",
+    "source": "UBAKU Villa 宇莫別荘",
+    "image": "https://assets.st-note.com/production/uploads/images/338734233/rectangle_large_type_2_85fd812c967ef58d0fc39cba7fc4068e.jpeg?width=600"
+  },
+  {
+    "title": "冬の美瑛は何泊・何人で泊まる？｜一棟貸しヴィラ UBAKU Villa 宇莫別荘がひと冬運営してわかった「旅の決め方」",
+    "url": "https://note.com/ubakuvilla/n/n4201c5faa343",
+    "date": "2026.11.19",
+    "source": "UBAKU Villa 宇莫別荘",
+    "image": "https://assets.st-note.com/production/uploads/images/337919862/rectangle_large_type_2_999c206a760d0bcee94c76078d259ba8.jpeg?width=600"
+  },
+  {
     "title": "会社を辞めなくても、やりたいことは始められた。北海道で宿を開いて10ヶ月",
     "url": "https://note.com/loftershushi/n/n7541bba6ed32",
     "date": "2026.11.17",
@@ -68,7 +89,7 @@ window.UBAKU_NOTES = [
     "url": "https://note.com/ubakuvilla/n/nf3ae3886470d",
     "date": "2026.09.22",
     "source": "UBAKU Villa 宇莫別荘",
-    "image": "https://assets.st-note.com/production/uploads/images/316161158/rectangle_large_type_2_49ad933f6a4d7f2ad093e3a9ffc0670c.jpeg?width=600"
+    "image": "https://assets.st-note.com/production/uploads/images/337922755/rectangle_large_type_2_51433761051d369a26b72f393e618897.jpeg?width=600"
   },
   {
     "title": "二拠点生活に憧れる後輩に、僕が言えなかったこと",

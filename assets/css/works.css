@@ -291,3 +291,60 @@
   .wk-nextcase-link .wk-name{font-size:clamp(34px,10.5vw,44px);line-height:1.15}
   .wk-nextcase-link .wk-name span{display:block;margin:10px 0 0;font-size:.5em}
 }
+
+/* ===== おかのはたの事例（2026-11-22） ===== */
+.wk-cover .wk-cover-logo{position:absolute;left:50%;top:32%;width:min(38vw,520px);height:auto;transform:translate(-50%,-50%) !important}   /* 表紙の空に、元の色のロゴ */
+@media (max-width:640px){.wk-cover .wk-cover-logo{width:64vw;top:30%}}
+.vi-face--okano-cream{background:#FEF7ED}
+.vi-okano{width:min(82%,300px);height:auto}
+.vi-okano--white{filter:brightness(0) invert(1)}   /* 赤土の地には白一色で */
+.vi-okano-icon{width:min(46%,140px);height:auto}
+.vi-face--photo{padding:0}
+.vi-face--photo img{width:100%;height:100%;object-fit:cover}
+/* 一覧のおかのはた：写真の空に、元の色のロゴ */
+.wk-feature-photo{position:relative}
+.wk-feature-photo .wk-feature-logo{position:absolute;left:33%;top:28.6%;width:34%;height:auto;pointer-events:none}   /* 位置はずらし（transform）を使わずに決める。写真と一緒に拡大・縮小させるため */
+
+/* ===== 2026-11-22 mashuさんの確認（Works 一覧とおかのはたの事例） ===== */
+/* おかのはたのロゴ：横線の青以外は白。小さめにしてすっきり */
+.wk-cover .wk-cover-logo{width:min(24vw,340px);top:30%}
+@media (max-width:640px){.wk-cover .wk-cover-logo{width:46vw;top:28%}}
+/* 一覧の準備中：2つなので半分ずつ */
+.wk-soon--two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.wk-soon--two{grid-template-columns:minmax(0,1fr)}}
+/* ブランドの図：上下の間をあけて、詰まって見えないように */
+.page-works .vi-grid{row-gap:clamp(28px,3.2vw,48px);column-gap:clamp(14px,1.6vw,24px)}
+/* 完成イメージの写真は 3:2 のまま見せる（切らない）。隣のカラーは高さを合わせて伸びる */
+.vi .vi-face--photo{flex:none;aspect-ratio:3 / 2;min-height:0}
+/* 画面写真が枠より短いとき（UBAKU Letter など）：下に白い空きが出ないよう枠いっぱいに。動かない */
+.wk-phone-screen img{min-height:100%;object-fit:cover;object-position:top}
+/* 宇莫別荘などの漢字：グレーではなく本文と同じ色に */
+.wk-name span{color:var(--ink)}
+/* ほかの事例：2つ並べる（今のページ以外の2つ） */
+.wk-others-head{display:block;margin-bottom:20px;text-align:center}
+.wk-others{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.6vw,24px)}
+.wk-others .wk-nextcase-link{padding:clamp(40px,4.6vw,72px) 20px}
+.wk-others .wk-nextcase-link .wk-name{font-size:clamp(30px,3.4vw,52px);line-height:1.15}
+.wk-others .wk-nextcase-link .wk-name span{display:block;margin:12px 0 0;font-size:.42em;margin-left:0}
+@media (max-width:760px){
+  .wk-others{grid-template-columns:minmax(0,1fr)}
+  .wk-others .wk-nextcase-link .wk-name{font-size:clamp(30px,9vw,40px)}
+}
+/* Contact の文：言葉の切れ目でだけ改行。パソコンは文ごとに2行、スマホは自然に折り返す */
+.wk-contact-text{text-align:left}
+.pc-only-br{display:inline}
+@media (max-width:760px){.pc-only-br{display:none}}
+/* ほかの事例：中身を上下の真ん中に */
+.wk-others .wk-nextcase-link{justify-content:center}
+/* 準備中2つ：半分の幅で 4:3 だと縦に大きすぎるので、横長に */
+.wk-soon--two .wk-soon-face{aspect-ratio:16 / 8}
+/* 宇莫別荘のロゴ（白い線）を写真の真ん中に（2026-11-22）。白いカーテンの上でも読めるよう、ごく薄い影だけ */
+.wk-cover .wk-cover-villa{position:absolute;left:50%;top:50%;width:min(15vw,210px);height:auto;transform:translate(-50%,-50%) !important;filter:drop-shadow(0 1px 10px rgba(0,0,0,.28))}
+@media (max-width:640px){.wk-cover .wk-cover-villa{width:36vw}}
+.wk-feature-photo .wk-feature-villa{position:absolute;left:36%;top:31.3%;width:28%;height:auto;pointer-events:none;filter:drop-shadow(0 1px 8px rgba(0,0,0,.28))}   /* 4:3 の真ん中。ずらし（transform）を使わず、写真と一緒に拡大させる */
+/* 画面の写真の動き：その場所が見えてから動き始める（最初の画面を見せてから下へ） */
+.wk-device-screen img,.wk-phone-screen img{animation-play-state:paused}   /* 最初の約2秒（動きの最初の止まっている時間）は上のまま */
+.is-visible .wk-device-screen img,.is-visible.wk-device .wk-device-screen img,.is-visible .wk-phone-screen img{animation-play-state:running}
+/* 白いカーテンの上でも白いロゴが読めるよう、ロゴのまわりだけ、ほんのり暗くする */
+.wk-cover--villa::after,.wk-feature-photo:has(.wk-feature-villa)::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 34% 30% at 50% 50%,rgba(40,32,24,.26),rgba(40,32,24,0) 100%)}
+.wk-cover .wk-cover-villa,.wk-feature-photo .wk-feature-villa{z-index:1}
