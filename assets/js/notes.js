@@ -1,6 +1,13 @@
 /* noteの記事一覧（tools/make_notes.py で自動作成。手で直さない） */
 window.UBAKU_NOTES = [
   {
+    "title": "北海道住宅産業新聞（1面）と北海道建設新聞に、宿が載った｜プレスリリースを出してまもなく、記者さんから連絡が来た",
+    "url": "https://note.com/loftershushi/n/nf471459881a7",
+    "date": "2026.11.22",
+    "source": "mashu",
+    "image": "https://assets.st-note.com/production/uploads/images/339259881/rectangle_large_type_2_5ec11b8841c4047fc3abcd5f154557b5.jpeg?width=600"
+  },
+  {
     "title": "北海道住宅産業新聞（1面）・北海道建設新聞で紹介されました｜美瑛の空き家を一棟貸しの宿に。1968年築の元農家住宅を再生した UBAKU Villa 宇莫別荘",
     "url": "https://note.com/ubakuvilla/n/n2bfd29175bdf",
     "date": "2026.11.22",
