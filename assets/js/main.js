@@ -706,3 +706,18 @@ document.querySelectorAll('.js-mail').forEach(function (a) {
   window.addEventListener('resize', update);
   update();
 })();
+
+/* ---------- お問い合わせの種別を、リンクのアドレスで最初から選ぶ（2026-11-24 おかのはた公開）----------
+   例：https://ubaku.jp/?type=野菜・食#contact を開くと、種別が「野菜・食」になる（一覧にない言葉なら何もしない） */
+(function(){
+  function pick(){
+    var sel = document.getElementById('f-type');
+    if (!sel || !window.URLSearchParams) return;
+    var t = new URLSearchParams(location.search).get('type');
+    if (!t) return;
+    for (var i = 0; i < sel.options.length; i++){
+      if (sel.options[i].value === t || sel.options[i].text === t){ sel.selectedIndex = i; break; }
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pick); else pick();
+})();

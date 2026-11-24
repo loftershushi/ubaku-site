@@ -348,3 +348,11 @@
 /* 白いカーテンの上でも白いロゴが読めるよう、ロゴのまわりだけ、ほんのり暗くする */
 .wk-cover--villa::after,.wk-feature-photo:has(.wk-feature-villa)::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 34% 30% at 50% 50%,rgba(40,32,24,.26),rgba(40,32,24,0) 100%)}
 .wk-cover .wk-cover-villa,.wk-feature-photo .wk-feature-villa{z-index:1}
+
+/* 2026-11-22 mashuさん：UBAKU の事例「System｜事業ごとに Ū の横線の色を変える」のロゴを少し大きく（118→160px、スマホ 96→120px） */
+.page-works .vi-face--system .wordmark{max-width:160px}
+@media (max-width:640px){.page-works .vi-face--system .wordmark{max-width:120px}}
+
+/* 2026-11-24 宇莫別荘の事例の Numbers（トップから移した4つ）：パソコンは4つを横いっぱいに並べる（トップは5つだったので右が空くため）。スマホは2列のまま */
+@media (min-width:1001px){.wk-numbers .numbers-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:641px) and (max-width:1000px){.wk-numbers .numbers-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}   /* タブレットは 2×2（3列だと1つ余るため） */
