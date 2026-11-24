@@ -11,10 +11,10 @@
   // ?me=1 で自分の端末を除く・言語の切り替えで移ったときは元の参照元を渡す（2026-11-15）
   (function(){var p={};try{var q=location.search;if(/[?&]me=1(&|$)/.test(q))localStorage.setItem('ubaku-me','1');if(/[?&]me=0(&|$)/.test(q))localStorage.removeItem('ubaku-me');if(localStorage.getItem('ubaku-me'))p.traffic_type='internal';var r=sessionStorage.getItem('ubaku-ref');if(r){sessionStorage.removeItem('ubaku-ref');p.page_referrer=r;}}catch(e){}gtag('config','G-SPJCZM68CH',p);})();
 </script>
-<script src="../../assets/js/lang.js?v=202611242116"></script>
+<script src="../../assets/js/lang.js?v=202611242136"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UBAKU Design | Renovation Design and Branding in Hokkaido</title>
-<meta name="description" content="Buildings and brands, true to their place. Renovation design supervision and branding, from visual design to web design, in Hokkaido.">
+<meta name="description" content="Buildings and brands, true to their place. Renovation design and branding in Hokkaido, with cases from UBAKU Villa 宇莫別荘 to Okanohata.">
 <link rel="canonical" href="https://ubaku.jp/en/design/">
 <link rel="alternate" hreflang="ja" href="https://ubaku.jp/design/">
 <link rel="alternate" hreflang="en" href="https://ubaku.jp/en/design/">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="UBAKU">
 <meta property="og:title" content="UBAKU Design | Renovation Design and Branding in Hokkaido">
-<meta property="og:description" content="Buildings and brands, true to their place. Renovation design supervision and branding, from visual design to web design, in Hokkaido.">
+<meta property="og:description" content="Buildings and brands, true to their place. Renovation design and branding in Hokkaido, with cases from UBAKU Villa 宇莫別荘 to Okanohata.">
 <meta property="og:url" content="https://ubaku.jp/en/design/">
 <meta property="og:image" content="https://ubaku.jp/ogp.jpg">
 <meta property="og:locale" content="en_US">
@@ -41,9 +41,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
 
 <!-- デザイン：トップページと共通の style.css ＋ 下層ページ用の sub.css ＋ UBAKU Letter の札 -->
-<link rel="stylesheet" href="../../assets/css/style.css?v=202611242116">
-<link rel="stylesheet" href="../../assets/css/sub.css?v=202611242116">
-<link rel="stylesheet" href="../../assets/css/works.css?v=202611242116">   <!-- Works の事例カード（2026-10-31） -->
+<link rel="stylesheet" href="../../assets/css/style.css?v=202611242136">
+<link rel="stylesheet" href="../../assets/css/sub.css?v=202611242136">
+<link rel="stylesheet" href="../../assets/css/works.css?v=202611242136">   <!-- Works の事例カード（2026-10-31） -->
 
 <!-- Googleにページの内容を伝えるデータ（このページで受けている仕事） -->
 <script type="application/ld+json">
@@ -73,7 +73,7 @@
       <ul id="topbar-list">
         <li><a href="#approach">Concept</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="works/">Works</a></li>
+        <li><a href="../works/">Works</a></li>
         <li><a href="#flow">Flow</a></li>
         <li><a href="#fee">Menu</a></li>
         <li><a href="../consulting/">Consulting</a></li>
@@ -91,7 +91,7 @@
     <ul>
       <li><a href="#approach">Concept</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="works/">Works</a></li>
+      <li><a href="../works/">Works</a></li>
       <li><a href="#flow">Flow</a></li>
       <li><a href="#fee">Menu</a></li>
       <li><a href="../consulting/">Consulting</a></li>
@@ -176,13 +176,13 @@
         <span class="en kind">Space</span>
         <h3>Renovation Design Supervision</h3>
         <p>We support renovations that leave the structure, such as columns and beams, as it is: updating interiors and equipment, or rethinking layouts. We work through design supervision and producing. Lodgings, homes, shops, offices: any type of building is welcome.</p>
-        <a class="en lines" href="works/ubaku-villa/#space">See our renovation work →</a>
+        <a class="en lines" href="../works/ubaku-villa/#space">See our renovation work →</a>
       </div>
       <div class="work-item">
         <span class="en kind">Brand</span>
         <h3>Branding</h3>
         <p>From visual design that sets the rules for symbols, color, and type, to print, signage, in-house guides, and web design. We shape the character of your lodging, shop, or company into a visual identity.</p>
-        <a class="en lines" href="works/ubaku/#brand">See our brand work →</a>
+        <a class="en lines" href="../works/ubaku/#brand">See our brand work →</a>
       </div>
       <div class="work-item">
         <span class="en kind">Partner</span>
@@ -206,33 +206,46 @@
   <div class="wk-list wk-list--in-design">
   <!-- Works 01：UBAKU Villa 宇莫別荘 -->
   <article class="wk-feature js-reveal">
-    <a class="wk-feature-photo wk-feature-photo--hill photo zoom" href="works/ubaku-villa/"><img src="../../assets/img/works/01-cover.webp" alt="UBAKU Villa 宇莫別荘 after renovation: wooden dining chairs by a window with white curtains" width="2400" height="1600"></a>
+    <a class="wk-feature-photo wk-feature-photo--hill photo zoom" href="../works/ubaku-villa/"><img src="../../assets/img/works/01-cover.webp" alt="UBAKU Villa 宇莫別荘 after renovation: wooden dining chairs by a window with white curtains" width="2400" height="1600"><img class="wk-feature-villa" src="../../assets/img/works/01-villa-logo-white.svg" alt="" aria-hidden="true"></a>
     <div class="wk-feature-text">
       <span class="label">Works 01 | Space, Brand, Web | 2026</span>
       <h3 class="wk-name">UBAKU Villa <span>宇莫別荘</span></h3>
       <p class="wk-catch">From an empty farmhouse to a private villa for one group a day.</p>
       <p class="body">A former farmhouse built in 1968 and passed down for over half a century, renovated. From space design supervision to branding (visual design and web design), everything was brought together in one consistent world.</p>
       <ul class="brand-made" aria-label="What we made"><li>Renovation design supervision</li><li>Furniture and lighting selection</li><li>Logo</li><li>Color</li><li>Message card</li><li>Guest guide</li><li>Website</li></ul>
-      <a class="more" href="works/ubaku-villa/">See the case →</a>
+      <a class="more" href="../works/ubaku-villa/">See the case →</a>
     </div>
   </article>
 
   <!-- Works 02：UBAKU（事例ページ /design/works/ubaku/） -->
   <article class="wk-feature wk-feature--rev js-reveal">
-    <a class="wk-feature-photo photo zoom wk-feature-photo--shot" href="works/ubaku/"><img src="../../assets/img/works/02-ubaku-site.webp" alt="The ubaku.jp top page" width="1440" height="900"></a>
+    <a class="wk-feature-photo photo zoom wk-feature-photo--shot" href="../works/ubaku/"><img src="../../assets/img/works/02-ubaku-site.webp" alt="The ubaku.jp top page" width="1440" height="900"></a>
     <div class="wk-feature-text">
       <span class="label">Works 02 | Brand, Web | 2026</span>
       <h3 class="wk-name">UBAKU</h3>
       <p class="wk-catch">One logo, many businesses.</p>
       <p class="body">The brand of a team of regional producers in Biei and Higashikawa. We made a rule that changes the color of the bar over the <span class="u-macron">Ū</span> for each business, so lodging, consulting, and design can be told apart within one brand.</p>
       <ul class="brand-made" aria-label="What we made"><li>Branding</li><li>Visual design</li><li>Web design</li><li>Newsletter</li></ul>
-      <a class="more" href="works/ubaku/">See the case →</a>
+      <a class="more" href="../works/ubaku/">See the case →</a>
+    </div>
+  </article>
+
+  <!-- Works 03：Okanohata（2026-11-24。英語の Design のページにも。事例ページ /en/works/okanohata/） -->
+  <article class="wk-feature js-reveal">
+    <a class="wk-feature-photo wk-feature-photo--hill photo zoom" href="../works/okanohata/"><img src="../../assets/img/works/03-cover.webp" alt="Fields spreading over the hills of Biei, with mountains in the distance" width="3200" height="1600"><img class="wk-feature-logo" src="../../assets/img/works/03-okanohata-logo-white.svg" alt="" aria-hidden="true"></a>
+    <div class="wk-feature-text">
+      <span class="label">Works 03 | Brand, Web, Package | 2026</span>
+      <h3 class="wk-name">Okanohata <span>おかのはた</span></h3>
+      <p class="wk-catch">A storefront for imperfect vegetables.</p>
+      <p class="body">A shop in Biei, Hokkaido, for vegetables that are a little out of shape. From the name, logo, and colors to the website, boxes, stickers, and printed items, everything was brought together like the front of a greengrocer.</p>
+      <ul class="brand-made" aria-label="What we made"><li>Naming</li><li>Logo</li><li>Color</li><li>Website</li><li>Boxes and stickers</li><li>Printed items</li></ul>
+      <a class="more" href="../works/okanohata/">See the case →</a>
     </div>
   </article>
   </div>
 
 
-  <p class="wk-all js-reveal"><a class="more" href="works/">See all Works →</a></p>
+  <p class="wk-all js-reveal"><a class="more" href="../works/">See all Works →</a></p>
 </section>
 
 <!-- ======================= ⑤ Flow（丘の帯・トップの Numbers と同じ形） ======================= -->
@@ -427,7 +440,7 @@
 </section>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="../../assets/js/main.js?v=202611242116"></script>
+<script src="../../assets/js/main.js?v=202611242136"></script>
 <!-- UBAKU Letter：右下の札だけ（data-band="off" でページの中の購読欄は入れない） -->
 
 <!-- ページの一番上へ戻るボタン（矢印だけ。スクロールすると右下の UBAKU Letter の札の上に出る。2026-10-25） -->

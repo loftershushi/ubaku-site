@@ -34,9 +34,10 @@
 
 - [UBAKU](https://ubaku.jp/en/): Regional producers in Biei and Higashikawa, Hokkaido
 - [UBAKU Design](https://ubaku.jp/en/design/): Renovation design supervision and branding
-- [Works](https://ubaku.jp/en/design/works/)
-- [Case: UBAKU Villa 宇莫別荘](https://ubaku.jp/en/design/works/ubaku-villa/): A former farmhouse built in 1968, before and after
-- [Case: UBAKU](https://ubaku.jp/en/design/works/ubaku/): One brand for many businesses
+- [Works](https://ubaku.jp/en/works/)
+- [Case: UBAKU Villa 宇莫別荘](https://ubaku.jp/en/works/ubaku-villa/): A former farmhouse built in 1968, before and after
+- [Case: UBAKU](https://ubaku.jp/en/works/ubaku/): One brand for many businesses
+- [Case: Okanohata](https://ubaku.jp/en/works/okanohata/): Brand and website for a shop of imperfect vegetables in Biei
 - [UBAKU Consulting](https://ubaku.jp/en/consulting/): Real estate, new business, and lodging support
 - [Privacy Policy](https://ubaku.jp/en/privacy/)
 

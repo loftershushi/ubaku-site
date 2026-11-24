@@ -11,11 +11,11 @@
   // ?me=1 で自分の端末を除く・言語の切り替えで移ったときは元の参照元を渡す（2026-11-15）
   (function(){var p={};try{var q=location.search;if(/[?&]me=1(&|$)/.test(q))localStorage.setItem('ubaku-me','1');if(/[?&]me=0(&|$)/.test(q))localStorage.removeItem('ubaku-me');if(localStorage.getItem('ubaku-me'))p.traffic_type='internal';var r=sessionStorage.getItem('ubaku-ref');if(r){sessionStorage.removeItem('ubaku-ref');p.page_referrer=r;}}catch(e){}gtag('config','G-SPJCZM68CH',p);})();
 </script>
-<script src="../assets/js/lang.js?v=202611242116"></script>
+<script src="../assets/js/lang.js?v=202611242136"></script>
 <script>/* オープニングを出すかどうかを、表示の前に決める（ページを開くたび毎回。?nointro のときと「動きを減らす」設定の人には出さない） */try{if(location.search.indexOf("nointro")<0&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("is-opening")}}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UBAKU | Regional Producers in Biei and Higashikawa, Hokkaido</title>
-<meta name="description" content="Regional producers in Biei and Higashikawa, Hokkaido: UBAKU Villa 宇莫別荘, renovation design, branding, and real estate consulting.">
+<meta name="description" content="Regional producers in Biei and Higashikawa, Hokkaido: UBAKU Villa 宇莫別荘, the vegetable shop Okanohata, design, and property consulting.">
 <link rel="canonical" href="https://ubaku.jp/en/">
 <link rel="alternate" hreflang="ja" href="https://ubaku.jp/">
 <link rel="alternate" hreflang="en" href="https://ubaku.jp/en/">
@@ -25,7 +25,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="UBAKU">
 <meta property="og:title" content="UBAKU | Regional Producers in Biei and Higashikawa, Hokkaido">
-<meta property="og:description" content="Regional producers in Biei and Higashikawa, Hokkaido: UBAKU Villa 宇莫別荘, renovation design, branding, and real estate consulting.">
+<meta property="og:description" content="Regional producers in Biei and Higashikawa, Hokkaido: UBAKU Villa 宇莫別荘, the vegetable shop Okanohata, design, and property consulting.">
 <meta property="og:url" content="https://ubaku.jp/en/">
 <meta property="og:image" content="https://ubaku.jp/ogp.jpg">
 <meta property="og:image:width" content="1200">
@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:ital,wght@0,200;0,300;0,400;1,300&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
 
 <!-- デザイン（色・フォント・余白はすべてこのファイルで管理） -->
-<link rel="stylesheet" href="../assets/css/style.css?v=202611242116">
+<link rel="stylesheet" href="../assets/css/style.css?v=202611242136">
 <!-- UBAKU Letter（メルマガ）は日本語なので、英語版には出さない -->
 
 <!-- Googleに会社情報を伝えるデータ（構造化データ）
@@ -76,6 +76,169 @@
   ]
 }
 </script>
+
+<style>
+/* ===== 新しいトップ（2026-11-24 公開。元は試作 top-v3）だけの見た目 ===== */
+/* Projects は今の What We Do と同じ淡いグレーの面（#work の色の決まりを #projects にも当てる） */
+#projects{--panel:var(--kraft);--on-green:var(--ink);--on-green-sub:var(--muted);--rule-long-on-green:var(--rule-long);--rule-short-on-green:#E0E3E1;--accent-sand:var(--green);--rule-hover-on-green:var(--accent-hl)}
+#projects .more::after{background:var(--accent-hl)}
+#projects .sec-head h2{color:var(--green)}
+#projects .step{color:var(--green)}
+/* Approach の上：直前の Concept は白なので、丘の上の面も白に（すき間の色を合わせる） */
+.ap-sec{background:linear-gradient(var(--cream) 4px,#5A8299 4px)}
+.ap-hill path{fill:var(--cream);d:path('M0 0 L0 74 C 260 92, 520 40, 800 34 S 1220 70, 1440 58 L1440 0 Z')}
+/* Approach の下：Projects の淡いグレーの丘 */
+.ap-foot{position:absolute;left:0;bottom:-1px;width:100%;height:var(--ridge-h);display:block;z-index:3}
+.ap-foot path{fill:var(--kraft)}
+#projects .work{padding-top:calc(var(--sec-y) * .6)}
+/* おかのはたの札・ふもとびとの英字 */
+.pj-tags{display:flex;flex-wrap:wrap;gap:8px;margin:-4px 0 0}
+.pj-tag{display:inline-block;padding:4px 10px;font-size:12px;letter-spacing:.08em;background:#872F1C;color:#fff}
+.pj-tag--line{background:transparent;color:#872F1C;box-shadow:inset 0 0 0 1px #872F1C}
+.pj-en{margin-left:12px;font:300 14px/1 var(--f-title);letter-spacing:.12em;color:var(--sub)}
+/* Concept：図が左・言葉が右 */
+.c3-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.c3-grid .tomoe{max-width:520px;width:100%;justify-self:center}
+.c3-text .concept-catch{margin:28px 0 0;font-size:clamp(22px,2.4vw,32px)}
+.c3-list{margin:32px 0 0;display:grid;gap:18px}
+.c3-list div{display:grid;grid-template-columns:4.6em 1fr;gap:36px;align-items:center;border-top:1px solid var(--rule-short);padding-top:18px}
+.c3-list dt{font-family:var(--f-heading);font-size:18px;line-height:1.3;letter-spacing:.1em;color:var(--ink)}   /* 元の見出しのゴシックに戻し、少し小さく（2026-11-21） */
+.c3-list dd{margin:0;font-size:15px;color:var(--muted)}
+/* 01〜03 の札と小さな稜線 */
+.step{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.step-ridge{width:150px;height:22px;overflow:visible}
+.step-ghost{fill:none;stroke:currentColor;stroke-opacity:.28;stroke-width:1;vector-effect:non-scaling-stroke}
+.step-line{fill:none;stroke:currentColor;stroke-width:1.2;vector-effect:non-scaling-stroke}
+.step-dot{fill:var(--accent-hl);opacity:.35;transition:opacity .6s ease}
+.step.is-in .step-dot{opacity:1;animation:stepGlow 1.6s ease .3s 1}
+@keyframes stepGlow{0%{r:14}40%{r:30}100%{r:14}}
+.step-no{font:300 15px/1 var(--f-title);letter-spacing:.16em}
+.step-ja{font-family:var(--f-heading);font-size:14px;letter-spacing:.14em}
+.step{color:var(--green)}
+/* Approach の行き先 */
+.ap-go{display:inline-block;margin-top:14px;font:300 14px/1 var(--f-title);letter-spacing:.12em;color:#fff;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:3px}
+.ap-panel.is-on .ap-go{pointer-events:auto}
+/* Projects：2つは写真つき・2つは Coming soon */
+.pj-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;margin-bottom:56px}
+.pj-grid article{display:flex;flex-direction:column;gap:16px}
+.pj-grid .photo{aspect-ratio:15 / 8;padding:0;margin-bottom:8px}
+.pj-grid .biz-name{font-size:30px}
+.pj-soon{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px}
+/* Services：白地に2つ */
+.sv-sec{padding:var(--sec-y) 0}
+.sv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px}
+.sv-grid article{display:flex;flex-direction:column;gap:16px}
+.sv-grid .photo{aspect-ratio:15 / 8;padding:0;margin-bottom:8px}
+.sv-grid .biz-name{font-size:30px}
+/* Works への入口（横長の帯） */
+.works-bar{display:flex;align-items:center;gap:20px;margin-top:clamp(48px,6vw,80px);padding:22px 28px;border:1px solid var(--rule-long);color:var(--ink);transition:background .3s ease,color .3s ease}
+.works-bar:hover{background:var(--green);color:#fff}
+.works-bar-en{font:200 32px/1 var(--f-title);letter-spacing:.05em}
+.works-bar-ja{font-size:14px;letter-spacing:.08em}
+.works-bar-go{margin-left:auto;font:300 22px/1 var(--f-title)}
+.sv-sec{padding-bottom:0}   /* Team とのあいだを詰める */
+/* 表紙：写真を押すと公式サイト。おかのはたは写真の真ん中にロゴだけ */
+.pj-grid a.photo{display:block}
+.pj-okano{position:relative}
+.pj-okano .pj-okano-logo{position:absolute;left:50%;top:50%;width:42%;height:auto;transform:translate(-50%,-50%) !important;filter:brightness(0) invert(1);pointer-events:none}   /* 白一色のロゴ（2026-11-21） */
+/* 札はタイトルの右 */
+.pj-name{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
+.pj-name .pj-tags{display:inline-flex;gap:6px;margin:0}
+/* Design・Consulting の2行 */
+.sv-two{margin:4px 0 0;display:grid;gap:14px;border-top:1px solid var(--rule-short);padding-top:16px}
+.sv-two div{display:grid;grid-template-columns:6.5em 1fr;gap:16px}
+.sv-two dt{font-family:var(--f-heading);font-size:15px;color:var(--ink)}
+.sv-two dt .en{display:block;font:300 11px/1.4 var(--f-title);letter-spacing:.14em;color:var(--sub)}
+.sv-two dd{margin:0;font-size:14px;line-height:1.85;color:var(--muted);text-align:justify}
+/* Works：事例2つ */
+.sv-works{margin-top:clamp(56px,7vw,96px);padding-top:28px;border-top:1px solid var(--rule-long)}
+.sv-works-head{display:flex;align-items:baseline;gap:16px;margin-bottom:24px}
+.sv-works-en{font:200 clamp(28px,3vw,40px)/1 var(--f-title);letter-spacing:.05em;color:var(--green)}
+.sv-works-ja{font-size:13px;letter-spacing:.14em;color:var(--sub)}
+.sv-works-head .more{margin-left:auto;font-size:13px}
+.sv-works-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.sv-case{display:flex;flex-direction:column;gap:8px;color:var(--ink)}
+.sv-case .photo{display:block;aspect-ratio:16 / 9;padding:0;overflow:hidden}
+.sv-case .photo img{width:100%;height:100%;object-fit:cover}
+.sv-case-shot img{object-position:top}
+.sv-case-tag{font-size:12px;letter-spacing:.1em;color:var(--sub);margin-top:6px}
+.sv-case-name{font:200 22px/1.3 var(--f-title);letter-spacing:.03em}
+/* Contact の見出しの下に、移住・二拠点の一言 */
+.ct-live{display:inline-flex;align-items:center;gap:14px;margin:0 0 28px;padding:10px 20px;border:1px solid rgba(255,255,255,.35);border-radius:999px;font-size:14px;color:var(--on-green)}
+.ct-live .en{font:300 12px/1 var(--f-title);letter-spacing:.16em;color:var(--accent-hl)}
+/* 公式サイト・詳細へのリンク4つは、Coming soon と同じ青のボタン */
+.pj-grid .more,.sv-grid .more{display:inline-block;align-self:flex-start;margin-top:8px;padding:6px 16px;border:0;font-size:12px;letter-spacing:.12em;line-height:1.6;color:#fff;background:var(--accent-hl);transition:opacity .3s ease}   /* 小さめに。上の文字とのあいだは4つとも同じ */
+.pj-grid .more::after,.sv-grid .more::after{content:" →";position:static;display:inline;width:auto;height:auto;background:none !important;transform:none}
+.pj-grid .more:hover,.sv-grid .more:hover,.pj-grid .more:focus,.sv-grid .more:focus{opacity:.8;color:#fff !important}   /* マウスを乗せても文字は白のまま */
+.pj-tag--green{background:var(--green)}
+.pj-name .pj-tag{padding:6px 16px;font-size:12px;line-height:1.6;letter-spacing:.12em;font-family:var(--f-body);font-weight:400}   /* 札はボタンと同じ大きさ（2026-11-21） */
+#villa .more{background:var(--green)}   /* 宇莫別荘の公式サイトは緑 */
+#okanohata .more{background:#872F1C}   /* おかのはたの公式サイトは赤土（ロゴの色） */
+/* Team：写真を少し小さく（PC。スマホはもとから小さい丸に近い形） */
+@media (min-width:641px){.team .member .photo{min-height:0;aspect-ratio:4 / 3;padding:0}}
+/* Values：控えめな動き。現れたあと、上に短い線が左から伸びる */
+.tv .value{position:relative;padding-top:24px}
+.tv .value::before{content:"";position:absolute;top:0;left:0;width:0;height:1px;background:var(--accent-hl);transition:width 1s cubic-bezier(.2,.7,.2,1) 1.3s}   /* 浮き上がり（1.1秒）が終わってから伸ばす */
+.tv .value:nth-child(2)::before{transition-delay:1.45s}
+.tv .value:nth-child(3)::before{transition-delay:1.6s}
+.tv .value.is-visible::before{width:48px}
+.tv .value-head .en-sub{display:inline-block;letter-spacing:.32em;transition:letter-spacing 1.4s cubic-bezier(.2,.7,.2,1) .3s}   /* 英字の字間がすっと締まる */
+.tv .value.is-visible .value-head .en-sub{letter-spacing:.16em}
+@media (prefers-reduced-motion:reduce){.tv .value::before{width:48px;transition:none}.tv .value-head .en-sub{letter-spacing:.16em;transition:none}}
+.pj-tail{display:inline-flex;align-items:center;flex-wrap:nowrap;gap:14px}   /* 折り返すときは名前の最後の語と札をいっしょに */
+.sv-grid a.photo{display:block}
+/* 建物・ブランド・不動産利活用・不動産開発：事業の色の細い枠（青は使わない） */
+.sv-two div{grid-template-columns:9.2em 1fr;align-items:start}
+.sv-two dt{display:flex;flex-direction:column;justify-content:center;padding:8px 10px;border:1px solid currentColor;text-align:center;line-height:1.4}
+.sv-two dt .en{color:inherit;opacity:.75}
+#design .sv-two dt{color:#CA7A2C}
+#consulting .sv-two dt{color:#77428D}
+/* Services の下の吹き出し2つ（Works と Live）。上の2つの仕事の列にそろえる */
+.sv-bubbles2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;margin-top:clamp(48px,6vw,72px)}
+.sv-bub{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:6px 16px;padding:18px 26px;background:var(--kraft);border-radius:999px;box-shadow:0 6px 18px rgba(43,36,28,.08);color:var(--ink);font-size:14px;letter-spacing:.06em;transition:transform .3s ease,box-shadow .3s ease}   /* うっすら影 */
+.sv-bub::before{content:"";position:absolute;left:44px;top:-9px;border:10px solid transparent;border-top:0;border-bottom-color:var(--kraft)}
+.sv-bub:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(43,36,28,.12)}
+.sv-bub-en{font-size:12px;letter-spacing:.2em;color:var(--green)}
+.sv-bub-go{margin-left:auto;font-size:12px;letter-spacing:.12em;color:var(--green);border-bottom:1px solid currentColor;padding-bottom:1px}
+.nw{white-space:nowrap}
+/* Journal：流れと note のリンク、note と Letter のあいだを詰める */
+.journal .note-links{margin-top:24px}
+.journal{padding-bottom:calc(var(--sec-y) * .55)}
+.sv-bubbles{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;margin-top:clamp(48px,6vw,80px)}
+.sv-bubbles .live-bubble{margin-top:0}
+/* Team の最後に Values（チームの声） */
+.tv{margin-top:var(--block-gap);padding:clamp(32px,4vw,56px);background:var(--kraft)}
+.tv-head{margin:0 0 28px;font-family:var(--f-heading);font-size:15px;letter-spacing:.12em;color:var(--sub)}
+.tv-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 20px}
+.tv-head .en{display:inline-block;font:200 clamp(28px,3vw,40px)/1.2 var(--f-title);letter-spacing:.05em;color:var(--green);margin-bottom:6px}
+.tv .value-head{margin:0}
+@media (max-width:900px){
+  .sv-bubbles2{grid-template-columns:minmax(0,1fr);gap:24px}
+  .sv-works-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  .c3-grid,.pj-grid,.pj-soon,.sv-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+  .c3-grid .tomoe{max-width:360px}
+  .c3-text{order:-1}   /* スマホは言葉 → 図 の順 */
+}
+@media (max-width:640px){
+  .c3-list div{grid-template-columns:3.8em 1fr;gap:22px}
+  .c3-list dt{font-size:16px}
+  .sv-two div{grid-template-columns:minmax(0,1fr);gap:8px}
+  .sv-two dt{flex-direction:row;justify-content:flex-start;align-items:baseline;gap:8px;align-self:start;justify-self:start;padding:5px 12px}
+  .sv-bub{border-radius:20px;padding:14px 20px;font-size:13px}
+  .sv-bub-go{margin-left:0}
+  .sv-works-head{flex-wrap:wrap}
+  .sv-works-head .more{margin-left:0;flex-basis:100%}
+  .c3-list dd{font-size:14px}
+  .works-bar{flex-wrap:wrap;gap:8px 14px;padding:18px 20px}
+  .works-bar-en{font-size:26px}
+  .step-ridge{width:96px}
+  .journal .note-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 16px}   /* note 4つは2列×2段 */
+  .journal .note-links .more{white-space:nowrap}
+}
+</style>
+<style>/* 英語版：本文は左そろえ */
+.sv-two dd{text-align:left}
+</style>
 </head>
 <body>
 
@@ -112,8 +275,9 @@
     <nav class="topbar-nav" aria-label="Menu">
       <ul id="topbar-list">
         <li><a href="#values">Concept</a></li>
-        <li><a href="#work">What We Do</a></li>
-        <li><a href="#approach">Our Approach</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="works/">Works</a></li>
         <li><a href="#team">Team</a></li>
         <li><a href="#journal">Journal</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -129,8 +293,9 @@
     <span class="nav-place">Biei / Higashikawa, Hokkaido</span>
     <ul>
       <li><a href="#values">Concept</a></li>
-      <li><a href="#work">What We Do</a></li>
-      <li><a href="#approach">Our Approach</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="works/">Works</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#journal">Journal</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -173,15 +338,8 @@
      3つの円が、上（ひと）→ 右下（場所）→ 左下（土地）→ 上 … とぐるりと順に重なる
      白線は「上に重なっている円のふちのすぐ外側」にだけ引く（半径219＝215＋線の太さの半分） -->
 <section id="values" class="values wrap">
-  <div class="cv-grid">
-    <div class="cv-concept">
-      <div class="sec-head">
-        <h2 class="display">Concept</h2>
-        <span class="aside">What guides UBAKU</span>
-      </div>
-      <div class="concept">
-        <p class="concept-catch"><em class="hl">Connecting</em> people,<br>land, and place.</p>
-        <div class="tomoe">
+  <div class="c3-grid">
+    <div class="tomoe">
           <svg viewBox="110 20 680 700" role="img" aria-labelledby="tomoe-title">
             <title id="tomoe-title">Three overlapping circles for people, land, and place, with UBAKU at the center</title>
             <defs>
@@ -211,111 +369,20 @@
             <g class="lbl lbl-center"><text class="lbl-en" x="450" y="374">Connect</text><svg class="lbl-logo" x="372" y="391" width="156" height="28.4" viewBox="36 170 330 60" role="img" aria-label="UBAKU"><g class="logo-letters"><path d="M69.34,193.83c-0.04-2.78-0.14-4.7-0.29-5.75c0.43,0.07,0.83,0.14,1.22,0.19c0.39,0.05,0.78,0.08,1.16,0.08 c0.5,0,1.09-0.09,1.75-0.27c-0.12,1.27-0.23,2.78-0.35,4.53c-0.12,1.75-0.21,3.63-0.29,5.64c-0.08,2.01-0.16,4.07-0.23,6.18 c-0.08,2.12-0.14,4.17-0.17,6.15c-0.04,2.42-0.44,4.59-1.19,6.51c-0.76,1.92-1.83,3.54-3.23,4.88c-1.4,1.34-3.11,2.35-5.15,3.04 s-4.37,1.03-7.01,1.03c-5.82,0-10.05-1.23-12.68-3.69c-2.64-2.46-3.96-6.34-3.96-11.66c0-1.7,0.05-3.21,0.15-4.53 c0.1-1.32,0.15-2.67,0.15-4.04c0-3.04-0.04-5.73-0.12-8.08c-0.08-2.35-0.16-4.34-0.23-5.97c0.47,0.07,0.97,0.14,1.51,0.19 c0.54,0.05,1.05,0.08,1.51,0.08c0.43,0,0.84-0.03,1.25-0.08c0.41-0.05,0.82-0.12,1.25-0.19c-0.08,0.8-0.16,1.83-0.23,3.12 c-0.08,1.28-0.16,2.74-0.23,4.37c-0.08,1.63-0.14,3.38-0.17,5.26c-0.04,1.88-0.06,3.83-0.06,5.86c0,1.23,0.02,2.5,0.06,3.82 c0.04,1.32,0.17,2.6,0.41,3.85c0.23,1.25,0.61,2.44,1.13,3.58c0.52,1.14,1.27,2.13,2.24,2.98c0.97,0.85,2.19,1.52,3.67,2.01 c1.47,0.49,3.3,0.73,5.47,0.73c2.13,0,3.93-0.29,5.38-0.87c1.45-0.58,2.65-1.34,3.58-2.28c0.93-0.94,1.66-2.02,2.18-3.25 c0.52-1.23,0.9-2.51,1.13-3.85c0.23-1.34,0.37-2.68,0.41-4.01c0.04-1.34,0.06-2.57,0.06-3.69 C69.4,200.57,69.38,196.61,69.34,193.83z"/><path d="M117.94,195.02c-0.1-2.31-0.2-4.63-0.32-6.94c1.01,0.07,2.04,0.14,3.08,0.19c1.05,0.05,2.07,0.08,3.08,0.08 c1.01,0,2.04-0.04,3.08-0.14c1.05-0.09,2.07-0.14,3.08-0.14c1.67,0,3.24,0.12,4.71,0.35c1.47,0.24,2.77,0.65,3.9,1.25 c1.12,0.6,2.02,1.4,2.68,2.41c0.66,1.01,0.99,2.28,0.99,3.8c0,2.68-0.9,4.77-2.71,6.29c-1.8,1.52-4.16,2.59-7.07,3.2v0.11 c3.45,0.15,6.18,0.92,8.17,2.33c2,1.41,3,3.67,3,6.78c0,2.03-0.45,3.72-1.34,5.1c-0.89,1.37-2.06,2.49-3.49,3.34 c-1.44,0.85-3.02,1.45-4.74,1.79c-1.73,0.34-3.44,0.51-5.15,0.51c-0.93,0-1.87-0.02-2.82-0.05c-0.95-0.04-1.89-0.05-2.82-0.05 c-0.93,0-1.87,0-2.82,0c-0.95,0-1.89,0.04-2.82,0.11c0.12-2.31,0.22-4.62,0.32-6.91c0.1-2.3,0.15-4.64,0.15-7.02v-9.33 C118.09,199.69,118.04,197.34,117.94,195.02z M130.04,204.35c1.34-0.25,2.53-0.68,3.58-1.28c1.05-0.6,1.89-1.39,2.53-2.39 c0.64-0.99,0.96-2.25,0.96-3.77c0-1.48-0.29-2.67-0.87-3.55c-0.58-0.89-1.32-1.57-2.21-2.06c-0.89-0.49-1.9-0.81-3.03-0.98 c-1.13-0.16-2.25-0.24-3.37-0.24c-1.01,0-1.86,0.03-2.56,0.08c-0.7,0.05-1.32,0.12-1.86,0.19c-0.08,1.73-0.16,3.45-0.23,5.15 c-0.08,1.7-0.12,3.42-0.12,5.15v4.07H126C127.36,204.73,128.71,204.6,130.04,204.35z M122.98,217.75c0.08,1.81,0.15,3.63,0.23,5.48 c0.74,0.07,1.61,0.14,2.62,0.19c1.01,0.05,2.04,0.08,3.08,0.08c1.24,0,2.43-0.2,3.58-0.6c1.14-0.4,2.14-0.98,3-1.76 c0.85-0.78,1.53-1.74,2.04-2.87c0.5-1.14,0.76-2.43,0.76-3.88c0-1.55-0.3-2.83-0.9-3.82c-0.6-0.99-1.46-1.77-2.59-2.33 c-1.13-0.56-2.47-0.95-4.04-1.17s-3.33-0.33-5.26-0.33h-2.62v5.53C122.86,214.11,122.9,215.94,122.98,217.75z"/><path d="M217.34,225.34c-0.54-0.07-1.06-0.11-1.54-0.11c-0.49,0-1,0-1.54,0c-0.54,0-1.06,0-1.54,0 c-0.49,0-1,0.04-1.54,0.11c-0.27-0.83-0.64-1.83-1.11-3.01c-0.46-1.17-0.98-2.4-1.54-3.69c-0.56-1.28-1.13-2.58-1.72-3.9 c-0.58-1.32-1.13-2.58-1.63-3.77c-1.24-0.03-2.5-0.06-3.78-0.08c-1.28-0.02-2.56-0.03-3.84-0.03c-1.2,0-2.39,0.01-3.55,0.03 c-1.16,0.02-2.35,0.05-3.55,0.08c-1.24,2.82-2.37,5.5-3.37,8.05c-1.01,2.55-1.77,4.65-2.27,6.32c-0.66-0.07-1.38-0.11-2.15-0.11 c-0.78,0-1.49,0.04-2.15,0.11c3.14-6.33,6.21-12.62,9.19-18.87c2.99-6.25,5.99-12.62,9.02-19.09h1.11c0.93,2.1,1.94,4.37,3.03,6.81 c1.08,2.44,2.19,4.91,3.32,7.4c1.12,2.49,2.25,4.97,3.37,7.43c1.12,2.46,2.18,4.75,3.17,6.86c0.99,2.11,1.88,4,2.68,5.67 C216.18,223.2,216.83,224.47,217.34,225.34z M191.57,208.47c1.01,0,2.06,0.02,3.14,0.05c1.09,0.04,2.13,0.05,3.14,0.05 c1.09,0,2.17-0.01,3.26-0.03c1.09-0.02,2.17-0.04,3.26-0.08l-6.46-13.77L191.57,208.47z"/><path d="M257.62,218.5c0.1-2.31,0.15-4.66,0.15-7.05v-9.33c0-2.39-0.05-4.73-0.15-7.02c-0.1-2.3-0.2-4.64-0.32-7.02 c0.5,0.07,0.99,0.14,1.45,0.19c0.46,0.05,0.93,0.08,1.4,0.08c0.46,0,0.93-0.03,1.4-0.08c0.47-0.05,0.95-0.12,1.46-0.19 c-0.12,2.39-0.22,4.73-0.32,7.02c-0.1,2.3-0.15,4.64-0.15,7.02v2.98c0,0.29,0.12,0.43,0.35,0.43c0.15,0,0.43-0.16,0.81-0.49 c1.36-1.08,2.78-2.31,4.28-3.69c1.49-1.37,3-2.8,4.51-4.28c1.51-1.48,3.01-2.99,4.48-4.53c1.47-1.54,2.89-3.03,4.25-4.47 c0.43,0.07,0.83,0.14,1.22,0.19c0.39,0.05,0.78,0.08,1.16,0.08c0.46,0,0.93-0.03,1.4-0.08c0.46-0.05,0.93-0.12,1.4-0.19 c-1.36,1.08-2.89,2.37-4.6,3.85c-1.71,1.48-3.42,3-5.15,4.56c-1.73,1.55-3.37,3.08-4.95,4.58c-1.57,1.5-2.88,2.81-3.93,3.93 c3.14,3.29,6.31,6.64,9.51,10.06c3.2,3.42,6.45,6.84,9.74,10.28c-0.58-0.07-1.16-0.11-1.75-0.11c-0.58,0-1.16,0-1.75,0 c-0.54,0-1.08,0-1.6,0s-1.06,0.04-1.6,0.11c-1.4-1.48-2.94-3.18-4.62-5.1c-1.69-1.92-3.34-3.77-4.95-5.56 c-1.61-1.79-3.06-3.4-4.36-4.83c-1.3-1.43-2.26-2.43-2.88-3.01c-0.31-0.29-0.54-0.43-0.7-0.43c-0.2,0-0.29,0.11-0.29,0.33v4.72 c0,2.39,0.05,4.74,0.15,7.05c0.1,2.31,0.2,4.59,0.32,6.83c-0.89-0.07-1.84-0.11-2.85-0.11c-1.01,0-1.96,0.04-2.85,0.11 C257.42,223.1,257.53,220.82,257.62,218.5z"/><path d="M357.31,193.83c-0.04-2.78-0.14-4.7-0.29-5.75c0.43,0.07,0.83,0.14,1.22,0.19c0.39,0.05,0.78,0.08,1.16,0.08 c0.5,0,1.08-0.09,1.74-0.27c-0.12,1.27-0.23,2.78-0.35,4.53c-0.12,1.75-0.21,3.63-0.29,5.64c-0.08,2.01-0.16,4.07-0.23,6.18 c-0.08,2.12-0.14,4.17-0.17,6.15c-0.04,2.42-0.44,4.59-1.19,6.51c-0.76,1.92-1.83,3.54-3.23,4.88c-1.4,1.34-3.11,2.35-5.15,3.04 s-4.37,1.03-7.01,1.03c-5.82,0-10.04-1.23-12.68-3.69c-2.64-2.46-3.96-6.34-3.96-11.66c0-1.7,0.05-3.21,0.15-4.53 c0.1-1.32,0.15-2.67,0.15-4.04c0-3.04-0.04-5.73-0.12-8.08c-0.08-2.35-0.15-4.34-0.23-5.97c0.46,0.07,0.97,0.14,1.51,0.19 c0.54,0.05,1.05,0.08,1.51,0.08c0.43,0,0.84-0.03,1.25-0.08c0.41-0.05,0.82-0.12,1.25-0.19c-0.08,0.8-0.15,1.83-0.23,3.12 c-0.08,1.28-0.16,2.74-0.23,4.37c-0.08,1.63-0.14,3.38-0.17,5.26c-0.04,1.88-0.06,3.83-0.06,5.86c0,1.23,0.02,2.5,0.06,3.82 c0.04,1.32,0.17,2.6,0.41,3.85c0.23,1.25,0.61,2.44,1.13,3.58c0.52,1.14,1.27,2.13,2.24,2.98c0.97,0.85,2.19,1.52,3.66,2.01 c1.47,0.49,3.3,0.73,5.47,0.73c2.13,0,3.93-0.29,5.38-0.87c1.45-0.58,2.65-1.34,3.58-2.28c0.93-0.94,1.66-2.02,2.18-3.25 c0.52-1.23,0.9-2.51,1.13-3.85c0.23-1.34,0.37-2.68,0.41-4.01c0.04-1.34,0.06-2.57,0.06-3.69 C357.36,200.57,357.34,196.61,357.31,193.83z"/></g><rect class="logo-bar" x="327.23" y="173.96" width="33.51" height="4.72"/></svg></g>
           </svg>
         </div>
-      </div>
-    </div>
-    <div class="cv-values">
+    <div class="c3-text">
       <div class="sec-head">
-        <h2 class="display">Values</h2>
-        <span class="aside">What matters to us</span>
+        <h2 class="display">Concept</h2>
+        <span class="aside">What guides UBAKU</span>
       </div>
-      <div class="values-grid">
-        <div class="value">
-          <p class="value-head"><span class="en label">01</span></p>
-          <h3>Editing the Local.</h3>
-          <p class="body">Fields, empty houses, the skills of local people. We take what is already here and connect it in new ways.</p>
-        </div>
-        <div class="value">
-          <p class="value-head"><span class="en label">02</span></p>
-          <h3>Life, with Margin.</h3>
-          <p class="body">No overfilling, no rushing. We make room for the rhythm of this land.</p>
-        </div>
-        <div class="value">
-          <p class="value-head"><span class="en label">03</span></p>
-          <h3>Right Beside You.</h3>
-          <p class="body">Moving here, opening a business, building a life that lasts. We think it through with you and support you along the way.</p>
-        </div>
-      </div>
+      <p class="concept-catch"><em class="hl">Connecting</em> people,<br>land, and place.</p>
+      <dl class="c3-list">
+        <div><dt>People</dt><dd>Those who live here, those who visit, and those who try something new here.</dd></div>
+        <div><dt>Land</dt><dd>Fields, pastures, forests, hills, and the foot of Daisetsuzan.</dd></div>
+        <div><dt>Place</dt><dd>Homes, lodgings, shops, offices, empty houses, and more.</dd></div>
+      </dl>
     </div>
   </div>
 </section>
-
-<!-- ======================= ③ What We Do（深緑・上端に稜線） ======================= -->
-<section id="work" class="dark">
-  <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 50 C 220 100, 420 100, 640 60 S 1000 10, 1200 50 S 1380 80, 1440 60 L1440 0 Z"/></svg>
-  <div class="work wrap">
-    <div class="sec-head">
-      <h2 class="display">What We Do</h2>
-      <span class="aside">Six activities</span>
-    </div>
-
-    <!-- 01〜03：動いている事業（写真つき・3つ並び。2026-10-16 に Business のセクションをここへまとめた）
-         3つとも「写真 → 札 → 事業名 → キャッチ → 本文 → 下に1行 → リンク」の同じ形。本文の文字数はおよそそろえる -->
-    <div class="biz3">
-      <article id="villa">
-        <div class="photo zoom"><img src="../assets/img/villa.webp" alt="The wooden sign at the entrance of UBAKU Villa 宇莫別荘" width="2000" height="1333" loading="lazy"></div>
-        <div class="biz-body lift-card">   <!-- マウスを乗せると、この文字の部分だけが少し浮く -->
-          <span class="label">Stay</span>
-          <h3 class="biz-name">UBAKU Villa <span class="biz-name-jp">宇莫別荘</span></h3>
-          <p class="catch">A private villa with room to breathe.</p>
-          <p class="body">One group a day in Naka-Ubakubetsu, Biei. A former farmhouse built in 1968 and passed down for over half a century, fully renovated and opened in January 2026. Up to 10 guests have the whole house on a site of about 1,800 m². About 18 minutes by car from Asahikawa Airport, about 10 minutes by car from Biei Station.</p>
-          <p class="biz-extra"><span>UBAKU Villa 南邸 | Coming soon</span>A second villa, a 10-minute walk from Biei Station, is in preparation.</p>
-                    <a class="more" href="https://ubakuvilla.com/en/" target="_blank" rel="noopener">Visit the UBAKU Villa 宇莫別荘 website</a>
-        </div>
-      </article>
-
-      <article id="design">
-        <div class="photo zoom"><img src="../assets/img/design.webp" alt="Flowers and a wooden card stand" width="2000" height="1333" loading="lazy"></div>
-        <div class="biz-body lift-card">   <!-- マウスを乗せると、この文字の部分だけが少し浮く -->
-          <span class="label">Design</span>
-          <h3 class="biz-name">UBAKU Design</h3>
-          <p class="catch">Buildings and brands, true to their place.</p>
-          <p class="body">Design supervision for renovating older buildings, and branding (visual design and web design) for lodgings and shops. We build on the strengths of each building and the story of its land, and work with you from the first concept to the finished result, keeping everything in one consistent world.</p>
-          <p class="biz-extra">We also take on renovations of homes, shops, and offices, and branding for shops and companies.</p>
-          <a class="more" href="design/">See our renovation and brand work</a>
-        </div>
-      </article>
-
-      <article id="consulting">
-        <div class="photo zoom"><img src="../assets/img/consulting.webp" alt="A book on Aalto on a round wooden table" width="2000" height="1333" loading="lazy"></div>
-        <div class="biz-body lift-card">   <!-- マウスを乗せると、この文字の部分だけが少し浮く -->
-          <span class="label">Consult</span>
-          <h3 class="biz-name">UBAKU Consulting</h3>
-          <p class="catch">Lodging and real estate, built to work.</p>
-          <p class="body">From opening and running a lodging business to real estate development, investment property, and new business launches. We pair a sharp eye for the numbers from urban income property with a ground-level sense from opening a villa in rural Japan.</p>
-          <p class="biz-extra">Our support methods are developed and tested in UBAKU Lab, the small lab within our team.</p>
-          <a class="more" href="consulting/">Learn more about consulting</a>
-        </div>
-      </article>
-    </div>
-
-    <!-- 04〜06：これからの仕事（上に横長の大雪山の写真1枚＋3つ並び） -->
-    <div class="photo work-wide" id="work-wide"><img src="../assets/img/media.webp" alt="Snow-covered Daisetsuzan with the hills and fields of Biei" width="2000" height="1107" loading="lazy"></div>
-    <div class="work-grid">
-      <div class="work-item">
-        <!-- 04〜06：これからの領域。名前の決まっていないブランド・拠点は書かない（2026-10-31 改善方針 Ver.2） -->
-        <span class="label">Market</span>
-        <h3 class="work-catch">Sharing the gifts of the northern land.</h3>
-        <p>Vegetables from the fields of Biei and Higashikawa, taken beyond these towns together with their growers.</p>
-        <span class="en badge">Coming soon</span>
-      </div>
-      <div class="work-item">
-        <span class="label">Media</span>
-        <h3 class="work-catch">Stories from the foot of the mountains.</h3>
-        <p>The people of Biei and Higashikawa, and the everyday life of this land.</p>
-        <span class="en badge">Coming soon</span>
-      </div>
-      <div class="work-item">
-        <span class="label">Place</span>
-        <h3 class="work-catch">New possibilities from places that already exist.</h3>
-        <p>Making use of empty houses and existing buildings, we imagine places where something new can begin.</p>
-        <span class="en badge">Coming soon</span>
-      </div>
-    </div>
-    <!-- 移住・二拠点のご相談の入口（2026-10-31。Live｜住む の欄をなくしたかわりに、6つの活動の下に吹き出しで。押すと Contact へ） -->
-    <a class="live-bubble js-reveal" href="#contact"><span class="en live-bubble-en">Live</span><span class="live-bubble-ja">Thinking of moving here, or living between two places? Talk to us.</span><span class="en live-bubble-go">Contact →</span></a>
-  </div>
-</section>
-
 <!-- ======================= Our Approach（雪の写真の上で、スクロールに合わせて大雪山の稜線が描かれる。2026-11-07） =======================
      稜線の線はイントロと同じデータ。線が 01→02→03 を通るたびに右の文が切り替わる（動きは main.js の「Our Approach」） -->
 <section id="approach" class="ap-sec" aria-label="Our Approach">
@@ -335,9 +402,9 @@
         </div>
         <div class="ap-panels">
           <div class="ap-panel is-on"><p class="ap-lead">Biei and Higashikawa sit at the foot of the Daisetsuzan mountains in central Hokkaido. We want them to become richer, more attractive places. We are both players, running our own businesses here, and producers, creating new projects with local people and those who want to try something here.</p></div>
-          <div class="ap-panel"><p class="ap-no">01</p><h3 class="ap-t">Build Our Own.</h3><p class="ap-b">We open a villa and work the fields. With a real stake in this land, we build and grow our own businesses. That practice is also the base for what we build with others.</p></div>
-          <div class="ap-panel"><p class="ap-no">02</p><h3 class="ap-t">Build Together.</h3><p class="ap-b">Through planning, design, and support for opening and running a business, we work right beside people trying something new. We combine what is already here with fresh perspectives to shape new businesses.</p></div>
-          <div class="ap-panel"><p class="ap-no">03</p><h3 class="ap-t">Connect.</h3><p class="ap-b">More people who visit, try something new, and take part. More joy in living here, more choices for work. One visit becomes a lasting connection.</p></div>
+          <div class="ap-panel"><p class="ap-no">01</p><h3 class="ap-t">Build Our Own.</h3><p class="ap-b">We open a villa and work the fields. With a real stake in this land, we build and grow our own businesses. That practice is also the base for what we build with others.</p><a class="ap-go" href="#projects">To Projects ↓</a></div>
+          <div class="ap-panel"><p class="ap-no">02</p><h3 class="ap-t">Build Together.</h3><p class="ap-b">Through planning, design, and support for opening and running a business, we work right beside people trying something new. We combine what is already here with fresh perspectives to shape new businesses.</p><a class="ap-go" href="#services">To Services ↓</a></div>
+          <div class="ap-panel"><p class="ap-no">03</p><h3 class="ap-t">Connect.</h3><p class="ap-b">More people who visit, try something new, and take part. More joy in living here, more choices for work. One visit becomes a lasting connection.</p><a class="ap-go" href="#journal">To Journal ↓</a></div>
         </div>
       </div>
     </div>
@@ -357,26 +424,110 @@
   </div>
 </section>
 
-<!-- ======================= ⑤ Numbers（クラフト色・上端に丘の輪郭） ======================= -->
-<section class="numbers">
-  <div class="wrap">
+<section id="projects" class="dark">
+  <div class="work wrap">
+    <div class="step js-step">
+        <svg class="step-ridge" viewBox="0 -8 1000 136" aria-hidden="true">
+          <defs><clipPath id="step-clip-1"><rect x="-10" y="-20" width="150" height="170"/></clipPath></defs>
+          <path class="step-ghost" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4"/>
+          <g clip-path="url(#step-clip-1)"><path class="step-line" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4"/></g>
+          <circle class="step-dot" cx="140" cy="69.3" r="14"/>
+        </svg>
+        <span class="step-no">01</span><span class="step-ja">Build Our Own</span>
+      </div>
     <div class="sec-head">
-      <h2 class="display">Numbers</h2>
-      <span class="aside">UBAKU by the numbers</span>
+      <h2 class="display">Projects</h2>
+      <span class="aside">Four fields UBAKU runs itself</span>
     </div>
-    <p class="numbers-note">From our first business, <span class="phrase">UBAKU Villa 宇莫別荘.</span></p>   <!-- 数字が UBAKU 全体の実績と読まれないように（2026-10-31） -->
-    <ul class="numbers-grid">
-      <!-- 数字は画面に入ると 0 から速く回って、最後に今の値で止まる（東川ヴィレッジと同じ。回るのは .cnt の数字だけで、単位は小さな文字 small。動きは main.js） -->
-      <li><span class="num"><span class="cnt" data-to="2026">2026</span><small>.01</small></span><p>UBAKU Villa 宇莫別荘 opens</p></li>
-      <li><span class="num"><span class="cnt" data-to="1">1</span><small> group a day</small></span><p>The whole house, for up to 10 guests</p></li>
-      <li><span class="num"><span class="cnt" data-to="80">80</span><small>%+</small></span><p>Share of guests from overseas (as of October 2026)</p></li>
-      <li><span class="num"><span class="cnt" data-to="9">9</span>.7<small>/10</small></span><p>Booking.com review score (as of October 2026)</p></li>
-      <li><span class="num"><span class="cnt" data-to="2">2</span><small>nd villa</small></span><p>UBAKU Villa 南邸, in preparation</p></li>
-    </ul>
+    <div class="pj-grid">
+      <article id="villa">
+        <a class="photo zoom" href="https://ubakuvilla.com/en/" target="_blank" rel="noopener" aria-label="Visit the UBAKU Villa 宇莫別荘 website"><img src="../assets/img/villa.webp" alt="The wooden sign at the entrance of UBAKU Villa 宇莫別荘" width="2000" height="1333" loading="lazy"></a>
+        <div class="biz-body lift-card">
+          <span class="label">Stay</span>
+          <h3 class="biz-name pj-name"><span>UBAKU Villa</span><span class="pj-tail"><span class="biz-name-jp">宇莫別荘</span><span class="pj-tags"><span class="pj-tag pj-tag--green">Best rate on our website</span></span></span></h3>
+          <p class="catch">A private villa in Biei, Hokkaido, for one group a day.</p>
+          <p class="body">A private villa in Naka-Ubakubetsu, Biei. A former farmhouse built in 1968 and passed down for over half a century, fully renovated and opened in January 2026. Up to 10 guests have the whole house on a site of about 1,800 m². About 18 minutes by car from Asahikawa Airport, about 10 minutes by car from Biei Station.</p>
+          <a class="more" href="https://ubakuvilla.com/en/" target="_blank" rel="noopener">Visit the UBAKU Villa 宇莫別荘 website</a>
+        </div>
+      </article>
+      <article id="okanohata">
+        <a class="photo zoom pj-okano" href="https://okanohata.jp/" target="_blank" rel="noopener" aria-label="Visit the Okanohata website (in Japanese)"><img src="../assets/img/top-v3/okanohata-hero.webp" alt="Three tomatoes on autumn grass" width="2400" height="1600" loading="lazy"><img class="pj-okano-logo" src="../assets/img/top-v3/okanohata-logo.svg" alt="Okanohata 丘の畑 by UBAKU"></a>
+        <div class="biz-body lift-card">
+          <span class="label">Market</span>
+          <h3 class="biz-name pj-name"><span>Okanohata</span><span class="pj-tail"><span class="biz-name-jp">おかのはた</span><span class="pj-tags"><span class="pj-tag">Pre-orders open</span><span class="pj-tag pj-tag--line">Online shop</span></span></span></h3>
+          <p class="catch">A shop for imperfect vegetables from Biei, Hokkaido.</p>
+          <p class="body">Asparagus and tomatoes that never reach store shelves just because their shape or size is a little different. We receive them from farmers in Biei and ship them straight from the farm. Pre-orders for 2027 deliveries are now open online (in Japanese, delivery within Japan). Wholesale inquiries from restaurants and shops are welcome.</p>
+          <a class="more" href="https://okanohata.jp/" target="_blank" rel="noopener">Visit the Okanohata website (in Japanese)</a>
+        </div>
+      </article>
+    </div>
+    <div class="pj-soon">
+      <div class="work-item">
+        <span class="label">Media</span>
+        <h3 class="work-catch">fumotobito</h3>
+        <p>Sharing the people of Biei and Higashikawa, and the everyday life of this land.</p>
+        <span class="en badge">Coming soon</span>
+      </div>
+      <div class="work-item">
+        <span class="label">Place</span>
+        <h3 class="work-catch">New possibilities from places that already exist.</h3>
+        <p>Using empty houses and existing buildings, we think about places where something new can begin.</p>
+        <span class="en badge">Coming soon</span>
+      </div>
+    </div>
   </div>
 </section>
-
-<!-- ======================= ⑥ Team ======================= -->
+<section id="services" class="sv-sec">
+  <div class="wrap">
+    <div class="step js-step">
+        <svg class="step-ridge" viewBox="0 -8 1000 136" aria-hidden="true">
+          <defs><clipPath id="step-clip-2"><rect x="-10" y="-20" width="389.9" height="170"/></clipPath></defs>
+          <path class="step-ghost" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4"/>
+          <g clip-path="url(#step-clip-2)"><path class="step-line" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4"/></g>
+          <circle class="step-dot" cx="379.9" cy="44.8" r="14"/>
+        </svg>
+        <span class="step-no">02</span><span class="step-ja">Build Together</span>
+      </div>
+    <div class="sec-head">
+      <h2 class="display">Services</h2>
+      <span class="aside">Two kinds of work we build together</span>
+    </div>
+    <div class="sv-grid">
+      <article id="design">
+        <a class="photo zoom" href="design/" aria-label="Go to the UBAKU Design page"><img src="../assets/img/design.webp" alt="Flowers and a wooden card stand" width="2000" height="1333" loading="lazy"></a>
+        <div class="biz-body lift-card">
+          <span class="label">Design</span>
+          <h3 class="biz-name">UBAKU Design</h3>
+          <p class="catch">Buildings and brands, true to their place.</p>
+          <p class="body">We design both buildings and brands, in one consistent world.</p>
+          <dl class="sv-two">
+            <div><dt><span class="en">Hard</span>Buildings</dt><dd>Design supervision for renovating older buildings, from lodgings and homes to shops and offices, building on the strengths of each building.</dd></div>
+            <div><dt><span class="en">Soft</span>Brands</dt><dd>Branding (visual design and web design) for lodgings, shops, and companies, shaped from the story of the land.</dd></div>
+          </dl>
+          <a class="more" href="design/">See UBAKU Design</a>
+        </div>
+      </article>
+      <article id="consulting">
+        <a class="photo zoom" href="consulting/" aria-label="Go to the UBAKU Consulting page"><img src="../assets/img/consulting.webp" alt="A book on Aalto on a round wooden table" width="2000" height="1333" loading="lazy"></a>
+        <div class="biz-body lift-card">
+          <span class="label">Consult</span>
+          <h3 class="biz-name">UBAKU Consulting</h3>
+          <p class="catch">Lodging and real estate, built to work.</p>
+          <p class="body">We pair a sharp eye for the numbers from income property with a ground-level sense from running a business in rural Japan.</p>
+          <dl class="sv-two">
+            <div><dt><span class="en">Utilization</span>Property use</dt><dd>From opening support, better operations, and management of lodgings to reviving empty houses and vacant shops. We share methods we have tested at our own villa.</dd></div>
+            <div><dt><span class="en">Development</span>Real estate</dt><dd>Real estate development and business planning, investment property, and new business launches. We shape products people choose, together with you.</dd></div>
+          </dl>
+          <a class="more" href="consulting/">See UBAKU Consulting</a>
+        </div>
+      </article>
+    </div>
+    <div class="sv-bubbles2">
+      <a class="sv-bub" href="works/"><span class="en sv-bub-en">Works</span><span class="sv-bub-ja">Our past projects, all in one place.</span><span class="en sv-bub-go">See our work →</span></a>
+      <a class="sv-bub js-live" href="#contact"><span class="en sv-bub-en">Live</span><span class="sv-bub-ja">Thinking of moving here or living in two places? Talk to us.</span><span class="en sv-bub-go">Contact →</span></a>
+    </div>
+  </div>
+</section>
 <section id="team" class="team wrap">
   <div class="sec-head">
     <h2 class="display">Team</h2>
@@ -405,13 +556,39 @@
       <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-member-3">Read more</button>
     </div>
   </div>
+  <div class="tv">
+    <p class="tv-head"><span class="en">Our Values</span>What matters to us</p>
+    <div class="values-grid">
+        <div class="value">
+          <p class="value-head"></p>
+          <h3>Editing the Local.</h3>
+          <p class="body">Fields, empty houses, the skills of local people. We take what is already here and connect it in new ways.</p>
+        </div>
+        <div class="value">
+          <p class="value-head"></p>
+          <h3>Life, with Margin.</h3>
+          <p class="body">No overfilling, no rushing. We make room for the rhythm of this land.</p>
+        </div>
+        <div class="value">
+          <p class="value-head"></p>
+          <h3>Right Beside You.</h3>
+          <p class="body">Moving here, opening a business, building a life that lasts. We think it through with you and support you along the way.</p>
+        </div>
+      </div>
+  </div>
 </section>
 
-<!-- ======================= ⑦ Journal =======================
-     3つのnoteの記事（2026年分）が、2段で互い違いに流れる
-     記事一覧は assets/js/notes.js（tools/make_notes.py で自動作成）から読み込む -->
 <section id="journal" class="journal">
   <div class="wrap">
+    <div class="step js-step">
+        <svg class="step-ridge" viewBox="0 -8 1000 136" aria-hidden="true">
+          <defs><clipPath id="step-clip-3"><rect x="-10" y="-20" width="582" height="170"/></clipPath></defs>
+          <path class="step-ghost" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4"/>
+          <g clip-path="url(#step-clip-3)"><path class="step-line" d="M0.0 118.1 L41.9 111.9 L76.8 101.4 L104.7 86.7 L128.5 72.1 L134.1 72.1 L139.7 69.3 L145.3 64.4 L150.8 62.7 L156.4 61.0 L162.0 59.3 L167.6 57.6 L173.2 55.9 L178.8 54.2 L184.4 52.5 L189.9 50.8 L195.5 49.1 L201.1 47.4 L206.7 45.7 L212.3 44.0 L217.9 42.3 L223.5 40.6 L229.1 40.6 L234.6 40.6 L240.2 40.6 L245.8 38.5 L251.4 36.4 L257.0 33.6 L262.6 29.5 L268.2 26.7 L273.7 23.2 L279.3 19.7 L284.9 19.7 L290.5 19.7 L296.1 19.7 L301.7 19.7 L307.3 22.5 L312.8 25.3 L318.4 28.8 L324.0 32.3 L329.6 30.9 L335.2 30.2 L340.8 32.3 L346.4 33.6 L352.0 40.6 L357.5 41.3 L363.1 44.1 L368.7 44.8 L374.3 44.8 L379.9 44.8 L385.5 42.7 L391.1 42.7 L396.6 42.7 L402.2 44.8 L407.8 44.8 L413.4 48.3 L419.0 49.0 L424.6 49.0 L430.2 48.3 L435.8 46.2 L441.3 44.8 L446.9 42.7 L452.5 42.7 L458.1 40.6 L463.7 38.5 L469.3 36.4 L474.9 34.3 L480.4 34.3 L486.0 33.6 L491.6 31.6 L497.2 28.8 L502.8 26.7 L508.4 26.0 L514.0 26.0 L519.6 26.0 L525.1 29.5 L530.7 30.2 L536.3 29.5 L541.9 25.3 L547.5 21.1 L553.1 18.3 L558.7 16.9 L564.2 14.1 L569.8 12.0 L575.4 12.0 L581.0 16.2 L586.6 19.0 L592.2 23.2 L597.8 27.4 L603.4 32.3 L608.9 37.1 L614.5 41.3 L620.1 45.5 L625.7 49.7 L631.3 51.8 L636.9 55.3 L642.5 58.8 L648.0 61.6 L653.6 63.0 L659.2 65.8 L664.8 65.8 L670.4 67.2 L676.0 68.6 L681.6 74.8 L687.2 76.2 L692.7 76.9 L698.3 78.3 L703.9 81.8 L709.5 84.6 L715.1 84.6 L720.7 82.5 L726.3 81.1 L731.8 80.4 L737.4 80.4 L743.0 80.4 L748.6 82.5 L754.2 83.2 L759.8 84.6 L765.4 84.6 L770.9 84.6 L776.5 86.0 L782.1 86.7 L787.7 86.7 L793.3 86.7 L798.9 84.6 L804.5 84.6 L810.1 85.3 L815.6 86.7 L821.2 86.7 L826.8 87.4 L832.4 88.8 L838.0 88.8 L843.6 88.8 L849.2 88.8 L854.7 90.9 L860.3 90.9 L865.9 90.9 L871.5 90.9 L877.1 93.0 L882.7 93.0 L888.3 93.0 L893.9 93.0 L899.4 95.1 L905.0 95.1 L910.6 95.1 L916.2 93.0 L921.8 93.0 L927.4 93.0 L963.7 95.1 L1000.0 101.4"/></g>
+          <circle class="step-dot" cx="572" cy="12.0" r="14"/>
+        </svg>
+        <span class="step-no">03</span><span class="step-ja">Connect</span>
+      </div>
     <div class="sec-head">
       <h2 class="display">Journal</h2>
       <span class="aside">Notes from the foot of Daisetsuzan (in Japanese)</span>
@@ -426,6 +603,7 @@
       <a class="more" href="https://note.com/loftershushi" target="_blank" rel="noopener">Mashu on note</a>
       <a class="more" href="https://note.com/ubaku_jp" target="_blank" rel="noopener">UBAKU on note</a>
       <a class="more" href="https://note.com/ubakuvilla" target="_blank" rel="noopener">UBAKU Villa on note</a>
+      <a class="more" href="https://note.com/okanohata" target="_blank" rel="noopener">Okanohata on note</a>
     </div>
   </div>
 </section>
@@ -510,10 +688,21 @@
 </section>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="../assets/js/notes.js?v=202611242116"></script>
-<script src="../assets/js/main.js?v=202611242116"></script>
+<script src="../assets/js/notes.js?v=202611242136"></script>
+<script src="../assets/js/main.js?v=202611242136"></script>
 
 <!-- ページの一番上へ戻るボタン（矢印だけ。スクロールすると右下の UBAKU Letter の札の上に出る。2026-10-25） -->
 <a class="to-top" href="#" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></a>
+<script>
+/* 試作：Live の吹き出しを押したら、お問い合わせ種別を「移住・二拠点」に */
+document.querySelectorAll('.js-live').forEach(function(a){a.addEventListener('click',function(){var f=document.getElementById('f-type');if(f){f.value='Moving here / living between two places';}});});
+/* 試作：01〜03 の札が画面に入ったら点を光らせる */
+(function(){
+  var els=document.querySelectorAll('.js-step');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}})},{threshold:.6});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
 </body>
 </html>
