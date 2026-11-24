@@ -809,7 +809,7 @@ html[lang="en"] .hero-copy p,html[lang="en"] .hero-lead{font-size:16px}
 html[lang="en"] .ap-b{font-size:17px}
 html[lang="en"] .req{font-size:12px}
 html[lang="en"] .policy-item p,html[lang="en"] .policy-item li,html[lang="en"] .sub-lead,html[lang="en"] .card .body,html[lang="en"] .faq p,html[lang="en"] #services p{font-size:16px;line-height:1.7;letter-spacing:.015em}
-html[lang="en"] .body,html[lang="en"] .work-item p,html[lang="en"] .biz-extra,html[lang="en"] .ap-lead,html[lang="en"] .ap-b,html[lang="en"] .contact-lead p{text-wrap:pretty}   /* 最後の行が1語だけにならないように */
+/* 英語の本文の text-wrap:pretty はやめた（2026-11-25 スマホ点検。iPhone で行が早めに折り返され、右が大きく空くため。共通ルール＝UBAKU 全体の CLAUDE.md 3-3） */
 html[lang="en"] .sec-head .aside{font-size:15px}
 html[lang="en"] .ap-tag{font-size:min(3.8vw,56px,8vh);line-height:1.2}
 html[lang="en"] .ap-en{font-family:'Murecho','Noto Sans JP',sans-serif;font-style:normal;letter-spacing:.14em}
@@ -839,3 +839,8 @@ html[lang="en"] footer > div:first-child > span:first-of-type{white-space:normal
 @media (max-width: 340px){
   .note-links{flex-wrap:wrap}   /* 幅320pxで右へ6pxはみ出していたので折り返す */
 }
+
+/* ===== 日本語の本文は左右両端そろえ（2026-11-25 mashuさん。全サイト共通のルール＝UBAKU 全体の CLAUDE.md 3）=====
+   対象は本文の段落だけ。見出し・キャッチ・ボタン・中央ぞろえの場所は変えない（どれも中央・右ぞろえでないことを確かめ済み）。
+   比べた見本：https://claude.ai/artifact/2FiRsuPk8Q51TJ1uEh4xzJ */
+html[lang="ja"] :is(.body,.ap-b,.ap-lead,.contact-lead p:not(.contact-lead-title),.faq details p,.policy-item p,.policy-item li,.work-item p,.lt-lead,.lt-note,.menu-cta,.sec-lead,.support-note,.wk-contact-text,.biz-extra){text-align:justify}
