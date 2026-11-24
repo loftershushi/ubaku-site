@@ -172,10 +172,9 @@
 @media (max-width: 640px){
   .wk-cover--full{margin:20px calc(50% - 50vw) 0;height:min(78svh,560px);border-radius:50% 50% 0 0 / 40px 40px 0 0}
   .wk-titlerow{gap:12px}
-  .wk-dock{left:12px;bottom:12px;max-width:calc(100vw - 80px);overflow-x:auto;transform:translateY(20px)}   /* 右下の「一番上へ」の矢印とかぶらないよう、左に寄せる */
-  .wk-dock.is-shown{transform:none}
+  .wk-dock{bottom:12px;max-width:calc(100vw - 104px);overflow-x:auto}   /* 2026-11-25 パソコンと同じく真ん中に。幅は右下の「一番上へ」の矢印にかからない広さまで */
   .page-works .lt-fab{display:none}   /* スマホの事例ページでは、目次と重なるので UBAKU Letter の札は出さない */
-  .wk-dock a{padding:7px 10px;font-size:10px;letter-spacing:.08em}
+  .wk-dock a{padding:7px 8px;font-size:10px;letter-spacing:.08em}
   .wk-device-screen{border-width:6px;border-bottom-width:9px;border-radius:9px 9px 0 0}
   .wk-device-base{height:9px;margin:0 -4%}   /* 幅430pxで右へ2pxはみ出していたので控えめに */
 }
@@ -356,3 +355,11 @@
 /* 2026-11-24 宇莫別荘の事例の Numbers（トップから移した4つ）：パソコンは4つを横いっぱいに並べる（トップは5つだったので右が空くため）。スマホは2列のまま */
 @media (min-width:1001px){.wk-numbers .numbers-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (min-width:641px) and (max-width:1000px){.wk-numbers .numbers-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}   /* タブレットは 2×2（3列だと1つ余るため） */
+
+/* 2026-11-25 スマホの章の見出し：数字（01など）と、英語＋日本語の見出しのかたまりの縦の真ん中をそろえる（mashuさん）
+   前は数字の下の線に英語をそろえていたので、見出しが数字より下にずれていた */
+@media (max-width: 900px){
+  .wk-chapter-head{align-items:center}
+  .wk-chapter-head h3 .wk-ch-en{margin-bottom:4px;line-height:1.4}
+  .wk-chapter-head h3 .wk-ch-ja{display:block;line-height:1.5}
+}
