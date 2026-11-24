@@ -11,7 +11,7 @@
   // ?me=1 で自分の端末を除く・言語の切り替えで移ったときは元の参照元を渡す（2026-11-15）
   (function(){var p={};try{var q=location.search;if(/[?&]me=1(&|$)/.test(q))localStorage.setItem('ubaku-me','1');if(/[?&]me=0(&|$)/.test(q))localStorage.removeItem('ubaku-me');if(localStorage.getItem('ubaku-me'))p.traffic_type='internal';var r=sessionStorage.getItem('ubaku-ref');if(r){sessionStorage.removeItem('ubaku-ref');p.page_referrer=r;}}catch(e){}gtag('config','G-SPJCZM68CH',p);})();
 </script>
-<script src="../assets/js/lang.js?v=202611242308"></script>
+<script src="../assets/js/lang.js?v=202611242340"></script>
 <script>/* オープニングを出すかどうかを、表示の前に決める（2026-11-24 mashuさん：1回出したら、その端末では7日間出さない＝UBAKU Letter の札と同じ。?intro で必ず出す・?nointro と「動きを減らす」設定の人には出さない。前は毎回出していた） */try{var q=location.search,k="ubakuIntro",t=0;try{t=+localStorage.getItem(k)||0}catch(e){}if(q.indexOf("nointro")<0&&!matchMedia("(prefers-reduced-motion: reduce)").matches&&(q.indexOf("intro")>=0||Date.now()-t>7*864e5)){document.documentElement.classList.add("is-opening");try{localStorage.setItem(k,Date.now())}catch(e){}}}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UBAKU | Regional Producers in Biei and Higashikawa, Hokkaido</title>
@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:ital,wght@0,200;0,300;0,400;1,300&family=EB+Garamond:wght@500&family=Murecho:wght@400&display=swap">
 
 <!-- デザイン（色・フォント・余白はすべてこのファイルで管理） -->
-<link rel="stylesheet" href="../assets/css/style.css?v=202611242308">
+<link rel="stylesheet" href="../assets/css/style.css?v=202611242340">
 <!-- UBAKU Letter（メルマガ）は日本語なので、英語版には出さない -->
 
 <!-- Googleに会社情報を伝えるデータ（構造化データ）
@@ -441,7 +441,7 @@
     </div>
     <div class="pj-grid">
       <article id="villa">
-        <a class="photo zoom" href="https://ubakuvilla.com/en/" target="_blank" rel="noopener" aria-label="Visit the UBAKU Villa 宇莫別荘 website"><img src="../assets/img/villa.webp" alt="The wooden sign at the entrance of UBAKU Villa 宇莫別荘" width="2000" height="1333" loading="lazy"></a>
+        <a class="photo zoom" href="https://ubakuvilla.com/en/" target="_blank" rel="noopener" aria-label="Visit the UBAKU Villa 宇莫別荘 website"><img srcset="../assets/img/villa-800w.webp 800w, ../assets/img/villa-1600w.webp 1600w, ../assets/img/villa.webp 2000w" sizes="100vw" src="../assets/img/villa.webp" alt="The wooden sign at the entrance of UBAKU Villa 宇莫別荘" width="2000" height="1333" loading="lazy"></a>
         <div class="biz-body lift-card">
           <span class="label">Stay</span>
           <h3 class="biz-name pj-name"><span>UBAKU Villa</span><span class="pj-tail"><span class="biz-name-jp">宇莫別荘</span><span class="pj-tags"><span class="pj-tag pj-tag--green">Best rate on our website</span></span></span></h3>
@@ -451,7 +451,7 @@
         </div>
       </article>
       <article id="okanohata">
-        <a class="photo zoom pj-okano" href="https://okanohata.jp/" target="_blank" rel="noopener" aria-label="Visit the Okanohata website (in Japanese)"><img src="../assets/img/top-v3/okanohata-hero.webp" alt="Three tomatoes on autumn grass" width="2400" height="1600" loading="lazy"><img class="pj-okano-logo" src="../assets/img/top-v3/okanohata-logo.svg" alt="Okanohata 丘の畑 by UBAKU"></a>
+        <a class="photo zoom pj-okano" href="https://okanohata.jp/" target="_blank" rel="noopener" aria-label="Visit the Okanohata website (in Japanese)"><img srcset="../assets/img/top-v3/okanohata-hero-800w.webp 800w, ../assets/img/top-v3/okanohata-hero-1600w.webp 1600w, ../assets/img/top-v3/okanohata-hero.webp 2400w" sizes="100vw" src="../assets/img/top-v3/okanohata-hero.webp" alt="Three tomatoes on autumn grass" width="2400" height="1600" loading="lazy"><img class="pj-okano-logo" src="../assets/img/top-v3/okanohata-logo.svg" alt="Okanohata 丘の畑 by UBAKU"></a>
         <div class="biz-body lift-card">
           <span class="label">Market</span>
           <h3 class="biz-name pj-name"><span>Okanohata</span><span class="pj-tail"><span class="biz-name-jp">おかのはた</span><span class="pj-tags"><span class="pj-tag">Pre-orders open</span><span class="pj-tag pj-tag--line">Online shop</span></span></span></h3>
@@ -494,7 +494,7 @@
     </div>
     <div class="sv-grid">
       <article id="design">
-        <a class="photo zoom" href="design/" aria-label="Go to the UBAKU Design page"><img src="../assets/img/design.webp" alt="Flowers and a wooden card stand" width="2000" height="1333" loading="lazy"></a>
+        <a class="photo zoom" href="design/" aria-label="Go to the UBAKU Design page"><img srcset="../assets/img/design-800w.webp 800w, ../assets/img/design-1600w.webp 1600w, ../assets/img/design.webp 2000w" sizes="100vw" src="../assets/img/design.webp" alt="Flowers and a wooden card stand" width="2000" height="1333" loading="lazy"></a>
         <div class="biz-body lift-card">
           <span class="label">Design</span>
           <h3 class="biz-name">UBAKU Design</h3>
@@ -508,7 +508,7 @@
         </div>
       </article>
       <article id="consulting">
-        <a class="photo zoom" href="consulting/" aria-label="Go to the UBAKU Consulting page"><img src="../assets/img/consulting.webp" alt="A book on Aalto on a round wooden table" width="2000" height="1333" loading="lazy"></a>
+        <a class="photo zoom" href="consulting/" aria-label="Go to the UBAKU Consulting page"><img srcset="../assets/img/consulting-800w.webp 800w, ../assets/img/consulting-1600w.webp 1600w, ../assets/img/consulting.webp 2000w" sizes="100vw" src="../assets/img/consulting.webp" alt="A book on Aalto on a round wooden table" width="2000" height="1333" loading="lazy"></a>
         <div class="biz-body lift-card">
           <span class="label">Consult</span>
           <h3 class="biz-name">UBAKU Consulting</h3>
@@ -535,21 +535,21 @@
   </div>
   <div class="team-grid">
     <div class="member">
-      <div class="photo ph3"><img src="../assets/img/mashu.webp" alt="Mashu" width="1538" height="1538" loading="lazy"></div>
+      <div class="photo ph3"><img srcset="../assets/img/mashu-800w.webp 800w, ../assets/img/mashu.webp 1538w" sizes="100vw" src="../assets/img/mashu.webp" alt="Mashu" width="1538" height="1538" loading="lazy"></div>
       <span class="label">Producer</span>
       <h3>Mashu</h3>
       <p class="body fold-clamp" id="fold-member-1">A short study program at the Higashikawa Japanese Language School led to a move to Japan. Now works at a real estate development company in Tokyo while building independent projects in Biei and Higashikawa: creating stays, delivering vegetables, and sketching out new ways for the region to work.</p>
       <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-member-1">Read more</button>
     </div>
     <div class="member">
-      <div class="photo"><img src="../assets/img/yamato.webp" alt="Yamato" width="2000" height="2000" loading="lazy"></div>
+      <div class="photo"><img srcset="../assets/img/yamato-800w.webp 800w, ../assets/img/yamato-1600w.webp 1600w, ../assets/img/yamato.webp 2000w" sizes="100vw" src="../assets/img/yamato.webp" alt="Yamato" width="2000" height="2000" loading="lazy"></div>
       <span class="label">Field Director</span>
       <h3>Yamato</h3>
       <p class="body fold-clamp" id="fold-member-2">A former elementary school teacher who made the leap from Okinawa to Hokkaido. Now works the fields with farmers in Biei, connecting soil and people and bringing more people into the life of this town.</p>
       <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-member-2">Read more</button>
     </div>
     <div class="member">
-      <div class="photo ph2"><img src="../assets/img/yushin.webp" alt="Yushin" width="2000" height="2000" loading="lazy"></div>
+      <div class="photo ph2"><img srcset="../assets/img/yushin-800w.webp 800w, ../assets/img/yushin-1600w.webp 1600w, ../assets/img/yushin.webp 2000w" sizes="100vw" src="../assets/img/yushin.webp" alt="Yushin" width="2000" height="2000" loading="lazy"></div>
       <span class="label">Connector</span>
       <h3>Yushin</h3>
       <p class="body fold-clamp" id="fold-member-3">Born in Biei. After training at Eiheiji, a head temple of the Soto Zen school, now serves as a monk in Asahikawa. Connects the vegetables of Biei, and the people behind them, with the world beyond the town.</p>
@@ -688,8 +688,8 @@
 </section>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="../assets/js/notes.js?v=202611242308"></script>
-<script src="../assets/js/main.js?v=202611242308"></script>
+<script src="../assets/js/notes.js?v=202611242340"></script>
+<script src="../assets/js/main.js?v=202611242340"></script>
 
 <!-- ページの一番上へ戻るボタン（矢印だけ。スクロールすると右下の UBAKU Letter の札の上に出る。2026-10-25） -->
 <a class="to-top" href="#" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></a>
